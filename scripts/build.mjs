@@ -20,6 +20,8 @@ export async function renderSource(name) {
     ['__TK_CLOUDS_SVG__', 'stage-clouds.svg'],
     ['__TK_CITY_SVG__', 'tsukuyomi-city.svg'],
     ['__TK_GATE_SVG__', 'tsukuyomi-gate.svg'],
+    ['__TK_FISH_SVG__', 'tsukuyomi-fish.svg'],
+    ['__TK_MIRROR_SVG__', 'tsukuyomi-mirror.svg'],
   ]) {
     if (!css.includes(token)) continue;
     const svg = (await readFile(resolve(root, 'assets', asset), 'utf8'))

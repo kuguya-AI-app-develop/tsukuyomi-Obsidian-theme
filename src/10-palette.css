@@ -1,4 +1,8 @@
 :root {
+  --tk-sign-paper: #f4f0dc;
+  --tk-sign-ink: #102437;
+  --tk-sign-sea: #49decc;
+  --tk-sign-coral: #ef797f;
   --tk-sea-rgb: 130, 202, 187;
   --tk-rose-rgb: 230, 160, 152;
   --tk-gold-rgb: 223, 195, 138;

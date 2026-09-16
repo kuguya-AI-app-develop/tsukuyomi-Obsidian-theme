@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180">
+<title>Mirror and orbital arcs</title><desc>Original colored orbital arcs and hanging mirror in their gate coordinates, separated for independent CSS motion. No animation is embedded in this asset.</desc>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M56 127A68 68 0 1 1 176 103" stroke="#79ded6" stroke-width="2"/>
+<path d="M44 120A75 75 0 0 1 173 45M185 84A75 75 0 0 1 151 149" stroke="#b6a2ea" stroke-width="2" opacity=".8"/>
+<path d="M43 43A80 80 0 0 1 182 122M126 164A80 80 0 0 1 41 126" stroke="#dfc38a" stroke-width="2" opacity=".8"/>
+<circle cx="110" cy="115" r="15" fill="#23334b" stroke="#dfc38a" stroke-width="3"/>
+<circle cx="110" cy="115" r="9" stroke="#79ded6" stroke-width="2" opacity=".65"/>
+</g></svg>

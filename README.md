@@ -1,14 +1,14 @@
 # Tsukuyomi（月读）
 
-Tsukuyomi 是一款受《超时空辉夜姬！》中「月读」空间启发的独立、非官方 Obsidian 主题。v0.4.0 将月读城市与八千代舞台结合：朱红叠檐、暖窗、数字招牌与骨架鱼构成街景，鸟居、圆镜和彩色拱桥组成舞台。提供「月读夜景」与「月白」两种模式。
+Tsukuyomi 是一款受《超时空辉夜姬！》中「月读」空间启发的独立、非官方 Obsidian 主题。v0.5.0 将月读城市与八千代舞台结合：朱红叠檐、暖窗、数字招牌与骨架鱼构成街景，鸟居、圆镜和彩色拱桥组成舞台。提供「月读夜景」与「月白」两种模式。
 
-阅读与编辑区域保持不透明的纯色背景，文件名和笔记标题不叠加纹样、发光或海报卡片。文件列表上方有独立的「月読 TSUKUYOMI」街景招牌；空白页上方呈现舞台、下方呈现城市，中央保留原生操作。简洁模式可关闭招牌、装饰框线与场景。主题不包含人物、官方素材或远程资源。
+阅读与编辑区域保持不透明的纯色背景，文件名和笔记标题不叠加纹样、发光或海报卡片。侧栏采用独立的「月読 TSUKUYOMI」灯牌、青绿与珊瑚色偏移边框，以及奶油色选中项。空白页上方呈现舞台、下方呈现城市，中央保留原生操作。建筑保持静止，骨架鱼、光镜与水波在当前活动的空白页缓慢变化。简洁模式可关闭招牌、装饰框线与场景。主题不包含人物、官方素材或远程资源。
 
 主题覆盖阅读视图、实时预览与源码模式，并为工作区、文件树、属性、提示块、代码、表格、搜索、命令面板、Canvas、关系图和 Bases 提供基础配色。主题不会转换或改写笔记内容。
 
-![Tsukuyomi v0.4.0：月读城市招牌与长文阅读](docs/screenshots/32-identity-dark-reading.jpg)
+![v0.5 深色长文与侧栏](docs/screenshots/40-motion-dark-reading.jpg)
 
-![Tsukuyomi v0.4.0：空白页的城市与舞台](docs/screenshots/33-identity-empty.jpg)
+![v0.5 浅色空白页场景](docs/screenshots/42-motion-light-empty-final.jpg)
 
 检查结果与未测项目见 [验收记录](docs/VALIDATION.md)。历史版本的验收结果不代表当前版本已通过相同检查。
 
@@ -32,7 +32,7 @@ npm test
 npm run lab
 ```
 
-`npm ci` 安装两个仅用于开发检查的解析器：`css-tree` 和 `yaml`；主题运行时没有依赖。`npm run build` 只使用 Node.js，将 `src/` 合并为根目录 `theme.css`，并生成 `dist/Tsukuyomi/`。构建时将 `assets/tsukuyomi-city.svg` 与 `assets/tsukuyomi-gate.svg` 两幅原创静态场景内嵌到 CSS；安装时只需清单与样式文件，运行时不请求网络。
+`npm ci` 安装两个仅用于开发检查的解析器：`css-tree` 和 `yaml`；主题运行时没有依赖。`npm run build` 只使用 Node.js，将 `src/` 合并为根目录 `theme.css`，并生成 `dist/Tsukuyomi/`。构建时将 `assets/tsukuyomi-{city,gate,fish,mirror}.svg` 四个原创场景图层与 `assets/stage-clouds.svg` 云纹内嵌到 CSS；安装时只需清单与样式文件，运行时不请求网络。
 
 `npm run lab` 只会构建并安装到项目内固定的 `lab/Tsukuyomi Lab/`，不接受其他库路径。执行后，在 Obsidian 中通过“打开文件夹作为库”打开这个现有实验库，再从「设置 → 外观」选择 `Tsukuyomi`。
 
@@ -44,9 +44,11 @@ npm run lab
 - `tk-reading-width`：正文最大宽度，默认 `40rem`。
 - `tk-density`：标准或紧凑界面密度，默认标准。
 - `tk-decoration-opacity`：空白页场景透明度，默认 `0.70`，范围 `0–1`、步长 `0.05`；不调整侧栏招牌。
-- `tk-enable-motion`：默认关闭。启用后提供 `140ms` 的颜色、边框和阴影过渡；系统开启减少动态效果时不播放。
+- `tk-disable-motion`：静态场景，默认关闭；启用后停止空白页动效及 `140ms` 界面过渡。系统开启减少动态效果时也停止动效。
 
-升级时，Style Settings 已保存的场景透明度（例如旧版的 `0.10`）会继续生效。想采用新版强度，可将其调至 `0.70` 或重置该项设置。
+空白页动效默认可用，无需安装插件；只在窗口有焦点、空白页为活动窗格且空间足够时播放。建筑、笔记和侧栏招牌保持静止。Style Settings 的「静态场景」可关闭动效，也可使用系统的减少动态效果设置。
+
+升级时，已保存的场景透明度（例如旧版的 `0.10`）会继续生效；可调至 `0.70` 或重置该项。旧 `tk-enable-motion` 已由 `tk-disable-motion` 替代；需要保持静态时，请开启新的「静态场景」。
 
 正文默认行高 `1.75`，保留 Obsidian 与用户选择的字体及字号。升级前笔记中的 `cssclasses: [tk-home]` 可以保留；自 v0.3.0 起不再为它添加特殊首页布局。
 

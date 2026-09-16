@@ -1,4 +1,4 @@
-/* Tsukuyomi 0.4.0 | Generated from src/; edit source files, then npm run build. */
+/* Tsukuyomi 0.5.0 | Generated from src/; edit source files, then npm run build. */
 
 /* Source: 00-settings.css */
 /* @settings
@@ -31,15 +31,15 @@ settings:
         value: tk-density-compact
   - id: tk-decoration-opacity
     title: 空白页景物强度
-    description: 只调节空白页静态景物的透明度，不影响笔记和文件列表。
+    description: 只调节空白页景物的透明度，不影响笔记和文件列表。
     type: variable-number-slider
     default: 0.70
     min: 0
     max: 1
     step: 0.05
-  - id: tk-enable-motion
-    title: 主题动效
-    description: 系统允许动效时，启用短暂的颜色、边框和阴影过渡。
+  - id: tk-disable-motion
+    title: 静态场景
+    description: 关闭空白页的游鱼、光镜、水波和短暂界面过渡；系统减少动态效果设置始终优先。
     type: class-toggle
     default: false
 */
@@ -68,13 +68,17 @@ body.tk-density-compact {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  body.tk-enable-motion {
+  body:not(.tk-disable-motion) {
     --tk-transition-duration: 140ms;
   }
 }
 
 /* Source: 10-palette.css */
 :root {
+  --tk-sign-paper: #f4f0dc;
+  --tk-sign-ink: #102437;
+  --tk-sign-sea: #49decc;
+  --tk-sign-coral: #ef797f;
   --tk-sea-rgb: 130, 202, 187;
   --tk-rose-rgb: 230, 160, 152;
   --tk-gold-rgb: 223, 195, 138;
@@ -488,11 +492,13 @@ body :is(
   border-radius: var(--tk-radius-small);
 }
 
-/* A restrained eave line separates tools from the file list. */
+/* A compact sign frame keeps ornament outside the file-name surface. */
 body:not(.tk-minimal) .nav-header {
-  border-bottom: 1px solid var(--tk-border);
-  box-shadow: 0 2px 0 rgba(var(--tk-gold-rgb), 0.08);
-  margin-bottom: 6px;
+  margin: 8px 10px 10px 8px;
+  border: 1px solid var(--tk-sea);
+  border-radius: 3px 12px 3px 3px;
+  background-color: var(--tk-sidebar);
+  box-shadow: 3px 3px 0 var(--tk-rose);
 }
 
 .view-header {
@@ -504,13 +510,21 @@ body:not(.tk-minimal) .workspace-tab-header.is-active {
   box-shadow: inset 0 2px 0 var(--tk-rose), inset 0 -1px 0 rgba(var(--tk-sea-rgb), 0.65);
 }
 
-body:not(.tk-minimal) .nav-header {
-  border-bottom-color: rgba(var(--tk-rose-rgb), 0.55);
-  box-shadow: 0 2px 0 rgba(var(--tk-gold-rgb), 0.15);
+body:not(.tk-minimal) .nav-file-title.is-active {
+  color: var(--tk-sign-ink);
+  background-color: var(--tk-sign-paper);
+  border-radius: 2px 8px 2px 2px;
+  box-shadow: 2px 2px 0 var(--tk-sign-coral);
 }
 
-body:not(.tk-minimal) .nav-file-title.is-active {
-  box-shadow: inset 0 0 0 1px rgba(var(--tk-sea-rgb), 0.32);
+body:not(.tk-minimal) .nav-file-title.is-active::before {
+  inset-block: 0;
+  width: 3px;
+  background-color: var(--tk-sign-sea);
+}
+
+body:not(.tk-minimal) .nav-file-title.is-active .tree-item-icon {
+  color: var(--tk-sign-ink);
 }
 
 body:not(.tk-minimal) .view-header::after {
@@ -811,43 +825,56 @@ button.mod-cta:hover {
 }
 
 /* Source: 60-decoration.css */
-/* Original vector interpretations of the city and its luminous stage.
-   These self-contained assets never appear behind notes or file names. */
+/* Original vector scenery and sign ornaments, embedded at build time. */
 :root {
-  --tk-city-art: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20320%22%3E%3Ctitle%3EMoonlit%20virtual%20city%3C%2Ftitle%3E%3Cdesc%3EOriginal%20geometric%20interpretation%20of%20eaved%20towers%2C%20luminous%20skeletal%20fish%20and%20a%20water%20gate.%20No%20official%20artwork%20or%20character%20likenesses.%3C%2Fdesc%3E%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cg%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.55%22%3E%3Cellipse%20cx%3D%22600%22%20cy%3D%22303%22%20rx%3D%22178%22%20ry%3D%2212%22%2F%3E%3Cpath%20d%3D%22M389%20311H811M449%20293Q600%20278%20751%20293M492%20317H708%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2323334b%22%20stroke%3D%22%23b6a2ea%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M0%20265H77V302H0M22%20213H80V271H22M253%20243H360V302H253M286%20201H338V252H286M819%20250H907V305H819M1044%20217H1153V301H1044M1134%20258H1200V310H1134%22%2F%3E%3Cpath%20d%3D%22M2%20221Q20%20223%2049%20196Q72%20215%2093%20211L85%20229H10ZM237%20251Q263%20252%20308%20225Q339%20250%20375%20242L364%20259H246ZM800%20258Q826%20259%20862%20231Q888%20253%20922%20249L913%20267H809ZM1028%20225Q1071%20222%201095%20191Q1122%20220%201170%20211L1160%20237H1036Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2323334b%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M118%20218H213V302H118M132%20169H198V221H132M142%20124H187V173H142M944%20194H1062V302H944M958%20139H1048V198H958M974%2095H1033V145H974%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23e88d94%22%20stroke-width%3D%224%22%3E%3Cpath%20d%3D%22M126%20230V298M204%20230V298M139%20183V223M192%20183V223M149%20137V173M181%20137V173M954%20211V299M1053%20211V299M968%20152V200M1039%20152V200M981%20110V145M1027%20110V145%22%2F%3E%3Cpath%20d%3D%22M113%20283H218M933%20278H1075M133%20208H198M959%20185H1047%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2323334b%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222.5%22%3E%3Cpath%20d%3D%22M85%20214Q106%20225%20136%20205L165%20181L194%20205Q225%20225%20245%20213L236%20235Q202%20241%20165%20214Q128%20241%2094%20236ZM107%20169Q122%20181%20144%20162L165%20141L186%20162Q209%20180%20224%20168L217%20186Q193%20192%20165%20169Q137%20192%20114%20187ZM124%20126Q138%20134%20151%20118L165%20101L179%20118Q194%20134%20207%20124L200%20142Q179%20145%20165%20130Q150%20147%20131%20143Z%22%2F%3E%3Cpath%20d%3D%22M906%20190Q933%20207%20969%20180L1003%20149L1037%20180Q1073%20207%201100%20187L1090%20212Q1044%20222%201003%20190Q961%20222%20916%20214ZM932%20140Q953%20155%20976%20133L1003%20109L1030%20133Q1056%20155%201075%20137L1066%20159Q1036%20165%201003%20140Q970%20166%20942%20161ZM953%2096Q970%20108%20988%2088L1003%2069L1019%2088Q1040%20107%201054%2094L1046%20116Q1021%20120%201003%20101Q984%20121%20962%20117Z%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M165%2077V101M157%2088H173M1003%2045V68M995%2057H1011M118%20274H212M130%20274V283M148%20274V283M166%20274V283M184%20274V283M202%20274V283M944%20266H1064M957%20266V278M978%20266V278M999%20266V278M1020%20266V278M1041%20266V278%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23dfc38a%22%20opacity%3D%22.8%22%3E%3Cpath%20d%3D%22M146%20239H158V258H146ZM174%20239H186V258H174ZM150%20185H160V198H150ZM171%20185H181V198H171ZM153%20145H177V154H153ZM975%20218H990V245H975ZM1014%20218H1029V245H1014ZM981%20165H996V178H981ZM1012%20165H1027V178H1012ZM990%20122H1016V132H990ZM35%20237H48V255H35ZM58%20237H70V255H58ZM269%20269H282V285H269ZM302%20269H315V285H302ZM335%20269H347V285H335ZM839%20274H851V291H839ZM872%20274H884V291H872ZM1068%20252H1080V276H1068ZM1100%20252H1112V276H1100ZM1131%20252H1142V276H1131Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2379ded6%22%3E%3Crect%20x%3D%22222%22%20y%3D%22251%22%20width%3D%2212%22%20height%3D%2237%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%22289%22%20y%3D%22212%22%20width%3D%2230%22%20height%3D%228%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%22918%22%20y%3D%22232%22%20width%3D%2214%22%20height%3D%2245%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23e88d94%22%3E%3Crect%20x%3D%2270%22%20y%3D%22251%22%20width%3D%2211%22%20height%3D%2229%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%221081%22%20y%3D%22238%22%20width%3D%2233%22%20height%3D%227%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%22873%22%20y%3D%22237%22%20width%3D%2220%22%20height%3D%228%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20transform%3D%22translate(287%2054)%20rotate(-8)%22%3E%3Cpath%20d%3D%22M0%2020Q49-13%20113%2017Q57%2049%200%2020ZM113%2017L148%200L139%2022L149%2042ZM8%2020Q62%2013%20139%2022M32%206Q26%2020%2036%2032M51%203Q43%2020%2055%2036M72%206Q63%2020%2076%2032M92%2010Q84%2020%2096%2026M52%203L67-9L79%207M52%2035L68%2046L79%2031M120%2017L142%206M120%2022L144%2036%22%2F%3E%3Ccircle%20cx%3D%2214%22%20cy%3D%2218%22%20r%3D%222%22%20fill%3D%22%23dfc38a%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23b6a2ea%22%20stroke-width%3D%222%22%20transform%3D%22translate(906%2087)%20rotate(9)%20scale(-.82%20.82)%22%3E%3Cpath%20d%3D%22M0%2020Q49-13%20113%2017Q57%2049%200%2020ZM113%2017L148%200L139%2022L149%2042ZM8%2020Q62%2013%20139%2022M32%206Q26%2020%2036%2032M51%203Q43%2020%2055%2036M72%206Q63%2020%2076%2032M92%2010Q84%2020%2096%2026M52%203L67-9L79%207M52%2035L68%2046L79%2031M120%2017L142%206M120%2022L144%2036%22%2F%3E%3Ccircle%20cx%3D%2214%22%20cy%3D%2218%22%20r%3D%222%22%20fill%3D%22%23dfc38a%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23e88d94%22%20stroke-width%3D%224%22%3E%3Cpath%20d%3D%22M565%20256L561%20299M635%20256L639%20299M551%20269H649%22%2F%3E%3Cpath%20d%3D%22M543%20246Q600%20264%20657%20245L652%20255Q600%20269%20548%20256Z%22%20fill%3D%22%2323334b%22%20stroke-width%3D%223%22%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22278%22%20r%3D%2210%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M16%20307H349M851%20308H1184%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.5%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-  --tk-gate-art: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%20180%22%3E%3Ctitle%3EGate%20over%20lunar%20water%3C%2Ftitle%3E%3Cdesc%3EOriginal%20geometric%20torii%2C%20mirror%2C%20lanterns%20and%20open%20orbital%20arcs.%3C%2Fdesc%3E%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M56%20127A68%2068%200%201%201%20176%20103%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M44%20120A75%2075%200%200%201%20173%2045M185%2084A75%2075%200%200%201%20151%20149%22%20stroke%3D%22%23b6a2ea%22%20stroke-width%3D%222%22%20opacity%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M43%2043A80%2080%200%200%201%20182%20122M126%20164A80%2080%200%200%201%2041%20126%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%20opacity%3D%22.8%22%2F%3E%3Cellipse%20cx%3D%22110%22%20cy%3D%22158%22%20rx%3D%2266%22%20ry%3D%229%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.7%22%2F%3E%3Cpath%20d%3D%22M68%20166H152M85%20172H135%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cg%20stroke%3D%22%23e88d94%22%20stroke-width%3D%224%22%3E%3Cpath%20d%3D%22M80%2068L74%20152M140%2068L146%20152M62%2092H158M72%20151H84M136%20151H148%22%2F%3E%3Cpath%20d%3D%22M53%2054Q110%2074%20167%2054L161%2068Q110%2083%2059%2068Z%22%20fill%3D%22%2323334b%22%20stroke-width%3D%223%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M110%2077V101%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22115%22%20r%3D%2215%22%20fill%3D%22%2323334b%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22115%22%20r%3D%229%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.65%22%2F%3E%3Cg%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M37%2089V97M31%2099H43M31%20119H43M37%20121V128M183%2070V78M177%2080H189M177%20100H189M183%20102V109%22%2F%3E%3Crect%20x%3D%2229%22%20y%3D%22101%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%224%22%20fill%3D%22%23dfc38a%22%20fill-opacity%3D%22.25%22%2F%3E%3Crect%20x%3D%22175%22%20y%3D%2282%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%224%22%20fill%3D%22%23dfc38a%22%20fill-opacity%3D%22.25%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --tk-cloud-art: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20150%22%3E%3Ctitle%3EOriginal%20stage%20cloud%20lines%3C%2Ftitle%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%2361d4c3%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.32%22%3E%3Cpath%20d%3D%22M12%2040H126C139%2040%20139%2054%20126%2054H78C65%2054%2065%2068%2078%2068H186C199%2068%20199%2082%20186%2082H105C92%2082%2092%2096%20105%2096H224%22%2F%3E%3Cpath%20d%3D%22M26%2034H139C153%2034%20153%2060%20139%2060H85M98%2062H199C213%2062%20213%2088%20199%2088H115M128%2090H234%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22113%22%20r%3D%2213%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22113%22%20r%3D%2221%22%2F%3E%3Cpath%20d%3D%22M40%2086V140M13%20113H67M21%2094L59%20132M21%20132L59%2094%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M179%2018L182%2026L190%2029L182%2032L179%2040L176%2032L168%2029L176%2026Z%22%20fill%3D%22%23f47d89%22%20opacity%3D%220.5%22%2F%3E%3C%2Fsvg%3E");
+  --tk-city-art: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20320%22%3E%3Ctitle%3EStatic%20moonlit%20virtual%20city%3C%2Ftitle%3E%3Cdesc%3EOriginal%20geometric%20eaved%20towers%2C%20warm%20windows%20and%20water%20gate.%20Buildings%20remain%20in%20this%20static%20layer%3B%20skeletal%20fish%20are%20a%20separate%20asset.%3C%2Fdesc%3E%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cg%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.55%22%3E%3Cellipse%20cx%3D%22600%22%20cy%3D%22303%22%20rx%3D%22178%22%20ry%3D%2212%22%2F%3E%3Cpath%20d%3D%22M389%20311H811M449%20293Q600%20278%20751%20293M492%20317H708%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2323334b%22%20stroke%3D%22%23b6a2ea%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M0%20265H77V302H0M22%20213H80V271H22M253%20243H360V302H253M286%20201H338V252H286M819%20250H907V305H819M1044%20217H1153V301H1044M1134%20258H1200V310H1134%22%2F%3E%3Cpath%20d%3D%22M2%20221Q20%20223%2049%20196Q72%20215%2093%20211L85%20229H10ZM237%20251Q263%20252%20308%20225Q339%20250%20375%20242L364%20259H246ZM800%20258Q826%20259%20862%20231Q888%20253%20922%20249L913%20267H809ZM1028%20225Q1071%20222%201095%20191Q1122%20220%201170%20211L1160%20237H1036Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2323334b%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M118%20218H213V302H118M132%20169H198V221H132M142%20124H187V173H142M944%20194H1062V302H944M958%20139H1048V198H958M974%2095H1033V145H974%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23e88d94%22%20stroke-width%3D%224%22%3E%3Cpath%20d%3D%22M126%20230V298M204%20230V298M139%20183V223M192%20183V223M149%20137V173M181%20137V173M954%20211V299M1053%20211V299M968%20152V200M1039%20152V200M981%20110V145M1027%20110V145%22%2F%3E%3Cpath%20d%3D%22M113%20283H218M933%20278H1075M133%20208H198M959%20185H1047%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2323334b%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222.5%22%3E%3Cpath%20d%3D%22M85%20214Q106%20225%20136%20205L165%20181L194%20205Q225%20225%20245%20213L236%20235Q202%20241%20165%20214Q128%20241%2094%20236ZM107%20169Q122%20181%20144%20162L165%20141L186%20162Q209%20180%20224%20168L217%20186Q193%20192%20165%20169Q137%20192%20114%20187ZM124%20126Q138%20134%20151%20118L165%20101L179%20118Q194%20134%20207%20124L200%20142Q179%20145%20165%20130Q150%20147%20131%20143Z%22%2F%3E%3Cpath%20d%3D%22M906%20190Q933%20207%20969%20180L1003%20149L1037%20180Q1073%20207%201100%20187L1090%20212Q1044%20222%201003%20190Q961%20222%20916%20214ZM932%20140Q953%20155%20976%20133L1003%20109L1030%20133Q1056%20155%201075%20137L1066%20159Q1036%20165%201003%20140Q970%20166%20942%20161ZM953%2096Q970%20108%20988%2088L1003%2069L1019%2088Q1040%20107%201054%2094L1046%20116Q1021%20120%201003%20101Q984%20121%20962%20117Z%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M165%2077V101M157%2088H173M1003%2045V68M995%2057H1011M118%20274H212M130%20274V283M148%20274V283M166%20274V283M184%20274V283M202%20274V283M944%20266H1064M957%20266V278M978%20266V278M999%20266V278M1020%20266V278M1041%20266V278%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23dfc38a%22%20opacity%3D%22.8%22%3E%3Cpath%20d%3D%22M146%20239H158V258H146ZM174%20239H186V258H174ZM150%20185H160V198H150ZM171%20185H181V198H171ZM153%20145H177V154H153ZM975%20218H990V245H975ZM1014%20218H1029V245H1014ZM981%20165H996V178H981ZM1012%20165H1027V178H1012ZM990%20122H1016V132H990ZM35%20237H48V255H35ZM58%20237H70V255H58ZM269%20269H282V285H269ZM302%20269H315V285H302ZM335%20269H347V285H335ZM839%20274H851V291H839ZM872%20274H884V291H872ZM1068%20252H1080V276H1068ZM1100%20252H1112V276H1100ZM1131%20252H1142V276H1131Z%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%2379ded6%22%3E%3Crect%20x%3D%22222%22%20y%3D%22251%22%20width%3D%2212%22%20height%3D%2237%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%22289%22%20y%3D%22212%22%20width%3D%2230%22%20height%3D%228%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%22918%22%20y%3D%22232%22%20width%3D%2214%22%20height%3D%2245%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23e88d94%22%3E%3Crect%20x%3D%2270%22%20y%3D%22251%22%20width%3D%2211%22%20height%3D%2229%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%221081%22%20y%3D%22238%22%20width%3D%2233%22%20height%3D%227%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%22873%22%20y%3D%22237%22%20width%3D%2220%22%20height%3D%228%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23e88d94%22%20stroke-width%3D%224%22%3E%3Cpath%20d%3D%22M565%20256L561%20299M635%20256L639%20299M551%20269H649%22%2F%3E%3Cpath%20d%3D%22M543%20246Q600%20264%20657%20245L652%20255Q600%20269%20548%20256Z%22%20fill%3D%22%2323334b%22%20stroke-width%3D%223%22%2F%3E%3C%2Fg%3E%3Ccircle%20cx%3D%22600%22%20cy%3D%22278%22%20r%3D%2210%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M16%20307H349M851%20308H1184%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.5%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --tk-gate-art: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%20180%22%3E%3Ctitle%3EStatic%20gate%20over%20lunar%20water%3C%2Ftitle%3E%3Cdesc%3EOriginal%20geometric%20torii%2C%20lanterns%2C%20water%20and%20hanging%20wire.%20The%20mirror%20and%20orbital%20arcs%20are%20a%20separate%20asset.%3C%2Fdesc%3E%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cellipse%20cx%3D%22110%22%20cy%3D%22158%22%20rx%3D%2266%22%20ry%3D%229%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.7%22%2F%3E%3Cpath%20d%3D%22M68%20166H152M85%20172H135%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.45%22%2F%3E%3Cg%20stroke%3D%22%23e88d94%22%20stroke-width%3D%224%22%3E%3Cpath%20d%3D%22M80%2068L74%20152M140%2068L146%20152M62%2092H158M72%20151H84M136%20151H148%22%2F%3E%3Cpath%20d%3D%22M53%2054Q110%2074%20167%2054L161%2068Q110%2083%2059%2068Z%22%20fill%3D%22%2323334b%22%20stroke-width%3D%223%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M110%2077V101%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%2F%3E%3Cg%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M37%2089V97M31%2099H43M31%20119H43M37%20121V128M183%2070V78M177%2080H189M177%20100H189M183%20102V109%22%2F%3E%3Crect%20x%3D%2229%22%20y%3D%22101%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%224%22%20fill%3D%22%23dfc38a%22%20fill-opacity%3D%22.25%22%2F%3E%3Crect%20x%3D%22175%22%20y%3D%2282%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%224%22%20fill%3D%22%23dfc38a%22%20fill-opacity%3D%22.25%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --tk-fish-art: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20320%22%3E%3Ctitle%3ESkeletal%20fish%20over%20the%20virtual%20city%3C%2Ftitle%3E%3Cdesc%3ETwo%20original%20geometric%20fish%20in%20their%20city%20coordinates%2C%20separated%20for%20independent%20CSS%20motion.%20No%20animation%20is%20embedded%20in%20this%20asset.%3C%2Fdesc%3E%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cg%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20transform%3D%22translate(287%2054)%20rotate(-8)%22%3E%3Cpath%20d%3D%22M0%2020Q49-13%20113%2017Q57%2049%200%2020ZM113%2017L148%200L139%2022L149%2042ZM8%2020Q62%2013%20139%2022M32%206Q26%2020%2036%2032M51%203Q43%2020%2055%2036M72%206Q63%2020%2076%2032M92%2010Q84%2020%2096%2026M52%203L67-9L79%207M52%2035L68%2046L79%2031M120%2017L142%206M120%2022L144%2036%22%2F%3E%3Ccircle%20cx%3D%2214%22%20cy%3D%2218%22%20r%3D%222%22%20fill%3D%22%23dfc38a%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23b6a2ea%22%20stroke-width%3D%222%22%20transform%3D%22translate(906%2087)%20rotate(9)%20scale(-.82%20.82)%22%3E%3Cpath%20d%3D%22M0%2020Q49-13%20113%2017Q57%2049%200%2020ZM113%2017L148%200L139%2022L149%2042ZM8%2020Q62%2013%20139%2022M32%206Q26%2020%2036%2032M51%203Q43%2020%2055%2036M72%206Q63%2020%2076%2032M92%2010Q84%2020%2096%2026M52%203L67-9L79%207M52%2035L68%2046L79%2031M120%2017L142%206M120%2022L144%2036%22%2F%3E%3Ccircle%20cx%3D%2214%22%20cy%3D%2218%22%20r%3D%222%22%20fill%3D%22%23dfc38a%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --tk-mirror-art: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%20180%22%3E%3Ctitle%3EMirror%20and%20orbital%20arcs%3C%2Ftitle%3E%3Cdesc%3EOriginal%20colored%20orbital%20arcs%20and%20hanging%20mirror%20in%20their%20gate%20coordinates%2C%20separated%20for%20independent%20CSS%20motion.%20No%20animation%20is%20embedded%20in%20this%20asset.%3C%2Fdesc%3E%3Cg%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M56%20127A68%2068%200%201%201%20176%20103%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M44%20120A75%2075%200%200%201%20173%2045M185%2084A75%2075%200%200%201%20151%20149%22%20stroke%3D%22%23b6a2ea%22%20stroke-width%3D%222%22%20opacity%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M43%2043A80%2080%200%200%201%20182%20122M126%20164A80%2080%200%200%201%2041%20126%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%222%22%20opacity%3D%22.8%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22115%22%20r%3D%2215%22%20fill%3D%22%2323334b%22%20stroke%3D%22%23dfc38a%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22110%22%20cy%3D%22115%22%20r%3D%229%22%20stroke%3D%22%2379ded6%22%20stroke-width%3D%222%22%20opacity%3D%22.65%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 
-/* A separate sign above the tree: lettering sits on an opaque ink panel. */
 .workspace-leaf-content[data-type="file-explorer"] {
   container: tk-navigation / inline-size;
 }
 
+/* irop.one-inspired ink sign, paper lettering and offset colored outlines. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
   content: "月読\a TSUKUYOMI";
   display: block;
   box-sizing: border-box;
-  min-height: 90px;
-  margin: 8px 0 14px;
-  padding: 20px 84px 18px 14px;
-  border: 1px solid rgba(var(--tk-sea-rgb), 0.5);
-  border-inline-start: 3px solid var(--tk-rose);
-  border-radius: 3px 12px 3px 3px;
-  color: #e9f4ef;
-  font-size: 0.85em;
-  font-weight: 650;
-  line-height: 1.9;
-  letter-spacing: 0.14em;
+  min-height: 112px;
+  margin: 8px 4px 18px 0;
+  padding: 18px 62px 16px 16px;
+  border: 1px solid var(--tk-sign-paper);
+  border-inline-start: 4px solid var(--tk-sign-sea);
+  border-radius: 2px 20px 2px 2px;
+  color: var(--tk-sign-paper);
+  background-color: var(--tk-sign-ink);
+  background-image: var(--tk-cloud-art);
+  background-position: right -75px center;
+  background-size: 200px 125px;
+  background-repeat: no-repeat;
+  box-shadow: 3px 3px 0 var(--tk-sign-coral), 5px 5px 0 var(--tk-sign-ink);
+  font-size: 1.05em;
+  font-weight: 800;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
   white-space: pre;
-  background:
-    linear-gradient(90deg, #162338 0 48%, transparent 65%),
-    var(--tk-city-art) right center / 360px 96px no-repeat,
-    #162338;
-  box-shadow: 0 3px 0 rgba(var(--tk-rose-rgb), 0.16);
   pointer-events: none;
 }
 
-/* Scope scene responsiveness to the pane, including desktop splits. */
+/* A quiet cloud seal follows the tree; it never sits beneath file names. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after {
+  content: "";
+  display: block;
+  height: 68px;
+  margin: 18px 10px 8px;
+  border-top: 1px solid var(--tk-border);
+  background: var(--tk-cloud-art) right center / 120px 75px no-repeat;
+  pointer-events: none;
+}
+
 .workspace-leaf-content[data-type="empty"] {
   container: tk-empty / inline-size;
 }
@@ -859,34 +886,105 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
   background-color: var(--tk-background);
 }
 
-/* City and water occupy the lower third; native actions retain their space. */
+/* Native .empty-state fills the pane. Its actions remain above all scenery. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Building and gate share one static backing layer. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    var(--tk-gate-art) center top / 50% 30% no-repeat,
+    var(--tk-city-art) center bottom / 100% min(32%, 320px) no-repeat;
+  opacity: var(--tk-decoration-opacity);
+  pointer-events: none;
+}
+
+/* Fish preserve the city's viewBox, so only their silhouettes drift. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before {
   content: "";
   position: absolute;
-  z-index: -1;
-  inset: auto 0 0;
+  z-index: 1;
+  /* Reserve the full travel distance inside the native scroll container. */
+  inset: auto 12px 3px;
   height: min(32%, 320px);
-  background: var(--tk-city-art) center bottom / contain no-repeat;
+  background: var(--tk-fish-art) center bottom / contain no-repeat;
   opacity: var(--tk-decoration-opacity);
   pointer-events: none;
 }
 
-/* The gate and circular mirror sit above the native action column. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
   content: "";
   position: absolute;
-  z-index: -1;
-  top: 5%;
+  z-index: 1;
+  top: 0;
   left: 25%;
   width: 50%;
-  height: 24%;
-  background: var(--tk-gate-art) center / contain no-repeat;
+  height: 30%;
+  background: var(--tk-mirror-art) center / contain no-repeat;
   opacity: var(--tk-decoration-opacity);
   pointer-events: none;
 }
 
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 3%;
+  left: 35%;
+  width: 30%;
+  height: 3%;
+  border: 1px solid var(--tk-sea);
+  border-radius: 50%;
+  opacity: calc(var(--tk-decoration-opacity) * 0.35);
+  pointer-events: none;
+}
+
+/* Transform/opacity only; the scene runs only in a roomy, active empty pane. */
+@keyframes tk-fish-drift {
+  from { transform: translate3d(-10px, 2px, 0); }
+  to { transform: translate3d(10px, -3px, 0); }
+}
+
+@keyframes tk-mirror-breathe {
+  0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.65); }
+  50% { opacity: var(--tk-decoration-opacity); }
+}
+
+@keyframes tk-water-ripple {
+  0% { transform: scale(0.7); opacity: 0; }
+  35% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
+  100% { transform: scale(1.12); opacity: 0; }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px) {
+  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before {
+    animation: tk-fish-drift 24s ease-in-out infinite alternate;
+  }
+
+  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::after {
+    animation: tk-mirror-breathe 10s ease-in-out infinite;
+  }
+
+  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content .empty-state::before {
+    animation: tk-water-ripple 12s ease-out infinite;
+  }
+}
+
+/* Obsidian removes is-focused when its window loses focus. */
+body:not(.is-focused):not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before,
+body:not(.is-focused):not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::after,
+body:not(.is-focused):not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content .empty-state::before {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  body.tk-enable-motion :is(
+  body:not(.tk-disable-motion) :is(
     .workspace-tab-header,
     .nav-file-title,
     .nav-folder-title,
@@ -903,7 +1001,6 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
       border-color var(--tk-transition-duration) ease,
       box-shadow var(--tk-transition-duration) ease;
   }
-
 }
 
 /* Source: 90-mobile-print.css */
@@ -926,7 +1023,8 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
     border-radius: var(--tk-radius-medium);
   }
 
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after {
     display: none;
   }
 
@@ -945,7 +1043,9 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
 /* Small windows retain native empty-page spacing and hide scene geometry. */
 @media (max-width: 600px), (max-height: 560px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
     display: none;
   }
 }
@@ -953,7 +1053,9 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
 /* Pane width can be smaller than the window (split panes / side docks). */
 @container tk-empty (max-width: 600px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
     display: none;
   }
 }
@@ -962,7 +1064,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
 @container tk-navigation (max-width: 240px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
     padding-inline: 10px;
-    background: #162338;
+    background-image: none;
     text-align: center;
   }
 }
@@ -1002,9 +1104,12 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
   }
 
   body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
+  body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after,
   body .view-header::after,
   body .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body .workspace-leaf-content[data-type="empty"] .view-content::after {
+  body .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body .workspace-leaf-content[data-type="empty"] .empty-state::before,
+  body .workspace-leaf-content[data-type="empty"] .empty-state::after {
     display: none !important;
   }
 

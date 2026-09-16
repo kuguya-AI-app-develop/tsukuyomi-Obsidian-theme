@@ -123,11 +123,13 @@
   border-radius: var(--tk-radius-small);
 }
 
-/* A restrained eave line separates tools from the file list. */
+/* A compact sign frame keeps ornament outside the file-name surface. */
 body:not(.tk-minimal) .nav-header {
-  border-bottom: 1px solid var(--tk-border);
-  box-shadow: 0 2px 0 rgba(var(--tk-gold-rgb), 0.08);
-  margin-bottom: 6px;
+  margin: 8px 10px 10px 8px;
+  border: 1px solid var(--tk-sea);
+  border-radius: 3px 12px 3px 3px;
+  background-color: var(--tk-sidebar);
+  box-shadow: 3px 3px 0 var(--tk-rose);
 }
 
 .view-header {
@@ -139,13 +141,21 @@ body:not(.tk-minimal) .workspace-tab-header.is-active {
   box-shadow: inset 0 2px 0 var(--tk-rose), inset 0 -1px 0 rgba(var(--tk-sea-rgb), 0.65);
 }
 
-body:not(.tk-minimal) .nav-header {
-  border-bottom-color: rgba(var(--tk-rose-rgb), 0.55);
-  box-shadow: 0 2px 0 rgba(var(--tk-gold-rgb), 0.15);
+body:not(.tk-minimal) .nav-file-title.is-active {
+  color: var(--tk-sign-ink);
+  background-color: var(--tk-sign-paper);
+  border-radius: 2px 8px 2px 2px;
+  box-shadow: 2px 2px 0 var(--tk-sign-coral);
 }
 
-body:not(.tk-minimal) .nav-file-title.is-active {
-  box-shadow: inset 0 0 0 1px rgba(var(--tk-sea-rgb), 0.32);
+body:not(.tk-minimal) .nav-file-title.is-active::before {
+  inset-block: 0;
+  width: 3px;
+  background-color: var(--tk-sign-sea);
+}
+
+body:not(.tk-minimal) .nav-file-title.is-active .tree-item-icon {
+  color: var(--tk-sign-ink);
 }
 
 body:not(.tk-minimal) .view-header::after {

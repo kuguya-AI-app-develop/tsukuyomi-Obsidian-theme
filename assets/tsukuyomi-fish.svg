@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320">
+<title>Skeletal fish over the virtual city</title><desc>Two original geometric fish in their city coordinates, separated for independent CSS motion. No animation is embedded in this asset.</desc>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<g stroke="#79ded6" stroke-width="2" transform="translate(287 54) rotate(-8)">
+<path d="M0 20Q49-13 113 17Q57 49 0 20ZM113 17L148 0L139 22L149 42ZM8 20Q62 13 139 22M32 6Q26 20 36 32M51 3Q43 20 55 36M72 6Q63 20 76 32M92 10Q84 20 96 26M52 3L67-9L79 7M52 35L68 46L79 31M120 17L142 6M120 22L144 36"/>
+<circle cx="14" cy="18" r="2" fill="#dfc38a" stroke="none"/>
+</g>
+<g stroke="#b6a2ea" stroke-width="2" transform="translate(906 87) rotate(9) scale(-.82 .82)">
+<path d="M0 20Q49-13 113 17Q57 49 0 20ZM113 17L148 0L139 22L149 42ZM8 20Q62 13 139 22M32 6Q26 20 36 32M51 3Q43 20 55 36M72 6Q63 20 76 32M92 10Q84 20 96 26M52 3L67-9L79 7M52 35L68 46L79 31M120 17L142 6M120 22L144 36"/>
+<circle cx="14" cy="18" r="2" fill="#dfc38a" stroke="none"/>
+</g>
+</g></svg>

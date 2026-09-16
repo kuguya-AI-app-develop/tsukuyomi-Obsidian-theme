@@ -98,7 +98,7 @@ function validateSettings(sourceCss) {
     'tk-reading-width',
     'tk-density',
     'tk-decoration-opacity',
-    'tk-enable-motion',
+    'tk-disable-motion',
   ];
   const byId = new Map(settings.map((setting) => [setting?.id, setting]));
   assert(settings.length === expectedIds.length, `@settings must contain exactly ${expectedIds.length} options`);
@@ -109,7 +109,7 @@ function validateSettings(sourceCss) {
     assert(typeof setting?.title === 'string' && setting.title.trim(), `${setting?.id ?? 'setting'} requires a title`);
   }
 
-  for (const id of ['tk-minimal', 'tk-enable-motion']) {
+  for (const id of ['tk-minimal', 'tk-disable-motion']) {
     const setting = byId.get(id);
     if (!setting) continue;
     assert(setting.type === 'class-toggle', `${id} must be a class-toggle`);
@@ -243,16 +243,113 @@ export function validateSvgDataUrl(value) {
 
 export function validateMotion(ast) {
   const errors = [];
+  const scenePrefix = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] ';
+  const contracts = new Map([
+    ['tk-fish-drift', { value: 'tk-fish-drift 24s ease-in-out infinite alternate', targets: ['.view-content::before'] }],
+    ['tk-mirror-breathe', { value: 'tk-mirror-breathe 10s ease-in-out infinite', targets: ['.view-content::after'] }],
+    ['tk-water-ripple', { value: 'tk-water-ripple 12s ease-out infinite', targets: ['.empty-state::before', '.view-content .empty-state::before'] }],
+  ]);
+  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:601px)', '(min-height:561px)'];
+  const transitionTargets = new Set(['.workspace-tab-header', '.nav-file-title', '.nav-folder-title',
+    '.tree-item-self', '.clickable-icon', 'button', '.suggestion-item', '.menu-item', '.canvas-node-container']);
+  const ancestors = [];
+  const definitions = new Set();
+  const references = new Set();
+  const mediaTerms = () => ancestors.filter((node) => node.name.toLowerCase() === 'media')
+    .flatMap((node) => generate(node.prelude).toLowerCase().split(/\s+and\s+/).map((term) => term.replace(/\s+/g, '')));
+
   walk(ast, {
     enter(node) {
-      if (node.type === 'Atrule' && /keyframes$/i.test(node.name)) {
-        errors.push('@keyframes animations are not allowed');
+      if (node.type === 'Atrule') {
+        ancestors.push(node);
+        if (/keyframes$/i.test(node.name)) {
+          const name = node.prelude ? generate(node.prelude) : '';
+          if (node.name !== 'keyframes' || !contracts.has(name)) {
+            errors.push(`motion: unsupported keyframes ${node.name} ${name}`);
+          }
+          if (definitions.has(name)) errors.push(`motion: duplicate keyframes ${name}`);
+          definitions.add(name);
+        }
+        return;
       }
-      if (node.type === 'Declaration' && /^(?:-\w+-)?animation(?:-|$)/i.test(node.property)) {
-        errors.push(`${node.property} is not allowed; theme motion must use short opt-in transitions`);
+      if (node.type !== 'Declaration') return;
+      const property = node.property.toLowerCase();
+      const value = generate(node.value).trim();
+      if (ancestors.some((ancestor) => /keyframes$/i.test(ancestor.name))) {
+        if (!['transform', 'opacity'].includes(property) || node.important) {
+          errors.push(`motion: keyframes may contain only transform and opacity, found ${property}`);
+        }
+        return;
       }
+
+      if (property === '--tk-transition-duration' && !['0ms', '0s'].includes(value)) {
+        const selector = this.rule?.prelude ? generate(this.rule.prelude) : '';
+        if (value !== '140ms' || selector !== 'body:not(.tk-disable-motion)'
+          || !mediaTerms().includes('(prefers-reduced-motion:no-preference)')) {
+          errors.push('motion: nonzero UI transition duration requires the static-scene and reduced-motion guards, with a 140ms limit');
+        }
+      }
+      if (/^(?:-\w+-)?transition(?:-|$)/i.test(property)) {
+        if (property === 'transition' && value === 'none') return;
+        const parts = splitTopLevel(value);
+        if (property !== 'transition'
+          || !parts.every((part) => /^(?:color|background-color|border-color|box-shadow) var\(--tk-transition-duration\) ease$/.test(part))) {
+          errors.push(`motion: unsupported UI transition ${property}: ${value}`);
+        }
+        const terms = mediaTerms();
+        if (!terms.includes('(prefers-reduced-motion:no-preference)')
+          || terms.some((term) => !['screen', '(prefers-reduced-motion:no-preference)'].includes(term))) {
+          errors.push('motion: UI transitions require the reduced-motion guard');
+        }
+        const selectors = this.rule?.prelude;
+        if (selectors?.type !== 'SelectorList') errors.push('motion: UI transitions require a guarded UI selector');
+        else selectors.children.forEach((selector) => {
+          const match = /^body:not\(\.tk-disable-motion\) :is\((.+)\)$/.exec(generate(selector));
+          if (!match || !splitTopLevel(match[1]).every((target) => transitionTargets.has(target))) {
+            errors.push('motion: UI transitions require the static-scene guard and known UI targets');
+          }
+        });
+        return;
+      }
+
+      if (!/^(?:-\w+-)?animation(?:-|$)/i.test(property)) return;
+      if ((property === 'animation' && value === 'none')
+        || (property === 'animation-play-state' && value === 'paused')) return;
+      if (property !== 'animation') {
+        errors.push(`motion: unsupported animation property ${property}`);
+        return;
+      }
+      const name = value.split(/\s+/)[0];
+      const contract = contracts.get(name);
+      if (!contract || value !== contract.value || node.important) {
+        errors.push(`motion: unsupported scene animation ${value}`);
+        return;
+      }
+      references.add(name);
+      const terms = mediaTerms();
+      if (!requiredMedia.every((term) => terms.includes(term))
+        || terms.some((term) => !requiredMedia.includes(term))) {
+        errors.push(`motion: ${name} requires screen, reduced-motion and minimum viewport guards`);
+      }
+      const selectors = this.rule?.prelude;
+      if (selectors?.type !== 'SelectorList') {
+        errors.push(`motion: ${name} requires a scoped empty-view selector`);
+        return;
+      }
+      selectors.children.forEach((selector) => {
+        const text = generate(selector);
+        if (!contract.targets.some((target) => text === scenePrefix + target)) {
+          errors.push(`motion: ${name} is outside its active empty-view pseudo-element: ${text}`);
+        }
+      });
+    },
+    leave(node) {
+      if (node.type === 'Atrule') ancestors.pop();
     },
   });
+  for (const name of references) {
+    if (!definitions.has(name)) errors.push(`motion: missing keyframes ${name}`);
+  }
   return errors;
 }
 
@@ -677,6 +774,57 @@ function validateObsidianColors(ast, mode, variables) {
   return calloutColors;
 }
 
+// Evaluate the explicit decorative overrides separately from Obsidian's semantic
+// nav variables. This is intentionally limited to the two theme-owned rules.
+export function validateSignageContrast(ast, mode) {
+  const variables = collectModeVariables(ast, mode);
+  const targets = new Map([
+    ['selected-sign', 'body:not(.tk-minimal) .nav-file-title.is-active'],
+    ['brand-sign', 'body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before'],
+  ]);
+  const rules = new Map([...targets.keys()].map((name) => [name, new Map()]));
+  walk(ast, {
+    visit: 'Rule',
+    enter(rule) {
+      if (rule.prelude?.type !== 'SelectorList' || this.atrule) return;
+      rule.prelude.children.forEach((selector) => {
+        for (const [name, target] of targets) {
+          if (generate(selector) !== target) continue;
+          rule.block.children.forEach((declaration) => {
+            if (declaration.type === 'Declaration') {
+              rules.get(name).set(declaration.property, generate(declaration.value).trim());
+            }
+          });
+        }
+      });
+    },
+  });
+
+  const errors = [];
+  const results = {};
+  for (const [name, declarations] of rules) {
+    const foreground = declarations.get('color');
+    const background = declarations.get('background-color');
+    const signToken = /^var\(--tk-sign-(?:paper|ink)\)$/;
+    if (!signToken.test(foreground ?? '') || !signToken.test(background ?? '')) {
+      errors.push(`${mode} ${name} must declare color and an opaque background-color using the sign paper/ink tokens`);
+      continue;
+    }
+    try {
+      const foregroundColor = parseColor(foreground, variables);
+      const backgroundColor = parseColor(background, variables);
+      if (foregroundColor.a !== 1 || backgroundColor.a !== 1) {
+        errors.push(`${mode} ${name} colors must be opaque`);
+      }
+      results[name] = contrast(foregroundColor, backgroundColor);
+      if (results[name] < 4.5) errors.push(`${mode} ${name} contrast is ${results[name].toFixed(2)}:1; expected at least 4.5:1`);
+    } catch (error) {
+      errors.push(`${mode} ${name} colors could not be resolved: ${error.message}`);
+    }
+  }
+  return { errors, results };
+}
+
 function validateContrast(ast, mode) {
   const variables = collectModeVariables(ast, mode);
   const palette = [
@@ -740,6 +888,9 @@ function validateContrast(ast, mode) {
     const target = label === 'focus' ? 3 : 4.5;
     assert(ratio >= target, `${mode} ${label} contrast is ${ratio.toFixed(2)}:1; expected at least ${target}:1`);
   }
+  const signage = validateSignageContrast(ast, mode);
+  failures.push(...signage.errors);
+  Object.assign(results, signage.results);
   return results;
 }
 
@@ -812,7 +963,7 @@ async function main() {
   console.log(`✓ Style Settings: 1 YAML block, ${settingsCount} valid options`);
   for (const [mode, results] of contrastResults) console.log(`✓ ${mode} contrast: ${formatContrast(results)}`);
   console.log('✓ reading guard: explicit note selectors checked for image backgrounds, text shadows and generated decoration');
-  console.log('✓ policy: self-contained graphics; short opt-in transitions, no keyframes or animation properties; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
+  console.log('✓ policy: self-contained graphics; three guarded empty-scene animations and short UI transitions; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();

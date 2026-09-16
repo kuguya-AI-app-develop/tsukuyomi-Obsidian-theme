@@ -17,7 +17,8 @@
     border-radius: var(--tk-radius-medium);
   }
 
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after {
     display: none;
   }
 
@@ -36,7 +37,9 @@
 /* Small windows retain native empty-page spacing and hide scene geometry. */
 @media (max-width: 600px), (max-height: 560px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
     display: none;
   }
 }
@@ -44,7 +47,9 @@
 /* Pane width can be smaller than the window (split panes / side docks). */
 @container tk-empty (max-width: 600px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
     display: none;
   }
 }
@@ -53,7 +58,7 @@
 @container tk-navigation (max-width: 240px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
     padding-inline: 10px;
-    background: #162338;
+    background-image: none;
     text-align: center;
   }
 }
@@ -93,9 +98,12 @@
   }
 
   body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
+  body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after,
   body .view-header::after,
   body .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body .workspace-leaf-content[data-type="empty"] .view-content::after {
+  body .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body .workspace-leaf-content[data-type="empty"] .empty-state::before,
+  body .workspace-leaf-content[data-type="empty"] .empty-state::after {
     display: none !important;
   }
 

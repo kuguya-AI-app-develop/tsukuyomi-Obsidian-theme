@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320">
-<title>Moonlit virtual city</title><desc>Original geometric interpretation of eaved towers, luminous skeletal fish and a water gate. No official artwork or character likenesses.</desc>
+<title>Static moonlit virtual city</title><desc>Original geometric eaved towers, warm windows and water gate. Buildings remain in this static layer; skeletal fish are a separate asset.</desc>
 <g fill="none" stroke-linecap="round" stroke-linejoin="round">
 <g stroke="#79ded6" stroke-width="2" opacity=".55">
 <ellipse cx="600" cy="303" rx="178" ry="12"/><path d="M389 311H811M449 293Q600 278 751 293M492 317H708"/>
@@ -27,14 +27,7 @@
 </g>
 <g fill="#79ded6"><rect x="222" y="251" width="12" height="37" rx="2"/><rect x="289" y="212" width="30" height="8" rx="2"/><rect x="918" y="232" width="14" height="45" rx="2"/></g>
 <g fill="#e88d94"><rect x="70" y="251" width="11" height="29" rx="2"/><rect x="1081" y="238" width="33" height="7" rx="2"/><rect x="873" y="237" width="20" height="8" rx="2"/></g>
-<g stroke="#79ded6" stroke-width="2" transform="translate(287 54) rotate(-8)">
-<path d="M0 20Q49-13 113 17Q57 49 0 20ZM113 17L148 0L139 22L149 42ZM8 20Q62 13 139 22M32 6Q26 20 36 32M51 3Q43 20 55 36M72 6Q63 20 76 32M92 10Q84 20 96 26M52 3L67-9L79 7M52 35L68 46L79 31M120 17L142 6M120 22L144 36"/>
-<circle cx="14" cy="18" r="2" fill="#dfc38a" stroke="none"/>
-</g>
-<g stroke="#b6a2ea" stroke-width="2" transform="translate(906 87) rotate(9) scale(-.82 .82)">
-<path d="M0 20Q49-13 113 17Q57 49 0 20ZM113 17L148 0L139 22L149 42ZM8 20Q62 13 139 22M32 6Q26 20 36 32M51 3Q43 20 55 36M72 6Q63 20 76 32M92 10Q84 20 96 26M52 3L67-9L79 7M52 35L68 46L79 31M120 17L142 6M120 22L144 36"/>
-<circle cx="14" cy="18" r="2" fill="#dfc38a" stroke="none"/>
-</g>
+
 <g stroke="#e88d94" stroke-width="4">
 <path d="M565 256L561 299M635 256L639 299M551 269H649"/>
 <path d="M543 246Q600 264 657 245L652 255Q600 269 548 256Z" fill="#23334b" stroke-width="3"/>

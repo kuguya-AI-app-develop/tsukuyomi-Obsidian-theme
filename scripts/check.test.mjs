@@ -1,13 +1,19 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { parse } from 'css-tree';
-import { validateSvgDataUrl, validateMotion, validateReadingProtection } from './check.mjs';
+import { validateSvgDataUrl, validateMotion, validateReadingProtection, validateSignageContrast } from './check.mjs';
 
 const svgUrl = (body, attributes = '') => `data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"${attributes}>${body}</svg>`,
 )}`;
 const checkMotion = (css) => validateMotion(parse(css));
 const checkReading = (css) => validateReadingProtection(parse(css));
+const sceneMedia = 'screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px)';
+const sceneScope = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"]';
+const fishFrames = '@keyframes tk-fish-drift { from { transform: translateX(-6px); } to { transform: translateX(6px); } }';
+const fishAnimation = 'animation: tk-fish-drift 24s ease-in-out infinite alternate';
+const fishScene = (selector = `${sceneScope} .view-content::before`, media = sceneMedia, declaration = fishAnimation) =>
+  `${fishFrames} @media ${media} { ${selector} { ${declaration}; } }`;
 
 test('SVG accepts static, self-contained artwork and descriptive text', () => {
   assert.deepEqual(validateSvgDataUrl(svgUrl('<title>Moon and clouds</title><desc>Original geometric artwork.</desc><g fill="#caffed" transform="translate(1 2)"><path d="M0 0L10 10Z"/><circle cx="50" cy="50" r="12" stroke="#fff" stroke-width="2"/></g>')), []);
@@ -39,41 +45,86 @@ test('SVG rejects other URL types, invalid encodings and oversized artwork', () 
   assert.ok(validateSvgDataUrl(svgUrl(`<desc>${'a'.repeat(10 * 1024)}</desc>`)).length);
 });
 
-test('motion accepts static styles and short opt-in transitions', () => {
+test('motion accepts static styles, disabling resets and guarded short UI transitions', () => {
   assert.deepEqual(checkMotion('body { color: white; }'), []);
   assert.deepEqual(checkMotion(`
+    .markdown-rendered { animation: none; }
+    body.tk-disable-motion * { animation-play-state: paused; transition: none; }
     :root { --tk-transition-duration: 0ms; }
     @media (prefers-reduced-motion: no-preference) {
-      body.tk-enable-motion { --tk-transition-duration: 140ms; }
-      body.tk-enable-motion button { transition: color var(--tk-transition-duration) ease; }
+      body:not(.tk-disable-motion) { --tk-transition-duration: 140ms; }
+      body:not(.tk-disable-motion) :is(button, .menu-item) { transition: color var(--tk-transition-duration) ease; }
     }
   `), []);
 });
 
-test('motion rejects every keyframes definition, including opt-in and vendor forms', () => {
-  for (const keyword of ['keyframes', '-webkit-keyframes', '-moz-keyframes']) {
-    const definition = `@${keyword} decorative { from { transform: rotate(0deg); } to { transform: rotate(3deg); } }`;
-    assert.ok(checkMotion(definition).length, keyword);
-    assert.ok(checkMotion(`@media (prefers-reduced-motion: no-preference) { ${definition} }`).length, keyword);
-  }
+test('motion accepts only the three guarded empty-view scene animations', () => {
+  assert.deepEqual(checkMotion(fishScene()), []);
+  assert.deepEqual(checkMotion(`
+    @keyframes tk-mirror-breathe { 0%, 100% { opacity: .6; } 50% { opacity: .8; transform: scale(1.02); } }
+    @keyframes tk-water-ripple { from { transform: scale(.94); opacity: .1; } to { transform: scale(1.06); opacity: 0; } }
+    @media ${sceneMedia} {
+      ${sceneScope} .view-content::after { animation: tk-mirror-breathe 10s ease-in-out infinite; }
+      ${sceneScope} .view-content .empty-state::before { animation: tk-water-ripple 12s ease-out infinite; }
+      ${sceneScope} .empty-state::before { animation: tk-water-ripple 12s ease-out infinite; }
+    }
+  `), []);
 });
 
-test('motion rejects animation shorthand, longhands and vendor bypasses in every scope', () => {
+test('motion rejects missing media and static-scene guards, reading targets and inactive panes', () => {
+  for (const selector of [
+    `${sceneScope.replace(':not(.tk-disable-motion)', '')} .view-content::before`,
+    `${sceneScope.replace(':not(.tk-minimal)', '')} .view-content::before`,
+    `${sceneScope.replace('.mod-active', '')} .view-content::before`,
+    `${sceneScope.replace('[data-type="empty"]', '[data-type="markdown"]')} .view-content::before`,
+    `${sceneScope} .markdown-rendered::before`,
+    `${sceneScope} .view-content`,
+    `${sceneScope} .view-content::before, .markdown-reading-view`,
+  ]) assert.ok(checkMotion(fishScene(selector)).length, selector);
+  for (const media of [
+    '(prefers-reduced-motion: no-preference)',
+    sceneMedia.replace('screen and ', ''),
+    sceneMedia.replace('(prefers-reduced-motion: no-preference) and ', ''),
+    sceneMedia.replace(' and (min-width: 601px)', ''),
+    sceneMedia.replace(' and (min-height: 561px)', ''),
+    `${sceneMedia}, screen`,
+    sceneMedia.replace('no-preference', 'reduce'),
+  ]) assert.ok(checkMotion(fishScene(undefined, media)).length, media);
+  assert.ok(checkMotion(`${fishFrames} ${sceneScope} .view-content::before { ${fishAnimation}; }`).length);
+});
+
+test('motion rejects unsupported names, properties, timing and vendor bypasses', () => {
   for (const declaration of [
     'animation: decorative 1200ms ease 2',
-    'animation: decorative 140ms ease',
     'animation: var(--motion)',
-    'animation: none',
-    'animation-name: decorative',
+    'animation: tk-fish-drift 1s ease-in-out infinite alternate',
+    'animation: tk-fish-drift 24s ease-in-out infinite alternate, decorative 1s infinite',
+    'animation-name: tk-fish-drift',
     'animation-duration: 140ms',
-    'animation-iteration-count: 1',
     'animation-timeline: scroll()',
+    'animation-play-state: running',
     '-webkit-animation: decorative 140ms ease',
     '-webkit-animation-name: decorative',
-  ]) {
-    assert.ok(checkMotion(`button { ${declaration}; }`).length, declaration);
-    assert.ok(checkMotion(`@media (prefers-reduced-motion: no-preference) { body.tk-enable-motion button { ${declaration}; } }`).length, declaration);
+  ]) assert.ok(checkMotion(fishScene(undefined, undefined, declaration)).length, declaration);
+  for (const keyword of ['keyframes', '-webkit-keyframes', '-moz-keyframes']) {
+    assert.ok(checkMotion(`@${keyword} decorative { from { transform: rotate(0deg); } to { transform: rotate(3deg); } }`).length, keyword);
   }
+  for (const property of ['left: 2px', 'background-position: 10% 20%', 'filter: blur(2px)', 'animation: none']) {
+    assert.ok(checkMotion(`@keyframes tk-fish-drift { from { ${property}; } to { opacity: .8; } }`).length, property);
+  }
+  assert.ok(checkMotion(fishScene().replace(fishFrames, '')).length, 'missing definition');
+  assert.ok(checkMotion(fishScene().replace('.view-content::before', '.view-content::after')).length, 'wrong layer');
+});
+
+test('motion rejects unguarded, long or reading-targeted UI transitions', () => {
+  const transition = 'transition: color var(--tk-transition-duration) ease';
+  for (const css of [
+    `body:not(.tk-disable-motion) :is(button) { ${transition}; }`,
+    `@media (prefers-reduced-motion: no-preference) { body :is(button) { ${transition}; } }`,
+    `@media (prefers-reduced-motion: no-preference) { body:not(.tk-disable-motion) :is(.markdown-rendered) { ${transition}; } }`,
+    '@media (prefers-reduced-motion: no-preference) { body:not(.tk-disable-motion) :is(button) { transition: all 10s ease; } }',
+    '@media (prefers-reduced-motion: no-preference) { body:not(.tk-disable-motion) { --tk-transition-duration: 2s; } }',
+  ]) assert.ok(checkMotion(css).length, css);
 });
 
 test('reading protection allows solid content fills, markers, resets and empty-view artwork', () => {
@@ -136,5 +187,26 @@ test('reading protection rejects note-scoped overrides of trusted surface tokens
       assert.ok(checkReading(`.markdown-rendered { ${variable}: ${value}; background: var(${variable}); }`).length,
         `${variable}: ${value}`);
     }
+  }
+});
+
+test('sign contrast checks actual selected-file and branding overrides in both modes', () => {
+  const css = `
+    :root { --tk-sign-paper: #f4f0dc; --tk-sign-ink: #102437; }
+    body:not(.tk-minimal) .nav-file-title.is-active {
+      color: var(--tk-sign-ink); background-color: var(--tk-sign-paper);
+    }
+    body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+      color: var(--tk-sign-paper); background-color: var(--tk-sign-ink);
+    }
+  `;
+  for (const mode of ['dark', 'light']) {
+    const result = validateSignageContrast(parse(css), mode);
+    assert.deepEqual(result.errors, []);
+    assert.ok(result.results['selected-sign'] > 10);
+    assert.ok(result.results['brand-sign'] > 10);
+    assert.ok(validateSignageContrast(parse(css.replace('#102437', '#e5e2d5')), mode).errors.length);
+    assert.ok(validateSignageContrast(parse(css.replace('background-color: var(--tk-sign-paper)', 'background-color: transparent')), mode).errors.length);
+    assert.ok(validateSignageContrast(parse(css.replace('--tk-sign-paper: #f4f0dc', '--tk-sign-paper: #f4f0dc80')), mode).errors.length);
   }
 });
