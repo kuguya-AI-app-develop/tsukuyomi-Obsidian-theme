@@ -1,0 +1,86 @@
+- banner:
+  - link "Go to the Obsidian Community home page":
+    - /url: /
+  - generic: Search plugins and themes...
+  - combobox
+  - generic: ⌘K
+  - link "Sign in":
+    - /url: /auth/login?returnTo=%2Fthemes%2Ftsukuyomi
+- main:
+  - heading "Tsukuyomi" [level=1]:
+    - generic: Tsukuyomi
+  - link "ArisaTaki ArisaTaki":
+    - /url: /users/arisataki
+    - img "ArisaTaki"
+    - generic: ArisaTaki
+  - paragraph: An unofficial moonlit theme inspired by Cosmic Princess Kaguya!, with dark and light modes, calm reading surfaces, and an animated empty view.
+  - link "Add to Obsidian":
+    - /url: obsidian://show-theme?name=Tsukuyomi
+  - button "More actions":
+  - button "Enlarge Tsukuyomi screenshot":
+    - img "Tsukuyomi screenshot"
+  - list:
+    - listitem: Overview
+    - listitem: Scorecard
+    - text: Updates
+    - generic: "4"
+  - heading "Work in progress" [level=3]:
+    - text: Work in progress
+  - text: Scorecards are new and may contain errors. If you notice anything inaccurate, please let us know.
+  - link "Learn more.":
+    - /url: https://obsidian.md/blog/future-of-plugins/
+  - heading "Health" [level=2]
+  - generic: Excellent
+  - generic: This theme is actively maintained.
+  - table:
+    - rowgroup:
+      - row "Hygiene Readme, license, contributing guide, and description all present.":
+        - cell "Hygiene"
+        - cell "Readme, license, contributing guide, and description all present."
+      - row "Maintenance Last commit 12 minutes ago. 15 commits in the past year. Last release 9 minutes ago.":
+        - cell "Maintenance"
+        - cell "Last commit 12 minutes ago. 15 commits in the past year. Last release 9 minutes ago."
+      - row "Responsiveness No issues filed.":
+        - cell "Responsiveness"
+        - cell "No issues filed."
+      - row "Adoption No adoption data yet.":
+        - cell "Adoption"
+        - cell "No adoption data yet."
+  - heading "Review" [level=2]
+  - generic: Satisfactory
+  - generic: 2 issues found by automated scans of the latest release.
+  - heading "Warnings 2" [level=3]:
+    - text: Warnings
+    - generic: "2"
+  - generic "Unexpected browser feature \"multicolumn\" is only partially supported by Obsidian 1.11.4 2":
+    - generic: Unexpected browser feature "multicolumn" is only partially supported by Obsidian 1.11.4
+    - generic: "2"
+  - link "Health Excellent Review Satisfactory":
+    - /url: "#scorecard"
+    - generic: Health
+    - generic: Excellent
+    - generic: Review
+    - generic: Satisfactory
+  - generic: About
+  - text: "Tsukuyomi brings midnight blue, sea-green lights, and Japanese-inspired scenery to the workspace while keeping notes on solid, quiet reading surfaces. It includes dark and light modes, a decorated sidebar, and an empty view with swimming fish and four small companions. Optional Style Settings controls include reading width, density, a minimal mode, scene opacity, and a static scene. Reduced-motion preferences are respected. Assets are embedded: no network requests, runtime JavaScript, or required plugins. Tested on macOS with Obsidian 1.13.7; other platforms remain unverified. This is a free, noncommercial fan project, unaffiliated with Obsidian or the original creators. Original software code is MIT-licensed; underlying third-party character rights are excluded. See the repository NOTICE for artwork terms and sources."
+  - generic: Details
+  - generic: Current version
+  - generic: 1.0.3
+  - generic: Last updated
+  - generic "Sep 16, 2026": 9 minutes ago
+  - generic: Created
+  - generic "Sep 16, 2026": 5 hours ago
+  - generic: Updates
+  - generic: 4 releases
+  - generic: License
+  - generic: MIT
+  - generic: Author
+  - link "ArisaTaki ArisaTaki arisataki":
+    - /url: /users/arisataki
+    - img "ArisaTaki"
+    - generic: ArisaTaki
+    - generic: arisataki
+  - img "GitHub"
+  - link "arisataki":
+    - /url: https://github.com/arisataki
+  

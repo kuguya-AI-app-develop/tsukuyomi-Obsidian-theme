@@ -4,3 +4,4 @@
 
 
 Exit code: 0
+Audit with inline exceptions ignored: exactly 2 multicolumn classification warnings on print break declarations; no other diagnostics.

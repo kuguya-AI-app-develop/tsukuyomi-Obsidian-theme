@@ -4,7 +4,11 @@
 
 ## 1.0.3 补丁复核
 
-针对 1.0.2 扫描提示完成样式调整与 CONTRIBUTING.md。`npm test` 23/23、严格零警告 Stylelint 和原生六页 PDF 对比均通过，见 [验收记录](VALIDATION.md)。两条打印分页的定点豁免有浏览器支持依据，等待官方预览确认；尚未将本地结果等同于官方通过。
+针对 1.0.2 扫描提示完成样式调整与 CONTRIBUTING.md。`npm test` 23/23、严格零警告 Stylelint 和原生六页 PDF 对比均通过，见 [验收记录](VALIDATION.md)。1.0.3 已公开发布，四个附件匿名下载后与本地产物逐字节一致。2026-09-16 17:06（北京时间）正式复核显示 **Completed**、目录当前版本 **1.0.3**，无 Error；14 条诊断已消除，仅余 2 条打印分页的 multicolumn 提示。[官方记录](review-v1.0.3.txt)。两条打印声明已有 Chrome 支持依据和真实 PDF 验证，但服务端仍报告它们，不采用源文件的单行豁免；本地零警告不代表官方零警告。为保留标题与代码分页效果，维持标准分页规则，原因详见 [LINT.md](LINT.md)。
+
+发布前的[分支预览记录](preview-v1.0.3.txt)返回了与 1.0.2 相同且不对应新源码的行号；最终状态以上述正式版本复核为准。
+
+公开[评分卡](scorecard-v1.0.3.txt)已确认：Hygiene 显示 README、license、contributing guide 和 description 均齐全，Health 为 Excellent，Review 为 Satisfactory，剩余 2 条打印分页提示。
 
 客户端目录的每小时检查已按用户后续要求暂停，本补丁复核不恢复该检查。
 
@@ -47,7 +51,7 @@
 | 必需附件 | `manifest.json`、`theme.css` |
 | 便捷附件 | `Tsukuyomi-1.0.3.zip`、`SHA256SUMS.txt` |
 
-[1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
+[1.0.3 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.3) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
 
 ## 许可和审核边界
 

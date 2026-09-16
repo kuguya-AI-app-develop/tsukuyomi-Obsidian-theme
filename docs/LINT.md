@@ -26,3 +26,7 @@ These are lint diagnostics, not evidence that 16 rendering bugs existed or have 
 [Chrome 108 introduced printing support for the `avoid` value](https://developer.chrome.com/blog/chrome-108-beta) on these break properties. The locally inspected macOS Obsidian 1.13.7 runtime uses Chrome 128. This supports retaining the print rules and correcting this classification locally; it does not establish compatibility for every installer or platform.
 
 Actual PDF regression results belong in [VALIDATION.md](VALIDATION.md). Local lint configuration and these targeted exceptions do not establish that a new release has passed official review; review and client-directory status are recorded in [PUBLISHING.md](PUBLISHING.md).
+
+## Official 1.0.3 result
+
+The released 1.0.3 scan completed with no errors and **2 warnings**, down from 16. The service still reports the two print-fragmentation declarations despite their inline exceptions. The local zero-warning check therefore differs from the server result; ignoring the comments locally reproduces exactly those two warnings. Keep the standard page-break protections: native PDF comparison preserved all six pages and all text. See the [official scan record](review-v1.0.3.txt).
