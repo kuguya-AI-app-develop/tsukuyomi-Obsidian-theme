@@ -1,0 +1,149 @@
+button,
+.dropdown,
+input,
+textarea,
+.search-input-container input {
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-small);
+}
+
+button:hover,
+.dropdown:hover,
+input:hover,
+textarea:hover {
+  border-color: var(--tk-border-strong);
+}
+
+button.mod-cta {
+  background-color: var(--interactive-accent);
+  box-shadow: none;
+}
+
+button.mod-cta:hover {
+  background-color: var(--interactive-accent-hover);
+}
+
+.modal,
+.prompt,
+.menu {
+  background-color: var(--tk-raised);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-large);
+  box-shadow: var(--shadow-l);
+}
+
+.modal-title,
+.prompt-instruction-command,
+.menu-item-title {
+  color: var(--tk-text);
+}
+
+.suggestion-item,
+.menu-item {
+  border-radius: var(--tk-radius-small);
+}
+
+.suggestion-item.is-selected,
+.menu-item.selected,
+.menu-item:hover {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.12);
+}
+
+.search-result-file-match {
+  border-radius: var(--tk-radius-small);
+}
+
+.search-result-file-match:hover {
+  background-color: rgba(var(--tk-sea-rgb), 0.08);
+}
+
+.search-result-file-matched-text {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-gold-rgb), 0.3);
+  border-radius: 3px;
+}
+
+.callout {
+  background-color: color-mix(in srgb, var(--callout-color) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--callout-color) 32%, transparent);
+  border-inline-start-width: 3px;
+  border-radius: var(--tk-radius-medium);
+}
+
+.callout-title {
+  color: var(--callout-color);
+}
+
+.callout-content {
+  color: var(--tk-text);
+}
+
+.popover,
+.hover-popover {
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-large);
+  box-shadow: var(--shadow-l);
+}
+
+.canvas-wrapper {
+  background-color: var(--tk-background);
+}
+
+.canvas-node-container {
+  background-color: var(--tk-raised);
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+  box-shadow: var(--shadow-s);
+}
+
+.canvas-node.is-selected .canvas-node-container {
+  border-color: var(--tk-sea);
+  box-shadow: 0 0 0 1px var(--tk-sea), var(--shadow-s);
+}
+
+.canvas-control-group,
+.canvas-card-menu {
+  background-color: var(--tk-raised);
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+}
+
+.graph-view.color-fill {
+  color: var(--tk-sea);
+}
+
+.graph-view.color-fill-focused {
+  color: var(--tk-gold);
+}
+
+.graph-view.color-line {
+  color: var(--tk-border);
+}
+
+.bases-view {
+  color: var(--tk-text);
+  background-color: var(--tk-background);
+}
+
+.bases-view :is(.bases-thead, .bases-table-header) {
+  color: var(--tk-muted);
+  background-color: var(--tk-sidebar);
+  border-color: var(--tk-border);
+}
+
+.bases-view :is(.bases-tr, .bases-table-row, .bases-card) {
+  border-color: var(--tk-border);
+}
+
+.bases-view .bases-card {
+  background-color: var(--tk-raised);
+  border-radius: var(--tk-radius-medium);
+}
+
+.tooltip {
+  color: var(--tk-text);
+  background-color: var(--tk-raised);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-small);
+}

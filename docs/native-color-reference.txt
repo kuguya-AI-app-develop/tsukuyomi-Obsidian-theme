@@ -1,0 +1,8 @@
+Obsidian 1.13.7 native accent compatibility inspection
+
+Inspected the installed app.css and app.js in obsidian-1.13.7.asar on 2026-09-16.
+The native primary button consumes --text-on-accent.
+setAccentColor writes HSL custom properties on body. For a light custom accent it sets the inline text variable to --text-on-accent-inverted; for a dark custom accent it removes that inline text override. Reset removes all four inline properties.
+
+Tsukuyomi therefore uses a mode-specific default text color, a white CSS fallback when native custom HSL is present, and a dark inverted color. It does not force CTA foreground colors. This narrow style-attribute compatibility rule should be rechecked after Obsidian accent handling changes.
+Default palette contrast is checked automatically; arbitrary user colors and all custom hover colors are outside that guarantee.

@@ -1,0 +1,11 @@
+
+> tsukuyomi-obsidian-theme@0.1.0 check
+> node scripts/check.mjs
+
+✓ manifest: Tsukuyomi 0.1.0, Obsidian >=1.13.7
+✓ build: 8 ordered sources match root and dist (23.1 KiB)
+✓ CSS: parsed; 74 property values checked, 121 dynamic and 0 unknown/vendor skipped
+✓ Style Settings: 1 YAML block, 5 valid options
+✓ dark contrast: normal 13.42, muted 7.60, link 9.84, link-hover 10.49, external 6.92, unresolved 6.92, button 9.84, selection 8.62, tag 5.44, callout 6.21, tinted-link 5.92, state 12.30, focus 8.74
+✓ light contrast: normal 10.93, muted 4.93, link 5.42, link-hover 6.15, external 5.48, unresolved 5.48, button 5.91, selection 7.83, tag 4.75, callout 4.64, tinted-link 4.84, state 9.03, focus 5.09
+✓ policy: no remote imports, animations, backdrop filters, forced editor positioning, or user-font overrides

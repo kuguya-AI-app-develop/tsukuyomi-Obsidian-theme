@@ -1,0 +1,199 @@
+body {
+  --background-primary: var(--tk-background);
+  --background-primary-alt: var(--tk-raised);
+  --background-secondary: var(--tk-sidebar);
+  --background-secondary-alt: var(--tk-raised);
+  --background-modifier-hover: rgba(var(--tk-sea-rgb), 0.1);
+  --background-modifier-active-hover: rgba(var(--tk-sea-rgb), 0.16);
+  --background-modifier-border: var(--tk-border);
+  --background-modifier-border-hover: var(--tk-border-strong);
+  --background-modifier-border-focus: var(--color-accent);
+  --background-modifier-form-field: var(--tk-raised);
+  --background-modifier-form-field-highlighted: rgba(var(--tk-sea-rgb), 0.1);
+  --background-modifier-error: var(--tk-rose);
+  --background-modifier-error-hover: var(--tk-rose);
+  --background-modifier-success: var(--tk-sea);
+
+  --text-normal: var(--tk-text);
+  --text-muted: var(--tk-muted);
+  --text-faint: var(--tk-faint);
+  --text-on-accent: var(--tk-on-accent);
+  --text-on-accent-inverted: #111821;
+  --text-accent: var(--color-accent);
+  --text-accent-hover: var(--color-accent-2);
+  --text-error: var(--tk-rose);
+  --text-success: var(--tk-sea);
+  --text-warning: var(--tk-gold);
+  --text-selection: rgba(var(--tk-violet-rgb), 0.28);
+  --text-highlight-bg: rgba(var(--tk-gold-rgb), 0.26);
+  --text-highlight-bg-active: rgba(var(--tk-gold-rgb), 0.4);
+
+  --interactive-normal: var(--tk-raised);
+  --interactive-hover: rgba(var(--tk-sea-rgb), 0.12);
+  --interactive-accent: var(--color-accent);
+  --interactive-accent-hover: var(--color-accent-2);
+  --interactive-accent-hsl: var(--accent-h), var(--accent-s), var(--accent-l);
+  --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --color-accent-1: color-mix(in srgb, var(--color-accent) 92%, var(--tk-text));
+  --color-accent-2: color-mix(in srgb, var(--color-accent) 84%, var(--tk-text));
+
+  --titlebar-background: var(--tk-sidebar);
+  --titlebar-background-focused: var(--tk-sidebar);
+  --tab-container-background: var(--tk-sidebar);
+  --tab-outline-color: var(--tk-border);
+  --tab-text-color: var(--tk-muted);
+  --tab-text-color-active: var(--tk-text);
+  --tab-text-color-focused: var(--tk-text);
+  --tab-text-color-focused-active: var(--tk-text);
+
+  --nav-item-color: var(--tk-muted);
+  --nav-item-color-hover: var(--tk-text);
+  --nav-item-color-active: var(--tk-text);
+  --nav-item-background-hover: rgba(var(--tk-sea-rgb), 0.09);
+  --nav-item-background-active: rgba(var(--tk-sea-rgb), 0.14);
+
+  --link-color: var(--color-accent);
+  --link-color-hover: var(--color-accent-2);
+  --link-unresolved-color: var(--tk-rose);
+  --link-external-color: var(--tk-violet);
+  --link-external-color-hover: var(--tk-rose);
+  --tag-color: var(--tk-violet);
+  --tag-background: rgba(var(--tk-violet-rgb), 0.12);
+  --tag-background-hover: rgba(var(--tk-violet-rgb), 0.2);
+  --blockquote-border-color: var(--tk-violet);
+  --h1-color: var(--tk-text);
+  --h2-color: var(--tk-sea);
+  --h3-color: var(--tk-text);
+  --h4-color: var(--tk-text);
+  --h5-color: var(--tk-text);
+  --h6-color: var(--tk-text);
+
+  --input-shadow: 0 0 0 1px var(--tk-border);
+  --input-shadow-hover: 0 0 0 1px var(--tk-border-strong);
+  --shadow-s: 0 2px 8px rgba(0, 0, 0, 0.14);
+  --shadow-l: 0 16px 40px rgba(0, 0, 0, 0.22);
+  --modal-background: var(--tk-raised);
+  --prompt-background: var(--tk-raised);
+
+  --radius-s: var(--tk-radius-small);
+  --radius-m: var(--tk-radius-medium);
+  --radius-l: var(--tk-radius-large);
+  --button-radius: var(--tk-radius-small);
+  --input-radius: var(--tk-radius-small);
+  --tab-radius-active: var(--tk-radius-small) var(--tk-radius-small) 0 0;
+
+  --divider-color: var(--tk-border);
+  --divider-color-hover: var(--color-accent);
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(var(--tk-sea-rgb), 0.18);
+  --scrollbar-active-thumb-bg: rgba(var(--tk-sea-rgb), 0.32);
+
+  --code-background: var(--tk-sidebar);
+  --code-normal: var(--tk-text);
+  --code-comment: var(--tk-faint);
+  --code-function: var(--tk-gold);
+  --code-important: var(--tk-rose);
+  --code-keyword: var(--tk-violet);
+  --code-operator: var(--tk-sea);
+  --code-property: var(--tk-sea);
+  --code-punctuation: var(--tk-muted);
+  --code-string: var(--tk-gold);
+  --code-tag: var(--tk-rose);
+  --code-value: var(--tk-violet);
+
+  --graph-line: var(--tk-border);
+  --graph-node: var(--tk-sea);
+  --graph-node-focused: var(--tk-gold);
+  --graph-node-tag: var(--tk-violet);
+  --graph-node-attachment: var(--tk-rose);
+  --graph-node-unresolved: var(--tk-muted);
+  --canvas-background: var(--tk-background);
+  --canvas-card-label-color: var(--tk-muted);
+  --canvas-color-1: var(--tk-rose);
+  --canvas-color-2: var(--tk-orange);
+  --canvas-color-3: var(--tk-gold);
+  --canvas-color-4: var(--tk-sea);
+  --canvas-color-5: var(--tk-blue);
+  --canvas-color-6: var(--tk-violet);
+}
+
+/* Obsidian 1.13's native picker writes accent HSL on body. For a custom dark
+   accent it removes its inline text override, so supply white here; for a
+   custom light accent its inline --text-on-accent uses the dark inverted
+   value. Without a custom accent, keep the theme's mode-specific fallback. */
+body[style*="--accent-h:"] {
+  --text-on-accent: #ffffff;
+}
+
+body :is(
+  button,
+  input,
+  textarea,
+  select,
+  a[href],
+  .clickable-icon,
+  .workspace-tab-header,
+  .nav-file-title,
+  .nav-folder-title,
+  .tree-item-self,
+  .suggestion-item,
+  .menu-item
+):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="info"],
+.callout[data-callout="todo"],
+.callout[data-callout="tip"],
+.callout[data-callout="hint"],
+.callout[data-callout="important"] {
+  --callout-color: var(--tk-sea);
+}
+
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"],
+.callout[data-callout="example"] {
+  --callout-color: var(--tk-violet);
+}
+
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+  --callout-color: var(--tk-sea);
+}
+
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"],
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+  --callout-color: var(--tk-gold);
+}
+
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"] {
+  --callout-color: var(--tk-rose);
+}
+
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+  --callout-color: var(--tk-violet);
+}
+
+.callout[data-callout="tsukuyomi"] {
+  --callout-color: var(--tk-sea);
+  --callout-icon: lucide-moon;
+}
+
+.callout[data-callout="stage"] {
+  --callout-color: var(--tk-rose);
+  --callout-icon: lucide-music;
+}

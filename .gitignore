@@ -1,0 +1,8 @@
+node_modules/
+tmp/
+.DS_Store
+lab/Tsukuyomi Lab/.obsidian/workspace*.json
+lab/Tsukuyomi Lab/.obsidian/cache/
+lab/Tsukuyomi Lab/.obsidian/plugins/
+lab/Tsukuyomi Lab/.obsidian/themes/
+lab/Tsukuyomi Lab/.trash/

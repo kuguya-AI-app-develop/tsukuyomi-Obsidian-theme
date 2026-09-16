@@ -1,0 +1,9 @@
+{
+	"nodes":[
+		{"id":"moon-note","type":"file","file":"00-欢迎来到月读.md","x":0,"y":0,"width":400,"height":380},
+		{"id":"stage-note","type":"text","text":"# 今夜的创作\n\n让一个想法找到落脚点。\n\n- 记录\n- 整理\n- 继续","x":490,"y":50,"width":320,"height":240,"color":"4"}
+	],
+	"edges":[
+		{"id":"moon-stage","fromNode":"moon-note","fromSide":"right","toNode":"stage-note","toSide":"left","label":"继续"}
+	]
+}

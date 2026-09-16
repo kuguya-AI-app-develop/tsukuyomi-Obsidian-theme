@@ -1,0 +1,124 @@
+.workspace {
+  background-color: var(--tk-background);
+}
+
+.workspace-ribbon,
+.mod-sidedock .workspace-tabs,
+.workspace-tab-header-container,
+.sidebar-toggle-button {
+  background-color: var(--tk-sidebar);
+}
+
+.workspace-split.mod-root > .workspace-leaf,
+.workspace-split.mod-root > .workspace-split,
+.workspace-tabs,
+.workspace-tab-header-container,
+.workspace-leaf-resize-handle {
+  border-color: var(--tk-border);
+}
+
+.workspace-tab-header {
+  color: var(--tk-muted);
+}
+
+.workspace-tab-header:hover {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.08);
+}
+
+.workspace-tab-header.is-active {
+  color: var(--tk-text);
+  background-color: var(--tk-background);
+  box-shadow: inset 0 -1px 0 var(--tk-sea);
+}
+
+.workspace-tab-header-inner-icon,
+.workspace-tab-header-inner-close-button,
+.clickable-icon {
+  color: inherit;
+}
+
+.workspace-leaf-content,
+.view-content {
+  background-color: var(--tk-background);
+}
+
+.mod-left-split .workspace-leaf-content,
+.mod-right-split .workspace-leaf-content,
+.mod-left-split .view-content,
+.mod-right-split .view-content {
+  background-color: var(--tk-sidebar);
+}
+
+.view-header {
+  position: relative;
+  color: var(--tk-muted);
+  background-color: var(--tk-background);
+  border-color: var(--tk-border);
+}
+
+.view-header-title {
+  color: var(--tk-text);
+}
+
+.nav-header {
+  padding: var(--tk-space-ui);
+}
+
+.nav-files-container,
+.tag-container,
+.search-result-container {
+  padding-inline: var(--tk-space-ui);
+}
+
+.nav-file-title,
+.nav-folder-title {
+  position: relative;
+  border-radius: var(--tk-radius-small);
+}
+
+.nav-file-title.is-active {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.14);
+}
+
+.nav-file-title.is-active::before {
+  content: "";
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-start: 0;
+  width: 2px;
+  border-radius: 2px;
+  background-color: var(--tk-sea);
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.09);
+}
+
+.tree-item-self .tree-item-icon {
+  color: var(--tk-faint);
+}
+
+.tree-item-self.is-clickable:hover .tree-item-icon,
+.tree-item-self.is-active .tree-item-icon {
+  color: var(--tk-sea);
+}
+
+.status-bar {
+  color: var(--tk-muted);
+  background-color: var(--tk-sidebar);
+  border-color: var(--tk-border);
+}
+
+.titlebar,
+.mod-macos.is-hidden-frameless:not(.is-fullscreen) .titlebar {
+  background-color: var(--tk-sidebar);
+}
+
+.workspace-ribbon .sidebar-toggle-button,
+.workspace-ribbon .clickable-icon {
+  border-radius: var(--tk-radius-small);
+}

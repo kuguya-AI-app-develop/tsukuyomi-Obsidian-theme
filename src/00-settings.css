@@ -1,0 +1,71 @@
+/* @settings
+name: Tsukuyomi（月读）
+id: tsukuyomi-theme
+settings:
+  - id: tk-immersive
+    title: 沉浸装饰
+    description: 显示原创月环与标题栏渐变细线。
+    type: class-toggle
+    default: false
+  - id: tk-reading-width
+    title: 正文宽度
+    description: 笔记正文的最大宽度。
+    type: variable-number-slider
+    default: 44
+    min: 34
+    max: 60
+    step: 1
+    format: rem
+  - id: tk-density
+    title: 界面密度
+    type: class-select
+    default: tk-density-standard
+    allowEmpty: false
+    options:
+      - label: 标准
+        value: tk-density-standard
+      - label: 紧凑
+        value: tk-density-compact
+  - id: tk-decoration-opacity
+    title: 装饰强度
+    description: 可选几何装饰的透明度。
+    type: variable-number-slider
+    default: 0.12
+    min: 0
+    max: 0.24
+    step: 0.02
+  - id: tk-enable-motion
+    title: 主题动效
+    description: 系统允许动效时，启用主题自身的短暂过渡。
+    type: class-toggle
+    default: false
+*/
+
+:root {
+  --tk-reading-width: 44rem;
+  --tk-decoration-opacity: 0.12;
+  --tk-radius-small: 6px;
+  --tk-radius-medium: 10px;
+  --tk-radius-large: 14px;
+  --tk-space-ui: 8px;
+  --tk-transition-duration: 0ms;
+}
+
+body {
+  --file-line-width: var(--tk-reading-width, 44rem);
+  --line-height-normal: 1.75;
+}
+
+body.tk-density-compact {
+  --tk-space-ui: 5px;
+  --nav-item-size: 0.875em;
+  --nav-item-padding: 2px 7px;
+  --tab-height: 34px;
+  --header-height: 36px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body.tk-enable-motion {
+    --tk-transition-duration: 140ms;
+  }
+}

@@ -1,0 +1,7 @@
+views:
+  - type: table
+    name: 月读笔记
+    order:
+      - file.name
+      - file.ext
+      - file.mtime

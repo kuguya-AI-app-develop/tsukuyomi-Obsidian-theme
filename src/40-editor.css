@@ -1,0 +1,139 @@
+.markdown-source-view,
+.markdown-reading-view {
+  color: var(--tk-text);
+  background-color: var(--tk-background);
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-reading-view .markdown-preview-view {
+  line-height: 1.75;
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
+  letter-spacing: -0.015em;
+}
+
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 {
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.markdown-rendered hr {
+  border-color: var(--tk-border);
+}
+
+.markdown-rendered blockquote {
+  color: var(--tk-muted);
+  background-color: rgba(var(--tk-violet-rgb), 0.06);
+  border-inline-start-width: 2px;
+  border-radius: 0 var(--tk-radius-small) var(--tk-radius-small) 0;
+  padding-block: 0.35em;
+}
+
+.markdown-rendered mark,
+.cm-s-obsidian span.cm-highlight {
+  color: var(--tk-text);
+  border-radius: 3px;
+}
+
+.markdown-rendered .internal-link,
+.cm-s-obsidian span.cm-hmd-internal-link {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.markdown-rendered .internal-link.is-unresolved,
+.is-unresolved {
+  color: var(--link-unresolved-color);
+  opacity: 1;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.15em;
+}
+
+.markdown-rendered :is(ul, ol) > li::marker {
+  color: var(--tk-sea);
+}
+
+input[type="checkbox"] {
+  border-color: var(--tk-border-strong);
+  border-radius: 4px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+.markdown-rendered :not(pre) > code,
+.cm-inline-code {
+  color: var(--tk-gold);
+  background-color: var(--tk-sidebar);
+  border: 1px solid var(--tk-border);
+  border-radius: 4px;
+}
+
+.markdown-rendered pre {
+  background-color: var(--tk-sidebar);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+}
+
+.markdown-rendered pre > code {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.cm-s-obsidian .cm-cursor,
+.cm-s-obsidian .cm-dropCursor {
+  border-left-color: var(--tk-sea);
+}
+
+.cm-s-obsidian .cm-selectionBackground,
+.cm-s-obsidian.cm-focused .cm-selectionBackground {
+  background-color: rgba(var(--tk-violet-rgb), 0.28);
+}
+
+.metadata-container {
+  color: var(--tk-muted);
+  background-color: rgba(var(--tk-sea-rgb), 0.04);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+  padding: 0.5rem 0.75rem;
+}
+
+.metadata-property {
+  border-radius: var(--tk-radius-small);
+}
+
+.metadata-property:focus-within {
+  box-shadow: 0 0 0 1px var(--tk-sea);
+}
+
+.inline-title {
+  color: var(--tk-text);
+  letter-spacing: -0.02em;
+}
+
+.markdown-rendered table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+  overflow: hidden;
+}
+
+.markdown-rendered :is(th, td) {
+  border-color: var(--tk-border);
+}
+
+.markdown-rendered th {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.1);
+}
+
+.markdown-rendered tr:nth-child(even) td {
+  background-color: rgba(var(--tk-sea-rgb), 0.025);
+}

@@ -1,0 +1,963 @@
+/* Tsukuyomi 0.1.0 | Generated from src/; edit source files, then npm run build. */
+
+/* Source: 00-settings.css */
+/* @settings
+name: Tsukuyomi（月读）
+id: tsukuyomi-theme
+settings:
+  - id: tk-immersive
+    title: 沉浸装饰
+    description: 显示原创月环与标题栏渐变细线。
+    type: class-toggle
+    default: false
+  - id: tk-reading-width
+    title: 正文宽度
+    description: 笔记正文的最大宽度。
+    type: variable-number-slider
+    default: 44
+    min: 34
+    max: 60
+    step: 1
+    format: rem
+  - id: tk-density
+    title: 界面密度
+    type: class-select
+    default: tk-density-standard
+    allowEmpty: false
+    options:
+      - label: 标准
+        value: tk-density-standard
+      - label: 紧凑
+        value: tk-density-compact
+  - id: tk-decoration-opacity
+    title: 装饰强度
+    description: 可选几何装饰的透明度。
+    type: variable-number-slider
+    default: 0.12
+    min: 0
+    max: 0.24
+    step: 0.02
+  - id: tk-enable-motion
+    title: 主题动效
+    description: 系统允许动效时，启用主题自身的短暂过渡。
+    type: class-toggle
+    default: false
+*/
+
+:root {
+  --tk-reading-width: 44rem;
+  --tk-decoration-opacity: 0.12;
+  --tk-radius-small: 6px;
+  --tk-radius-medium: 10px;
+  --tk-radius-large: 14px;
+  --tk-space-ui: 8px;
+  --tk-transition-duration: 0ms;
+}
+
+body {
+  --file-line-width: var(--tk-reading-width, 44rem);
+  --line-height-normal: 1.75;
+}
+
+body.tk-density-compact {
+  --tk-space-ui: 5px;
+  --nav-item-size: 0.875em;
+  --nav-item-padding: 2px 7px;
+  --tab-height: 34px;
+  --header-height: 36px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body.tk-enable-motion {
+    --tk-transition-duration: 140ms;
+  }
+}
+
+/* Source: 10-palette.css */
+:root {
+  --tk-sea-rgb: 97, 212, 195;
+  --tk-rose-rgb: 244, 125, 137;
+  --tk-gold-rgb: 231, 199, 120;
+  --tk-violet-rgb: 182, 162, 234;
+}
+
+.theme-dark {
+  color-scheme: dark;
+
+  --color-base-00: #070b11;
+  --color-base-05: #0b1119;
+  --color-base-10: #0e151f;
+  --color-base-20: #111821;
+  --color-base-25: #151e29;
+  --color-base-30: #192330;
+  --color-base-35: #202c3a;
+  --color-base-40: #2b3948;
+  --color-base-50: #526275;
+  --color-base-60: #78889a;
+  --color-base-70: #a7b5c6;
+  --color-base-100: #e6edf3;
+
+  --tk-background: #111821;
+  --tk-sidebar: #0b1119;
+  --tk-raised: #192330;
+  --tk-text: #e6edf3;
+  --tk-muted: #a7b5c6;
+  --tk-faint: #78889a;
+  --tk-border: #2b3948;
+  --tk-border-strong: #526275;
+  --tk-sea: #61d4c3;
+  --tk-rose: #f47d89;
+  --tk-gold: #e7c778;
+  --tk-violet: #b6a2ea;
+  --tk-blue: #7ab8f5;
+  --tk-orange: #f0a35b;
+  --tk-on-accent: #111821;
+
+  --accent-h: 171;
+  --accent-s: 55%;
+  --accent-l: 61%;
+}
+
+.theme-light {
+  color-scheme: light;
+
+  --color-base-00: #ffffff;
+  --color-base-05: #fbfaf7;
+  --color-base-10: #f7f5f0;
+  --color-base-20: #ecefea;
+  --color-base-25: #e4e8e2;
+  --color-base-30: #d8ded8;
+  --color-base-35: #cbd3cd;
+  --color-base-40: #b9c4bd;
+  --color-base-50: #89978e;
+  --color-base-60: #68786f;
+  --color-base-70: #586879;
+  --color-base-100: #273442;
+
+  --tk-background: #f7f5f0;
+  --tk-sidebar: #ecefea;
+  --tk-raised: #ffffff;
+  --tk-text: #273442;
+  --tk-muted: #586879;
+  --tk-faint: #68786f;
+  --tk-border: #cbd3cd;
+  --tk-border-strong: #89978e;
+  --tk-sea: #0f706a;
+  --tk-rose: #ac3c50;
+  --tk-gold: #84621b;
+  --tk-violet: #7053a2;
+  --tk-blue: #245c9e;
+  --tk-orange: #985016;
+  --tk-on-accent: #ffffff;
+
+  --tk-sea-rgb: 15, 112, 106;
+  --tk-rose-rgb: 172, 60, 80;
+  --tk-gold-rgb: 132, 98, 27;
+  --tk-violet-rgb: 112, 83, 162;
+
+  --accent-h: 176;
+  --accent-s: 76%;
+  --accent-l: 25%;
+  --tag-background-hover: rgba(var(--tk-violet-rgb), 0.1);
+}
+
+/* Source: 20-semantic.css */
+body {
+  --background-primary: var(--tk-background);
+  --background-primary-alt: var(--tk-raised);
+  --background-secondary: var(--tk-sidebar);
+  --background-secondary-alt: var(--tk-raised);
+  --background-modifier-hover: rgba(var(--tk-sea-rgb), 0.1);
+  --background-modifier-active-hover: rgba(var(--tk-sea-rgb), 0.16);
+  --background-modifier-border: var(--tk-border);
+  --background-modifier-border-hover: var(--tk-border-strong);
+  --background-modifier-border-focus: var(--color-accent);
+  --background-modifier-form-field: var(--tk-raised);
+  --background-modifier-form-field-highlighted: rgba(var(--tk-sea-rgb), 0.1);
+  --background-modifier-error: var(--tk-rose);
+  --background-modifier-error-hover: var(--tk-rose);
+  --background-modifier-success: var(--tk-sea);
+
+  --text-normal: var(--tk-text);
+  --text-muted: var(--tk-muted);
+  --text-faint: var(--tk-faint);
+  --text-on-accent: var(--tk-on-accent);
+  --text-on-accent-inverted: #111821;
+  --text-accent: var(--color-accent);
+  --text-accent-hover: var(--color-accent-2);
+  --text-error: var(--tk-rose);
+  --text-success: var(--tk-sea);
+  --text-warning: var(--tk-gold);
+  --text-selection: rgba(var(--tk-violet-rgb), 0.28);
+  --text-highlight-bg: rgba(var(--tk-gold-rgb), 0.26);
+  --text-highlight-bg-active: rgba(var(--tk-gold-rgb), 0.4);
+
+  --interactive-normal: var(--tk-raised);
+  --interactive-hover: rgba(var(--tk-sea-rgb), 0.12);
+  --interactive-accent: var(--color-accent);
+  --interactive-accent-hover: var(--color-accent-2);
+  --interactive-accent-hsl: var(--accent-h), var(--accent-s), var(--accent-l);
+  --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --color-accent-1: color-mix(in srgb, var(--color-accent) 92%, var(--tk-text));
+  --color-accent-2: color-mix(in srgb, var(--color-accent) 84%, var(--tk-text));
+
+  --titlebar-background: var(--tk-sidebar);
+  --titlebar-background-focused: var(--tk-sidebar);
+  --tab-container-background: var(--tk-sidebar);
+  --tab-outline-color: var(--tk-border);
+  --tab-text-color: var(--tk-muted);
+  --tab-text-color-active: var(--tk-text);
+  --tab-text-color-focused: var(--tk-text);
+  --tab-text-color-focused-active: var(--tk-text);
+
+  --nav-item-color: var(--tk-muted);
+  --nav-item-color-hover: var(--tk-text);
+  --nav-item-color-active: var(--tk-text);
+  --nav-item-background-hover: rgba(var(--tk-sea-rgb), 0.09);
+  --nav-item-background-active: rgba(var(--tk-sea-rgb), 0.14);
+
+  --link-color: var(--color-accent);
+  --link-color-hover: var(--color-accent-2);
+  --link-unresolved-color: var(--tk-rose);
+  --link-external-color: var(--tk-violet);
+  --link-external-color-hover: var(--tk-rose);
+  --tag-color: var(--tk-violet);
+  --tag-background: rgba(var(--tk-violet-rgb), 0.12);
+  --tag-background-hover: rgba(var(--tk-violet-rgb), 0.2);
+  --blockquote-border-color: var(--tk-violet);
+  --h1-color: var(--tk-text);
+  --h2-color: var(--tk-sea);
+  --h3-color: var(--tk-text);
+  --h4-color: var(--tk-text);
+  --h5-color: var(--tk-text);
+  --h6-color: var(--tk-text);
+
+  --input-shadow: 0 0 0 1px var(--tk-border);
+  --input-shadow-hover: 0 0 0 1px var(--tk-border-strong);
+  --shadow-s: 0 2px 8px rgba(0, 0, 0, 0.14);
+  --shadow-l: 0 16px 40px rgba(0, 0, 0, 0.22);
+  --modal-background: var(--tk-raised);
+  --prompt-background: var(--tk-raised);
+
+  --radius-s: var(--tk-radius-small);
+  --radius-m: var(--tk-radius-medium);
+  --radius-l: var(--tk-radius-large);
+  --button-radius: var(--tk-radius-small);
+  --input-radius: var(--tk-radius-small);
+  --tab-radius-active: var(--tk-radius-small) var(--tk-radius-small) 0 0;
+
+  --divider-color: var(--tk-border);
+  --divider-color-hover: var(--color-accent);
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(var(--tk-sea-rgb), 0.18);
+  --scrollbar-active-thumb-bg: rgba(var(--tk-sea-rgb), 0.32);
+
+  --code-background: var(--tk-sidebar);
+  --code-normal: var(--tk-text);
+  --code-comment: var(--tk-faint);
+  --code-function: var(--tk-gold);
+  --code-important: var(--tk-rose);
+  --code-keyword: var(--tk-violet);
+  --code-operator: var(--tk-sea);
+  --code-property: var(--tk-sea);
+  --code-punctuation: var(--tk-muted);
+  --code-string: var(--tk-gold);
+  --code-tag: var(--tk-rose);
+  --code-value: var(--tk-violet);
+
+  --graph-line: var(--tk-border);
+  --graph-node: var(--tk-sea);
+  --graph-node-focused: var(--tk-gold);
+  --graph-node-tag: var(--tk-violet);
+  --graph-node-attachment: var(--tk-rose);
+  --graph-node-unresolved: var(--tk-muted);
+  --canvas-background: var(--tk-background);
+  --canvas-card-label-color: var(--tk-muted);
+  --canvas-color-1: var(--tk-rose);
+  --canvas-color-2: var(--tk-orange);
+  --canvas-color-3: var(--tk-gold);
+  --canvas-color-4: var(--tk-sea);
+  --canvas-color-5: var(--tk-blue);
+  --canvas-color-6: var(--tk-violet);
+}
+
+/* Obsidian 1.13's native picker writes accent HSL on body. For a custom dark
+   accent it removes its inline text override, so supply white here; for a
+   custom light accent its inline --text-on-accent uses the dark inverted
+   value. Without a custom accent, keep the theme's mode-specific fallback. */
+body[style*="--accent-h:"] {
+  --text-on-accent: #ffffff;
+}
+
+body :is(
+  button,
+  input,
+  textarea,
+  select,
+  a[href],
+  .clickable-icon,
+  .workspace-tab-header,
+  .nav-file-title,
+  .nav-folder-title,
+  .tree-item-self,
+  .suggestion-item,
+  .menu-item
+):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="info"],
+.callout[data-callout="todo"],
+.callout[data-callout="tip"],
+.callout[data-callout="hint"],
+.callout[data-callout="important"] {
+  --callout-color: var(--tk-sea);
+}
+
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"],
+.callout[data-callout="example"] {
+  --callout-color: var(--tk-violet);
+}
+
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+  --callout-color: var(--tk-sea);
+}
+
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"],
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+  --callout-color: var(--tk-gold);
+}
+
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"] {
+  --callout-color: var(--tk-rose);
+}
+
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+  --callout-color: var(--tk-violet);
+}
+
+.callout[data-callout="tsukuyomi"] {
+  --callout-color: var(--tk-sea);
+  --callout-icon: lucide-moon;
+}
+
+.callout[data-callout="stage"] {
+  --callout-color: var(--tk-rose);
+  --callout-icon: lucide-music;
+}
+
+/* Source: 30-workspace.css */
+.workspace {
+  background-color: var(--tk-background);
+}
+
+.workspace-ribbon,
+.mod-sidedock .workspace-tabs,
+.workspace-tab-header-container,
+.sidebar-toggle-button {
+  background-color: var(--tk-sidebar);
+}
+
+.workspace-split.mod-root > .workspace-leaf,
+.workspace-split.mod-root > .workspace-split,
+.workspace-tabs,
+.workspace-tab-header-container,
+.workspace-leaf-resize-handle {
+  border-color: var(--tk-border);
+}
+
+.workspace-tab-header {
+  color: var(--tk-muted);
+}
+
+.workspace-tab-header:hover {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.08);
+}
+
+.workspace-tab-header.is-active {
+  color: var(--tk-text);
+  background-color: var(--tk-background);
+  box-shadow: inset 0 -1px 0 var(--tk-sea);
+}
+
+.workspace-tab-header-inner-icon,
+.workspace-tab-header-inner-close-button,
+.clickable-icon {
+  color: inherit;
+}
+
+.workspace-leaf-content,
+.view-content {
+  background-color: var(--tk-background);
+}
+
+.mod-left-split .workspace-leaf-content,
+.mod-right-split .workspace-leaf-content,
+.mod-left-split .view-content,
+.mod-right-split .view-content {
+  background-color: var(--tk-sidebar);
+}
+
+.view-header {
+  position: relative;
+  color: var(--tk-muted);
+  background-color: var(--tk-background);
+  border-color: var(--tk-border);
+}
+
+.view-header-title {
+  color: var(--tk-text);
+}
+
+.nav-header {
+  padding: var(--tk-space-ui);
+}
+
+.nav-files-container,
+.tag-container,
+.search-result-container {
+  padding-inline: var(--tk-space-ui);
+}
+
+.nav-file-title,
+.nav-folder-title {
+  position: relative;
+  border-radius: var(--tk-radius-small);
+}
+
+.nav-file-title.is-active {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.14);
+}
+
+.nav-file-title.is-active::before {
+  content: "";
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-start: 0;
+  width: 2px;
+  border-radius: 2px;
+  background-color: var(--tk-sea);
+}
+
+.nav-folder-title:hover,
+.nav-file-title:hover {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.09);
+}
+
+.tree-item-self .tree-item-icon {
+  color: var(--tk-faint);
+}
+
+.tree-item-self.is-clickable:hover .tree-item-icon,
+.tree-item-self.is-active .tree-item-icon {
+  color: var(--tk-sea);
+}
+
+.status-bar {
+  color: var(--tk-muted);
+  background-color: var(--tk-sidebar);
+  border-color: var(--tk-border);
+}
+
+.titlebar,
+.mod-macos.is-hidden-frameless:not(.is-fullscreen) .titlebar {
+  background-color: var(--tk-sidebar);
+}
+
+.workspace-ribbon .sidebar-toggle-button,
+.workspace-ribbon .clickable-icon {
+  border-radius: var(--tk-radius-small);
+}
+
+/* Source: 40-editor.css */
+.markdown-source-view,
+.markdown-reading-view {
+  color: var(--tk-text);
+  background-color: var(--tk-background);
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-reading-view .markdown-preview-view {
+  line-height: 1.75;
+}
+
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-1, .HyperMD-header-2, .HyperMD-header-3, .HyperMD-header-4, .HyperMD-header-5, .HyperMD-header-6) {
+  letter-spacing: -0.015em;
+}
+
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 {
+  border-bottom: 1px solid var(--tk-border);
+}
+
+.markdown-rendered hr {
+  border-color: var(--tk-border);
+}
+
+.markdown-rendered blockquote {
+  color: var(--tk-muted);
+  background-color: rgba(var(--tk-violet-rgb), 0.06);
+  border-inline-start-width: 2px;
+  border-radius: 0 var(--tk-radius-small) var(--tk-radius-small) 0;
+  padding-block: 0.35em;
+}
+
+.markdown-rendered mark,
+.cm-s-obsidian span.cm-highlight {
+  color: var(--tk-text);
+  border-radius: 3px;
+}
+
+.markdown-rendered .internal-link,
+.cm-s-obsidian span.cm-hmd-internal-link {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.markdown-rendered .internal-link.is-unresolved,
+.is-unresolved {
+  color: var(--link-unresolved-color);
+  opacity: 1;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 0.15em;
+}
+
+.markdown-rendered :is(ul, ol) > li::marker {
+  color: var(--tk-sea);
+}
+
+input[type="checkbox"] {
+  border-color: var(--tk-border-strong);
+  border-radius: 4px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+}
+
+.markdown-rendered :not(pre) > code,
+.cm-inline-code {
+  color: var(--tk-gold);
+  background-color: var(--tk-sidebar);
+  border: 1px solid var(--tk-border);
+  border-radius: 4px;
+}
+
+.markdown-rendered pre {
+  background-color: var(--tk-sidebar);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+}
+
+.markdown-rendered pre > code {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.cm-s-obsidian .cm-cursor,
+.cm-s-obsidian .cm-dropCursor {
+  border-left-color: var(--tk-sea);
+}
+
+.cm-s-obsidian .cm-selectionBackground,
+.cm-s-obsidian.cm-focused .cm-selectionBackground {
+  background-color: rgba(var(--tk-violet-rgb), 0.28);
+}
+
+.metadata-container {
+  color: var(--tk-muted);
+  background-color: rgba(var(--tk-sea-rgb), 0.04);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+  padding: 0.5rem 0.75rem;
+}
+
+.metadata-property {
+  border-radius: var(--tk-radius-small);
+}
+
+.metadata-property:focus-within {
+  box-shadow: 0 0 0 1px var(--tk-sea);
+}
+
+.inline-title {
+  color: var(--tk-text);
+  letter-spacing: -0.02em;
+}
+
+.markdown-rendered table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+  overflow: hidden;
+}
+
+.markdown-rendered :is(th, td) {
+  border-color: var(--tk-border);
+}
+
+.markdown-rendered th {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.1);
+}
+
+.markdown-rendered tr:nth-child(even) td {
+  background-color: rgba(var(--tk-sea-rgb), 0.025);
+}
+
+/* Source: 50-components.css */
+button,
+.dropdown,
+input,
+textarea,
+.search-input-container input {
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-small);
+}
+
+button:hover,
+.dropdown:hover,
+input:hover,
+textarea:hover {
+  border-color: var(--tk-border-strong);
+}
+
+button.mod-cta {
+  background-color: var(--interactive-accent);
+  box-shadow: none;
+}
+
+button.mod-cta:hover {
+  background-color: var(--interactive-accent-hover);
+}
+
+.modal,
+.prompt,
+.menu {
+  background-color: var(--tk-raised);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-large);
+  box-shadow: var(--shadow-l);
+}
+
+.modal-title,
+.prompt-instruction-command,
+.menu-item-title {
+  color: var(--tk-text);
+}
+
+.suggestion-item,
+.menu-item {
+  border-radius: var(--tk-radius-small);
+}
+
+.suggestion-item.is-selected,
+.menu-item.selected,
+.menu-item:hover {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-sea-rgb), 0.12);
+}
+
+.search-result-file-match {
+  border-radius: var(--tk-radius-small);
+}
+
+.search-result-file-match:hover {
+  background-color: rgba(var(--tk-sea-rgb), 0.08);
+}
+
+.search-result-file-matched-text {
+  color: var(--tk-text);
+  background-color: rgba(var(--tk-gold-rgb), 0.3);
+  border-radius: 3px;
+}
+
+.callout {
+  background-color: color-mix(in srgb, var(--callout-color) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--callout-color) 32%, transparent);
+  border-inline-start-width: 3px;
+  border-radius: var(--tk-radius-medium);
+}
+
+.callout-title {
+  color: var(--callout-color);
+}
+
+.callout-content {
+  color: var(--tk-text);
+}
+
+.popover,
+.hover-popover {
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-large);
+  box-shadow: var(--shadow-l);
+}
+
+.canvas-wrapper {
+  background-color: var(--tk-background);
+}
+
+.canvas-node-container {
+  background-color: var(--tk-raised);
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+  box-shadow: var(--shadow-s);
+}
+
+.canvas-node.is-selected .canvas-node-container {
+  border-color: var(--tk-sea);
+  box-shadow: 0 0 0 1px var(--tk-sea), var(--shadow-s);
+}
+
+.canvas-control-group,
+.canvas-card-menu {
+  background-color: var(--tk-raised);
+  border-color: var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+}
+
+.graph-view.color-fill {
+  color: var(--tk-sea);
+}
+
+.graph-view.color-fill-focused {
+  color: var(--tk-gold);
+}
+
+.graph-view.color-line {
+  color: var(--tk-border);
+}
+
+.bases-view {
+  color: var(--tk-text);
+  background-color: var(--tk-background);
+}
+
+.bases-view :is(.bases-thead, .bases-table-header) {
+  color: var(--tk-muted);
+  background-color: var(--tk-sidebar);
+  border-color: var(--tk-border);
+}
+
+.bases-view :is(.bases-tr, .bases-table-row, .bases-card) {
+  border-color: var(--tk-border);
+}
+
+.bases-view .bases-card {
+  background-color: var(--tk-raised);
+  border-radius: var(--tk-radius-medium);
+}
+
+.tooltip {
+  color: var(--tk-text);
+  background-color: var(--tk-raised);
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-small);
+}
+
+/* Source: 60-decoration.css */
+body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content {
+  position: relative;
+  isolation: isolate;
+}
+
+body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before,
+body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 50% auto auto 50%;
+  width: min(34vw, 19rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(var(--tk-sea-rgb), var(--tk-decoration-opacity));
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before {
+  box-shadow:
+    0 0 0 2.4rem rgba(var(--tk-violet-rgb), calc(var(--tk-decoration-opacity) * 0.42)),
+    0 0 0 5rem rgba(var(--tk-gold-rgb), calc(var(--tk-decoration-opacity) * 0.24));
+}
+
+body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after {
+  width: min(22vw, 12rem);
+  border-color: rgba(var(--tk-gold-rgb), calc(var(--tk-decoration-opacity) * 1.25));
+}
+
+body.tk-immersive .view-header::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 -1px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--tk-sea-rgb), calc(var(--tk-decoration-opacity) * 2)),
+    rgba(var(--tk-rose-rgb), calc(var(--tk-decoration-opacity) * 1.6)),
+    transparent
+  );
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body.tk-enable-motion :is(
+    .workspace-tab-header,
+    .nav-file-title,
+    .nav-folder-title,
+    .tree-item-self,
+    .clickable-icon,
+    button,
+    .suggestion-item,
+    .menu-item,
+    .canvas-node-container
+  ) {
+    transition:
+      color var(--tk-transition-duration) ease,
+      background-color var(--tk-transition-duration) ease,
+      border-color var(--tk-transition-duration) ease,
+      box-shadow var(--tk-transition-duration) ease;
+  }
+}
+
+/* Source: 90-mobile-print.css */
+@media (max-width: 600px) {
+  body {
+    --tk-space-ui: 5px;
+  }
+
+  .markdown-preview-view,
+  .markdown-source-view.mod-cm6 .cm-scroller {
+    padding-inline: 0.75rem;
+  }
+
+  .view-header {
+    padding-inline: 0.35rem;
+  }
+
+  .modal,
+  .prompt {
+    border-radius: var(--tk-radius-medium);
+  }
+
+  .callout {
+    padding: 0.75rem;
+  }
+
+  .markdown-rendered table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media print {
+  body.theme-dark,
+  body.theme-light {
+    --tk-background: #ffffff;
+    --tk-sidebar: #ffffff;
+    --tk-raised: #ffffff;
+    --tk-text: #1f2933;
+    --tk-muted: #465565;
+    --tk-faint: #586879;
+    --tk-border: #aeb7b1;
+    --tk-border-strong: #7d8982;
+    --text-normal: #1f2933;
+    --text-muted: #465565;
+    --text-faint: #586879;
+    --code-normal: #1f2933;
+    --code-comment: #465565;
+    --code-function: #1f2933;
+    --code-important: #1f2933;
+    --code-keyword: #1f2933;
+    --code-operator: #1f2933;
+    --code-property: #1f2933;
+    --code-punctuation: #1f2933;
+    --code-string: #1f2933;
+    --code-tag: #1f2933;
+    --code-value: #1f2933;
+  }
+
+  body,
+  .markdown-preview-view,
+  .markdown-rendered {
+    color: #1f2933 !important;
+    background: #ffffff !important;
+  }
+
+  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before,
+  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body.tk-immersive .view-header::after {
+    display: none !important;
+  }
+
+  .markdown-rendered a,
+  .markdown-rendered .internal-link,
+  .markdown-rendered .external-link {
+    color: #0f625e !important;
+    text-decoration: underline;
+  }
+
+  .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+    color: #1f2933 !important;
+    break-after: avoid;
+  }
+
+  .markdown-rendered :is(pre, code),
+  .callout,
+  .markdown-rendered blockquote,
+  .markdown-rendered :is(th, td) {
+    color: #1f2933 !important;
+    background: #ffffff !important;
+    border-color: #aeb7b1 !important;
+    box-shadow: none !important;
+  }
+
+  .callout-title,
+  .callout-content {
+    color: #273442 !important;
+  }
+
+  .markdown-rendered pre :is(
+    .token,
+    [class*="language-"],
+    [class*="cm-"],
+    span
+  ) {
+    color: #1f2933 !important;
+  }
+
+  .markdown-rendered pre,
+  .callout,
+  .markdown-rendered table,
+  .markdown-rendered blockquote {
+    break-inside: avoid;
+  }
+}

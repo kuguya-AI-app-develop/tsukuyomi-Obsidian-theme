@@ -1,0 +1,113 @@
+@media (max-width: 600px) {
+  body {
+    --tk-space-ui: 5px;
+  }
+
+  .markdown-preview-view,
+  .markdown-source-view.mod-cm6 .cm-scroller {
+    padding-inline: 0.75rem;
+  }
+
+  .view-header {
+    padding-inline: 0.35rem;
+  }
+
+  .modal,
+  .prompt {
+    border-radius: var(--tk-radius-medium);
+  }
+
+  .callout {
+    padding: 0.75rem;
+  }
+
+  .markdown-rendered table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+@media print {
+  body.theme-dark,
+  body.theme-light {
+    --tk-background: #ffffff;
+    --tk-sidebar: #ffffff;
+    --tk-raised: #ffffff;
+    --tk-text: #1f2933;
+    --tk-muted: #465565;
+    --tk-faint: #586879;
+    --tk-border: #aeb7b1;
+    --tk-border-strong: #7d8982;
+    --text-normal: #1f2933;
+    --text-muted: #465565;
+    --text-faint: #586879;
+    --code-normal: #1f2933;
+    --code-comment: #465565;
+    --code-function: #1f2933;
+    --code-important: #1f2933;
+    --code-keyword: #1f2933;
+    --code-operator: #1f2933;
+    --code-property: #1f2933;
+    --code-punctuation: #1f2933;
+    --code-string: #1f2933;
+    --code-tag: #1f2933;
+    --code-value: #1f2933;
+  }
+
+  body,
+  .markdown-preview-view,
+  .markdown-rendered {
+    color: #1f2933 !important;
+    background: #ffffff !important;
+  }
+
+  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before,
+  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body.tk-immersive .view-header::after {
+    display: none !important;
+  }
+
+  .markdown-rendered a,
+  .markdown-rendered .internal-link,
+  .markdown-rendered .external-link {
+    color: #0f625e !important;
+    text-decoration: underline;
+  }
+
+  .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+    color: #1f2933 !important;
+    break-after: avoid;
+  }
+
+  .markdown-rendered :is(pre, code),
+  .callout,
+  .markdown-rendered blockquote,
+  .markdown-rendered :is(th, td) {
+    color: #1f2933 !important;
+    background: #ffffff !important;
+    border-color: #aeb7b1 !important;
+    box-shadow: none !important;
+  }
+
+  .callout-title,
+  .callout-content {
+    color: #273442 !important;
+  }
+
+  .markdown-rendered pre :is(
+    .token,
+    [class*="language-"],
+    [class*="cm-"],
+    span
+  ) {
+    color: #1f2933 !important;
+  }
+
+  .markdown-rendered pre,
+  .callout,
+  .markdown-rendered table,
+  .markdown-rendered blockquote {
+    break-inside: avoid;
+  }
+}
