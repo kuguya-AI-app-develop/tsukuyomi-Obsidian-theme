@@ -12,8 +12,18 @@
 - 已受理：2026-09-16 16:19（Asia/Shanghai），[官方管理条目](https://community.obsidian.md/account/themes/tsukuyomi) 已识别版本 `1.0.1`、提交 `fe6fc60`，初始审核状态为 **Pending**。
 - 首轮结果：1.0.1 / `fe6fc60` 的扫描已 **Completed**，未出现 Error，保留英文 README 提示与 16 条 CSS 提示。已补齐完整英文 README 并保留中文版，在 1.0.2 重新检查。
 - 最终结果：2026-09-16 16:27（Asia/Shanghai），1.0.2 / `e35a5f9` 的官方审核显示 **Completed**，无 Error；英文 README 警告已消除，保留 16 条非阻断的 CSS 提示。[审核记录](review-v1.0.2.txt)。
-- 已正式发布：[公开主题条目](https://community.obsidian.md/themes/tsukuyomi) 可匿名访问并提供 **Add to Obsidian**；目录当前版本为 **1.0.2**，显示 **Health: Excellent / Review: Satisfactory**。
-- 本轮目标已完成：提交、处理反馈、等待复核并公开上架。没有待处理的阻断项，无需继续定时等待。目录通过不代表原作权利方单独授权，也不扩大已记录的平台实测范围。
+- 官网已发布：[公开主题条目](https://community.obsidian.md/themes/tsukuyomi) 可匿名访问并显示 **Add to Obsidian**；网页当前版本为 **1.0.2**，显示 **Health: Excellent / Review: Satisfactory**。
+- 客户端同步待验证：2026-09-16 16:37（Asia/Shanghai），Obsidian 1.13.7 使用的主题列表尚无 Tsukuyomi，客户端搜索与安装尚未验收通过。此前把官网发布直接等同于客户端可搜的说明已更正，后续继续跟进。目录审核通过不代表原作权利方单独授权，也不扩大平台实测范围。
+
+## 客户端目录同步
+
+2026-09-16 16:37（北京时间）复核结果：
+
+- 用户反馈客户端搜不到；实际读取[客户端主题列表](https://raw.githubusercontent.com/obsidianmd/obsidian-releases/HEAD/community-css-themes.json)，共 **758** 项，没有 Tsukuyomi。本机 Obsidian **1.13.7** 代码确认读取此 URL，并缓存列表 **5 分钟**。因此官网条目可见不能替代客户端搜索验证，**Add to Obsidian** 同样依赖客户端列表。
+- 官方[目录同步工作流](https://github.com/obsidianmd/obsidian-releases/blob/master/.github/workflows/mirror-community-json.yml)计划在每小时第 **17 分钟**将 `community.obsidian.md/assets/community-themes.json` 复制到旧客户端列表。2026-09-16 **08:35:45Z** 的[运行记录](https://github.com/obsidianmd/obsidian-releases/actions/runs/35074624792)成功，显示来源与镜像均为 758 项、无差异。现有证据指向客户端导出尚未收录该条目，不能仅据搜不到就认定 GitHub 镜像任务故障。
+- 官方[发布说明 FAQ](https://obsidian.md/blog/future-of-plugins/)说明，审核通过后 **24 小时内**可在应用中搜索和下载。按本次 **2026-09-16 16:27** 的通过记录计算，24 小时节点为 **2026-09-17 16:27（北京时间）**；目前仍在同步窗口内。这是官方说明的窗口，当前客户端可用性仍需实际确认。
+
+已安排每小时复核客户端目录，确认收录或超过 2026-09-17 16:27（北京时间）窗口时报告结果并暂停定时检查。列表更新后仍需确认缓存刷新后的真实搜索和安装；若超时未收录，保留审核状态、列表内容及同步运行记录作为后续反馈依据。当前可使用 [1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 手动安装。
 
 ## 提交资料
 
@@ -52,4 +62,4 @@ npm run lab
 
 按[当前官方流程](https://docs.obsidian.md/themes/app-themes/submit-theme)，在 Community 的 Themes → New theme 提交。目录读取默认分支 HEAD 清单，并从同版本 tag 的 Release 下载附件；必须保持三者一致。后续通过管理页检查 Manifest、Releases、Source code 和 Build verification 结果，修复后发布新的补丁版本，可使用 Request review 重新检查。[管理审核结果](https://docs.obsidian.md/community-directory/manage-entry)
 
-本轮已完成等待与复核，未保留重复轮询任务。日后发布新版本仍须检查对应审核结果。回退时可手动安装上一版两文件，或切换默认主题；不改动笔记。
+官网发布已确认，客户端目录同步及真实搜索安装仍需跟进；完成后再更新最终可用状态。日后发布新版本仍须检查对应审核及客户端结果。回退时可手动安装上一版两文件，或切换默认主题；不改动笔记。

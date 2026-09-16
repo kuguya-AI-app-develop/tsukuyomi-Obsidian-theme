@@ -5,7 +5,14 @@
 - `npm run build`、`npm run check`、`npm run lab` 通过。产物 81,800 字节，默认配色、设置、SVG 动画与阅读保护约束通过。[日志](checks-v1.0.2.txt)。
 - `npm run lint`：0 errors / 16 warnings。[日志](lint-v1.0.2.txt)。本版没有修改可执行构建逻辑，23 项单元测试的最近执行记录见 1.0.1；本轮只跑发布构建与检查，没有重复 GUI 验收。
 - [官方首轮审核记录](review-v1.0.1.txt)：1.0.1 / `fe6fc60` 显示 Completed，无 Error 项；存在英文 README 警告和 CSS 的文字装饰、分页、打印覆盖提示。本版修复语言文档问题，其余提示如实保留。最新审核与目录发布状态见 [发布记录](PUBLISHING.md)。
-- [官方 1.0.2 审核记录](review-v1.0.2.txt)：2026-09-16 显示 Completed，无 Error，英文 README 警告已消除，16 条 CSS 非阻断提示保留。公开目录当前版本为 1.0.2，提供安装入口，Health 为 Excellent、Review 为 Satisfactory。
+- [官方 1.0.2 审核记录](review-v1.0.2.txt)：2026-09-16 显示 Completed，无 Error，英文 README 警告已消除，16 条 CSS 非阻断提示保留。官网条目当前版本为 1.0.2，显示 Add to Obsidian，Health 为 Excellent、Review 为 Satisfactory；这些网页结果不代表客户端搜索或安装已经通过。
+
+## 客户端目录复核 · 2026-09-16
+
+- **客户端搜索与安装未通过验收。** 用户反馈 Obsidian 1.13.7 搜不到主题；16:37（北京时间）读取其[实际主题列表](https://raw.githubusercontent.com/obsidianmd/obsidian-releases/HEAD/community-css-themes.json)，758 项中没有 Tsukuyomi。本机应用代码确认使用该 URL，列表缓存为 5 分钟。
+- 官网发布与审核通过的结果仍然有效；客户端导出尚未收录，Add to Obsidian 同样依赖该列表。官方同步工作流当次成功，来源与镜像条目数相同，未发现可据此认定镜像任务失败的证据。详见[发布记录中的同步证据与 24 小时窗口](PUBLISHING.md#客户端目录同步)。
+- 当前仍可使用 Release 手动安装。后续需在列表更新、客户端缓存刷新后实际复核搜索和安装，不能用官网可见替代。
+- 本轮仅更正文档状态，没有修改运行代码或素材，因此未重跑构建、单元测试或主题 GUI 回归。
 
 ---
 
