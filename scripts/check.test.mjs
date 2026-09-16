@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { parse } from 'css-tree';
 import { validateSvgDataUrl, validateMotion, validateAnimatedAssetUsage, validateReadingProtection, validateSignageContrast } from './check.mjs';
+import { LICENSE_SCOPE_NOTICE, renderLicenseHeader } from './build.mjs';
 
 const svgUrl = (body, attributes = '') => `data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"${attributes}>${body}</svg>`,
@@ -28,6 +30,21 @@ const fishAssetCss = (declaration = fishImageDeclaration, selector = `${sceneSco
     }
   }`;
 const checkFishUsage = (css) => validateAnimatedAssetUsage(parse(css, { parseCustomProperty: true }));
+
+test('license header embeds the complete root MIT license and remains valid CSS', async () => {
+  const license = await readFile(new URL('../LICENSE', import.meta.url), 'utf8');
+  const header = renderLicenseHeader('1.0.1', license);
+  assert.ok(header.includes(LICENSE_SCOPE_NOTICE));
+  assert.ok(header.includes(license.replace(/\r\n?/g, '\n').trimEnd()));
+  assert.doesNotThrow(() => parse(`${header}\n:root { color: black; }`));
+});
+
+test('license header rejects missing, incomplete and unsafe license text', async () => {
+  const license = await readFile(new URL('../LICENSE', import.meta.url), 'utf8');
+  for (const invalid of [undefined, '', 'MIT License\nCopyright (c) 2026 ArisaTaki', license.replace('Permission is hereby granted', 'Permission was not granted'), `${license}\n*/`]) {
+    assert.throws(() => renderLicenseHeader('1.0.1', invalid));
+  }
+});
 
 test('SVG accepts static, self-contained artwork and descriptive text', () => {
   assert.deepEqual(validateSvgDataUrl(svgUrl('<title>Moon and clouds</title><desc>Original geometric artwork.</desc><g fill="#caffed" transform="translate(1 2)"><path d="M0 0L10 10Z"/><circle cx="50" cy="50" r="12" stroke="#fff" stroke-width="2"/></g>')), []);

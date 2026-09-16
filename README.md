@@ -1,10 +1,10 @@
 # Tsukuyomi（月读）
 
-受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.0** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
+受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.1** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
 
 An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
 
-![Tsukuyomi 1.0.0 深色阅读界面](screenshot.jpg)
+![Tsukuyomi 深色阅读界面](screenshot.jpg)
 
 ## 特点
 
@@ -13,13 +13,13 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 - **月读空白页**：静止的城市和鸟居、独立菜单、四位矢量伙伴与游动骨架鱼。装饰仅占用空白页和界面边缘，不铺在正文或文件名背后。
 - **离线使用**：安装产物只有 `theme.css` 与 `manifest.json`。SVG 资源已内嵌，不运行 JavaScript，无运行时依赖，也无需安装插件。
 
-空白页预览：[深色](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [浅色](docs/screenshots/54-fox-native-v0.7.1.jpg)。两图拍摄于 2026-09-16 的发布前版本，1.0.0 沿用其视觉设计。
+空白页预览：[深色](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [浅色](docs/screenshots/54-fox-native-v0.7.1.jpg)。两图拍摄于 2026-09-16 的发布前版本，1.0 系列沿用其视觉设计。
 
 ## 安装
 
-需要 **Obsidian 1.13.7 或更高版本**。主题尚未收录到 Obsidian 社区主题目录，目前使用手动安装。
+需要 **Obsidian 1.13.7 或更高版本**。主题正在提交 Obsidian 社区目录审核，审核通过前请手动安装。
 
-1. 从 [1.0.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.0) 下载 `Tsukuyomi-1.0.0.zip`。
+1. 从 [1.0.1 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.1) 下载 `Tsukuyomi-1.0.1.zip`。
 2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
 3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
 
@@ -66,7 +66,7 @@ npm run lab
 
 ## 访问与授权
 
-仓库当前为私有，Release 只对有仓库访问权限的账号可见。软件许可证仍待确定，当前未声明开源许可证。
+本主题通过公开 GitHub 仓库免费、非营利分发，不设广告、收费或捐赠入口。维护者有权许可的原创软件代码采用 [MIT License](LICENSE)；原作角色设计、商标及其他第三方权益不在该许可范围内。
 
 本项目与 Obsidian 及原作权利方无官方关联。角色矢量属于二次创作，官方图片、Logo、音乐和字体不进入主题安装包；素材权利说明见 [NOTICE](NOTICE.md)，参考来源见 [资料依据](docs/SOURCES.md)。`docs/` 中的参考 HTML 可能访问外部图片，仅供开发研究，主题运行时不使用这些页面。
 

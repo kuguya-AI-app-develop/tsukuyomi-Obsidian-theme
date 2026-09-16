@@ -5,6 +5,7 @@ import { renderSwimmingFish } from './generate-fish.mjs';
 import { renderMascots } from './generate-mascots.mjs';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
+export const LICENSE_SCOPE_NOTICE = 'MIT applies to original code only; third-party character designs are excluded. See NOTICE.md in source repository.';
 export const sourceFiles = [
   '00-settings.css',
   '10-palette.css',
@@ -15,6 +16,26 @@ export const sourceFiles = [
   '60-decoration.css',
   '90-mobile-print.css',
 ];
+
+export function renderLicenseHeader(version, licenseText) {
+  if (typeof licenseText !== 'string' || !licenseText.trim()) {
+    throw new Error('LICENSE must contain the project MIT license.');
+  }
+  const license = licenseText.replace(/\r\n?/g, '\n').trimEnd();
+  for (const text of [
+    'MIT License',
+    'Copyright (c)',
+    'Permission is hereby granted, free of charge',
+    'The above copyright notice and this permission notice shall be included',
+    'THE SOFTWARE IS PROVIDED "AS IS"',
+  ]) {
+    if (!license.includes(text)) throw new Error(`LICENSE is not a complete MIT license: missing "${text}".`);
+  }
+  if (license.includes('*/') || license.includes('\0')) {
+    throw new Error('LICENSE contains text that cannot be embedded safely in a CSS comment.');
+  }
+  return `/* Tsukuyomi ${version}\n${LICENSE_SCOPE_NOTICE}\n\n${license}\n*/`;
+}
 
 export async function renderSource(name) {
   let css = await readFile(resolve(root, 'src', name), 'utf8');
@@ -60,14 +81,17 @@ export async function build() {
       if (error.code !== 'ENOENT') throw error;
     }
   }
-  const manifestText = await readFile(resolve(root, 'manifest.json'), 'utf8');
+  const [manifestText, licenseText] = await Promise.all([
+    readFile(resolve(root, 'manifest.json'), 'utf8'),
+    readFile(resolve(root, 'LICENSE'), 'utf8'),
+  ]);
   const manifest = JSON.parse(manifestText);
   if (manifest.name !== 'Tsukuyomi') throw new Error('Theme name must match installation directory Tsukuyomi.');
   const sections = await Promise.all(sourceFiles.map(async (name) => {
     const css = await renderSource(name);
     return `/* Source: ${name} */\n${css.trim()}\n`;
   }));
-  const css = `/* Tsukuyomi ${manifest.version} | Generated from src/; edit source files, then npm run build. */\n\n${sections.join('\n')}`;
+  const css = `${renderLicenseHeader(manifest.version, licenseText)}\n\n${sections.join('\n')}`;
   const output = resolve(root, 'dist', 'Tsukuyomi');
   await mkdir(output, { recursive: true });
   await writeFile(resolve(root, 'theme.css'), css);

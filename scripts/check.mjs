@@ -9,7 +9,13 @@ import {
 } from 'css-tree';
 import { parse as parseYaml } from 'yaml';
 
-import { root, sourceFiles, renderSource } from './build.mjs';
+import {
+  LICENSE_SCOPE_NOTICE,
+  renderLicenseHeader,
+  renderSource,
+  root,
+  sourceFiles,
+} from './build.mjs';
 
 const MIN_APP_VERSION = '1.13.7';
 const MAX_CSS_BYTES = 80 * 1024;
@@ -1054,16 +1060,19 @@ function formatContrast(results) {
 }
 
 async function main() {
-  const [manifestText, packageText, ...sourceTexts] = await Promise.all([
+  const [manifestText, packageText, licenseText, ...sourceTexts] = await Promise.all([
     readFile(resolve(root, 'manifest.json'), 'utf8'),
     readFile(resolve(root, 'package.json'), 'utf8'),
+    readFile(resolve(root, 'LICENSE'), 'utf8'),
     ...sourceFiles.map((name) => renderSource(name)),
   ]);
   const manifest = JSON.parse(manifestText);
   const packageJson = JSON.parse(packageText);
   validateManifest(manifest, packageJson);
 
-  const expectedCss = `/* Tsukuyomi ${manifest.version} | Generated from src/; edit source files, then npm run build. */\n\n${sourceFiles
+  const licenseHeader = renderLicenseHeader(manifest.version, licenseText);
+  const embeddedLicense = licenseText.replace(/\r\n?/g, '\n').trimEnd();
+  const expectedCss = `${licenseHeader}\n\n${sourceFiles
     .map((name, index) => `/* Source: ${name} */\n${sourceTexts[index].trim()}\n`)
     .join('\n')}`;
   const [rootCss, distributionCss, distributionManifest] = await Promise.all([
@@ -1074,6 +1083,9 @@ async function main() {
   assert(rootCss === expectedCss, 'root theme.css is stale or differs from the deterministic source build');
   assert(distributionCss === expectedCss, 'dist/Tsukuyomi/theme.css differs from the deterministic source build');
   assert(distributionManifest === manifestText, 'dist/Tsukuyomi/manifest.json differs from manifest.json');
+  assert(rootCss.startsWith(`${licenseHeader}\n\n`), 'theme.css must begin with the complete project license header');
+  assert(rootCss.includes(LICENSE_SCOPE_NOTICE), 'theme.css license header is missing the third-party design exclusion');
+  assert(rootCss.includes(embeddedLicense), 'theme.css license header does not contain the complete root LICENSE text');
 
   let ast;
   try {
@@ -1113,7 +1125,7 @@ async function main() {
   }
 
   console.log(`✓ manifest: Tsukuyomi ${manifest.version}, Obsidian >=${manifest.minAppVersion}`);
-  console.log(`✓ build: ${sourceFiles.length} ordered sources match root and dist (${(Buffer.byteLength(rootCss) / 1024).toFixed(1)} KiB)`);
+  console.log(`✓ build: license plus ${sourceFiles.length} ordered sources match root and dist (${(Buffer.byteLength(rootCss) / 1024).toFixed(1)} KiB)`);
   console.log(`✓ CSS: parsed; ${cssStats.validatedValues} property values checked, ${cssStats.dynamicValues} dynamic and ${cssStats.unknownValues} unknown/vendor skipped`);
   console.log(`✓ Style Settings: 1 YAML block, ${settingsCount} valid options`);
   for (const [mode, results] of contrastResults) console.log(`✓ ${mode} contrast: ${formatContrast(results)}`);

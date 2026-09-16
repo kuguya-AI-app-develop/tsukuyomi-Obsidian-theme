@@ -1,6 +1,6 @@
 # Tsukuyomi · 实施规范
 
-目标：交付受《超时空辉夜姬！》中月读空间启发的非官方 Obsidian CSS 主题 v1.0.0，可构建、可安装，结合月读城市与八千代舞台的空间特征，适合中文长文阅读与编辑，不依赖插件。
+目标：交付受《超时空辉夜姬！》中月读空间启发的非官方 Obsidian CSS 主题 v1.0.1，可构建、可安装，结合月读城市与八千代舞台的空间特征，适合中文长文阅读与编辑，不依赖插件。
 
 ## 依据与范围
 
@@ -24,13 +24,13 @@
 
 ## 实施边界
 
-安装产物为 `dist/Tsukuyomi/manifest.json` 和 `theme.css`。独立实验库为 `lab/Tsukuyomi Lab/`。不改主力笔记库、不安装升级 Obsidian。用户于 2026-09-16 授权使用本机 GitHub 账号 `ArisaTaki`，创建并推送至 `kuguya-AI-app-develop/tsukuyomi-Obsidian-theme` 组织仓库；作者署名为 `ArisaTaki`。首次仓库创建采用私有可见性，本轮用户进一步要求将已确认版本推送为首个正式版并准备上架，因此创建 1.0.0 GitHub Release；公开仓库和实际提交社区目录仍另行按用户指示执行。
+安装产物为 `dist/Tsukuyomi/manifest.json` 和 `theme.css`。独立实验库为 `lab/Tsukuyomi Lab/`。不改主力笔记库、不安装升级 Obsidian。用户于 2026-09-16 授权使用本机 GitHub 账号 `ArisaTaki`，创建并推送至 `kuguya-AI-app-develop/tsukuyomi-Obsidian-theme` 组织仓库；作者署名为 `ArisaTaki`。首次仓库创建采用私有可见性，本轮用户进一步要求将已确认版本推送为首个正式版并准备上架，因此创建 1.0.0 GitHub Release；用户随后明确授权完成公开仓库、采用适当许可、提交官方社区目录并跟进至审核通过；据此继续处理发布与审核。
 
 不制作网页替代品，不增加主题插件、助手或业务功能，不全局改写 CodeMirror 行布局，不覆盖用户字号设置。运行时只有 CSS 与内嵌 SVG 声明式动画，无 JavaScript 或网络请求。
 
 ## 结构与阶段
 
-`src/` 按设置、色板、语义、工作区、编辑器、组件、装饰、移动及打印分层。Node 构建按固定顺序合并样式，并将 `assets/tsukuyomi-{city,gate,fish,fish-swimming,mirror,mascots,mascots-living}.svg` 与 `assets/stage-clouds.svg` 内嵌到 CSS，输出根目录 `theme.css` 及安装目录；运行时不请求网络。场景资产拆成静态建筑与独立动效层；云纹沿用本项目已有原创文件。开发检查依赖仅用于解析 CSS 与设置 YAML。`node scripts/generate-fish.mjs` 生成游鱼，`node scripts/generate-mascots.mjs` 生成角色动静两版，并调用 `scripts/render-mendako.mjs` 与 `scripts/render-fox.mjs` 的纯函数绘制粉色伙伴和狐狸头；这两个模块没有独立 CLI。构建通过纯渲染函数核对生成结果并拒绝旧资产，生成器不进入安装产物。CSS 预算为 `80KiB`，每个解码后的 SVG 预算为 `10KiB`。
+`src/` 按设置、色板、语义、工作区、编辑器、组件、装饰、移动及打印分层。Node 构建按固定顺序合并样式，并将 `assets/tsukuyomi-{city,gate,fish,fish-swimming,mirror,mascots,mascots-living}.svg` 与 `assets/stage-clouds.svg` 内嵌到 CSS，输出根目录 `theme.css` 及安装目录；运行时不请求网络。场景资产拆成静态建筑与独立动效层；云纹沿用本项目已有原创文件。开发检查依赖用于解析 CSS、设置 YAML 与官方 Stylelint 检查。`node scripts/generate-fish.mjs` 生成游鱼，`node scripts/generate-mascots.mjs` 生成角色动静两版，并调用 `scripts/render-mendako.mjs` 与 `scripts/render-fox.mjs` 的纯函数绘制粉色伙伴和狐狸头；这两个模块没有独立 CLI。构建通过纯渲染函数核对生成结果并拒绝旧资产，生成器不进入安装产物。CSS 预算为 `80KiB`，每个解码后的 SVG 预算为 `10KiB`。
 
 1. P0：核对原作制作资料、阅读参考与官方规范，锁定视觉和版本。
 2. P1：深色基础与阅读排版。
@@ -49,4 +49,4 @@
 
 ## 首个正式版
 
-1.0.0 冻结现有视觉与交互，电影场景研究暂停，不列入发布范围。当前工作为正式版打包、README 和社区目录提交准备。GitHub 仓库的公开设置、项目许可证及角色素材公开分发范围仍须在上架前确定；不因版本号变为 1.0.0 而宣称已上架或获得原作授权。
+1.0.0 冻结现有视觉与交互，电影场景研究暂停，不列入发布范围。当前工作为正式版打包、README 和社区目录提交准备。1.0.1 为公开提交准备版，原创软件代码使用 MIT，第三方角色设计权益按 NOTICE 单独说明，完整软件许可证进入安装 CSS。公开与提交已获用户授权，实际审核状态写入 docs/PUBLISHING.md；不在通过前宣称上架或取得单独原作授权。
