@@ -19,7 +19,9 @@ Empty-view previews: [dark](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [l
 
 ## Installation
 
-Requires **Obsidian 1.13.7 or later**. The theme has been submitted to Obsidian Community but is not yet available in the community directory. Use manual installation until the listing is published.
+Requires **Obsidian 1.13.7 or later**. Available in the [official community directory](https://community.obsidian.md/themes/tsukuyomi). In Obsidian, open **Settings → Appearance → Themes → Manage**, search for **Tsukuyomi**, and install it. You can also use the directory page's **Add to Obsidian** button.
+
+For manual installation:
 
 1. Download `Tsukuyomi-1.0.2.zip` from the [1.0.2 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2).
 2. Extract the `Tsukuyomi` folder into your vault's `.obsidian/themes/` directory. It should contain `manifest.json` and `theme.css`.

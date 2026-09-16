@@ -11,8 +11,9 @@
 - 已完成：按目录验证要求，将 ArisaTaki 在 `kuguya-AI-app-develop` 的成员身份设为公开；仍由个人维护者管理目录条目。
 - 已受理：2026-09-16 16:19（Asia/Shanghai），[官方管理条目](https://community.obsidian.md/account/themes/tsukuyomi) 已识别版本 `1.0.1`、提交 `fe6fc60`，初始审核状态为 **Pending**。
 - 首轮结果：1.0.1 / `fe6fc60` 的扫描已 **Completed**，未出现 Error，保留英文 README 提示与 16 条 CSS 提示。已补齐完整英文 README 并保留中文版，在 1.0.2 重新检查。
-- 正在执行：提交 1.0.2 复核及正式发布目录条目；当前条目仍为草稿。
-- 尚未宣称：目录审核通过或可在 Obsidian 内直接安装。实际结果会补充在此处。
+- 最终结果：2026-09-16 16:27（Asia/Shanghai），1.0.2 / `e35a5f9` 的官方审核显示 **Completed**，无 Error；英文 README 警告已消除，保留 16 条非阻断的 CSS 提示。[审核记录](review-v1.0.2.txt)。
+- 已正式发布：[公开主题条目](https://community.obsidian.md/themes/tsukuyomi) 可匿名访问并提供 **Add to Obsidian**；目录当前版本为 **1.0.2**，显示 **Health: Excellent / Review: Satisfactory**。
+- 本轮目标已完成：提交、处理反馈、等待复核并公开上架。没有待处理的阻断项，无需继续定时等待。目录通过不代表原作权利方单独授权，也不扩大已记录的平台实测范围。
 
 ## 提交资料
 
@@ -51,4 +52,4 @@ npm run lab
 
 按[当前官方流程](https://docs.obsidian.md/themes/app-themes/submit-theme)，在 Community 的 Themes → New theme 提交。目录读取默认分支 HEAD 清单，并从同版本 tag 的 Release 下载附件；必须保持三者一致。后续通过管理页检查 Manifest、Releases、Source code 和 Build verification 结果，修复后发布新的补丁版本，可使用 Request review 重新检查。[管理审核结果](https://docs.obsidian.md/community-directory/manage-entry)
 
-发布成功后持续跟进审核状态；只在状态变化、需要维护者处理或审核通过时通知，不把等待状态重复发送给维护者。回退时可手动安装上一版两文件，或切换默认主题；不改动笔记。
+本轮已完成等待与复核，未保留重复轮询任务。日后发布新版本仍须检查对应审核结果。回退时可手动安装上一版两文件，或切换默认主题；不改动笔记。

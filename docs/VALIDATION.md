@@ -5,6 +5,7 @@
 - `npm run build`、`npm run check`、`npm run lab` 通过。产物 81,800 字节，默认配色、设置、SVG 动画与阅读保护约束通过。[日志](checks-v1.0.2.txt)。
 - `npm run lint`：0 errors / 16 warnings。[日志](lint-v1.0.2.txt)。本版没有修改可执行构建逻辑，23 项单元测试的最近执行记录见 1.0.1；本轮只跑发布构建与检查，没有重复 GUI 验收。
 - [官方首轮审核记录](review-v1.0.1.txt)：1.0.1 / `fe6fc60` 显示 Completed，无 Error 项；存在英文 README 警告和 CSS 的文字装饰、分页、打印覆盖提示。本版修复语言文档问题，其余提示如实保留。最新审核与目录发布状态见 [发布记录](PUBLISHING.md)。
+- [官方 1.0.2 审核记录](review-v1.0.2.txt)：2026-09-16 显示 Completed，无 Error，英文 README 警告已消除，16 条 CSS 非阻断提示保留。公开目录当前版本为 1.0.2，提供安装入口，Health 为 Excellent、Review 为 Satisfactory。
 
 ---
 

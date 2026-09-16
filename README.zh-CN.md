@@ -19,7 +19,9 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 
 ## 安装
 
-需要 **Obsidian 1.13.7 或更高版本**。主题已提交 Obsidian 社区目录，目前尚未公开上架，请先手动安装。
+需要 **Obsidian 1.13.7 或更高版本**。主题已在[官方社区目录](https://community.obsidian.md/themes/tsukuyomi)公开。打开 Obsidian「**设置 → 外观 → 主题 → 管理**」，搜索 **Tsukuyomi** 并安装；也可点击目录页的 **Add to Obsidian**。
+
+如需手动安装：
 
 1. 从 [1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 下载 `Tsukuyomi-1.0.2.zip`。
 2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
