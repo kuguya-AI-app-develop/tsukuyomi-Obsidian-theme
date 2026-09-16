@@ -26,6 +26,32 @@
     max-width: 100%;
     overflow-x: auto;
   }
+
+  body:not(.tk-minimal) .tk-home h1 {
+    min-height: 145px;
+    padding: 66px 106px 16px 16px;
+  }
+
+  body:not(.tk-minimal) .tk-home h1::after {
+    width: 66px;
+    right: 22px;
+    bottom: 28px;
+  }
+
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before {
+    inset-inline: 5%;
+  }
+}
+
+/* Short pop-out windows keep every native empty-page action reachable. */
+@media (max-height: 560px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+    display: none;
+  }
+
+  body:not(.tk-minimal) .empty-state {
+    padding-top: 0;
+  }
 }
 
 @media print {
@@ -62,10 +88,27 @@
     background: #ffffff !important;
   }
 
-  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after,
-  body.tk-immersive .view-header::after {
+  body .workspace-leaf-content[data-type="empty"] .view-content::before,
+  body .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body .view-header::after,
+  body .tk-home h1::before,
+  body .tk-home h1::after {
     display: none !important;
+  }
+
+  body:not(.tk-minimal) .tk-home h1 {
+    min-height: 0;
+    display: block;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+  }
+
+  body:not(.tk-minimal) .markdown-rendered :is(h1, h2) {
+    background: none;
+    border-color: #aeb7b1;
+    text-shadow: none;
   }
 
   .markdown-rendered a,

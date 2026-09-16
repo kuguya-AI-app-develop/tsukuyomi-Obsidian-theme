@@ -2,9 +2,9 @@
 name: Tsukuyomi（月读）
 id: tsukuyomi-theme
 settings:
-  - id: tk-immersive
-    title: 沉浸装饰
-    description: 显示原创月环与标题栏渐变细线。
+  - id: tk-minimal
+    title: 简洁模式
+    description: 关闭舞台边框、云纹和月轮，保留基础配色与排版。
     type: class-toggle
     default: false
   - id: tk-reading-width
@@ -27,8 +27,8 @@ settings:
       - label: 紧凑
         value: tk-density-compact
   - id: tk-decoration-opacity
-    title: 装饰强度
-    description: 可选几何装饰的透明度。
+    title: 背景纹样强度
+    description: 调节侧栏网点与空白页月环的透明度。其他装饰通过简洁模式关闭。
     type: variable-number-slider
     default: 0.12
     min: 0
@@ -36,7 +36,7 @@ settings:
     step: 0.02
   - id: tk-enable-motion
     title: 主题动效
-    description: 系统允许动效时，启用主题自身的短暂过渡。
+    description: 系统允许动效时，启用短暂的颜色、边框和阴影过渡。
     type: class-toggle
     default: false
 */

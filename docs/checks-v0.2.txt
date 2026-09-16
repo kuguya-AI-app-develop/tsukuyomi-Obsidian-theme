@@ -1,0 +1,34 @@
+
+> tsukuyomi-obsidian-theme@0.2.0 test
+> npm run build && node --test scripts/check.test.mjs && npm run check
+
+
+> tsukuyomi-obsidian-theme@0.2.0 build
+> node scripts/build.mjs
+
+Built 32561 bytes → /Users/cxldefontaine/个人项目/tsukuyomi-Obsidian-theme/dist/Tsukuyomi
+✔ SVG accepts static, self-contained artwork and descriptive text (0.939ms)
+✔ SVG rejects remote assets, code, animation, references and malformed XML (0.175959ms)
+✔ SVG rejects other URL types, invalid encodings and oversized artwork (0.100083ms)
+✔ motion accepts static styles and short opt-in transitions (1.438708ms)
+✔ motion rejects every keyframes definition, including opt-in and vendor forms (0.513375ms)
+✔ motion rejects animation shorthand, longhands and vendor bypasses in every scope (0.4895ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97.164667
+
+> tsukuyomi-obsidian-theme@0.2.0 check
+> node scripts/check.mjs
+
+✓ manifest: Tsukuyomi 0.2.0, Obsidian >=1.13.7
+✓ build: 8 ordered sources match root and dist (31.8 KiB)
+✓ CSS: parsed; 152 property values checked, 166 dynamic and 0 unknown/vendor skipped
+✓ Style Settings: 1 YAML block, 5 valid options
+✓ dark contrast: normal 12.64, muted 7.16, link 9.43, link-hover 10.06, external 6.64, unresolved 6.64, button 9.43, selection 8.25, tag 5.19, callout 5.94, tinted-link 5.66, state 11.86, focus 8.23
+✓ light contrast: normal 10.93, muted 4.93, link 5.42, link-hover 6.15, external 5.48, unresolved 5.48, button 5.91, selection 7.83, tag 4.75, callout 4.64, tinted-link 4.84, state 9.03, focus 5.09
+✓ policy: self-contained graphics; short opt-in transitions, no keyframes or animation properties; no remote imports, backdrop filters, forced editor positioning, or user-font overrides

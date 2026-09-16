@@ -1,13 +1,13 @@
-/* Tsukuyomi 0.1.0 | Generated from src/; edit source files, then npm run build. */
+/* Tsukuyomi 0.2.0 | Generated from src/; edit source files, then npm run build. */
 
 /* Source: 00-settings.css */
 /* @settings
 name: Tsukuyomi（月读）
 id: tsukuyomi-theme
 settings:
-  - id: tk-immersive
-    title: 沉浸装饰
-    description: 显示原创月环与标题栏渐变细线。
+  - id: tk-minimal
+    title: 简洁模式
+    description: 关闭舞台边框、云纹和月轮，保留基础配色与排版。
     type: class-toggle
     default: false
   - id: tk-reading-width
@@ -30,8 +30,8 @@ settings:
       - label: 紧凑
         value: tk-density-compact
   - id: tk-decoration-opacity
-    title: 装饰强度
-    description: 可选几何装饰的透明度。
+    title: 背景纹样强度
+    description: 调节侧栏网点与空白页月环的透明度。其他装饰通过简洁模式关闭。
     type: variable-number-slider
     default: 0.12
     min: 0
@@ -39,7 +39,7 @@ settings:
     step: 0.02
   - id: tk-enable-motion
     title: 主题动效
-    description: 系统允许动效时，启用主题自身的短暂过渡。
+    description: 系统允许动效时，启用短暂的颜色、边框和阴影过渡。
     type: class-toggle
     default: false
 */
@@ -84,26 +84,26 @@ body.tk-density-compact {
 .theme-dark {
   color-scheme: dark;
 
-  --color-base-00: #070b11;
-  --color-base-05: #0b1119;
-  --color-base-10: #0e151f;
-  --color-base-20: #111821;
-  --color-base-25: #151e29;
-  --color-base-30: #192330;
-  --color-base-35: #202c3a;
-  --color-base-40: #2b3948;
+  --color-base-00: #070b1a;
+  --color-base-05: #0b1329;
+  --color-base-10: #101a30;
+  --color-base-20: #111b32;
+  --color-base-25: #142038;
+  --color-base-30: #192740;
+  --color-base-35: #22324b;
+  --color-base-40: #30445c;
   --color-base-50: #526275;
   --color-base-60: #78889a;
   --color-base-70: #a7b5c6;
   --color-base-100: #e6edf3;
 
-  --tk-background: #111821;
-  --tk-sidebar: #0b1119;
-  --tk-raised: #192330;
+  --tk-background: #111b32;
+  --tk-sidebar: #0b1329;
+  --tk-raised: #192740;
   --tk-text: #e6edf3;
   --tk-muted: #a7b5c6;
   --tk-faint: #78889a;
-  --tk-border: #2b3948;
+  --tk-border: #30445c;
   --tk-border-strong: #526275;
   --tk-sea: #61d4c3;
   --tk-rose: #f47d89;
@@ -111,7 +111,7 @@ body.tk-density-compact {
   --tk-violet: #b6a2ea;
   --tk-blue: #7ab8f5;
   --tk-orange: #f0a35b;
-  --tk-on-accent: #111821;
+  --tk-on-accent: #111b32;
 
   --accent-h: 171;
   --accent-s: 55%;
@@ -488,6 +488,51 @@ body :is(
   border-radius: var(--tk-radius-small);
 }
 
+/* Stage framing is the default; the reading surface stays a solid colour. */
+body:not(.tk-minimal) .workspace-tab-header-container {
+  border-bottom: 2px solid var(--tk-sea);
+}
+
+body:not(.tk-minimal) .workspace-tab-header.is-active {
+  border-radius: 9px 9px 0 0;
+  background: linear-gradient(110deg, rgba(var(--tk-sea-rgb), 0.16), transparent 80%), var(--tk-background);
+  box-shadow: inset 0 3px 0 var(--tk-rose);
+}
+
+body:not(.tk-minimal) .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+  color: var(--tk-sea);
+}
+
+body:not(.tk-minimal) .view-header {
+  border-bottom: 1px solid var(--tk-border-strong);
+  background: linear-gradient(90deg, rgba(var(--tk-sea-rgb), 0.09), transparent 65%), var(--tk-background);
+}
+
+body:not(.tk-minimal) .nav-header {
+  margin: 8px;
+  border: 1px solid var(--tk-sea);
+  border-radius: 3px 12px 3px 12px;
+  box-shadow: 3px 3px 0 rgba(var(--tk-sea-rgb), 0.14);
+  background: repeating-linear-gradient(135deg, transparent 0 5px, rgba(var(--tk-sea-rgb), 0.1) 5px 7px) right bottom / 48px 6px no-repeat;
+}
+
+body:not(.tk-minimal) .nav-file-title.is-active {
+  border-radius: 2px 10px 2px 10px;
+  box-shadow: inset 0 0 0 1px rgba(var(--tk-sea-rgb), 0.55), 3px 3px 0 rgba(var(--tk-sea-rgb), 0.08);
+  background-color: rgba(var(--tk-sea-rgb), 0.14);
+}
+
+body:not(.tk-minimal) .nav-file-title.is-active::before {
+  width: 3px;
+  background-color: var(--tk-rose);
+}
+
+body:not(.tk-minimal) .status-bar {
+  border-top: 2px solid var(--tk-sea);
+  border-inline-start: 1px solid var(--tk-sea);
+  border-radius: 10px 0 0 0;
+}
+
 /* Source: 40-editor.css */
 .markdown-source-view,
 .markdown-reading-view {
@@ -627,6 +672,33 @@ input[type="checkbox"]:checked {
 
 .markdown-rendered tr:nth-child(even) td {
   background-color: rgba(var(--tk-sea-rgb), 0.025);
+}
+
+body:not(.tk-minimal) .inline-title {
+  text-shadow: 2px 2px 0 rgba(var(--tk-sea-rgb), 0.18);
+}
+
+body:not(.tk-minimal) .markdown-rendered h1 {
+  border-bottom: 3px double var(--tk-rose);
+  padding-bottom: 0.4em;
+}
+
+body:not(.tk-minimal) .markdown-rendered h2 {
+  border-bottom: 1px solid var(--tk-sea);
+  border-inline-start: 4px solid var(--tk-sea);
+  padding-inline-start: 0.55em;
+  padding-block: 0.18em;
+  background: linear-gradient(90deg, rgba(var(--tk-sea-rgb), 0.08), transparent 75%);
+}
+
+body:not(.tk-minimal) .markdown-rendered pre {
+  border-top: 2px solid var(--tk-sea);
+  border-radius: 3px 12px 3px 12px;
+}
+
+body:not(.tk-minimal) .metadata-container {
+  border-radius: 3px 12px 3px 12px;
+  border-inline-start: 3px solid var(--tk-rose);
 }
 
 /* Source: 50-components.css */
@@ -780,50 +852,172 @@ button.mod-cta:hover {
   border-radius: var(--tk-radius-small);
 }
 
-/* Source: 60-decoration.css */
-body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content {
-  position: relative;
-  isolation: isolate;
+body:not(.tk-minimal) :is(.modal, .prompt) {
+  border: 1px solid var(--tk-sea);
+  border-top: 3px solid var(--tk-sea);
+  border-radius: 4px 18px 4px 18px;
 }
 
-body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before,
-body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after {
+body:not(.tk-minimal) .callout {
+  border-radius: 2px 14px 2px 14px;
+  border-inline-start-width: 4px;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--callout-color) 7%, transparent);
+}
+
+body:not(.tk-minimal) .callout-title {
+  border-bottom: 1px solid color-mix(in srgb, var(--callout-color) 30%, transparent);
+  padding-bottom: 0.45em;
+}
+
+body:not(.tk-minimal) .callout[data-callout="stage"] {
+  background-image: repeating-linear-gradient(135deg, transparent 0 5px, rgba(var(--tk-rose-rgb), 0.18) 5px 8px);
+  background-size: 72px 5px;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+/* Source: 60-decoration.css */
+/* Original, offline vector artwork. Build embeds the editable SVG source. */
+:root {
+  --tk-clouds: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20150%22%3E%3Ctitle%3EOriginal%20stage%20cloud%20lines%3C%2Ftitle%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%2361d4c3%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.32%22%3E%3Cpath%20d%3D%22M12%2040H126C139%2040%20139%2054%20126%2054H78C65%2054%2065%2068%2078%2068H186C199%2068%20199%2082%20186%2082H105C92%2082%2092%2096%20105%2096H224%22%2F%3E%3Cpath%20d%3D%22M26%2034H139C153%2034%20153%2060%20139%2060H85M98%2062H199C213%2062%20213%2088%20199%2088H115M128%2090H234%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22113%22%20r%3D%2213%22%2F%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22113%22%20r%3D%2221%22%2F%3E%3Cpath%20d%3D%22M40%2086V140M13%20113H67M21%2094L59%20132M21%20132L59%2094%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M179%2018L182%2026L190%2029L182%2032L179%2040L176%2032L168%2029L176%2026Z%22%20fill%3D%22%23f47d89%22%20opacity%3D%220.5%22%2F%3E%3C%2Fsvg%3E");
+}
+
+/* The frame carries the stage decoration; prose keeps a solid background. */
+body:not(.tk-minimal) .workspace-split.mod-root .workspace-leaf-content {
+  border-inline: 1px solid rgba(var(--tk-sea-rgb), 0.28);
+}
+
+body:not(.tk-minimal) .view-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -2px auto;
+  width: 86px;
+  height: 4px;
+  background: repeating-linear-gradient(135deg, var(--tk-sea) 0 4px, transparent 4px 8px);
+  pointer-events: none;
+}
+
+body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container {
+  background-image:
+    var(--tk-clouds),
+    radial-gradient(circle at center, rgba(var(--tk-sea-rgb), var(--tk-decoration-opacity)) 1px, transparent 1.5px),
+    radial-gradient(ellipse at 110% 105%, transparent 48%, rgba(var(--tk-sea-rgb), var(--tk-decoration-opacity)) 48.5% 49%, transparent 49.5% 58%, rgba(var(--tk-rose-rgb), var(--tk-decoration-opacity)) 58.5% 59%, transparent 59.5%);
+  background-size: 200px 130px, 9px 9px, 100% 190px;
+  background-repeat: no-repeat, repeat, no-repeat;
+  background-position: left bottom, center, bottom right;
+}
+
+body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+  content: "月 読 / TSUKUYOMI";
+  display: block;
+  margin: 4px 0 14px;
+  padding: 22px 8px 18px;
+  border-block: 1px solid rgba(var(--tk-sea-rgb), 0.6);
+  color: var(--tk-text);
+  font-size: 0.85em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-align: center;
+  background:
+    repeating-linear-gradient(135deg, var(--tk-rose) 0 4px, transparent 4px 8px) left bottom / 44px 4px no-repeat,
+    var(--tk-clouds) right center / 160px 100px no-repeat,
+    linear-gradient(120deg, rgba(var(--tk-sea-rgb), 0.18), transparent);
+  pointer-events: none;
+}
+
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
+  position: relative;
+  isolation: isolate;
+  overflow: auto;
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(var(--tk-sea-rgb), 0.1), transparent 65%),
+    var(--tk-background);
+}
+
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: 50% auto auto 50%;
-  width: min(34vw, 19rem);
-  aspect-ratio: 1;
-  border: 1px solid rgba(var(--tk-sea-rgb), var(--tk-decoration-opacity));
-  border-radius: 50%;
+  inset: 7% 12% 8%;
+  border: 1px solid rgba(var(--tk-sea-rgb), calc(var(--tk-decoration-opacity) * 3));
+  border-radius: 48% 48% 8px 8px;
+  background:
+    repeating-linear-gradient(135deg, rgba(var(--tk-sea-rgb), 0.45) 0 5px, transparent 5px 10px) center bottom / 100% 7px no-repeat,
+    radial-gradient(ellipse at 50% 33%, transparent 40%, rgba(var(--tk-gold-rgb), var(--tk-decoration-opacity)) 40.3% 40.6%, transparent 41% 48%, rgba(var(--tk-sea-rgb), var(--tk-decoration-opacity)) 48.3% 48.6%, transparent 49%);
+  box-shadow: 0 0 0 5px var(--tk-background), 0 0 0 6px rgba(var(--tk-sea-rgb), var(--tk-decoration-opacity));
   pointer-events: none;
-  transform: translate(-50%, -50%);
 }
 
-body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before {
-  box-shadow:
-    0 0 0 2.4rem rgba(var(--tk-violet-rgb), calc(var(--tk-decoration-opacity) * 0.42)),
-    0 0 0 5rem rgba(var(--tk-gold-rgb), calc(var(--tk-decoration-opacity) * 0.24));
-}
-
-body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after {
-  width: min(22vw, 12rem);
-  border-color: rgba(var(--tk-gold-rgb), calc(var(--tk-decoration-opacity) * 1.25));
-}
-
-body.tk-immersive .view-header::after {
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
   content: "";
   position: absolute;
-  z-index: 1;
-  inset: auto 0 -1px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(var(--tk-sea-rgb), calc(var(--tk-decoration-opacity) * 2)),
-    rgba(var(--tk-rose-rgb), calc(var(--tk-decoration-opacity) * 1.6)),
-    transparent
-  );
+  top: max(20px, calc(50% - 230px));
+  left: calc(50% - 90px);
+  width: 180px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 68% 28%, var(--tk-background) 0 47%, transparent 48%),
+    linear-gradient(145deg, var(--tk-gold), var(--tk-sea));
+  box-shadow: 0 0 0 14px rgba(var(--tk-sea-rgb), 0.06);
+  outline: 1px solid rgba(var(--tk-gold-rgb), 0.35);
+  outline-offset: 17px;
+  pointer-events: none;
+}
+
+body:not(.tk-minimal) .empty-state {
+  padding-top: 150px;
+}
+
+body:not(.tk-minimal) .empty-state-title {
+  color: var(--tk-sea);
+  letter-spacing: 0.12em;
+}
+
+/* Opt-in note layout, using native cssclasses: [tk-home]. */
+body:not(.tk-minimal) .tk-home h1 {
+  position: relative;
+  isolation: isolate;
+  min-height: 190px;
+  display: block;
+  padding: 110px clamp(110px, 30%, 180px) 24px 24px;
+  border: 1px solid var(--tk-sea);
+  border-bottom: 5px solid var(--tk-sea);
+  border-radius: 4px 36px 4px 4px;
+  color: var(--tk-text);
+  line-height: 1.35;
+  font-size: 2.25em;
+  background:
+    var(--tk-clouds) 18px 16px / 160px 100px no-repeat,
+    radial-gradient(circle at 82% 45%, transparent 65px, rgba(var(--tk-gold-rgb), 0.5) 66px 67px, transparent 68px 81px, rgba(var(--tk-sea-rgb), 0.3) 82px 83px, transparent 84px),
+    linear-gradient(120deg, rgba(var(--tk-sea-rgb), 0.08), transparent 60%), var(--tk-sidebar);
+  box-shadow: 5px 5px 0 rgba(var(--tk-rose-rgb), 0.25);
+}
+
+body:not(.tk-minimal) .tk-home h1::before {
+  content: "";
+  position: absolute;
+  inset: 16px auto auto 24px;
+  width: 76px;
+  height: 7px;
+  background: repeating-linear-gradient(135deg, var(--tk-rose) 0 5px, transparent 5px 9px);
+  pointer-events: none;
+}
+
+body:not(.tk-minimal) .tk-home h1::after {
+  content: "";
+  position: absolute;
+  right: 30px;
+  bottom: 26px;
+  width: clamp(70px, 18%, 108px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 68% 28%, var(--tk-sidebar) 0 47%, transparent 48%),
+    linear-gradient(145deg, var(--tk-gold), var(--tk-sea));
+  box-shadow: 0 0 0 10px rgba(var(--tk-sea-rgb), 0.08);
+  outline: 1px solid rgba(var(--tk-gold-rgb), 0.35);
+  outline-offset: 11px;
   pointer-events: none;
 }
 
@@ -845,6 +1039,7 @@ body.tk-immersive .view-header::after {
       border-color var(--tk-transition-duration) ease,
       box-shadow var(--tk-transition-duration) ease;
   }
+
 }
 
 /* Source: 90-mobile-print.css */
@@ -875,6 +1070,32 @@ body.tk-immersive .view-header::after {
     display: block;
     max-width: 100%;
     overflow-x: auto;
+  }
+
+  body:not(.tk-minimal) .tk-home h1 {
+    min-height: 145px;
+    padding: 66px 106px 16px 16px;
+  }
+
+  body:not(.tk-minimal) .tk-home h1::after {
+    width: 66px;
+    right: 22px;
+    bottom: 28px;
+  }
+
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before {
+    inset-inline: 5%;
+  }
+}
+
+/* Short pop-out windows keep every native empty-page action reachable. */
+@media (max-height: 560px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+    display: none;
+  }
+
+  body:not(.tk-minimal) .empty-state {
+    padding-top: 0;
   }
 }
 
@@ -912,10 +1133,27 @@ body.tk-immersive .view-header::after {
     background: #ffffff !important;
   }
 
-  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body.tk-immersive .workspace-leaf-content[data-type="empty"] .view-content::after,
-  body.tk-immersive .view-header::after {
+  body .workspace-leaf-content[data-type="empty"] .view-content::before,
+  body .workspace-leaf-content[data-type="empty"] .view-content::after,
+  body .view-header::after,
+  body .tk-home h1::before,
+  body .tk-home h1::after {
     display: none !important;
+  }
+
+  body:not(.tk-minimal) .tk-home h1 {
+    min-height: 0;
+    display: block;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+  }
+
+  body:not(.tk-minimal) .markdown-rendered :is(h1, h2) {
+    background: none;
+    border-color: #aeb7b1;
+    text-shadow: none;
   }
 
   .markdown-rendered a,

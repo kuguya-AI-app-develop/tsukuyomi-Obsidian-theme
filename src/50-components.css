@@ -147,3 +147,27 @@ button.mod-cta:hover {
   border: 1px solid var(--tk-border);
   border-radius: var(--tk-radius-small);
 }
+
+body:not(.tk-minimal) :is(.modal, .prompt) {
+  border: 1px solid var(--tk-sea);
+  border-top: 3px solid var(--tk-sea);
+  border-radius: 4px 18px 4px 18px;
+}
+
+body:not(.tk-minimal) .callout {
+  border-radius: 2px 14px 2px 14px;
+  border-inline-start-width: 4px;
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--callout-color) 7%, transparent);
+}
+
+body:not(.tk-minimal) .callout-title {
+  border-bottom: 1px solid color-mix(in srgb, var(--callout-color) 30%, transparent);
+  padding-bottom: 0.45em;
+}
+
+body:not(.tk-minimal) .callout[data-callout="stage"] {
+  background-image: repeating-linear-gradient(135deg, transparent 0 5px, rgba(var(--tk-rose-rgb), 0.18) 5px 8px);
+  background-size: 72px 5px;
+  background-position: right top;
+  background-repeat: no-repeat;
+}

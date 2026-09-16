@@ -137,3 +137,30 @@ input[type="checkbox"]:checked {
 .markdown-rendered tr:nth-child(even) td {
   background-color: rgba(var(--tk-sea-rgb), 0.025);
 }
+
+body:not(.tk-minimal) .inline-title {
+  text-shadow: 2px 2px 0 rgba(var(--tk-sea-rgb), 0.18);
+}
+
+body:not(.tk-minimal) .markdown-rendered h1 {
+  border-bottom: 3px double var(--tk-rose);
+  padding-bottom: 0.4em;
+}
+
+body:not(.tk-minimal) .markdown-rendered h2 {
+  border-bottom: 1px solid var(--tk-sea);
+  border-inline-start: 4px solid var(--tk-sea);
+  padding-inline-start: 0.55em;
+  padding-block: 0.18em;
+  background: linear-gradient(90deg, rgba(var(--tk-sea-rgb), 0.08), transparent 75%);
+}
+
+body:not(.tk-minimal) .markdown-rendered pre {
+  border-top: 2px solid var(--tk-sea);
+  border-radius: 3px 12px 3px 12px;
+}
+
+body:not(.tk-minimal) .metadata-container {
+  border-radius: 3px 12px 3px 12px;
+  border-inline-start: 3px solid var(--tk-rose);
+}

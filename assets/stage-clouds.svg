@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150">
+  <title>Original stage cloud lines</title>
+  <g fill="none" stroke="#61d4c3" stroke-width="2" stroke-linecap="round" opacity="0.32">
+    <path d="M12 40H126C139 40 139 54 126 54H78C65 54 65 68 78 68H186C199 68 199 82 186 82H105C92 82 92 96 105 96H224"/>
+    <path d="M26 34H139C153 34 153 60 139 60H85M98 62H199C213 62 213 88 199 88H115M128 90H234"/>
+    <circle cx="40" cy="113" r="13"/>
+    <circle cx="40" cy="113" r="21"/>
+    <path d="M40 86V140M13 113H67M21 94L59 132M21 132L59 94"/>
+  </g>
+  <path d="M179 18L182 26L190 29L182 32L179 40L176 32L168 29L176 26Z" fill="#f47d89" opacity="0.5"/>
+</svg>

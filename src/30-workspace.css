@@ -122,3 +122,48 @@
 .workspace-ribbon .clickable-icon {
   border-radius: var(--tk-radius-small);
 }
+
+/* Stage framing is the default; the reading surface stays a solid colour. */
+body:not(.tk-minimal) .workspace-tab-header-container {
+  border-bottom: 2px solid var(--tk-sea);
+}
+
+body:not(.tk-minimal) .workspace-tab-header.is-active {
+  border-radius: 9px 9px 0 0;
+  background: linear-gradient(110deg, rgba(var(--tk-sea-rgb), 0.16), transparent 80%), var(--tk-background);
+  box-shadow: inset 0 3px 0 var(--tk-rose);
+}
+
+body:not(.tk-minimal) .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+  color: var(--tk-sea);
+}
+
+body:not(.tk-minimal) .view-header {
+  border-bottom: 1px solid var(--tk-border-strong);
+  background: linear-gradient(90deg, rgba(var(--tk-sea-rgb), 0.09), transparent 65%), var(--tk-background);
+}
+
+body:not(.tk-minimal) .nav-header {
+  margin: 8px;
+  border: 1px solid var(--tk-sea);
+  border-radius: 3px 12px 3px 12px;
+  box-shadow: 3px 3px 0 rgba(var(--tk-sea-rgb), 0.14);
+  background: repeating-linear-gradient(135deg, transparent 0 5px, rgba(var(--tk-sea-rgb), 0.1) 5px 7px) right bottom / 48px 6px no-repeat;
+}
+
+body:not(.tk-minimal) .nav-file-title.is-active {
+  border-radius: 2px 10px 2px 10px;
+  box-shadow: inset 0 0 0 1px rgba(var(--tk-sea-rgb), 0.55), 3px 3px 0 rgba(var(--tk-sea-rgb), 0.08);
+  background-color: rgba(var(--tk-sea-rgb), 0.14);
+}
+
+body:not(.tk-minimal) .nav-file-title.is-active::before {
+  width: 3px;
+  background-color: var(--tk-rose);
+}
+
+body:not(.tk-minimal) .status-bar {
+  border-top: 2px solid var(--tk-sea);
+  border-inline-start: 1px solid var(--tk-sea);
+  border-radius: 10px 0 0 0;
+}

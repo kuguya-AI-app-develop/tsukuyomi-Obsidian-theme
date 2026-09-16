@@ -1,14 +1,16 @@
 {
   "name": "tsukuyomi-obsidian-theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "A quiet, moonlit Obsidian theme for Chinese reading and writing.",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
-    "test": "npm run build && npm run check",
+    "test": "npm run build && node --test scripts/check.test.mjs && npm run check",
     "lab": "node scripts/install-lab.mjs"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   generate,
   lexer,
@@ -8,7 +9,7 @@ import {
 } from 'css-tree';
 import { parse as parseYaml } from 'yaml';
 
-import { root, sourceFiles } from './build.mjs';
+import { root, sourceFiles, renderSource } from './build.mjs';
 
 const MIN_APP_VERSION = '1.13.7';
 const MAX_CSS_BYTES = 50 * 1024;
@@ -93,7 +94,7 @@ function validateSettings(sourceCss) {
   if (!Array.isArray(settings)) return 0;
 
   const expectedIds = [
-    'tk-immersive',
+    'tk-minimal',
     'tk-reading-width',
     'tk-density',
     'tk-decoration-opacity',
@@ -108,7 +109,7 @@ function validateSettings(sourceCss) {
     assert(typeof setting?.title === 'string' && setting.title.trim(), `${setting?.id ?? 'setting'} requires a title`);
   }
 
-  for (const id of ['tk-immersive', 'tk-enable-motion']) {
+  for (const id of ['tk-minimal', 'tk-enable-motion']) {
     const setting = byId.get(id);
     if (!setting) continue;
     assert(setting.type === 'class-toggle', `${id} must be a class-toggle`);
@@ -153,6 +154,108 @@ function validateSettings(sourceCss) {
   return settings.length;
 }
 
+// Deliberately support only the small, static SVG vocabulary used by the original
+// geometric artwork. A restrictive tokenizer keeps scripts, references and XML
+// entities out without adding a general-purpose XML dependency to the build.
+export function validateSvgDataUrl(value) {
+  const invalid = (reason) => [`SVG asset: ${reason}`];
+  if (!value.startsWith('data:image/svg+xml,')) return invalid('only percent-encoded data:image/svg+xml URLs are allowed');
+  let svg;
+  try {
+    svg = decodeURIComponent(value.slice('data:image/svg+xml,'.length));
+  } catch {
+    return invalid('invalid percent encoding');
+  }
+  if (Buffer.byteLength(svg) > 10 * 1024) return invalid('decoded artwork exceeds 10 KiB');
+  if (/[&\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(svg)) return invalid('entities and control characters are not allowed');
+
+  const attributesByElement = {
+    svg: ['xmlns', 'viewBox', 'width', 'height', 'preserveAspectRatio'],
+    g: [], path: ['d'], circle: ['cx', 'cy', 'r'], ellipse: ['cx', 'cy', 'rx', 'ry'],
+    rect: ['x', 'y', 'width', 'height', 'rx', 'ry'], line: ['x1', 'x2', 'y1', 'y2'],
+    polyline: ['points'], polygon: ['points'], title: [], desc: [],
+  };
+  const presentation = new Set(['fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin',
+    'stroke-miterlimit', 'stroke-dasharray', 'opacity', 'fill-opacity', 'stroke-opacity', 'transform', 'fill-rule']);
+  const numeric = /^[+\-\d.eE\s,]+$/;
+  const stack = [];
+  let rootSeen = false;
+  let cursor = 0;
+  const tokens = /<[^>]*>|[^<]+/gy;
+  let token;
+  while ((token = tokens.exec(svg))) {
+    cursor = tokens.lastIndex;
+    const text = token[0];
+    if (!text.startsWith('<')) {
+      if (text.trim() && !['title', 'desc'].includes(stack.at(-1))) return invalid('text is allowed only in title and desc');
+      continue;
+    }
+    const closing = /^<\/([A-Za-z]+)\s*>$/.exec(text);
+    if (closing) {
+      if (stack.pop() !== closing[1]) return invalid('mismatched element nesting');
+      continue;
+    }
+    const opening = /^<([A-Za-z]+)([\s\S]*?)(\/?)>$/.exec(text);
+    if (!opening) return invalid('unsupported XML markup');
+    const [, element, rest, selfClosing] = opening;
+    if (!Object.hasOwn(attributesByElement, element)) return invalid(`element ${element} is not allowed`);
+    if (!stack.length) {
+      if (rootSeen || element !== 'svg') return invalid('expected one SVG root');
+      rootSeen = true;
+    } else if (!['svg', 'g'].includes(stack.at(-1)) || element === 'svg') {
+      return invalid('invalid graphics nesting');
+    }
+    const seen = new Set();
+    let remaining = rest;
+    while (remaining.trim()) {
+      const attribute = /^\s+([A-Za-z][\w:-]*)\s*=\s*(?:"([^"<>]*)"|'([^'<>]*)')/.exec(remaining);
+      if (!attribute) return invalid('malformed attribute');
+      const name = attribute[1];
+      const content = attribute[2] ?? attribute[3];
+      remaining = remaining.slice(attribute[0].length);
+      if (seen.has(name)) return invalid(`duplicate attribute ${name}`);
+      seen.add(name);
+      if (!attributesByElement[element].includes(name) && !presentation.has(name)) return invalid(`attribute ${name} is not allowed`);
+      if (name === 'xmlns') {
+        if (content !== 'http://www.w3.org/2000/svg') return invalid('invalid SVG namespace');
+      } else if (name === 'fill' || name === 'stroke') {
+        if (!/^(?:none|currentColor|#[\da-f]{3,4}|#[\da-f]{6}|#[\da-f]{8})$/i.test(content)) return invalid(`invalid ${name} color`);
+      } else if (name === 'd') {
+        if (!/^[MmZzLlHhVvCcSsQqTtAa+\-\d.eE\s,]+$/.test(content)) return invalid('invalid path data');
+      } else if (name === 'transform') {
+        if (!/^(?:\s*(?:matrix|translate|scale|rotate|skewX|skewY)\([+\-\d.eE\s,]+\)\s*)+$/.test(content)) return invalid('invalid transform');
+      } else if (name === 'stroke-linecap') {
+        if (!/^(?:butt|round|square)$/.test(content)) return invalid('invalid linecap');
+      } else if (name === 'stroke-linejoin') {
+        if (!/^(?:miter|round|bevel)$/.test(content)) return invalid('invalid linejoin');
+      } else if (name === 'fill-rule') {
+        if (!/^(?:nonzero|evenodd)$/.test(content)) return invalid('invalid fill rule');
+      } else if (name === 'preserveAspectRatio') {
+        if (!/^(?:none|x(?:Min|Mid|Max)Y(?:Min|Mid|Max)(?:\s+(?:meet|slice))?)$/.test(content)) return invalid('invalid aspect ratio');
+      } else if (!numeric.test(content)) return invalid(`invalid numeric attribute ${name}`);
+    }
+    if (element === 'svg' && (!seen.has('xmlns') || !seen.has('viewBox'))) return invalid('root requires xmlns and viewBox');
+    if (!selfClosing) stack.push(element);
+  }
+  if (cursor !== svg.length || stack.length || !rootSeen) return invalid('incomplete SVG document');
+  return [];
+}
+
+export function validateMotion(ast) {
+  const errors = [];
+  walk(ast, {
+    enter(node) {
+      if (node.type === 'Atrule' && /keyframes$/i.test(node.name)) {
+        errors.push('@keyframes animations are not allowed');
+      }
+      if (node.type === 'Declaration' && /^(?:-\w+-)?animation(?:-|$)/i.test(node.property)) {
+        errors.push(`${node.property} is not allowed; theme motion must use short opt-in transitions`);
+      }
+    },
+  });
+  return errors;
+}
+
 function validateCss(ast, css) {
   let validatedValues = 0;
   let dynamicValues = 0;
@@ -165,7 +268,6 @@ function validateCss(ast, css) {
     enter(node) {
       const name = node.name.toLowerCase();
       assert(name !== 'import', '@import is not allowed');
-      assert(name !== 'keyframes' && name !== '-webkit-keyframes', '@keyframes animations are not allowed');
     },
   });
 
@@ -173,7 +275,7 @@ function validateCss(ast, css) {
     visit: 'Url',
     enter(node) {
       const value = String(node.value?.value ?? node.value ?? '').trim().replace(/^['"]|['"]$/g, '');
-      assert(!/^(?:(?:https?|ftp):|\/\/)/i.test(value), `remote URL is not allowed: ${value}`);
+      failures.push(...validateSvgDataUrl(value));
     },
   });
 
@@ -189,8 +291,6 @@ function validateCss(ast, css) {
 
       assert(property !== 'backdrop-filter' && property !== '-webkit-backdrop-filter',
         `${property} is outside the visual-effects budget`);
-      assert(property !== 'animation' && !property.startsWith('animation-'),
-        `${property} is not allowed; theme motion must use short opt-in transitions`);
 
       const editorSurface = /\.(?:cm-editor|cm-content|cm-line|cm-scroller|markdown-source-view|markdown-preview-view|markdown-reading-view)\b/.test(selector);
       const pseudoElement = /::(?:before|after)\b/.test(selector);
@@ -226,6 +326,8 @@ function validateCss(ast, css) {
       }
     },
   });
+
+  failures.push(...validateMotion(ast));
 
   for (const variable of referencedThemeVariables) {
     assert(declaredThemeVariables.has(variable), `unresolved Tsukuyomi variable ${variable}`);
@@ -589,7 +691,7 @@ async function main() {
   const [manifestText, packageText, ...sourceTexts] = await Promise.all([
     readFile(resolve(root, 'manifest.json'), 'utf8'),
     readFile(resolve(root, 'package.json'), 'utf8'),
-    ...sourceFiles.map((name) => readFile(resolve(root, 'src', name), 'utf8')),
+    ...sourceFiles.map((name) => renderSource(name)),
   ]);
   const manifest = JSON.parse(manifestText);
   const packageJson = JSON.parse(packageText);
@@ -649,7 +751,7 @@ async function main() {
   console.log(`✓ CSS: parsed; ${cssStats.validatedValues} property values checked, ${cssStats.dynamicValues} dynamic and ${cssStats.unknownValues} unknown/vendor skipped`);
   console.log(`✓ Style Settings: 1 YAML block, ${settingsCount} valid options`);
   for (const [mode, results] of contrastResults) console.log(`✓ ${mode} contrast: ${formatContrast(results)}`);
-  console.log('✓ policy: no remote imports, animations, backdrop filters, forced editor positioning, or user-font overrides');
+  console.log('✓ policy: self-contained graphics; short opt-in transitions, no keyframes or animation properties; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
 }
 
-await main();
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();

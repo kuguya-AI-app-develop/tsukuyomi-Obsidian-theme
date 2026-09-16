@@ -14,6 +14,18 @@ export const sourceFiles = [
   '90-mobile-print.css',
 ];
 
+export async function renderSource(name) {
+  let css = await readFile(resolve(root, 'src', name), 'utf8');
+  for (const [token, asset] of [['__TK_CLOUDS_SVG__', 'stage-clouds.svg']]) {
+    if (!css.includes(token)) continue;
+    const svg = (await readFile(resolve(root, 'assets', asset), 'utf8'))
+      .replace(/<!--[\s\S]*?-->/g, '').trim().replace(/>\s+</g, '><');
+    const uri = `data:image/svg+xml,${encodeURIComponent(svg).replace(/'/g, '%27')}`;
+    css = css.replaceAll(token, uri);
+  }
+  return css;
+}
+
 export async function build() {
   // Keep generated output inside this project even if a destination was replaced.
   for (const relative of ['theme.css', 'dist', 'dist/Tsukuyomi', 'dist/Tsukuyomi/theme.css', 'dist/Tsukuyomi/manifest.json']) {
@@ -30,7 +42,7 @@ export async function build() {
   const manifest = JSON.parse(manifestText);
   if (manifest.name !== 'Tsukuyomi') throw new Error('Theme name must match installation directory Tsukuyomi.');
   const sections = await Promise.all(sourceFiles.map(async (name) => {
-    const css = await readFile(resolve(root, 'src', name), 'utf8');
+    const css = await renderSource(name);
     return `/* Source: ${name} */\n${css.trim()}\n`;
   }));
   const css = `/* Tsukuyomi ${manifest.version} | Generated from src/; edit source files, then npm run build. */\n\n${sections.join('\n')}`;

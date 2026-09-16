@@ -1,12 +1,16 @@
 # Tsukuyomi（月读）
 
-Tsukuyomi 是一款受《超时空辉夜姬！》视觉氛围启发的独立、非官方 Obsidian 主题。它以中文阅读和写作为中心，提供「月读夜景」深色模式与「月白」浅色模式，并使用原创 CSS 几何月环作为可关闭的装饰。项目不包含官方图片、Logo、音乐或字体，也不加载远程资源。
+Tsukuyomi 是一款受《超时空辉夜姬！》官网视觉氛围启发的独立、非官方 Obsidian 主题。v0.2.0 将深海军蓝、海青与朱红边框、云纹、网点和抽象月轮带进工作区，提供「月读夜景」与「月白」两种模式。舞台装饰默认可见，正文仍保持清晰的纯色背景；也可以切换为简洁模式。
+
+项目不包含人物插画、官方图片、Logo、音乐或字体，不加载远程资源。
 
 主题覆盖阅读视图、实时预览与源码模式，并为工作区、文件树、属性、提示块、代码、表格、搜索、命令面板、Canvas、关系图和 Bases 提供基础配色。主题不会转换或改写笔记内容。
 
-![Tsukuyomi 深色模式，Obsidian 1.13.7 实际截图](docs/screenshots/17-final-dark.jpg)
+![Tsukuyomi v0.2.0 月读夜景](docs/screenshots/19-stage-dark-home.jpg)
 
-首版已通过自动检查和 macOS 桌面冒烟检查；完整范围与剩余项目见 [验收记录](docs/VALIDATION.md)。
+![Tsukuyomi v0.2.0 月白](docs/screenshots/20-stage-light-home.jpg)
+
+检查结果与未测项目见 [验收记录](docs/VALIDATION.md)。其中 v0.1.0 的历史验收结果不代表 v0.2.0 已通过相同检查。
 
 ## 安装
 
@@ -30,19 +34,29 @@ npm test
 npm run lab
 ```
 
-`npm ci` 安装两个仅用于开发检查的解析器：`css-tree` 和 `yaml`；主题运行时没有依赖。`npm run build` 只使用 Node.js，将 `src/` 合并为根目录 `theme.css`，并生成 `dist/Tsukuyomi/`。
+`npm ci` 安装两个仅用于开发检查的解析器：`css-tree` 和 `yaml`；主题运行时没有依赖。`npm run build` 只使用 Node.js，将 `src/` 合并为根目录 `theme.css`，把 `assets/stage-clouds.svg` 中的原创云纹内嵌为数据 URL，并生成 `dist/Tsukuyomi/`。安装时无需另行复制图片。
 
 `npm run lab` 只会构建并安装到项目内固定的 `lab/Tsukuyomi Lab/`，不接受其他库路径。执行后，在 Obsidian 中通过“打开文件夹作为库”打开这个现有实验库，再从「设置 → 外观」选择 `Tsukuyomi`。
 
 ## 可选设置
 
-主题无需插件即可使用。安装社区插件 Style Settings 后，可以调整以下五项：
+主题无需插件即可显示完整舞台风格。安装社区插件 Style Settings 后，可以调整以下五项：
 
-- `tk-immersive`：沉浸装饰，默认关闭。
+- `tk-minimal`：简洁模式，默认关闭；启用后隐藏舞台装饰。
 - `tk-reading-width`：正文最大宽度，默认 `44rem`。
 - `tk-density`：标准或紧凑界面密度。
-- `tk-decoration-opacity`：几何装饰强度。
-- `tk-enable-motion`：短暂界面过渡，默认关闭并尊重系统的减少动态效果设置。
+- `tk-decoration-opacity`：侧栏网点与空白页月环的透明度，默认 `0.12`；其他装饰通过简洁模式关闭。
+- `tk-enable-motion`：默认关闭。启用后提供 `140ms` 的颜色、边框和阴影过渡；系统开启减少动态效果时不播放。
+
+空白标签页默认显示抽象月轮。要在一篇笔记的阅读视图中使用带月轮、云纹与斜线的首页标题，将以下属性加入笔记；普通笔记无需添加：
+
+```yaml
+---
+cssclasses: [tk-home]
+---
+```
+
+这一首页布局装饰阅读视图中的一级标题，不改写笔记内容或编辑器结构。可直接在实验库的「00-欢迎来到月读」中查看。
 
 另提供两类原创提示块：`[!tsukuyomi]` 和 `[!stage]`。
 
