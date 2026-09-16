@@ -45,6 +45,7 @@
     align-self: center;
   }
 
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
@@ -65,6 +66,7 @@
     align-self: center;
   }
 
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
@@ -129,6 +131,7 @@
   body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
   body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after,
   body .view-header::after,
+  body .workspace-leaf-content[data-type="empty"]::before,
   body .workspace-leaf-content[data-type="empty"] .view-content::before,
   body .workspace-leaf-content[data-type="empty"] .view-content::after,
   body .workspace-leaf-content[data-type="empty"] .empty-state::before,

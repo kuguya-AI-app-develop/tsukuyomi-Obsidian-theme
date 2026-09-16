@@ -4,6 +4,9 @@
   --tk-city-art: url("__TK_CITY_SVG__");
   --tk-gate-art: url("__TK_GATE_SVG__");
   --tk-fish-art: url("__TK_FISH_SVG__");
+  --tk-fish-swimming-art: url("__TK_FISH_SWIMMING_SVG__");
+  --tk-mascot-art: url("__TK_MASCOTS_SVG__");
+  --tk-mascot-living-art: url("__TK_MASCOTS_LIVING_SVG__");
   --tk-mirror-art: url("__TK_MIRROR_SVG__");
 }
 
@@ -49,8 +52,23 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-fi
 }
 
 .workspace-leaf-content[data-type="empty"] {
+  position: relative;
   container: tk-empty / size;
   --tk-stage-height: clamp(160px, 24vh, 240px);
+}
+
+/* Companions occupy upper whitespace, independently of the city below. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: var(--header-height, 40px) 0 0;
+  max-width: 1200px;
+  max-height: 800px;
+  margin: auto;
+  background: var(--tk-mascot-art) center / contain no-repeat;
+  opacity: var(--tk-decoration-opacity);
+  pointer-events: none;
 }
 
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
@@ -99,7 +117,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::a
   background: var(--tk-mirror-art) center / contain no-repeat;
 }
 
-/* City stays fixed at the bottom; fish move in their own bounded layer. */
+/* City stays fixed; fish pass in their own lower side lanes. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
   content: "";
   position: absolute;
@@ -115,8 +133,8 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
   content: "";
   position: absolute;
   z-index: 1;
-  /* Leave room for the full +/-32px, +6px travel inside the scroll area. */
-  inset: auto 36px 10px;
+  /* SVG routes stay inside the image bounds; this box never translates. */
+  inset: auto 0 0;
   height: min(32%, 320px);
   background: var(--tk-fish-art) center bottom / contain no-repeat;
   opacity: var(--tk-decoration-opacity);
@@ -137,11 +155,6 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
 }
 
 /* Visible motion belongs only to decorative empty-page elements. */
-@keyframes tk-fish-drift {
-  from { transform: translate3d(-32px, 6px, 0); }
-  to { transform: translate3d(32px, -8px, 0); }
-}
-
 @keyframes tk-mirror-breathe {
   0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
   50% { opacity: var(--tk-decoration-opacity); }
@@ -155,8 +168,16 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
 
 /* Keep playing in a visible pane even while the user focuses another app. */
 @media screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px) {
-  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before {
-    animation: tk-fish-drift 8s ease-in-out infinite alternate;
+  /* A static image is the default; no embedded timeline is selected in
+     reduced-motion, inactive, narrow or short panes. */
+  @container tk-empty (min-width: 601px) and (min-height: 561px) {
+    body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before {
+      background-image: var(--tk-fish-swimming-art);
+    }
+
+    body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"]::before {
+      background-image: var(--tk-mascot-living-art);
+    }
   }
 
   body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content .empty-state::after {

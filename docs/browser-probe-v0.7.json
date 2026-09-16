@@ -1,0 +1,609 @@
+{
+  "note": "Chromium fixture with final generated CSS including four companions, not native Obsidian DOM. Time-button samples use final passing-fish SVG. Native screenshots are separate.",
+  "nativeFrameIntervalMs": 744,
+  "css": [
+    {
+      "variant": "active",
+      "actions": {
+        "bottom": 616.390625,
+        "height": 138,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 478.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 478.390625
+      },
+      "fish": {
+        "animated": true,
+        "animation": "none",
+        "content": "\"\"",
+        "display": "block",
+        "imagePresent": true
+      },
+      "mascots": {
+        "animated": true,
+        "content": "\"\"",
+        "display": "block",
+        "height": "680px",
+        "imagePresent": true,
+        "pointerEvents": "none",
+        "width": "1200px"
+      },
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "variant": "dark",
+      "actions": {
+        "bottom": 616.390625,
+        "height": 138,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 478.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 478.390625
+      },
+      "fish": {
+        "animated": true,
+        "animation": "none",
+        "content": "\"\"",
+        "display": "block",
+        "imagePresent": true
+      },
+      "mascots": {
+        "animated": true,
+        "content": "\"\"",
+        "display": "block",
+        "height": "680px",
+        "imagePresent": true,
+        "pointerEvents": "none",
+        "width": "1200px"
+      },
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "variant": "static",
+      "actions": {
+        "bottom": 616.390625,
+        "height": 138,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 478.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 478.390625
+      },
+      "fish": {
+        "animated": false,
+        "animation": "none",
+        "content": "\"\"",
+        "display": "block",
+        "imagePresent": true
+      },
+      "mascots": {
+        "animated": false,
+        "content": "\"\"",
+        "display": "block",
+        "height": "680px",
+        "imagePresent": true,
+        "pointerEvents": "none",
+        "width": "1200px"
+      },
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "variant": "minimal",
+      "actions": {
+        "bottom": 420,
+        "height": 120,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 300,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 300
+      },
+      "fish": {
+        "animated": false,
+        "animation": "none",
+        "content": "none",
+        "display": "inline",
+        "imagePresent": false
+      },
+      "mascots": {
+        "animated": false,
+        "content": "none",
+        "display": "inline",
+        "height": "auto",
+        "imagePresent": false,
+        "pointerEvents": "auto",
+        "width": "auto"
+      },
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "variant": "inactive",
+      "actions": {
+        "bottom": 616.390625,
+        "height": 138,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 478.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 478.390625
+      },
+      "fish": {
+        "animated": false,
+        "animation": "none",
+        "content": "\"\"",
+        "display": "block",
+        "imagePresent": true
+      },
+      "mascots": {
+        "animated": false,
+        "content": "\"\"",
+        "display": "block",
+        "height": "680px",
+        "imagePresent": true,
+        "pointerEvents": "none",
+        "width": "1200px"
+      },
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "variant": "narrow",
+      "actions": {
+        "bottom": 420,
+        "height": 120,
+        "left": 185.578125,
+        "right": 314.40625,
+        "top": 300,
+        "width": 128.828125,
+        "x": 185.578125,
+        "y": 300
+      },
+      "fish": {
+        "animated": false,
+        "animation": "none",
+        "content": "\"\"",
+        "display": "none",
+        "imagePresent": true
+      },
+      "mascots": {
+        "animated": false,
+        "content": "\"\"",
+        "display": "none",
+        "height": "auto",
+        "imagePresent": true,
+        "pointerEvents": "none",
+        "width": "auto"
+      },
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 500,
+        "top": 0,
+        "width": 500,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "variant": "short",
+      "actions": {
+        "bottom": 190,
+        "height": 120,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 70,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 70
+      },
+      "fish": {
+        "animated": false,
+        "animation": "none",
+        "content": "\"\"",
+        "display": "none",
+        "imagePresent": true
+      },
+      "mascots": {
+        "animated": false,
+        "content": "\"\"",
+        "display": "none",
+        "height": "auto",
+        "imagePresent": true,
+        "pointerEvents": "none",
+        "width": "auto"
+      },
+      "pane": {
+        "bottom": 260,
+        "height": 260,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "fishPoses": [
+    {
+      "phase": "2 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 17.2222, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "1",
+          "poseHash": "8a56ca642fa20c5626eab8b894dd5d9cf9e1411591430b47b266472aca185c03"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -27.2727, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "1",
+          "poseHash": "3e46fd0afb09840c4662cb0dd98308efdbc1c87f87a158393311a1c3d52ae82f"
+        }
+      ]
+    },
+    {
+      "phase": "2.3 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 13.0556, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "1",
+          "poseHash": "4d255ad9da61dec917a9de6038a487fa0f2380a0d42508feee98d8199b2932ed"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -23.8636, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "1",
+          "poseHash": "831f647345551f4d2ff85e72aa64defc5bae2e09e3275087c7fe20cf4bdc4045"
+        }
+      ]
+    },
+    {
+      "phase": "2.6 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 8.8889, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "1",
+          "poseHash": "7c4bed5cb26403ba47ff530b7876fa09ae5582d960f19a4fae04dbb9a6a10c29"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -20.4546, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "1",
+          "poseHash": "5216a266408d4bd15a2e7332ea51ccdcc61dbde2b130a13684c7a8de3c6ad05e"
+        }
+      ]
+    },
+    {
+      "phase": "6.84 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -50, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "0",
+          "poseHash": "5ae65ccc52900fe72763106f19906813c413fe912d1f62d73c3483828c3f7945"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 27.7273, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "0.863636",
+          "poseHash": "7a2bee8ddc0dcfa810e8157cdad8d843fe069e650e0257b56e03fb18cb8010e0"
+        }
+      ]
+    },
+    {
+      "phase": "7.92 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -55, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "0",
+          "poseHash": "41b6974caf8cb65ac4a47732005038238f5e3fb8be46e2b82a2263f11de3734b"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 40, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "0.25",
+          "poseHash": "8688d662e71903743151db9258a2cacdc29e10dbb7f7d9af664e7764b890c4ff"
+        }
+      ]
+    },
+    {
+      "phase": "8.64 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -55, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "0",
+          "poseHash": "5675686293991368be050bea2cc1f8c28c3c750965858bf4eedbec867164f5e7"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 48.1818, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "0",
+          "poseHash": "0bc4351489aab06e40b807bf4c097c8e794e65eade002ba30acee13086a6175f"
+        }
+      ]
+    },
+    {
+      "phase": "10.08 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -35.9524, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "0.999999",
+          "poseHash": "891eb4e1f1d985ec878c289c2164a7f2368e88fc606a50835ee0529ba2d74ab3"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 50, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.454544, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "0",
+          "poseHash": "c1bc63718f2d1c8592862a9e7597d27947c2abbca80993c4b38e39a57117316d"
+        }
+      ]
+    },
+    {
+      "phase": "12 s",
+      "fish": [
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -10.5555, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(-1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, -74.5, -20)"
+            }
+          ],
+          "opacity": "1",
+          "poseHash": "373644aefc008a01a3f536d7fe78a4d0635c3ee872fa844fb7be8ff6824e3db2"
+        },
+        {
+          "groups": [
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 34.4156, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": "1",
+              "transform": "matrix(0.82, 0, 0, 0.82, -61.09, -16.4)"
+            }
+          ],
+          "opacity": "0.757576",
+          "poseHash": "cbc3a82f92720f3b475006d6679ac4231a902db3f0eb8acdd209578e619522c9"
+        }
+      ]
+    }
+  ]
+}

@@ -12,7 +12,8 @@ import { parse as parseYaml } from 'yaml';
 import { root, sourceFiles, renderSource } from './build.mjs';
 
 const MIN_APP_VERSION = '1.13.7';
-const MAX_CSS_BYTES = 50 * 1024;
+const MAX_CSS_BYTES = 80 * 1024;
+const ANIMATED_ASSET_VARIABLES = ['--tk-mascot-living-art', '--tk-fish-swimming-art'];
 const failures = [];
 
 function assert(condition, message) {
@@ -154,10 +155,97 @@ function validateSettings(sourceCss) {
   return settings.length;
 }
 
-// Deliberately support only the small, static SVG vocabulary used by the original
-// geometric artwork. A restrictive tokenizer keeps scripts, references and XML
-// entities out without adding a general-purpose XML dependency to the build.
-export function validateSvgDataUrl(value) {
+function svgNumberList(value) {
+  const matches = [...String(value ?? '').matchAll(/[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?/g)];
+  let end = 0;
+  const numbers = [];
+  for (const match of matches) {
+    if (!/^[\s,]*$/.test(value.slice(end, match.index))) return null;
+    const number = Number(match[0]);
+    if (!Number.isFinite(number)) return null;
+    numbers.push(number);
+    end = match.index + match[0].length;
+  }
+  return numbers.length && /^[\s,]*$/.test(value.slice(end)) ? numbers : null;
+}
+
+function svgPathShape(value) {
+  if (!value || !/^[Mm]/.test(value.trim())) return null;
+  const segments = [...value.matchAll(/([MmZzLlHhVvCcSsQqTtAa])([^MmZzLlHhVvCcSsQqTtAa]*)/g)];
+  const arity = { m: 2, z: 0, l: 2, h: 1, v: 1, c: 6, s: 4, q: 4, t: 2, a: 7 };
+  const shape = [];
+  for (const [, command, parameters] of segments) {
+    const count = arity[command.toLowerCase()];
+    const numbers = svgNumberList(parameters);
+    if (count === 0 ? parameters.trim() : !numbers || numbers.length % count) return null;
+    if (command.toLowerCase() === 'a') {
+      for (let index = 0; index < numbers.length; index += 7) {
+        if (numbers[index] < 0 || numbers[index + 1] < 0
+          || ![0, 1].includes(numbers[index + 3]) || ![0, 1].includes(numbers[index + 4])) return null;
+      }
+    }
+    shape.push(`${command}:${numbers?.length ?? 0}`);
+  }
+  return shape.length ? shape.join('|') : null;
+}
+
+function validateSvgAnimation(element, attributes, parent) {
+  const clock = (value) => {
+    const match = /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(ms|s)$/.exec(value ?? '');
+    return match ? Number(match[1]) * (match[2] === 'ms' ? 0.001 : 1) : NaN;
+  };
+  const duration = clock(attributes.dur);
+  if (!Number.isFinite(duration) || duration < 0.5 || duration > 60) return 'animation duration must be 0.5–60 seconds';
+  if (attributes.begin !== undefined && (!Number.isFinite(clock(attributes.begin)) || Math.abs(clock(attributes.begin)) > 60)) {
+    return 'animation begin must be a numeric clock offset within 60 seconds';
+  }
+  if (attributes.repeatCount !== 'indefinite') return 'animation repeatCount must be indefinite';
+  const mode = attributes.calcMode ?? 'linear';
+  if (!['linear', 'spline'].includes(mode)) return 'animation calcMode must be linear or spline';
+  const values = (attributes.values ?? '').split(';').map((value) => value.trim());
+  if (values.length < 2 || values.length > 64 || values.some((value) => !value)) return 'animation needs 2–64 nonempty values';
+  if (attributes.keyTimes !== undefined) {
+    const times = attributes.keyTimes.split(';').map((part) => svgNumberList(part));
+    if (times.length !== values.length || times.some((part) => !part || part.length !== 1)
+      || times[0][0] !== 0 || times.at(-1)[0] !== 1
+      || times.some((part, index) => part[0] < 0 || part[0] > 1 || index > 0 && part[0] <= times[index - 1][0])) {
+      return 'animation keyTimes must match values and increase from 0 to 1';
+    }
+  }
+  if (mode === 'spline') {
+    const splines = (attributes.keySplines ?? '').split(';').map((part) => svgNumberList(part));
+    if (!attributes.keyTimes || splines.length !== values.length - 1
+      || splines.some((part) => !part || part.length !== 4 || part.some((number) => number < 0 || number > 1))) {
+      return 'spline animation needs matching keyTimes and four bounded control values per interval';
+    }
+  } else if (attributes.keySplines !== undefined) return 'keySplines requires spline calcMode';
+
+  if (element === 'animate') {
+    if (parent?.element === 'g' && attributes.attributeName === 'opacity') {
+      if (values.some((value) => {
+        const numbers = svgNumberList(value);
+        return !numbers || numbers.length !== 1 || numbers[0] < 0 || numbers[0] > 1;
+      })) return 'group opacity frames must be finite scalars from 0 to 1';
+    } else {
+      if (parent?.element !== 'path' || attributes.attributeName !== 'd') return 'animate may only morph its parent path d or fade its parent group opacity';
+      const shape = svgPathShape(parent.attributes.d);
+      if (!shape || values.some((value) => svgPathShape(value) !== shape)) return 'path morph values must preserve commands and parameter counts';
+    }
+  } else {
+    if (parent?.element !== 'g' || attributes.attributeName !== 'transform'
+      || !['translate', 'rotate', 'scale'].includes(attributes.type)) return 'animateTransform may only translate, rotate or scale its parent group';
+    const frames = values.map(svgNumberList);
+    const counts = attributes.type === 'rotate' ? [1, 3] : [1, 2];
+    if (frames.some((frame) => !frame || !counts.includes(frame.length) || frame.length !== frames[0]?.length)) {
+      return 'transform values need finite numbers and consistent parameter counts';
+    }
+  }
+  return null;
+}
+
+// The default is static artwork. Only named scene assets opt into this small
+// SMIL vocabulary; neither mode permits references, scripts or XML entities.
+export function validateSvgDataUrl(value, { allowAnimation = false } = {}) {
   const invalid = (reason) => [`SVG asset: ${reason}`];
   if (!value.startsWith('data:image/svg+xml,')) return invalid('only percent-encoded data:image/svg+xml URLs are allowed');
   let svg;
@@ -174,6 +262,8 @@ export function validateSvgDataUrl(value) {
     g: [], path: ['d'], circle: ['cx', 'cy', 'r'], ellipse: ['cx', 'cy', 'rx', 'ry'],
     rect: ['x', 'y', 'width', 'height', 'rx', 'ry'], line: ['x1', 'x2', 'y1', 'y2'],
     polyline: ['points'], polygon: ['points'], title: [], desc: [],
+    animate: ['attributeName', 'dur', 'begin', 'repeatCount', 'values', 'keyTimes', 'keySplines', 'calcMode'],
+    animateTransform: ['attributeName', 'type', 'dur', 'begin', 'repeatCount', 'values', 'keyTimes', 'keySplines', 'calcMode'],
   };
   const presentation = new Set(['fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin',
     'stroke-miterlimit', 'stroke-dasharray', 'opacity', 'fill-opacity', 'stroke-opacity', 'transform', 'fill-rule']);
@@ -187,25 +277,29 @@ export function validateSvgDataUrl(value) {
     cursor = tokens.lastIndex;
     const text = token[0];
     if (!text.startsWith('<')) {
-      if (text.trim() && !['title', 'desc'].includes(stack.at(-1))) return invalid('text is allowed only in title and desc');
+      if (text.trim() && !['title', 'desc'].includes(stack.at(-1)?.element)) return invalid('text is allowed only in title and desc');
       continue;
     }
     const closing = /^<\/([A-Za-z]+)\s*>$/.exec(text);
     if (closing) {
-      if (stack.pop() !== closing[1]) return invalid('mismatched element nesting');
+      if (stack.pop()?.element !== closing[1]) return invalid('mismatched element nesting');
       continue;
     }
     const opening = /^<([A-Za-z]+)([\s\S]*?)(\/?)>$/.exec(text);
     if (!opening) return invalid('unsupported XML markup');
     const [, element, rest, selfClosing] = opening;
     if (!Object.hasOwn(attributesByElement, element)) return invalid(`element ${element} is not allowed`);
+    const animated = element === 'animate' || element === 'animateTransform';
+    if (animated && !allowAnimation) return invalid('animation is not allowed in static artwork');
+    const parent = stack.at(-1);
     if (!stack.length) {
       if (rootSeen || element !== 'svg') return invalid('expected one SVG root');
       rootSeen = true;
-    } else if (!['svg', 'g'].includes(stack.at(-1)) || element === 'svg') {
+    } else if ((!animated && !['svg', 'g'].includes(parent.element)) || element === 'svg') {
       return invalid('invalid graphics nesting');
     }
     const seen = new Set();
+    const attributes = {};
     let remaining = rest;
     while (remaining.trim()) {
       const attribute = /^\s+([A-Za-z][\w:-]*)\s*=\s*(?:"([^"<>]*)"|'([^'<>]*)')/.exec(remaining);
@@ -215,7 +309,9 @@ export function validateSvgDataUrl(value) {
       remaining = remaining.slice(attribute[0].length);
       if (seen.has(name)) return invalid(`duplicate attribute ${name}`);
       seen.add(name);
-      if (!attributesByElement[element].includes(name) && !presentation.has(name)) return invalid(`attribute ${name} is not allowed`);
+      attributes[name] = content;
+      if (!attributesByElement[element].includes(name) && (animated || !presentation.has(name))) return invalid(`attribute ${name} is not allowed`);
+      if (animated) continue;
       if (name === 'xmlns') {
         if (content !== 'http://www.w3.org/2000/svg') return invalid('invalid SVG namespace');
       } else if (name === 'fill' || name === 'stroke') {
@@ -235,7 +331,11 @@ export function validateSvgDataUrl(value) {
       } else if (!numeric.test(content)) return invalid(`invalid numeric attribute ${name}`);
     }
     if (element === 'svg' && (!seen.has('xmlns') || !seen.has('viewBox'))) return invalid('root requires xmlns and viewBox');
-    if (!selfClosing) stack.push(element);
+    if (animated) {
+      const error = validateSvgAnimation(element, attributes, parent);
+      if (error) return invalid(error);
+    }
+    if (!selfClosing) stack.push({ element, attributes });
   }
   if (cursor !== svg.length || stack.length || !rootSeen) return invalid('incomplete SVG document');
   return [];
@@ -245,7 +345,6 @@ export function validateMotion(ast) {
   const errors = [];
   const scenePrefix = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] ';
   const contracts = new Map([
-    ['tk-fish-drift', { value: 'tk-fish-drift 8s ease-in-out infinite alternate', targets: ['.view-content::before'] }],
     ['tk-mirror-breathe', { value: 'tk-mirror-breathe 5s ease-in-out infinite', targets: ['.view-content .empty-state::after'] }],
     ['tk-water-ripple', { value: 'tk-water-ripple 4s ease-out infinite', targets: ['.view-content .empty-state-container::after'] }],
   ]);
@@ -363,6 +462,51 @@ export function validateMotion(ast) {
   return errors;
 }
 
+export function validateAnimatedAssetUsage(ast) {
+  const errors = [];
+  const scene = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"]';
+  const targets = new Map([
+    ['--tk-mascot-living-art', `${scene}::before`],
+    ['--tk-fish-swimming-art', `${scene} .view-content::before`],
+  ]);
+  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:601px)', '(min-height:561px)'];
+  const ancestors = [];
+  const counts = new Map(ANIMATED_ASSET_VARIABLES.map((variable) => [variable, { definitions: 0, uses: 0 }]));
+  walk(ast, {
+    enter(node) {
+      if (node.type === 'Atrule') { ancestors.push(node); return; }
+      if (node.type !== 'Declaration') return;
+      const value = generate(node.value).trim();
+      const selector = this.rule?.prelude ? generate(this.rule.prelude) : '';
+      if (counts.has(node.property)) {
+        counts.get(node.property).definitions += 1;
+        const valueAst = node.value.type === 'Raw' ? parseCss(value, { context: 'value' }) : node.value;
+        if (selector !== ':root' || ancestors.length || valueAst.children?.size !== 1 || valueAst.children.first?.type !== 'Url') {
+          errors.push(`animated scene asset ${node.property} must be a single URL defined once at :root`);
+        }
+      }
+      const referenced = ANIMATED_ASSET_VARIABLES.filter((variable) => new RegExp(`var\\(\\s*${variable}(?=\\s*[,\\)])`, 'i').test(value));
+      if (!referenced.length) return;
+      for (const variable of referenced) counts.get(variable).uses += 1;
+      const media = ancestors.filter((ancestor) => ancestor.name === 'media')
+        .flatMap((ancestor) => generate(ancestor.prelude).split(/\s+and\s+/).map((term) => term.replace(/\s+/g, '')));
+      const containers = ancestors.filter((ancestor) => ancestor.name === 'container')
+        .map((ancestor) => generate(ancestor.prelude).replace(/\s+/g, ''));
+      if (referenced.length !== 1 || node.property !== 'background-image'
+        || value !== `var(${referenced[0]})` || selector !== targets.get(referenced[0])
+        || !requiredMedia.every((term) => media.includes(term)) || media.some((term) => !requiredMedia.includes(term))
+        || !containers.includes('tk-empty(min-width:601px)and(min-height:561px)')) {
+        errors.push('animated scene assets require their own active empty mascot/fish layer, both opt-outs, reduced-motion, viewport and pane-size guards; aliases and combined layers are not allowed');
+      }
+    },
+    leave(node) { if (node.type === 'Atrule') ancestors.pop(); },
+  });
+  for (const [variable, { definitions, uses }] of counts) {
+    if (definitions !== 1 || uses !== 1) errors.push(`animated scene asset ${variable} requires exactly one root definition and one guarded use`);
+  }
+  return errors;
+}
+
 // A regression guard for this theme's explicit reading selectors, not a full
 // cascade or accessibility analysis. Solid code/table/callout fills remain valid;
 // decorative images and generated artwork belong outside note content.
@@ -441,7 +585,7 @@ function validateCss(ast, css) {
     visit: 'Url',
     enter(node) {
       const value = String(node.value?.value ?? node.value ?? '').trim().replace(/^['"]|['"]$/g, '');
-      failures.push(...validateSvgDataUrl(value));
+      failures.push(...validateSvgDataUrl(value, { allowAnimation: ANIMATED_ASSET_VARIABLES.includes(this.declaration?.property) }));
     },
   });
 
@@ -494,6 +638,7 @@ function validateCss(ast, css) {
   });
 
   failures.push(...validateMotion(ast));
+  failures.push(...validateAnimatedAssetUsage(ast));
   failures.push(...validateReadingProtection(ast));
 
   for (const variable of referencedThemeVariables) {
@@ -501,7 +646,7 @@ function validateCss(ast, css) {
   }
 
   assert(Buffer.byteLength(css) < MAX_CSS_BYTES,
-    `theme.css must stay below 50 KiB (found ${(Buffer.byteLength(css) / 1024).toFixed(1)} KiB)`);
+    `theme.css must stay below ${MAX_CSS_BYTES / 1024} KiB (found ${(Buffer.byteLength(css) / 1024).toFixed(1)} KiB)`);
   return { validatedValues, dynamicValues, unknownValues };
 }
 
@@ -973,7 +1118,7 @@ async function main() {
   console.log(`✓ Style Settings: 1 YAML block, ${settingsCount} valid options`);
   for (const [mode, results] of contrastResults) console.log(`✓ ${mode} contrast: ${formatContrast(results)}`);
   console.log('✓ reading guard: explicit note selectors checked for image backgrounds, text shadows and generated decoration');
-  console.log('✓ policy: self-contained graphics; three guarded empty-scene animations and short UI transitions; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
+  console.log('✓ policy: self-contained graphics; guarded scene SVG animations, two empty-scene CSS animations and short UI transitions; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();

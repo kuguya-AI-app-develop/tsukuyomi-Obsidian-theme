@@ -1,0 +1,8 @@
+// Pink companion redrawn from the user's reference; its canonical name is
+// unconfirmed. Coordinates belong to the shared 1200 × 800 empty-page canvas.
+export function renderMendako({ animated = false } = {}) {
+  const float = animated
+    ? '<animateTransform attributeName="transform" type="translate" values="0 0;0 -2;0 0" keyTimes="0;.5;1" dur="6s" repeatCount="indefinite" calcMode="linear"/>'
+    : '';
+  return `<g stroke="#d99bbd" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">${float}<path d="M581 107Q579 102 575 98Q572 93 576 93Q581 93 585 101L588 104Q600 99 612 104L619 99Q622 95 625 97Q628 100 622 104L619 108Q623 117 624 124Q625 130 630 133Q634 135 632 138Q630 140 625 137Q626 143 621 145Q618 146 615 141Q612 140 610 145Q608 149 604 145L600 142Q597 148 592 148Q589 147 587 142Q583 140 580 143Q575 145 575 139Q569 140 567 136Q567 133 573 131Q578 127 579 120Q579 112 581 107Z" fill="#f4beda"/><path d="M576 96L583 105Q581 106 580 105ZM619 102L624 98Q624 101 621 103Z" fill="#d998bd" stroke="none"/><path d="M587 107Q600 101 612 108" fill="none" stroke="#ffe3ef" stroke-width="2"/><path d="M573 133Q578 133 581 138Q584 136 588 139L592 145Q596 142 600 139Q605 142 608 144Q611 136 616 138L621 142Q623 137 627 135L625 137Q626 143 621 145Q618 146 615 141Q612 140 610 145Q608 149 604 145L600 142Q597 148 592 148Q589 147 587 142Q583 140 580 143Q575 145 575 139L570 137Z" fill="#e99dbf" stroke="none"/><g fill="#715483" stroke="none"><ellipse cx="591" cy="114" rx="2.7" ry="3.3"/><ellipse cx="609" cy="113" rx="2.8" ry="3.2"/></g><g fill="#fff0f6" stroke="none"><circle cx="590.3" cy="112.9" r=".8"/><circle cx="608.2" cy="111.9" r=".8"/></g></g>`;
+}

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { parse } from 'css-tree';
-import { validateSvgDataUrl, validateMotion, validateReadingProtection, validateSignageContrast } from './check.mjs';
+import { validateSvgDataUrl, validateMotion, validateAnimatedAssetUsage, validateReadingProtection, validateSignageContrast } from './check.mjs';
 
 const svgUrl = (body, attributes = '') => `data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"${attributes}>${body}</svg>`,
@@ -10,10 +10,24 @@ const checkMotion = (css) => validateMotion(parse(css));
 const checkReading = (css) => validateReadingProtection(parse(css));
 const sceneMedia = 'screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px)';
 const sceneScope = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"]';
-const fishFrames = '@keyframes tk-fish-drift { from { transform: translateX(-32px); } to { transform: translateX(32px); } }';
-const fishAnimation = 'animation: tk-fish-drift 8s ease-in-out infinite alternate';
-const fishScene = (selector = `${sceneScope} .view-content::before`, media = sceneMedia, declaration = fishAnimation) =>
-  `${fishFrames} @media ${media} { ${selector} { ${declaration}; } }`;
+const mirrorFrames = '@keyframes tk-mirror-breathe { from { opacity: .4; } to { opacity: .8; } }';
+const mirrorAnimation = 'animation: tk-mirror-breathe 5s ease-in-out infinite';
+const mirrorTarget = `${sceneScope} .view-content .empty-state::after`;
+const mirrorScene = (selector = mirrorTarget, media = sceneMedia, declaration = mirrorAnimation) =>
+  `${mirrorFrames} @media ${media} { ${selector} { ${declaration}; } }`;
+const morph = '<path d="M0 0Q5 4 10 0L12 4Z"><animate attributeName="d" dur="1s" repeatCount="indefinite" calcMode="linear" keyTimes="0;1" values="M0 0Q5 4 10 0L12 4Z;M0 0Q5 -4 10 0L12 -4Z"/></path>';
+const checkAnimatedSvg = (body) => validateSvgDataUrl(svgUrl(body), { allowAnimation: true });
+const fishImageDeclaration = 'background-image: var(--tk-fish-swimming-art)';
+const mascotImageDeclaration = 'background-image: var(--tk-mascot-living-art)';
+const fishAssetCss = (declaration = fishImageDeclaration, selector = `${sceneScope} .view-content::before`) => `
+  :root { --tk-fish-swimming-art: url("${svgUrl(morph)}"); --tk-mascot-living-art: url("${svgUrl(morph)}"); }
+  @media ${sceneMedia} {
+    @container tk-empty (min-width: 601px) and (min-height: 561px) {
+      ${sceneScope}::before { ${mascotImageDeclaration}; }
+      ${selector} { ${declaration}; }
+    }
+  }`;
+const checkFishUsage = (css) => validateAnimatedAssetUsage(parse(css, { parseCustomProperty: true }));
 
 test('SVG accepts static, self-contained artwork and descriptive text', () => {
   assert.deepEqual(validateSvgDataUrl(svgUrl('<title>Moon and clouds</title><desc>Original geometric artwork.</desc><g fill="#caffed" transform="translate(1 2)"><path d="M0 0L10 10Z"/><circle cx="50" cy="50" r="12" stroke="#fff" stroke-width="2"/></g>')), []);
@@ -45,6 +59,102 @@ test('SVG rejects other URL types, invalid encodings and oversized artwork', () 
   assert.ok(validateSvgDataUrl(svgUrl(`<desc>${'a'.repeat(10 * 1024)}</desc>`)).length);
 });
 
+test('SVG animation requires explicit opt-in and permits bounded path morphs and group transforms', () => {
+  assert.ok(validateSvgDataUrl(svgUrl(morph)).length);
+  assert.deepEqual(checkAnimatedSvg(morph), []);
+  assert.deepEqual(checkAnimatedSvg(morph.replace('dur="1s"', 'dur="500ms" begin="-0.5s"')), []);
+  assert.deepEqual(checkAnimatedSvg(morph.replace('calcMode="linear"', 'calcMode="spline" keySplines=".25 .1 .25 1"')), []);
+  for (const [type, values] of [['translate', '0 0;100 10'], ['rotate', '-10 20 30;10 20 30'], ['scale', '1 1;0 1;-1 1']]) {
+    assert.deepEqual(checkAnimatedSvg(`<g>${morph}<animateTransform attributeName="transform" type="${type}" dur="20s" repeatCount="indefinite" values="${values}"/></g>`), []);
+  }
+  assert.deepEqual(checkAnimatedSvg(`<g opacity="0">${morph}<animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.1;.8;1"/></g>`), []);
+});
+
+test('SVG animation rejects event clocks, unsafe targets, references and unsupported attributes', () => {
+  for (const body of [
+    morph.replace('dur="1s"', 'dur="0.49s"'),
+    morph.replace('dur="1s"', 'dur="61s"'),
+    morph.replace('dur="1s"', 'dur="Infinitys"'),
+    morph.replace('dur="1s"', 'dur="1s" begin="click"'),
+    morph.replace('dur="1s"', 'dur="1s" begin="other.end"'),
+    morph.replace('dur="1s"', 'dur="1s" begin="-61s"'),
+    morph.replace('dur="1s"', 'dur="1s" href="#other"'),
+    morph.replace('dur="1s"', 'dur="1s" onbegin="alert(1)"'),
+    morph.replace('dur="1s"', 'dur="1s" additive="sum"'),
+    morph.replace('dur="1s"', 'dur="1s" style="opacity:0"'),
+    morph.replace('attributeName="d"', 'attributeName="href"'),
+    morph.replace('repeatCount="indefinite"', 'repeatCount="2"'),
+    morph.replace('<path d="M0 0Q5 4 10 0L12 4Z">', '<g>').replace('</path>', '</g>'),
+    '<path d="M0 0L1 1"><animateTransform attributeName="transform" type="rotate" values="0;10" dur="1s" repeatCount="indefinite"/></path>',
+    '<g><animateTransform attributeName="transform" type="matrix" values="1 0 0 1 0 0;1 0 0 1 5 0" dur="1s" repeatCount="indefinite"/></g>',
+    '<g><script>alert(1)</script></g>',
+  ]) assert.ok(checkAnimatedSvg(body).length, body);
+});
+
+test('SVG animation validates finite frame data, morph shapes and timing interpolation', () => {
+  for (const body of [
+    morph.replace('M0 0Q5 -4 10 0L12 -4Z', 'M0 0L5 -4L12 -4Z'),
+    morph.replace('M0 0Q5 -4 10 0L12 -4Z', 'M0 0Q5 -4 10L12 -4Z'),
+    morph.replace('M0 0Q5 -4 10 0L12 -4Z', 'M0 0Q5 -4 1e309 0L12 -4Z'),
+    morph.replace('keyTimes="0;1"', 'keyTimes="0;.5;1"'),
+    morph.replace('keyTimes="0;1"', 'keyTimes=".2;1"'),
+    morph.replace('keyTimes="0;1"', 'keyTimes="1;0"'),
+    morph.replace('calcMode="linear"', 'calcMode="discrete"'),
+    morph.replace('calcMode="linear"', 'calcMode="spline"'),
+    morph.replace('calcMode="linear"', 'calcMode="spline" keySplines="0 0 2 1"'),
+    morph.replace('calcMode="linear"', 'calcMode="spline" keySplines="0 0 1 1;0 0 1 1"'),
+    '<g><animateTransform attributeName="transform" type="translate" values="0 0;10" dur="1s" repeatCount="indefinite"/></g>',
+    '<g><animateTransform attributeName="transform" type="scale" values="1;1e309" dur="1s" repeatCount="indefinite"/></g>',
+    '<g><animate attributeName="opacity" values="0;1.01" dur="1s" repeatCount="indefinite"/></g>',
+    '<g><animate attributeName="opacity" values="0;-1" dur="1s" repeatCount="indefinite"/></g>',
+    '<g><animate attributeName="opacity" values="0;1e309" dur="1s" repeatCount="indefinite"/></g>',
+    '<g><animate attributeName="opacity" values="0 1;1 0" dur="1s" repeatCount="indefinite"/></g>',
+    '<path d="M0 0L1 1"><animate attributeName="opacity" values="0;1" dur="1s" repeatCount="indefinite"/></path>',
+  ]) assert.ok(checkAnimatedSvg(body).length, body);
+});
+
+test('animated mascot and fish URIs activate only on their separate guarded empty-pane layers', () => {
+  assert.deepEqual(checkFishUsage(fishAssetCss()), []);
+  for (const css of [
+    fishAssetCss().replace('screen and ', ''),
+    fishAssetCss().replace('(prefers-reduced-motion: no-preference) and ', ''),
+    fishAssetCss().replaceAll('(min-width: 601px)', '(min-width: 300px)'),
+    fishAssetCss().replace('tk-empty (min-width: 601px) and (min-height: 561px)', 'tk-empty (min-width: 601px)'),
+    fishAssetCss().replace('no-preference', 'reduce'),
+    fishAssetCss().replace(':not(.tk-disable-motion)', ''),
+    fishAssetCss().replace(':not(.tk-minimal)', ''),
+    fishAssetCss().replace('.mod-active', ''),
+    fishAssetCss(undefined, '.markdown-rendered'),
+    fishAssetCss('background: var(--tk-fish-swimming-art)'),
+    fishAssetCss('--tk-alias: var(--tk-fish-swimming-art)'),
+    fishAssetCss('--tk-alias: VAR(--tk-fish-swimming-art)'),
+    fishAssetCss('--tk-alias: var(--tk-mascot-living-art)'),
+    fishAssetCss('background-image: var(--tk-mascot-living-art)'),
+    fishAssetCss('background-image: var(--tk-mascot-living-art), var(--tk-fish-swimming-art)'),
+    fishAssetCss('background-image: var(--tk-fish-swimming-art), var(--tk-mascot-living-art)'),
+    fishAssetCss().replace(`${sceneScope}::before`, `${sceneScope} .view-content::before`),
+    fishAssetCss(undefined, `${sceneScope}::before`),
+    fishAssetCss('background-image: var(--other, var(--tk-fish-swimming-art))'),
+    `${fishAssetCss()} .view-content::before { background-image: var(--tk-fish-swimming-art); }`,
+    fishAssetCss().replace(':root { --tk-fish-swimming-art:', '.markdown-rendered { --tk-fish-swimming-art:'),
+  ]) assert.ok(checkFishUsage(css).length, css);
+});
+
+test('each animated scene asset requires one definition and exactly one guarded activation', () => {
+  const css = fishAssetCss();
+  for (const invalid of [
+    '',
+    css.replace(/:root \{[^}]+\}/, ''),
+    css.replace(`${fishImageDeclaration};`, ''),
+    css.replace(`${mascotImageDeclaration};`, ''),
+    css.replace(/--tk-fish-swimming-art: url\([^;]+;/, ''),
+    css.replace(/--tk-mascot-living-art: url\([^;]+;/, ''),
+    `${css}\n${css}`,
+    css.replace(`${fishImageDeclaration};`, `${fishImageDeclaration}; ${fishImageDeclaration};`),
+    css.replace(`${mascotImageDeclaration};`, `${mascotImageDeclaration}; ${mascotImageDeclaration};`),
+  ]) assert.ok(checkFishUsage(invalid).length, invalid || 'missing definition and activation');
+});
+
 test('motion accepts static styles, disabling resets and guarded short UI transitions', () => {
   assert.deepEqual(checkMotion('body { color: white; }'), []);
   assert.deepEqual(checkMotion(`
@@ -58,8 +168,8 @@ test('motion accepts static styles, disabling resets and guarded short UI transi
   `), []);
 });
 
-test('motion accepts only the three guarded empty-view scene animations', () => {
-  assert.deepEqual(checkMotion(fishScene()), []);
+test('motion accepts only the two guarded empty-view CSS animations', () => {
+  assert.deepEqual(checkMotion(mirrorScene()), []);
   assert.deepEqual(checkMotion(`
     @keyframes tk-mirror-breathe { 0%, 100% { opacity: .6; } 50% { opacity: .8; transform: scale(1.02); } }
     @keyframes tk-water-ripple { from { transform: scale(.94); opacity: .1; } to { transform: scale(1.06); opacity: 0; } }
@@ -72,14 +182,14 @@ test('motion accepts only the three guarded empty-view scene animations', () => 
 
 test('motion rejects missing media and static-scene guards, reading targets and inactive panes', () => {
   for (const selector of [
-    `${sceneScope.replace(':not(.tk-disable-motion)', '')} .view-content::before`,
-    `${sceneScope.replace(':not(.tk-minimal)', '')} .view-content::before`,
-    `${sceneScope.replace('.mod-active', '')} .view-content::before`,
-    `${sceneScope.replace('[data-type="empty"]', '[data-type="markdown"]')} .view-content::before`,
+    mirrorTarget.replace(':not(.tk-disable-motion)', ''),
+    mirrorTarget.replace(':not(.tk-minimal)', ''),
+    mirrorTarget.replace('.mod-active', ''),
+    mirrorTarget.replace('[data-type="empty"]', '[data-type="markdown"]'),
     `${sceneScope} .markdown-rendered::before`,
     `${sceneScope} .view-content`,
-    `${sceneScope} .view-content::before, .markdown-reading-view`,
-  ]) assert.ok(checkMotion(fishScene(selector)).length, selector);
+    `${mirrorTarget}, .markdown-reading-view`,
+  ]) assert.ok(checkMotion(mirrorScene(selector)).length, selector);
   for (const media of [
     '(prefers-reduced-motion: no-preference)',
     sceneMedia.replace('screen and ', ''),
@@ -88,35 +198,37 @@ test('motion rejects missing media and static-scene guards, reading targets and 
     sceneMedia.replace(' and (min-height: 561px)', ''),
     `${sceneMedia}, screen`,
     sceneMedia.replace('no-preference', 'reduce'),
-  ]) assert.ok(checkMotion(fishScene(undefined, media)).length, media);
-  assert.ok(checkMotion(`${fishFrames} ${sceneScope} .view-content::before { ${fishAnimation}; }`).length);
+  ]) assert.ok(checkMotion(mirrorScene(undefined, media)).length, media);
+  assert.ok(checkMotion(`${mirrorFrames} ${mirrorTarget} { ${mirrorAnimation}; }`).length);
 });
 
 test('motion rejects unsupported names, properties, timing and vendor bypasses', () => {
   for (const declaration of [
     'animation: decorative 1200ms ease 2',
     'animation: var(--motion)',
-    'animation: tk-fish-drift 1s ease-in-out infinite alternate',
-    'animation: tk-fish-drift 8s ease-in-out infinite alternate, decorative 1s infinite',
-    'animation-name: tk-fish-drift',
+    'animation: tk-mirror-breathe 1s ease-in-out infinite',
+    'animation: tk-mirror-breathe 5s ease-in-out infinite, decorative 1s infinite',
+    'animation-name: tk-mirror-breathe',
     'animation-duration: 140ms',
     'animation-timeline: scroll()',
     'animation-play-state: running',
     '-webkit-animation: decorative 140ms ease',
     '-webkit-animation-name: decorative',
-  ]) assert.ok(checkMotion(fishScene(undefined, undefined, declaration)).length, declaration);
+  ]) assert.ok(checkMotion(mirrorScene(undefined, undefined, declaration)).length, declaration);
   for (const keyword of ['keyframes', '-webkit-keyframes', '-moz-keyframes']) {
     assert.ok(checkMotion(`@${keyword} decorative { from { transform: rotate(0deg); } to { transform: rotate(3deg); } }`).length, keyword);
   }
   for (const property of ['left: 2px', 'background-position: 10% 20%', 'filter: blur(2px)', 'animation: none']) {
-    assert.ok(checkMotion(`@keyframes tk-fish-drift { from { ${property}; } to { opacity: .8; } }`).length, property);
+    assert.ok(checkMotion(`@keyframes tk-mirror-breathe { from { ${property}; } to { opacity: .8; } }`).length, property);
   }
-  assert.ok(checkMotion(fishScene().replace(fishFrames, '')).length, 'missing definition');
-  assert.ok(checkMotion(fishScene().replace('.view-content::before', '.view-content::after')).length, 'wrong layer');
+  assert.ok(checkMotion(mirrorScene().replace(mirrorFrames, '')).length, 'missing definition');
+  assert.ok(checkMotion(mirrorScene().replace('.view-content .empty-state::after', '.view-content::after')).length, 'wrong layer');
 });
 
 test('motion rejects former scene layers and timing while keeping the new layout contract', () => {
-  assert.ok(checkMotion(fishScene().replace('8s ease-in-out', '24s ease-in-out')).length);
+  assert.ok(checkMotion(mirrorScene().replace('5s ease-in-out', '10s ease-in-out')).length);
+  assert.ok(checkMotion(`@keyframes tk-fish-drift { from { transform: translateX(-32px); } to { transform: translateX(32px); } }
+    @media ${sceneMedia} { ${sceneScope} .view-content::before { animation: tk-fish-drift 8s ease-in-out infinite alternate; } }`).length);
   for (const [name, timing, oldTarget] of [
     ['tk-mirror-breathe', '5s ease-in-out infinite', '.view-content::after'],
     ['tk-water-ripple', '4s ease-out infinite', '.view-content .empty-state::before'],

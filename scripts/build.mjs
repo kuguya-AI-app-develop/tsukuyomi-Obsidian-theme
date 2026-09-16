@@ -1,6 +1,8 @@
 import { readFile, writeFile, mkdir, lstat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
+import { renderSwimmingFish } from './generate-fish.mjs';
+import { renderMascots } from './generate-mascots.mjs';
 
 export const root = fileURLToPath(new URL('../', import.meta.url));
 export const sourceFiles = [
@@ -21,11 +23,25 @@ export async function renderSource(name) {
     ['__TK_CITY_SVG__', 'tsukuyomi-city.svg'],
     ['__TK_GATE_SVG__', 'tsukuyomi-gate.svg'],
     ['__TK_FISH_SVG__', 'tsukuyomi-fish.svg'],
+    ['__TK_FISH_SWIMMING_SVG__', 'tsukuyomi-fish-swimming.svg'],
+    ['__TK_MASCOTS_SVG__', 'tsukuyomi-mascots.svg'],
+    ['__TK_MASCOTS_LIVING_SVG__', 'tsukuyomi-mascots-living.svg'],
     ['__TK_MIRROR_SVG__', 'tsukuyomi-mirror.svg'],
   ]) {
     if (!css.includes(token)) continue;
-    const svg = (await readFile(resolve(root, 'assets', asset), 'utf8'))
-      .replace(/<!--[\s\S]*?-->/g, '').trim().replace(/>\s+</g, '><');
+    const assetSource = await readFile(resolve(root, 'assets', asset), 'utf8');
+    if (asset === 'tsukuyomi-fish-swimming.svg') {
+      const fishSource = await readFile(resolve(root, 'assets', 'tsukuyomi-fish.svg'), 'utf8');
+      if (assetSource !== renderSwimmingFish(fishSource)) {
+        throw new Error('Swimming fish is stale. Run node scripts/generate-fish.mjs before building.');
+      }
+    }
+    if (asset === 'tsukuyomi-mascots.svg' || asset === 'tsukuyomi-mascots-living.svg') {
+      if (assetSource !== renderMascots({ animated: asset === 'tsukuyomi-mascots-living.svg' })) {
+        throw new Error('Companion artwork is stale. Run node scripts/generate-mascots.mjs before building.');
+      }
+    }
+    const svg = assetSource.replace(/<!--[\s\S]*?-->/g, '').trim().replace(/>\s+</g, '><');
     const uri = `data:image/svg+xml,${encodeURIComponent(svg).replace(/'/g, '%27')}`;
     css = css.replaceAll(token, uri);
   }

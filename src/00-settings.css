@@ -36,7 +36,7 @@ settings:
     step: 0.05
   - id: tk-disable-motion
     title: 静态场景
-    description: 关闭空白页的游鱼、光镜、水波和短暂界面过渡；系统减少动态效果设置始终优先。
+    description: 停止空白页游鱼、吉祥物、光镜、水波的动效和短暂界面过渡；系统减少动态效果设置始终优先。
     type: class-toggle
     default: false
 */
