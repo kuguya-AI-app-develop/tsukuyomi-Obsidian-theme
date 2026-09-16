@@ -1,4 +1,4 @@
-/* Tsukuyomi 0.7.2 | Generated from src/; edit source files, then npm run build. */
+/* Tsukuyomi 1.0.0 | Generated from src/; edit source files, then npm run build. */
 
 /* Source: 00-settings.css */
 /* @settings
@@ -125,7 +125,7 @@ body.tk-density-compact {
 .theme-light {
   color-scheme: light;
 
-  --color-base-00: #ffffff;
+  --color-base-00: #fff;
   --color-base-05: #fbfaf7;
   --color-base-10: #f7f5f0;
   --color-base-20: #ecefea;
@@ -140,7 +140,7 @@ body.tk-density-compact {
 
   --tk-background: #f7f5f0;
   --tk-sidebar: #ecefea;
-  --tk-raised: #ffffff;
+  --tk-raised: #fff;
   --tk-text: #273442;
   --tk-muted: #586879;
   --tk-faint: #68786f;
@@ -152,7 +152,7 @@ body.tk-density-compact {
   --tk-violet: #7053a2;
   --tk-blue: #245c9e;
   --tk-orange: #985016;
-  --tk-on-accent: #ffffff;
+  --tk-on-accent: #fff;
 
   --tk-sea-rgb: 15, 112, 106;
   --tk-rose-rgb: 172, 60, 80;
@@ -162,7 +162,7 @@ body.tk-density-compact {
   --accent-h: 176;
   --accent-s: 76%;
   --accent-l: 25%;
-  --tag-background-hover: rgba(var(--tk-violet-rgb), 0.1);
+  --tag-background-hover: rgb(var(--tk-violet-rgb), 0.1);
 }
 
 /* Source: 20-semantic.css */
@@ -171,13 +171,13 @@ body {
   --background-primary-alt: var(--tk-raised);
   --background-secondary: var(--tk-sidebar);
   --background-secondary-alt: var(--tk-raised);
-  --background-modifier-hover: rgba(var(--tk-sea-rgb), 0.1);
-  --background-modifier-active-hover: rgba(var(--tk-sea-rgb), 0.16);
+  --background-modifier-hover: rgb(var(--tk-sea-rgb), 0.1);
+  --background-modifier-active-hover: rgb(var(--tk-sea-rgb), 0.16);
   --background-modifier-border: var(--tk-border);
   --background-modifier-border-hover: var(--tk-border-strong);
   --background-modifier-border-focus: var(--color-accent);
   --background-modifier-form-field: var(--tk-raised);
-  --background-modifier-form-field-highlighted: rgba(var(--tk-sea-rgb), 0.1);
+  --background-modifier-form-field-highlighted: rgb(var(--tk-sea-rgb), 0.1);
   --background-modifier-error: var(--tk-rose);
   --background-modifier-error-hover: var(--tk-rose);
   --background-modifier-success: var(--tk-sea);
@@ -192,16 +192,16 @@ body {
   --text-error: var(--tk-rose);
   --text-success: var(--tk-sea);
   --text-warning: var(--tk-gold);
-  --text-selection: rgba(var(--tk-violet-rgb), 0.28);
-  --text-highlight-bg: rgba(var(--tk-gold-rgb), 0.26);
-  --text-highlight-bg-active: rgba(var(--tk-gold-rgb), 0.4);
+  --text-selection: rgb(var(--tk-violet-rgb), 0.28);
+  --text-highlight-bg: rgb(var(--tk-gold-rgb), 0.26);
+  --text-highlight-bg-active: rgb(var(--tk-gold-rgb), 0.4);
 
   --interactive-normal: var(--tk-raised);
-  --interactive-hover: rgba(var(--tk-sea-rgb), 0.12);
+  --interactive-hover: rgb(var(--tk-sea-rgb), 0.12);
   --interactive-accent: var(--color-accent);
   --interactive-accent-hover: var(--color-accent-2);
   --interactive-accent-hsl: var(--accent-h), var(--accent-s), var(--accent-l);
-  --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
   --color-accent-1: color-mix(in srgb, var(--color-accent) 92%, var(--tk-text));
   --color-accent-2: color-mix(in srgb, var(--color-accent) 84%, var(--tk-text));
 
@@ -217,8 +217,8 @@ body {
   --nav-item-color: var(--tk-muted);
   --nav-item-color-hover: var(--tk-text);
   --nav-item-color-active: var(--tk-text);
-  --nav-item-background-hover: rgba(var(--tk-sea-rgb), 0.09);
-  --nav-item-background-active: rgba(var(--tk-sea-rgb), 0.14);
+  --nav-item-background-hover: rgb(var(--tk-sea-rgb), 0.09);
+  --nav-item-background-active: rgb(var(--tk-sea-rgb), 0.14);
 
   --link-color: var(--color-accent);
   --link-color-hover: var(--color-accent-2);
@@ -226,8 +226,8 @@ body {
   --link-external-color: var(--tk-violet);
   --link-external-color-hover: var(--tk-rose);
   --tag-color: var(--tk-violet);
-  --tag-background: rgba(var(--tk-violet-rgb), 0.12);
-  --tag-background-hover: rgba(var(--tk-violet-rgb), 0.2);
+  --tag-background: rgb(var(--tk-violet-rgb), 0.12);
+  --tag-background-hover: rgb(var(--tk-violet-rgb), 0.2);
   --blockquote-border-color: var(--tk-violet);
   --h1-color: var(--tk-text);
   --h2-color: var(--tk-text);
@@ -238,8 +238,8 @@ body {
 
   --input-shadow: 0 0 0 1px var(--tk-border);
   --input-shadow-hover: 0 0 0 1px var(--tk-border-strong);
-  --shadow-s: 0 2px 8px rgba(0, 0, 0, 0.14);
-  --shadow-l: 0 16px 40px rgba(0, 0, 0, 0.22);
+  --shadow-s: 0 2px 8px rgb(0 0 0 / 14%);
+  --shadow-l: 0 16px 40px rgb(0 0 0 / 22%);
   --modal-background: var(--tk-raised);
   --prompt-background: var(--tk-raised);
 
@@ -253,8 +253,8 @@ body {
   --divider-color: var(--tk-border);
   --divider-color-hover: var(--color-accent);
   --scrollbar-bg: transparent;
-  --scrollbar-thumb-bg: rgba(var(--tk-sea-rgb), 0.18);
-  --scrollbar-active-thumb-bg: rgba(var(--tk-sea-rgb), 0.32);
+  --scrollbar-thumb-bg: rgb(var(--tk-sea-rgb), 0.18);
+  --scrollbar-active-thumb-bg: rgb(var(--tk-sea-rgb), 0.32);
 
   --code-background: var(--tk-sidebar);
   --code-normal: var(--tk-text);
@@ -290,7 +290,7 @@ body {
    custom light accent its inline --text-on-accent uses the dark inverted
    value. Without a custom accent, keep the theme's mode-specific fallback. */
 body[style*="--accent-h:"] {
-  --text-on-accent: #ffffff;
+  --text-on-accent: #fff;
 }
 
 body :is(
@@ -392,7 +392,7 @@ body :is(
 
 .workspace-tab-header:hover {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-sea-rgb), 0.08);
+  background-color: rgb(var(--tk-sea-rgb), 0.08);
 }
 
 .workspace-tab-header.is-active {
@@ -448,7 +448,7 @@ body :is(
 
 .nav-file-title.is-active {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-sea-rgb), 0.14);
+  background-color: rgb(var(--tk-sea-rgb), 0.14);
 }
 
 .nav-file-title.is-active::before {
@@ -464,7 +464,7 @@ body :is(
 .nav-folder-title:hover,
 .nav-file-title:hover {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-sea-rgb), 0.09);
+  background-color: rgb(var(--tk-sea-rgb), 0.09);
 }
 
 .tree-item-self .tree-item-icon {
@@ -507,7 +507,7 @@ body:not(.tk-minimal) .nav-header {
 
 /* Vermilion frames and luminous signage belong to the application chrome. */
 body:not(.tk-minimal) .workspace-tab-header.is-active {
-  box-shadow: inset 0 2px 0 var(--tk-rose), inset 0 -1px 0 rgba(var(--tk-sea-rgb), 0.65);
+  box-shadow: inset 0 2px 0 var(--tk-rose), inset 0 -1px 0 rgb(var(--tk-sea-rgb), 0.65);
 }
 
 body:not(.tk-minimal) .nav-file-title.is-active {
@@ -542,24 +542,24 @@ body:not(.tk-minimal) .view-header::after {
   body:not(.tk-minimal) .nav-header {
     background-image:
       repeating-linear-gradient(135deg, var(--tk-sign-sea) 0 3px, transparent 3px 7px),
-      linear-gradient(rgba(var(--tk-sea-rgb), 0.45), rgba(var(--tk-sea-rgb), 0.45)),
-      linear-gradient(rgba(var(--tk-sea-rgb), 0.45), rgba(var(--tk-sea-rgb), 0.45));
+      linear-gradient(rgb(var(--tk-sea-rgb), 0.45), rgb(var(--tk-sea-rgb), 0.45)),
+      linear-gradient(rgb(var(--tk-sea-rgb), 0.45), rgb(var(--tk-sea-rgb), 0.45));
     background-position: right 10px bottom, left 8px top, left top 8px;
     background-size: 42px 6px, 20px 1px, 1px 20px;
     background-repeat: no-repeat;
   }
 
   body:not(.tk-minimal) .workspace-tab-header-container {
-    box-shadow: inset 0 -1px 0 rgba(var(--tk-sea-rgb), 0.4);
+    box-shadow: inset 0 -1px 0 rgb(var(--tk-sea-rgb), 0.4);
   }
 
   /* Eight-pixel edge lattice; combined opacity stays below six percent. */
   body:not(.tk-minimal) .workspace-ribbon {
     background-image:
       var(--tk-ribbon-stripe, linear-gradient(transparent, transparent)),
-      repeating-linear-gradient(45deg, transparent 0 7px, rgba(var(--tk-sea-rgb), 0.025) 7px 8px, transparent 8px 15px),
-      repeating-linear-gradient(-45deg, transparent 0 7px, rgba(var(--tk-sea-rgb), 0.025) 7px 8px, transparent 8px 15px),
-      radial-gradient(circle at center, transparent 0 3px, rgba(var(--tk-sea-rgb), 0.01) 3px 4px, transparent 4px);
+      repeating-linear-gradient(45deg, transparent 0 7px, rgb(var(--tk-sea-rgb), 0.025) 7px 8px, transparent 8px 15px),
+      repeating-linear-gradient(-45deg, transparent 0 7px, rgb(var(--tk-sea-rgb), 0.025) 7px 8px, transparent 8px 15px),
+      radial-gradient(circle at center, transparent 0 3px, rgb(var(--tk-sea-rgb), 0.01) 3px 4px, transparent 4px);
     background-position: right 1px bottom 72px, right center, right center, right center;
     background-size: 5px clamp(96px, 28vh, 240px), 8px 24px, 8px 24px, 8px 24px;
     background-repeat: no-repeat, repeat-y, repeat-y, repeat-y;
@@ -568,9 +568,9 @@ body:not(.tk-minimal) .view-header::after {
   /* The left navigation tabs retain the earlier geometric stage texture. */
   body:not(.tk-minimal) .mod-left-split .workspace-tab-header-container {
     background-image:
-      repeating-linear-gradient(60deg, transparent 0 23px, rgba(var(--tk-sea-rgb), 0.08) 23px 24px),
-      repeating-linear-gradient(-60deg, transparent 0 23px, rgba(var(--tk-sea-rgb), 0.08) 23px 24px),
-      radial-gradient(circle at center, transparent 0 21px, rgba(var(--tk-sea-rgb), 0.1) 21px 22px, transparent 22px);
+      repeating-linear-gradient(60deg, transparent 0 23px, rgb(var(--tk-sea-rgb), 0.08) 23px 24px),
+      repeating-linear-gradient(-60deg, transparent 0 23px, rgb(var(--tk-sea-rgb), 0.08) 23px 24px),
+      radial-gradient(circle at center, transparent 0 21px, rgb(var(--tk-sea-rgb), 0.1) 21px 22px, transparent 22px);
     background-size: 48px 48px;
   }
 
@@ -606,7 +606,7 @@ body:not(.tk-minimal) .view-header::after {
 
 .markdown-rendered blockquote {
   color: var(--tk-muted);
-  background-color: rgba(var(--tk-violet-rgb), 0.06);
+  background-color: rgb(var(--tk-violet-rgb), 0.06);
   border-inline-start-width: 2px;
   border-radius: 0 var(--tk-radius-small) var(--tk-radius-small) 0;
   padding-block: 0.35em;
@@ -674,12 +674,12 @@ input[type="checkbox"]:checked {
 
 .cm-s-obsidian .cm-selectionBackground,
 .cm-s-obsidian.cm-focused .cm-selectionBackground {
-  background-color: rgba(var(--tk-violet-rgb), 0.28);
+  background-color: rgb(var(--tk-violet-rgb), 0.28);
 }
 
 .metadata-container {
   color: var(--tk-muted);
-  background-color: rgba(var(--tk-sea-rgb), 0.04);
+  background-color: rgb(var(--tk-sea-rgb), 0.04);
   border: 1px solid var(--tk-border);
   border-radius: var(--tk-radius-medium);
   padding: 0.5rem 0.75rem;
@@ -712,11 +712,11 @@ input[type="checkbox"]:checked {
 
 .markdown-rendered th {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-sea-rgb), 0.1);
+  background-color: rgb(var(--tk-sea-rgb), 0.1);
 }
 
 .markdown-rendered tr:nth-child(even) td {
-  background-color: rgba(var(--tk-sea-rgb), 0.025);
+  background-color: rgb(var(--tk-sea-rgb), 0.025);
 }
 
 /* Source: 50-components.css */
@@ -769,7 +769,7 @@ button.mod-cta:hover {
 .menu-item.selected,
 .menu-item:hover {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-sea-rgb), 0.12);
+  background-color: rgb(var(--tk-sea-rgb), 0.12);
 }
 
 .search-result-file-match {
@@ -777,12 +777,12 @@ button.mod-cta:hover {
 }
 
 .search-result-file-match:hover {
-  background-color: rgba(var(--tk-sea-rgb), 0.08);
+  background-color: rgb(var(--tk-sea-rgb), 0.08);
 }
 
 .search-result-file-matched-text {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-gold-rgb), 0.3);
+  background-color: rgb(var(--tk-gold-rgb), 0.3);
   border-radius: 3px;
 }
 
@@ -1006,6 +1006,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
   content: "";
   position: absolute;
   z-index: 1;
+
   /* SVG routes stay inside the image bounds; this box never translates. */
   inset: auto 0 0;
   height: min(32%, 320px);
@@ -1034,9 +1035,17 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
 }
 
 @keyframes tk-water-ripple {
-  0% { transform: scale(0.55); opacity: 0; }
+  0% {
+    transform: scale(0.55);
+    opacity: 0;
+  }
+
   35% { opacity: calc(var(--tk-decoration-opacity) * 0.65); }
-  100% { transform: scale(1.12); opacity: 0; }
+
+  100% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
 }
 
 /* Keep playing in a visible pane even while the user focuses another app. */
@@ -1182,9 +1191,9 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
 
   body.theme-dark,
   body.theme-light {
-    --tk-background: #ffffff;
-    --tk-sidebar: #ffffff;
-    --tk-raised: #ffffff;
+    --tk-background: #fff;
+    --tk-sidebar: #fff;
+    --tk-raised: #fff;
     --tk-text: #1f2933;
     --tk-muted: #465565;
     --tk-faint: #586879;
@@ -1210,7 +1219,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   .markdown-preview-view,
   .markdown-rendered {
     color: #1f2933 !important;
-    background: #ffffff !important;
+    background: #fff !important;
   }
 
   body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
@@ -1242,7 +1251,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   .markdown-rendered blockquote,
   .markdown-rendered :is(th, td) {
     color: #1f2933 !important;
-    background: #ffffff !important;
+    background: #fff !important;
     border-color: #aeb7b1 !important;
     box-shadow: none !important;
   }

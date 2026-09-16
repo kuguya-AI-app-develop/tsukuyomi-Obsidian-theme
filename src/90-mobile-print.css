@@ -97,9 +97,9 @@
 
   body.theme-dark,
   body.theme-light {
-    --tk-background: #ffffff;
-    --tk-sidebar: #ffffff;
-    --tk-raised: #ffffff;
+    --tk-background: #fff;
+    --tk-sidebar: #fff;
+    --tk-raised: #fff;
     --tk-text: #1f2933;
     --tk-muted: #465565;
     --tk-faint: #586879;
@@ -125,7 +125,7 @@
   .markdown-preview-view,
   .markdown-rendered {
     color: #1f2933 !important;
-    background: #ffffff !important;
+    background: #fff !important;
   }
 
   body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
@@ -157,7 +157,7 @@
   .markdown-rendered blockquote,
   .markdown-rendered :is(th, td) {
     color: #1f2933 !important;
-    background: #ffffff !important;
+    background: #fff !important;
     border-color: #aeb7b1 !important;
     box-shadow: none !important;
   }

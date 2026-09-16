@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-obsidianmd",
+  "rules": {
+    "comment-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "media-feature-range-notation": "prefix",
+    "no-descending-specificity": null,
+    "selector-class-pattern": "^(?:[a-z][a-z0-9]*(?:-[a-z0-9]+)*|HyperMD-header-[1-6]|cm-(?:dropCursor|selectionBackground))$",
+    "selector-not-notation": "simple"
+  }
+}

@@ -49,7 +49,7 @@
 .theme-light {
   color-scheme: light;
 
-  --color-base-00: #ffffff;
+  --color-base-00: #fff;
   --color-base-05: #fbfaf7;
   --color-base-10: #f7f5f0;
   --color-base-20: #ecefea;
@@ -64,7 +64,7 @@
 
   --tk-background: #f7f5f0;
   --tk-sidebar: #ecefea;
-  --tk-raised: #ffffff;
+  --tk-raised: #fff;
   --tk-text: #273442;
   --tk-muted: #586879;
   --tk-faint: #68786f;
@@ -76,7 +76,7 @@
   --tk-violet: #7053a2;
   --tk-blue: #245c9e;
   --tk-orange: #985016;
-  --tk-on-accent: #ffffff;
+  --tk-on-accent: #fff;
 
   --tk-sea-rgb: 15, 112, 106;
   --tk-rose-rgb: 172, 60, 80;
@@ -86,5 +86,5 @@
   --accent-h: 176;
   --accent-s: 76%;
   --accent-l: 25%;
-  --tag-background-hover: rgba(var(--tk-violet-rgb), 0.1);
+  --tag-background-hover: rgb(var(--tk-violet-rgb), 0.1);
 }

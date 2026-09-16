@@ -1,0 +1,24 @@
+
+> tsukuyomi-obsidian-theme@1.0.0 lint
+> stylelint theme.css
+
+
+theme.css
+   623:3   ⚠  Unexpected browser feature "text-decoration" is only partially supported by Chrome 150,152             plugin/no-unsupported-browser-features
+   631:3   ⚠  Unexpected browser feature "text-decoration" is only partially supported by Chrome 150,152             plugin/no-unsupported-browser-features
+   632:3   ⚠  Unexpected browser feature "text-decoration" is only partially supported by Chrome 150,152             plugin/no-unsupported-browser-features
+  1221:20  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1222:22  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1234:19  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1240:20  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1245:20  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1246:5   ⚠  Unexpected browser feature "multicolumn" is only partially supported by Chrome 150,152                 plugin/no-unsupported-browser-features
+  1253:20  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1254:22  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1255:27  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1256:22  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1261:20  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1270:20  ⚠  Avoid !important — override styles by increasing selector specificity or using CSS variables instead.  declaration-no-important
+  1277:5   ⚠  Unexpected browser feature "multicolumn" is only partially supported by Chrome 150,152                 plugin/no-unsupported-browser-features
+
+⚠ 16 problems (0 errors, 16 warnings)

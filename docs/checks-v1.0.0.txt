@@ -1,0 +1,50 @@
+
+> tsukuyomi-obsidian-theme@1.0.0 test
+> npm run build && node --test scripts/check.test.mjs && npm run check
+
+
+> tsukuyomi-obsidian-theme@1.0.0 build
+> node scripts/build.mjs
+
+Built 80680 bytes → /Users/cxldefontaine/个人项目/tsukuyomi-Obsidian-theme/dist/Tsukuyomi
+✔ SVG accepts static, self-contained artwork and descriptive text (0.986667ms)
+✔ SVG rejects remote assets, code, animation, references and malformed XML (0.181333ms)
+✔ SVG rejects other URL types, invalid encodings and oversized artwork (0.085791ms)
+✔ SVG animation requires explicit opt-in and permits bounded path morphs and group transforms (0.662958ms)
+✔ SVG animation rejects event clocks, unsafe targets, references and unsupported attributes (0.168083ms)
+✔ SVG animation validates finite frame data, morph shapes and timing interpolation (0.226125ms)
+✔ animated mascot and fish URIs activate only on their separate guarded empty-pane layers (5.717667ms)
+✔ each animated scene asset requires one definition and exactly one guarded activation (0.852417ms)
+✔ motion accepts static styles, disabling resets and guarded short UI transitions (0.649625ms)
+✔ motion accepts only the two guarded empty-view CSS animations (0.557541ms)
+✔ motion rejects missing media and static-scene guards, reading targets and inactive panes (1.118ms)
+✔ motion rejects unsupported names, properties, timing and vendor bypasses (0.605208ms)
+✔ motion rejects former scene layers and timing while keeping the new layout contract (0.294625ms)
+✔ motion rejects focus-dependent empty-scene pauses but preserves explicit static resets (0.24825ms)
+✔ motion rejects unguarded, long or reading-targeted UI transitions (0.219958ms)
+✔ reading protection allows solid content fills, markers, resets and empty-view artwork (1.167208ms)
+✔ reading protection rejects the former heading poster and text-shadow styles (0.19475ms)
+✔ reading protection rejects generated note artwork, including legacy and grouped selectors (0.102ms)
+✔ reading protection rejects unknown background variables and nested image fallbacks (0.097666ms)
+✔ reading protection rejects note-scoped overrides of trusted surface tokens (0.105292ms)
+✔ sign contrast checks actual selected-file and branding overrides in both modes (1.279958ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 102.516667
+
+> tsukuyomi-obsidian-theme@1.0.0 check
+> node scripts/check.mjs
+
+✓ manifest: Tsukuyomi 1.0.0, Obsidian >=1.13.7
+✓ build: 8 ordered sources match root and dist (78.8 KiB)
+✓ CSS: parsed; 163 property values checked, 159 dynamic and 0 unknown/vendor skipped
+✓ Style Settings: 1 YAML block, 5 valid options
+✓ dark contrast: normal 10.36, muted 6.45, link 8.30, link-hover 8.83, external 7.39, unresolved 7.39, button 8.30, selection 6.71, tag 5.12, callout 6.39, tinted-link 6.23, state 9.88, focus 6.98, selected-sign 13.80, brand-sign 13.80
+✓ light contrast: normal 10.93, muted 4.93, link 5.42, link-hover 6.15, external 5.48, unresolved 5.48, button 5.91, selection 7.83, tag 4.75, callout 4.64, tinted-link 4.84, state 9.03, focus 5.09, selected-sign 13.80, brand-sign 13.80
+✓ reading guard: explicit note selectors checked for image backgrounds, text shadows and generated decoration
+✓ policy: self-contained graphics; guarded scene SVG animations, two empty-scene CSS animations and short UI transitions; no remote imports, backdrop filters, forced editor positioning, or user-font overrides

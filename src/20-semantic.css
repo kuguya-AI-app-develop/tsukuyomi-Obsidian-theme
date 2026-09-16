@@ -3,13 +3,13 @@ body {
   --background-primary-alt: var(--tk-raised);
   --background-secondary: var(--tk-sidebar);
   --background-secondary-alt: var(--tk-raised);
-  --background-modifier-hover: rgba(var(--tk-sea-rgb), 0.1);
-  --background-modifier-active-hover: rgba(var(--tk-sea-rgb), 0.16);
+  --background-modifier-hover: rgb(var(--tk-sea-rgb), 0.1);
+  --background-modifier-active-hover: rgb(var(--tk-sea-rgb), 0.16);
   --background-modifier-border: var(--tk-border);
   --background-modifier-border-hover: var(--tk-border-strong);
   --background-modifier-border-focus: var(--color-accent);
   --background-modifier-form-field: var(--tk-raised);
-  --background-modifier-form-field-highlighted: rgba(var(--tk-sea-rgb), 0.1);
+  --background-modifier-form-field-highlighted: rgb(var(--tk-sea-rgb), 0.1);
   --background-modifier-error: var(--tk-rose);
   --background-modifier-error-hover: var(--tk-rose);
   --background-modifier-success: var(--tk-sea);
@@ -24,16 +24,16 @@ body {
   --text-error: var(--tk-rose);
   --text-success: var(--tk-sea);
   --text-warning: var(--tk-gold);
-  --text-selection: rgba(var(--tk-violet-rgb), 0.28);
-  --text-highlight-bg: rgba(var(--tk-gold-rgb), 0.26);
-  --text-highlight-bg-active: rgba(var(--tk-gold-rgb), 0.4);
+  --text-selection: rgb(var(--tk-violet-rgb), 0.28);
+  --text-highlight-bg: rgb(var(--tk-gold-rgb), 0.26);
+  --text-highlight-bg-active: rgb(var(--tk-gold-rgb), 0.4);
 
   --interactive-normal: var(--tk-raised);
-  --interactive-hover: rgba(var(--tk-sea-rgb), 0.12);
+  --interactive-hover: rgb(var(--tk-sea-rgb), 0.12);
   --interactive-accent: var(--color-accent);
   --interactive-accent-hover: var(--color-accent-2);
   --interactive-accent-hsl: var(--accent-h), var(--accent-s), var(--accent-l);
-  --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
   --color-accent-1: color-mix(in srgb, var(--color-accent) 92%, var(--tk-text));
   --color-accent-2: color-mix(in srgb, var(--color-accent) 84%, var(--tk-text));
 
@@ -49,8 +49,8 @@ body {
   --nav-item-color: var(--tk-muted);
   --nav-item-color-hover: var(--tk-text);
   --nav-item-color-active: var(--tk-text);
-  --nav-item-background-hover: rgba(var(--tk-sea-rgb), 0.09);
-  --nav-item-background-active: rgba(var(--tk-sea-rgb), 0.14);
+  --nav-item-background-hover: rgb(var(--tk-sea-rgb), 0.09);
+  --nav-item-background-active: rgb(var(--tk-sea-rgb), 0.14);
 
   --link-color: var(--color-accent);
   --link-color-hover: var(--color-accent-2);
@@ -58,8 +58,8 @@ body {
   --link-external-color: var(--tk-violet);
   --link-external-color-hover: var(--tk-rose);
   --tag-color: var(--tk-violet);
-  --tag-background: rgba(var(--tk-violet-rgb), 0.12);
-  --tag-background-hover: rgba(var(--tk-violet-rgb), 0.2);
+  --tag-background: rgb(var(--tk-violet-rgb), 0.12);
+  --tag-background-hover: rgb(var(--tk-violet-rgb), 0.2);
   --blockquote-border-color: var(--tk-violet);
   --h1-color: var(--tk-text);
   --h2-color: var(--tk-text);
@@ -70,8 +70,8 @@ body {
 
   --input-shadow: 0 0 0 1px var(--tk-border);
   --input-shadow-hover: 0 0 0 1px var(--tk-border-strong);
-  --shadow-s: 0 2px 8px rgba(0, 0, 0, 0.14);
-  --shadow-l: 0 16px 40px rgba(0, 0, 0, 0.22);
+  --shadow-s: 0 2px 8px rgb(0 0 0 / 14%);
+  --shadow-l: 0 16px 40px rgb(0 0 0 / 22%);
   --modal-background: var(--tk-raised);
   --prompt-background: var(--tk-raised);
 
@@ -85,8 +85,8 @@ body {
   --divider-color: var(--tk-border);
   --divider-color-hover: var(--color-accent);
   --scrollbar-bg: transparent;
-  --scrollbar-thumb-bg: rgba(var(--tk-sea-rgb), 0.18);
-  --scrollbar-active-thumb-bg: rgba(var(--tk-sea-rgb), 0.32);
+  --scrollbar-thumb-bg: rgb(var(--tk-sea-rgb), 0.18);
+  --scrollbar-active-thumb-bg: rgb(var(--tk-sea-rgb), 0.32);
 
   --code-background: var(--tk-sidebar);
   --code-normal: var(--tk-text);
@@ -122,7 +122,7 @@ body {
    custom light accent its inline --text-on-accent uses the dark inverted
    value. Without a custom accent, keep the theme's mode-specific fallback. */
 body[style*="--accent-h:"] {
-  --text-on-accent: #ffffff;
+  --text-on-accent: #fff;
 }
 
 body :is(

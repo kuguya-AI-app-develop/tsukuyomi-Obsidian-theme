@@ -47,7 +47,7 @@ button.mod-cta:hover {
 .menu-item.selected,
 .menu-item:hover {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-sea-rgb), 0.12);
+  background-color: rgb(var(--tk-sea-rgb), 0.12);
 }
 
 .search-result-file-match {
@@ -55,12 +55,12 @@ button.mod-cta:hover {
 }
 
 .search-result-file-match:hover {
-  background-color: rgba(var(--tk-sea-rgb), 0.08);
+  background-color: rgb(var(--tk-sea-rgb), 0.08);
 }
 
 .search-result-file-matched-text {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-gold-rgb), 0.3);
+  background-color: rgb(var(--tk-gold-rgb), 0.3);
   border-radius: 3px;
 }
 

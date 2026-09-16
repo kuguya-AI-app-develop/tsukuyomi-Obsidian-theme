@@ -1,63 +1,73 @@
 # Tsukuyomi（月读）
 
-Tsukuyomi 是一款受《超时空辉夜姬！》中「月读」空间启发的独立、非官方 Obsidian 主题。v0.7.2 将月读城市与八千代舞台结合：朱红叠檐、暖窗、数字招牌与骨架鱼构成街景，鸟居、圆镜和彩色拱桥组成舞台。提供「月读夜景」与「月白」两种模式。
+受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.0** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
 
-阅读与编辑区域保持不透明的纯色背景，文件名和笔记标题不叠加纹样、发光或海报卡片。侧栏采用独立的「月読 TSUKUYOMI」灯牌、青绿与珊瑚色偏移边框，以及奶油色选中项。空间足够时，空白页的鸟居与光镜居中，原生操作独立排列在其下方，城市留在底部。导航边缘保留青色短斜线与淡几何纹理。建筑保持静止；骨架鱼弯身、摆尾摆鳍，在下方两侧单向游过后淡出，再由反向鱼接续出现。四位伙伴分散在上方留白：DOGE 在左、FUSHI 在右，粉色伙伴在中央，彩叶狐狸装扮的头部位于中央偏左。狐狸头以官网正面装扮立绘为主要依据，用户截图补充角度参考；粉色伙伴依据用户图片重绘，官方名称尚未确认。角色采用矢量二创，光镜与水波独立变化。简洁模式可关闭招牌、装饰框线与场景。主题不打包官方 PNG、Logo、音乐或字体，不加载远程资源。
+An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
 
-主题覆盖阅读视图、实时预览与源码模式，并为工作区、文件树、属性、提示块、代码、表格、搜索、命令面板、Canvas、关系图和 Bases 提供基础配色。主题不会转换或改写笔记内容。安装产物只有 CSS 与清单；游鱼与小角色采用内嵌 SVG 声明式动画，不运行 JavaScript，也不需要动效插件。
+![Tsukuyomi 1.0.0 深色阅读界面](screenshot.jpg)
 
-![v0.7.2 深色空白页：左侧青色斜纹与四位伙伴](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg)
+## 特点
 
-[查看狐狸头重绘细节](docs/screenshots/53-fox-detail-v0.7.1.png)。
+- **深浅双模式**：「月读夜景」与「月白」，跟随 Obsidian 外观设置。
+- **适合中文阅读**：正文使用不透明纯色背景，默认宽度 `40rem`、行高 `1.75`，保留用户字体与字号；覆盖阅读、实时预览及源码视图。
+- **月读空白页**：静止的城市和鸟居、独立菜单、四位矢量伙伴与游动骨架鱼。装饰仅占用空白页和界面边缘，不铺在正文或文件名背后。
+- **离线使用**：安装产物只有 `theme.css` 与 `manifest.json`。SVG 资源已内嵌，不运行 JavaScript，无运行时依赖，也无需安装插件。
 
-检查结果与未测项目见 [验收记录](docs/VALIDATION.md)。历史版本的验收结果不代表当前版本已通过相同检查。
-
-[月读空间电影画面参考板](docs/SCENE-REFERENCES.html) 收录六组画面与主题提案，等待用户选择，尚未实施。
+空白页预览：[深色](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [浅色](docs/screenshots/54-fox-native-v0.7.1.jpg)。两图拍摄于 2026-09-16 的发布前版本，1.0.0 沿用其视觉设计。
 
 ## 安装
 
-需要 Obsidian `1.13.7` 或更高版本。
+需要 **Obsidian 1.13.7 或更高版本**。主题尚未收录到 Obsidian 社区主题目录，目前使用手动安装。
 
-1. 下载或构建 `dist/Tsukuyomi/`。
-2. 将整个 `Tsukuyomi` 目录复制到所选库的 `.obsidian/themes/Tsukuyomi/`，确保其中包含 `manifest.json` 和 `theme.css`。
-3. 在 Obsidian 打开「设置 → 外观」，将主题切换为 `Tsukuyomi`。
+1. 从 [1.0.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.0) 下载 `Tsukuyomi-1.0.0.zip`。
+2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
+3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
 
-回退时，在「设置 → 外观」重新选择默认主题即可；笔记不会被修改。
+也可下载单独的 `manifest.json` 和 `theme.css` 附件，放入 `.obsidian/themes/Tsukuyomi/`。
+
+升级时替换同目录下的两个文件，再重新选择主题。停用时切换回默认主题即可，笔记内容不会被修改。
+
+## 可选设置
+
+默认无需插件。安装社区插件 **Style Settings** 后，可调整五项设置：
+
+| 设置 | 默认值 | 用途 |
+| --- | --- | --- |
+| 简洁模式 | 关闭 | 隐藏招牌、装饰边框与空白页场景 |
+| 正文宽度 | `40rem` | 调整正文最大宽度 |
+| 界面密度 | 标准 | 在标准与紧凑布局之间切换 |
+| 场景透明度 | `0.70` | 调整空白页装饰，范围 `0–1` |
+| 静态场景 | 关闭 | 使用静态鱼与伙伴，停止装饰动效和界面过渡 |
+
+动效只在空间足够的活动空白页播放。系统开启减少动态效果、使用静态场景或切换到非活动窗格时，显示静态版本；简洁模式、窄小窗格和打印环境隐藏场景。建筑与笔记内容始终静止。
+
+从早期版本升级时，Style Settings 已保存的值会保留；旧 `tk-enable-motion` 已由 `tk-disable-motion` 取代，需要静态效果时请启用“静态场景”。
+
+## 兼容范围
+
+真实应用检查环境为 **macOS 上的 Obsidian 1.13.7**。Windows、Linux 和移动端尚未实机验证；中文输入法组合输入、Style Settings 面板、打印/PDF 和长期性能等仍有未测项目。默认配色检查不涵盖任意用户配色或全部第三方插件。
+
+实际检查项目、截图及限制见 [验收记录](docs/VALIDATION.md)。
 
 ## 本地开发
 
-需要 Node.js 22 或更高版本。
+需要 Node.js 22.9.0 或更高版本。
 
 ```sh
 npm ci
 npm test
+npm run lint
 npm run lab
 ```
 
-`npm ci` 安装两个仅用于开发检查的解析器：`css-tree` 和 `yaml`；主题运行时没有依赖。`npm run build` 只使用 Node.js，将 `src/` 合并为根目录 `theme.css`，并生成 `dist/Tsukuyomi/`。构建时将 `assets/tsukuyomi-{city,gate,fish,fish-swimming,mirror,mascots,mascots-living}.svg` 场景、角色及静态备用图与 `assets/stage-clouds.svg` 云纹内嵌到 CSS；安装时只需清单与样式文件，运行时不请求网络。
+`npm run build` 生成根目录 `theme.css` 和 `dist/Tsukuyomi/`。`npm run lab` 只安装到项目内的 `lab/Tsukuyomi Lab/`。修改鱼或伙伴素材后，分别运行 `node scripts/generate-fish.mjs`、`node scripts/generate-mascots.mjs`，再运行检查；构建会拒绝过期的生成资产。开发依赖不进入安装产物。
 
-`npm run lab` 只会构建并安装到项目内固定的 `lab/Tsukuyomi Lab/`，不接受其他库路径。执行后，在 Obsidian 中通过“打开文件夹作为库”打开这个现有实验库，再从「设置 → 外观」选择 `Tsukuyomi`。
+`npm run lint` 使用 Obsidian 官方 Stylelint 配置及项目兼容调整，详见 [样式检查说明](docs/LINT.md)。本地检查不代表已通过社区目录审核。
 
-修改鱼形、角色或其动效后，运行 `node scripts/generate-fish.mjs` 和 `node scripts/generate-mascots.mjs` 更新对应 SVG，再运行 `npm test`。粉色伙伴与狐狸头分别由 `scripts/render-mendako.mjs`、`scripts/render-fox.mjs` 的纯函数绘制，仍通过角色生成器更新，无需单独命令。两个生成器输出确定，构建会拒绝与生成结果不一致的旧资产。生成脚本只用于开发，不进入安装产物。CSS 分发文件预算为 `80KiB`，每个解码后的 SVG 不超过 `10KiB`。
+## 访问与授权
 
-本地 CodeGraph 配置用于索引 `scripts/*.mjs`；CSS 源码不在该索引中。
+仓库当前为私有，Release 只对有仓库访问权限的账号可见。软件许可证仍待确定，当前未声明开源许可证。
 
-## 可选设置
+本项目与 Obsidian 及原作权利方无官方关联。角色矢量属于二次创作，官方图片、Logo、音乐和字体不进入主题安装包；素材权利说明见 [NOTICE](NOTICE.md)，参考来源见 [资料依据](docs/SOURCES.md)。`docs/` 中的参考 HTML 可能访问外部图片，仅供开发研究，主题运行时不使用这些页面。
 
-主题无需插件即可使用。安装社区插件 Style Settings 后，可以调整以下五项：
-
-- `tk-minimal`：简洁模式，默认关闭；启用后隐藏街景招牌、装饰框线与空白页场景。
-- `tk-reading-width`：正文最大宽度，默认 `40rem`。
-- `tk-density`：标准或紧凑界面密度，默认标准。
-- `tk-decoration-opacity`：空白页场景透明度，默认 `0.70`，范围 `0–1`、步长 `0.05`；不调整侧栏招牌。
-- `tk-disable-motion`：静态场景，默认关闭；启用后切回静态鱼和角色，并停止光镜、水波及 `140ms` 界面过渡。系统开启减少动态效果时也停止动效。
-
-空白页动效默认可用，无需安装插件；只在空白页为活动窗格且空间足够时播放，切换到其他应用不会由主题主动暂停。建筑、笔记和侧栏招牌保持静止。非活动窗格、系统减少动态效果或「静态场景」使用静态鱼和角色；简洁模式、窄小窗格和打印环境隐藏场景。
-
-升级时，已保存的场景透明度（例如旧版的 `0.10`）会继续生效；可调至 `0.70` 或重置该项。旧 `tk-enable-motion` 已由 `tk-disable-motion` 替代；需要保持静态时，请开启新的「静态场景」。
-
-正文默认行高 `1.75`，保留 Obsidian 与用户选择的字体及字号。升级前笔记中的 `cssclasses: [tk-home]` 可以保留；自 v0.3.0 起不再为它添加特殊首页布局。
-
-另提供两类原创提示块：`[!tsukuyomi]` 和 `[!stage]`。
-
-设计说明见 [docs/DESIGN.md](docs/DESIGN.md)，资料依据见 [docs/SOURCES.md](docs/SOURCES.md)，实际检查范围与未验证项见 [docs/VALIDATION.md](docs/VALIDATION.md)。目前不作移动端实机验证声明。
+[更新日志](CHANGELOG.md) · [设计说明](docs/DESIGN.md) · [发布与社区目录流程](docs/PUBLISHING.md)

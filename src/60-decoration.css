@@ -133,6 +133,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
   content: "";
   position: absolute;
   z-index: 1;
+
   /* SVG routes stay inside the image bounds; this box never translates. */
   inset: auto 0 0;
   height: min(32%, 320px);
@@ -161,9 +162,17 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
 }
 
 @keyframes tk-water-ripple {
-  0% { transform: scale(0.55); opacity: 0; }
+  0% {
+    transform: scale(0.55);
+    opacity: 0;
+  }
+
   35% { opacity: calc(var(--tk-decoration-opacity) * 0.65); }
-  100% { transform: scale(1.12); opacity: 0; }
+
+  100% {
+    transform: scale(1.12);
+    opacity: 0;
+  }
 }
 
 /* Keep playing in a visible pane even while the user focuses another app. */

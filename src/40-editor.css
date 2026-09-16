@@ -20,7 +20,7 @@
 
 .markdown-rendered blockquote {
   color: var(--tk-muted);
-  background-color: rgba(var(--tk-violet-rgb), 0.06);
+  background-color: rgb(var(--tk-violet-rgb), 0.06);
   border-inline-start-width: 2px;
   border-radius: 0 var(--tk-radius-small) var(--tk-radius-small) 0;
   padding-block: 0.35em;
@@ -88,12 +88,12 @@ input[type="checkbox"]:checked {
 
 .cm-s-obsidian .cm-selectionBackground,
 .cm-s-obsidian.cm-focused .cm-selectionBackground {
-  background-color: rgba(var(--tk-violet-rgb), 0.28);
+  background-color: rgb(var(--tk-violet-rgb), 0.28);
 }
 
 .metadata-container {
   color: var(--tk-muted);
-  background-color: rgba(var(--tk-sea-rgb), 0.04);
+  background-color: rgb(var(--tk-sea-rgb), 0.04);
   border: 1px solid var(--tk-border);
   border-radius: var(--tk-radius-medium);
   padding: 0.5rem 0.75rem;
@@ -126,9 +126,9 @@ input[type="checkbox"]:checked {
 
 .markdown-rendered th {
   color: var(--tk-text);
-  background-color: rgba(var(--tk-sea-rgb), 0.1);
+  background-color: rgb(var(--tk-sea-rgb), 0.1);
 }
 
 .markdown-rendered tr:nth-child(even) td {
-  background-color: rgba(var(--tk-sea-rgb), 0.025);
+  background-color: rgb(var(--tk-sea-rgb), 0.025);
 }
