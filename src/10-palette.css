@@ -9,11 +9,11 @@
   color-scheme: dark;
 
   --color-base-00: #101520;
-  --color-base-05: #131b28;
+  --color-base-05: #101d32;
   --color-base-10: #18202c;
   --color-base-20: #1c2330;
   --color-base-25: #202837;
-  --color-base-30: #252e3d;
+  --color-base-30: #253044;
   --color-base-35: #2d3746;
   --color-base-40: #394450;
   --color-base-50: #637282;
@@ -22,8 +22,8 @@
   --color-base-100: #e9e3d5;
 
   --tk-background: #1c2330;
-  --tk-sidebar: #131b28;
-  --tk-raised: #252e3d;
+  --tk-sidebar: #101d32;
+  --tk-raised: #253044;
   --tk-text: #e9e3d5;
   --tk-muted: #b6b4ba;
   --tk-faint: #98a3af;

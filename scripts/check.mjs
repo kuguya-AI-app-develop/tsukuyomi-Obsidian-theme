@@ -129,7 +129,7 @@ function validateSettings(sourceCss) {
   const opacity = byId.get('tk-decoration-opacity');
   if (opacity) {
     assert(opacity.type === 'variable-number-slider', 'tk-decoration-opacity must be a variable-number-slider');
-    assert(opacity.default === 0.1, 'tk-decoration-opacity must default to 0.10');
+    assert(opacity.default === 0.7, 'tk-decoration-opacity must default to 0.70');
     assert(Number.isFinite(opacity.min) && Number.isFinite(opacity.max)
       && opacity.min <= opacity.default && opacity.default <= opacity.max,
     'tk-decoration-opacity default must be within its numeric range');

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180">
+<title>Gate over lunar water</title><desc>Original geometric torii, mirror, lanterns and open orbital arcs.</desc>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M56 127A68 68 0 1 1 176 103" stroke="#79ded6" stroke-width="2"/>
+<path d="M44 120A75 75 0 0 1 173 45M185 84A75 75 0 0 1 151 149" stroke="#b6a2ea" stroke-width="2" opacity=".8"/>
+<path d="M43 43A80 80 0 0 1 182 122M126 164A80 80 0 0 1 41 126" stroke="#dfc38a" stroke-width="2" opacity=".8"/>
+<ellipse cx="110" cy="158" rx="66" ry="9" stroke="#79ded6" stroke-width="2" opacity=".7"/>
+<path d="M68 166H152M85 172H135" stroke="#79ded6" stroke-width="2" opacity=".45"/>
+<g stroke="#e88d94" stroke-width="4">
+<path d="M80 68L74 152M140 68L146 152M62 92H158M72 151H84M136 151H148"/>
+<path d="M53 54Q110 74 167 54L161 68Q110 83 59 68Z" fill="#23334b" stroke-width="3"/>
+</g>
+<path d="M110 77V101" stroke="#dfc38a" stroke-width="2"/>
+<circle cx="110" cy="115" r="15" fill="#23334b" stroke="#dfc38a" stroke-width="3"/>
+<circle cx="110" cy="115" r="9" stroke="#79ded6" stroke-width="2" opacity=".65"/>
+<g stroke="#dfc38a" stroke-width="2">
+<path d="M37 89V97M31 99H43M31 119H43M37 121V128M183 70V78M177 80H189M177 100H189M183 102V109"/>
+<rect x="29" y="101" width="16" height="16" rx="4" fill="#dfc38a" fill-opacity=".25"/>
+<rect x="175" y="82" width="16" height="16" rx="4" fill="#dfc38a" fill-opacity=".25"/>
+</g></g></svg>

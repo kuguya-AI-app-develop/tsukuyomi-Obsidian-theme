@@ -1,6 +1,40 @@
-/* A quiet night-street vignette, confined to an empty native view.
-   All shapes are original CSS geometry. Notes and navigation get no artwork. */
-/* The leaf is also a query container when docked in a narrow desktop split. */
+/* Original vector interpretations of the city and its luminous stage.
+   These self-contained assets never appear behind notes or file names. */
+:root {
+  --tk-city-art: url("__TK_CITY_SVG__");
+  --tk-gate-art: url("__TK_GATE_SVG__");
+}
+
+/* A separate sign above the tree: lettering sits on an opaque ink panel. */
+.workspace-leaf-content[data-type="file-explorer"] {
+  container: tk-navigation / inline-size;
+}
+
+body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+  content: "月読\a TSUKUYOMI";
+  display: block;
+  box-sizing: border-box;
+  min-height: 90px;
+  margin: 8px 0 14px;
+  padding: 20px 84px 18px 14px;
+  border: 1px solid rgba(var(--tk-sea-rgb), 0.5);
+  border-inline-start: 3px solid var(--tk-rose);
+  border-radius: 3px 12px 3px 3px;
+  color: #e9f4ef;
+  font-size: 0.85em;
+  font-weight: 650;
+  line-height: 1.9;
+  letter-spacing: 0.14em;
+  white-space: pre;
+  background:
+    linear-gradient(90deg, #162338 0 48%, transparent 65%),
+    var(--tk-city-art) right center / 360px 96px no-repeat,
+    #162338;
+  box-shadow: 0 3px 0 rgba(var(--tk-rose-rgb), 0.16);
+  pointer-events: none;
+}
+
+/* Scope scene responsiveness to the pane, including desktop splits. */
 .workspace-leaf-content[data-type="empty"] {
   container: tk-empty / inline-size;
 }
@@ -12,35 +46,28 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
   background-color: var(--tk-background);
 }
 
-/* Distant rooflines sit below the native empty-page actions. */
+/* City and water occupy the lower third; native actions retain their space. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before {
   content: "";
   position: absolute;
   z-index: -1;
   inset: auto 0 0;
-  height: min(18%, 120px);
-  background: linear-gradient(180deg, var(--tk-sea), var(--tk-border));
-  clip-path: polygon(0 35%, 7% 35%, 10% 25%, 14% 10%, 18% 25%, 21% 35%, 28% 35%, 28% 58%, 34% 58%, 37% 50%, 42% 28%, 47% 50%, 50% 58%, 58% 58%, 58% 75%, 64% 75%, 68% 63%, 72% 45%, 76% 63%, 80% 75%, 87% 75%, 87% 45%, 91% 32%, 94% 17%, 97% 32%, 100% 45%, 100% 100%, 0 100%);
+  height: min(32%, 320px);
+  background: var(--tk-city-art) center bottom / contain no-repeat;
   opacity: var(--tk-decoration-opacity);
   pointer-events: none;
 }
 
-/* A small paper lantern occupies the upper margin, not the action column. */
+/* The gate and circular mirror sit above the native action column. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
   content: "";
   position: absolute;
   z-index: -1;
-  top: 8%;
-  right: 8%;
-  width: 54px;
-  height: 72px;
-  border-block: 5px solid var(--tk-gold);
-  border-inline: 1px solid var(--tk-gold);
-  border-radius: 40% 40% 34% 34%;
-  background:
-    linear-gradient(90deg, transparent 30%, var(--tk-gold) 31% 32%, transparent 33% 66%, var(--tk-gold) 67% 68%, transparent 69%),
-    linear-gradient(180deg, var(--tk-gold), transparent);
-  box-shadow: 0 0 32px 8px rgba(var(--tk-gold-rgb), 0.3);
+  top: 5%;
+  left: 25%;
+  width: 50%;
+  height: 24%;
+  background: var(--tk-gate-art) center / contain no-repeat;
   opacity: var(--tk-decoration-opacity);
   pointer-events: none;
 }

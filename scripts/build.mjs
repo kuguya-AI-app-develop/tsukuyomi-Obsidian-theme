@@ -16,7 +16,11 @@ export const sourceFiles = [
 
 export async function renderSource(name) {
   let css = await readFile(resolve(root, 'src', name), 'utf8');
-  for (const [token, asset] of [['__TK_CLOUDS_SVG__', 'stage-clouds.svg']]) {
+  for (const [token, asset] of [
+    ['__TK_CLOUDS_SVG__', 'stage-clouds.svg'],
+    ['__TK_CITY_SVG__', 'tsukuyomi-city.svg'],
+    ['__TK_GATE_SVG__', 'tsukuyomi-gate.svg'],
+  ]) {
     if (!css.includes(token)) continue;
     const svg = (await readFile(resolve(root, 'assets', asset), 'utf8'))
       .replace(/<!--[\s\S]*?-->/g, '').trim().replace(/>\s+</g, '><');

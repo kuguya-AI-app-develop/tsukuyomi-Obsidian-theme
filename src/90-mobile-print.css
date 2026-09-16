@@ -17,6 +17,10 @@
     border-radius: var(--tk-radius-medium);
   }
 
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+    display: none;
+  }
+
   .callout {
     padding: 0.75rem;
   }
@@ -42,6 +46,15 @@
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
     display: none;
+  }
+}
+
+/* Keep the sign readable when a desktop file tree is resized narrowly. */
+@container tk-navigation (max-width: 240px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+    padding-inline: 10px;
+    background: #162338;
+    text-align: center;
   }
 }
 
@@ -79,6 +92,8 @@
     background: #ffffff !important;
   }
 
+  body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
+  body .view-header::after,
   body .workspace-leaf-content[data-type="empty"] .view-content::before,
   body .workspace-leaf-content[data-type="empty"] .view-content::after {
     display: none !important;

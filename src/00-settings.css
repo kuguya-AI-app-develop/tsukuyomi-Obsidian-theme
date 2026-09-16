@@ -4,7 +4,7 @@ id: tsukuyomi-theme
 settings:
   - id: tk-minimal
     title: 简洁模式
-    description: 关闭空白页景物与细檐线，保留基础配色与排版。
+    description: 关闭月读灯牌、工作区饰线与空白页舞台，保留配色与排版。
     type: class-toggle
     default: false
   - id: tk-reading-width
@@ -30,10 +30,10 @@ settings:
     title: 空白页景物强度
     description: 只调节空白页静态景物的透明度，不影响笔记和文件列表。
     type: variable-number-slider
-    default: 0.10
+    default: 0.70
     min: 0
-    max: 0.24
-    step: 0.02
+    max: 1
+    step: 0.05
   - id: tk-enable-motion
     title: 主题动效
     description: 系统允许动效时，启用短暂的颜色、边框和阴影过渡。
@@ -43,7 +43,7 @@ settings:
 
 :root {
   --tk-reading-width: 40rem;
-  --tk-decoration-opacity: 0.10;
+  --tk-decoration-opacity: 0.70;
   --tk-radius-small: 6px;
   --tk-radius-medium: 10px;
   --tk-radius-large: 14px;
