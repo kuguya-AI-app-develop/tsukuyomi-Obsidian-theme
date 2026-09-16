@@ -10,6 +10,8 @@
 - 侧栏招牌高 80px；顶部框线消除，仍保留原生 `.nav-header > .nav-buttons-container` 内的四个按钮，44×44px 中心命中检查通过。没有隐藏工具栏父元素。
 - 桌面 1024×768 的菜单坐标与 1.0.3 相同；宽桌面中的 280px 窄分栏六个场景层全部隐藏。独立代码复核未发现 P1/P2 问题。[详细记录](mobile-v1.0.4.txt)。
 
+[1.0.4 GitHub Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4) 已公开；所有附件匿名下载与本地字节一致。官方已排队扫描，状态见 [发布记录](PUBLISHING.md)。
+
 这些是桌面浏览器尺寸回归，不是 iOS WebView 真机验收。用户仍需在 iPhone 更新后确认渲染与动画；本轮未测移动编辑输入、软键盘、触摸手势、耗电、Android、iPad，未切换操作系统 Reduce Motion（只验证代码守卫），未重复原生 PDF。
 
 复测：手机安装 1.0.4，打开空白页观察四位伙伴、鸟居、城市和游鱼；点选三个菜单，再打开侧栏测试新建/排序/折叠；切换静态与简洁模式。横屏短窗口会收起装饰。回退可换回默认主题或安装 1.0.3 的两个文件。

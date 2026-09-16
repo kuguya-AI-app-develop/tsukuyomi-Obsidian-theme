@@ -4,7 +4,7 @@
 
 ## 1.0.4 手机适配补丁
 
-修复手机宽度下场景全部隐藏及侧栏空框。24 项测试、严格 Stylelint、五种手机尺寸和桌面窄分栏模拟检查通过，详情见 [验收记录](VALIDATION.md)。iPhone 真机复核仍待用户更新验证。GitHub Release 与新版本官方扫描状态待发布后记录；此前 1.0.3 的官方两条打印警告不作为本版已消除。
+修复手机宽度下场景全部隐藏及侧栏空框。24 项测试、严格 Stylelint、五种手机尺寸和桌面窄分栏模拟检查通过，详情见 [验收记录](VALIDATION.md)。iPhone 真机复核仍待用户更新验证。[1.0.4 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4) 已于 2026-09-16 10:42:47Z 发布，tag 指向 `a22a21f30943e232115707c6cb8207bef3802283`。四个附件均匿名下载复验，与本地产物逐字节一致，ZIP 只含主题两文件。官方已读取 1.0.4 并排队扫描，当前为 Pending；官网稳定版本仍为 1.0.3。[复核记录](review-v1.0.4.txt)。此前 1.0.3 的官方两条打印警告不作为本版已消除；客户端目录同步未重新检查，既有自动检查继续暂停。
 
 ## 1.0.3 补丁复核
 
@@ -55,7 +55,7 @@
 | 必需附件 | `manifest.json`、`theme.css` |
 | 便捷附件 | `Tsukuyomi-1.0.4.zip`、`SHA256SUMS.txt` |
 
-[1.0.3 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.3) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
+[1.0.4 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
 
 ## 许可和审核边界
 
