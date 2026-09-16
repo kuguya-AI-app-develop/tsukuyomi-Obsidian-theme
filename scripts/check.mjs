@@ -119,7 +119,7 @@ function validateSettings(sourceCss) {
   const width = byId.get('tk-reading-width');
   if (width) {
     assert(width.type === 'variable-number-slider', 'tk-reading-width must be a variable-number-slider');
-    assert(width.default === 44, 'tk-reading-width must default to 44');
+    assert(width.default === 40, 'tk-reading-width must default to 40');
     assert(width.format === 'rem', 'tk-reading-width must use rem');
     assert(Number.isFinite(width.min) && Number.isFinite(width.max) && width.min <= width.default && width.default <= width.max,
       'tk-reading-width default must be within its numeric range');
@@ -129,7 +129,7 @@ function validateSettings(sourceCss) {
   const opacity = byId.get('tk-decoration-opacity');
   if (opacity) {
     assert(opacity.type === 'variable-number-slider', 'tk-decoration-opacity must be a variable-number-slider');
-    assert(opacity.default === 0.12, 'tk-decoration-opacity must default to 0.12');
+    assert(opacity.default === 0.1, 'tk-decoration-opacity must default to 0.10');
     assert(Number.isFinite(opacity.min) && Number.isFinite(opacity.max)
       && opacity.min <= opacity.default && opacity.default <= opacity.max,
     'tk-decoration-opacity default must be within its numeric range');
@@ -256,6 +256,65 @@ export function validateMotion(ast) {
   return errors;
 }
 
+// A regression guard for this theme's explicit reading selectors, not a full
+// cascade or accessibility analysis. Solid code/table/callout fills remain valid;
+// decorative images and generated artwork belong outside note content.
+export function validateReadingProtection(ast) {
+  const errors = [];
+  const readingClass = /^(?:markdown-(?:source-view|reading-view|preview-view|preview-section|preview-sizer|rendered)|cm-[\w-]+|HyperMD-header-[1-6]|inline-title|tk-home|callout(?:-[\w-]+)?|metadata-container)$/;
+  const resetValue = /^(?:none|initial|revert|revert-layer|unset)$/i;
+  // Keep variable-based shorthand limited to our known solid surfaces. Other
+  // variable tints should use background-color, which cannot render an image.
+  const solidBackgroundVariables = new Set(['--tk-background', '--tk-sidebar', '--tk-raised']);
+
+  walk(ast, {
+    visit: 'Rule',
+    enter(rule) {
+      if (rule.prelude?.type !== 'SelectorList') return;
+      rule.prelude.children.forEach((selectorNode) => {
+        let reading = false;
+        let generatedPseudo = false;
+        walk(selectorNode, {
+          enter(node) {
+            if (node.type === 'ClassSelector' && readingClass.test(node.name)) reading = true;
+            if (node.type === 'TypeSelector' && /^h[1-6]$/i.test(node.name)) reading = true;
+            if (['PseudoElementSelector', 'PseudoClassSelector'].includes(node.type)
+              && /^(?:before|after)$/i.test(node.name)) generatedPseudo = true;
+          },
+        });
+        if (!reading) return;
+
+        const selector = generate(selectorNode);
+        rule.block.children.forEach((node) => {
+          if (node.type !== 'Declaration') return;
+          const property = node.property.toLowerCase();
+          const value = generate(node.value);
+          if (solidBackgroundVariables.has(node.property)) {
+            errors.push(`reading protection: ${property} must be defined on root or theme modes, not ${selector}`);
+          }
+          const imageBackground = (property === 'background-image' && !resetValue.test(value))
+            || (property === 'background' && /(?:\burl|\b(?:repeating-)?(?:linear|radial|conic)-gradient)\(/i.test(value));
+          if (imageBackground) errors.push(`reading protection: image backgrounds are not allowed in ${selector}`);
+          if (property === 'background') {
+            for (const [, variable] of value.matchAll(/\bvar\(\s*(--[\w-]+)/gi)) {
+              if (!solidBackgroundVariables.has(variable)) {
+                errors.push(`reading protection: background shorthand in ${selector} uses non-surface variable ${variable}; use background-color for solid variable fills`);
+              }
+            }
+          }
+          if (property === 'text-shadow' && !resetValue.test(value)) {
+            errors.push(`reading protection: text shadows are not allowed in ${selector}`);
+          }
+          if (generatedPseudo && property === 'content' && !resetValue.test(value) && value !== 'normal') {
+            errors.push(`reading protection: generated decoration is not allowed in ${selector}`);
+          }
+        });
+      });
+    },
+  });
+  return errors;
+}
+
 function validateCss(ast, css) {
   let validatedValues = 0;
   let dynamicValues = 0;
@@ -328,6 +387,7 @@ function validateCss(ast, css) {
   });
 
   failures.push(...validateMotion(ast));
+  failures.push(...validateReadingProtection(ast));
 
   for (const variable of referencedThemeVariables) {
     assert(declaredThemeVariables.has(variable), `unresolved Tsukuyomi variable ${variable}`);
@@ -751,6 +811,7 @@ async function main() {
   console.log(`✓ CSS: parsed; ${cssStats.validatedValues} property values checked, ${cssStats.dynamicValues} dynamic and ${cssStats.unknownValues} unknown/vendor skipped`);
   console.log(`✓ Style Settings: 1 YAML block, ${settingsCount} valid options`);
   for (const [mode, results] of contrastResults) console.log(`✓ ${mode} contrast: ${formatContrast(results)}`);
+  console.log('✓ reading guard: explicit note selectors checked for image backgrounds, text shadows and generated decoration');
   console.log('✓ policy: self-contained graphics; short opt-in transitions, no keyframes or animation properties; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
 }
 

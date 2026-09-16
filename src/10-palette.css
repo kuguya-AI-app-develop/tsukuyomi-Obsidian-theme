@@ -1,45 +1,45 @@
 :root {
-  --tk-sea-rgb: 97, 212, 195;
-  --tk-rose-rgb: 244, 125, 137;
-  --tk-gold-rgb: 231, 199, 120;
-  --tk-violet-rgb: 182, 162, 234;
+  --tk-sea-rgb: 130, 202, 187;
+  --tk-rose-rgb: 230, 160, 152;
+  --tk-gold-rgb: 223, 195, 138;
+  --tk-violet-rgb: 188, 176, 223;
 }
 
 .theme-dark {
   color-scheme: dark;
 
-  --color-base-00: #070b1a;
-  --color-base-05: #0b1329;
-  --color-base-10: #101a30;
-  --color-base-20: #111b32;
-  --color-base-25: #142038;
-  --color-base-30: #192740;
-  --color-base-35: #22324b;
-  --color-base-40: #30445c;
-  --color-base-50: #526275;
-  --color-base-60: #78889a;
-  --color-base-70: #a7b5c6;
-  --color-base-100: #e6edf3;
+  --color-base-00: #101520;
+  --color-base-05: #131b28;
+  --color-base-10: #18202c;
+  --color-base-20: #1c2330;
+  --color-base-25: #202837;
+  --color-base-30: #252e3d;
+  --color-base-35: #2d3746;
+  --color-base-40: #394450;
+  --color-base-50: #637282;
+  --color-base-60: #98a3af;
+  --color-base-70: #b6b4ba;
+  --color-base-100: #e9e3d5;
 
-  --tk-background: #111b32;
-  --tk-sidebar: #0b1329;
-  --tk-raised: #192740;
-  --tk-text: #e6edf3;
-  --tk-muted: #a7b5c6;
-  --tk-faint: #78889a;
-  --tk-border: #30445c;
-  --tk-border-strong: #526275;
-  --tk-sea: #61d4c3;
-  --tk-rose: #f47d89;
-  --tk-gold: #e7c778;
-  --tk-violet: #b6a2ea;
-  --tk-blue: #7ab8f5;
-  --tk-orange: #f0a35b;
-  --tk-on-accent: #111b32;
+  --tk-background: #1c2330;
+  --tk-sidebar: #131b28;
+  --tk-raised: #252e3d;
+  --tk-text: #e9e3d5;
+  --tk-muted: #b6b4ba;
+  --tk-faint: #98a3af;
+  --tk-border: #394450;
+  --tk-border-strong: #637282;
+  --tk-sea: #82cabb;
+  --tk-rose: #e6a098;
+  --tk-gold: #dfc38a;
+  --tk-violet: #bcb0df;
+  --tk-blue: #8bbce0;
+  --tk-orange: #dbac7f;
+  --tk-on-accent: #1c2330;
 
-  --accent-h: 171;
-  --accent-s: 55%;
-  --accent-l: 61%;
+  --accent-h: 168;
+  --accent-s: 40%;
+  --accent-l: 65%;
 }
 
 .theme-light {

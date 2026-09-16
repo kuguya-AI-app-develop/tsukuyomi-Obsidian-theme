@@ -62,7 +62,7 @@ body {
   --tag-background-hover: rgba(var(--tk-violet-rgb), 0.2);
   --blockquote-border-color: var(--tk-violet);
   --h1-color: var(--tk-text);
-  --h2-color: var(--tk-sea);
+  --h2-color: var(--tk-text);
   --h3-color: var(--tk-text);
   --h4-color: var(--tk-text);
   --h5-color: var(--tk-text);

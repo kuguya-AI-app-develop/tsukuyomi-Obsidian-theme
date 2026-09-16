@@ -4,14 +4,14 @@ id: tsukuyomi-theme
 settings:
   - id: tk-minimal
     title: 简洁模式
-    description: 关闭舞台边框、云纹和月轮，保留基础配色与排版。
+    description: 关闭空白页景物与细檐线，保留基础配色与排版。
     type: class-toggle
     default: false
   - id: tk-reading-width
     title: 正文宽度
     description: 笔记正文的最大宽度。
     type: variable-number-slider
-    default: 44
+    default: 40
     min: 34
     max: 60
     step: 1
@@ -27,10 +27,10 @@ settings:
       - label: 紧凑
         value: tk-density-compact
   - id: tk-decoration-opacity
-    title: 背景纹样强度
-    description: 调节侧栏网点与空白页月环的透明度。其他装饰通过简洁模式关闭。
+    title: 空白页景物强度
+    description: 只调节空白页静态景物的透明度，不影响笔记和文件列表。
     type: variable-number-slider
-    default: 0.12
+    default: 0.10
     min: 0
     max: 0.24
     step: 0.02
@@ -42,8 +42,8 @@ settings:
 */
 
 :root {
-  --tk-reading-width: 44rem;
-  --tk-decoration-opacity: 0.12;
+  --tk-reading-width: 40rem;
+  --tk-decoration-opacity: 0.10;
   --tk-radius-small: 6px;
   --tk-radius-medium: 10px;
   --tk-radius-large: 14px;
@@ -52,7 +52,7 @@ settings:
 }
 
 body {
-  --file-line-width: var(--tk-reading-width, 44rem);
+  --file-line-width: var(--tk-reading-width, 40rem);
   --line-height-normal: 1.75;
 }
 
