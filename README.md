@@ -1,57 +1,59 @@
-# Tsukuyomi（月读）
+# Tsukuyomi
 
-受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.1** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
+English · [简体中文](README.zh-CN.md)
 
-An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
+An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.2** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
 
-![Tsukuyomi 深色阅读界面](screenshot.jpg)
+Maintained by [ArisaTaki](https://github.com/ArisaTaki) as an individual fan project.
 
-## 特点
+![Tsukuyomi dark reading view](screenshot.jpg)
 
-- **深浅双模式**：「月读夜景」与「月白」，跟随 Obsidian 外观设置。
-- **适合中文阅读**：正文使用不透明纯色背景，默认宽度 `40rem`、行高 `1.75`，保留用户字体与字号；覆盖阅读、实时预览及源码视图。
-- **月读空白页**：静止的城市和鸟居、独立菜单、四位矢量伙伴与游动骨架鱼。装饰仅占用空白页和界面边缘，不铺在正文或文件名背后。
-- **离线使用**：安装产物只有 `theme.css` 与 `manifest.json`。SVG 资源已内嵌，不运行 JavaScript，无运行时依赖，也无需安装插件。
+## Features
 
-空白页预览：[深色](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [浅色](docs/screenshots/54-fox-native-v0.7.1.jpg)。两图拍摄于 2026-09-16 的发布前版本，1.0 系列沿用其视觉设计。
+- **Dark and light modes** follow Obsidian's appearance setting.
+- **Comfortable reading**, including Chinese and mixed-language notes: opaque backgrounds, a default `40rem` line width and `1.75` line height, and your own fonts and font sizes. Supports Reading view, Live Preview, and Source mode.
+- **A decorative empty view** with a stationary city and torii, a separate action menu, four vector companions, and swimming skeletal fish. Artwork stays in empty views and workspace edges, away from note text and file names.
+- **Offline and self-contained**: installation requires only `theme.css` and `manifest.json`. SVG artwork is embedded, with no runtime JavaScript, network requests, dependencies, or required plugins.
 
-## 安装
+Empty-view previews: [dark](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [light](docs/screenshots/54-fox-native-v0.7.1.jpg). Captured on September 16, 2026 during development; the 1.0 series retains these visuals.
 
-需要 **Obsidian 1.13.7 或更高版本**。主题正在提交 Obsidian 社区目录审核，审核通过前请手动安装。
+## Installation
 
-1. 从 [1.0.1 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.1) 下载 `Tsukuyomi-1.0.1.zip`。
-2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
-3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
+Requires **Obsidian 1.13.7 or later**. The theme has been submitted to Obsidian Community but is not yet available in the community directory. Use manual installation until the listing is published.
 
-也可下载单独的 `manifest.json` 和 `theme.css` 附件，放入 `.obsidian/themes/Tsukuyomi/`。
+1. Download `Tsukuyomi-1.0.2.zip` from the [1.0.2 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2).
+2. Extract the `Tsukuyomi` folder into your vault's `.obsidian/themes/` directory. It should contain `manifest.json` and `theme.css`.
+3. In Obsidian, open **Settings → Appearance** and select **Tsukuyomi**.
 
-升级时替换同目录下的两个文件，再重新选择主题。停用时切换回默认主题即可，笔记内容不会被修改。
+Alternatively, download the individual `manifest.json` and `theme.css` attachments and place them in `.obsidian/themes/Tsukuyomi/`.
 
-## 可选设置
+To update, replace both files and reselect the theme. To disable it, select Obsidian's default theme. Your note content is not modified.
 
-默认无需插件。安装社区插件 **Style Settings** 后，可调整五项设置：
+## Optional settings
 
-| 设置 | 默认值 | 用途 |
+The defaults work without plugins. Install the **Style Settings** community plugin to adjust these five options:
+
+| Setting | Default | Purpose |
 | --- | --- | --- |
-| 简洁模式 | 关闭 | 隐藏招牌、装饰边框与空白页场景 |
-| 正文宽度 | `40rem` | 调整正文最大宽度 |
-| 界面密度 | 标准 | 在标准与紧凑布局之间切换 |
-| 场景透明度 | `0.70` | 调整空白页装饰，范围 `0–1` |
-| 静态场景 | 关闭 | 使用静态鱼与伙伴，停止装饰动效和界面过渡 |
+| Minimal mode | Off | Hide signs, decorative borders, and the empty-view scene |
+| Reading width | `40rem` | Adjust the maximum text width |
+| Interface density | Standard | Choose standard or compact spacing |
+| Scene opacity | `0.70` | Adjust empty-view decoration opacity from `0` to `1` |
+| Static scene | Off | Use static fish and companions; stop decorative motion and interface transitions |
 
-动效只在空间足够的活动空白页播放。系统开启减少动态效果、使用静态场景或切换到非活动窗格时，显示静态版本；简洁模式、窄小窗格和打印环境隐藏场景。建筑与笔记内容始终静止。
+Animation plays only in a sufficiently large, active empty pane. System reduced-motion preferences, Static scene, and inactive panes use static artwork. Minimal mode, small panes, and printing hide the scene. Buildings and note content always remain still.
 
-从早期版本升级时，Style Settings 已保存的值会保留；旧 `tk-enable-motion` 已由 `tk-disable-motion` 取代，需要静态效果时请启用“静态场景”。
+Saved Style Settings values survive upgrades. The old `tk-enable-motion` setting has been replaced by `tk-disable-motion`; enable **Static scene** if you prefer no motion.
 
-## 兼容范围
+## Compatibility
 
-真实应用检查环境为 **macOS 上的 Obsidian 1.13.7**。Windows、Linux 和移动端尚未实机验证；中文输入法组合输入、Style Settings 面板、打印/PDF 和长期性能等仍有未测项目。默认配色检查不涵盖任意用户配色或全部第三方插件。
+Native application checks were performed with **Obsidian 1.13.7 on macOS**. Windows, Linux, and mobile devices have not been tested. Chinese IME composition, the Style Settings panel, printing/PDF, and long-term performance also have outstanding checks. Default-palette checks do not cover arbitrary custom colors or every third-party plugin.
 
-实际检查项目、截图及限制见 [验收记录](docs/VALIDATION.md)。
+See the [validation record](docs/VALIDATION.md) for actual checks, screenshots, and limitations.
 
-## 本地开发
+## Development
 
-需要 Node.js 22.9.0 或更高版本。
+Requires Node.js **22.9.0 or later**.
 
 ```sh
 npm ci
@@ -60,14 +62,14 @@ npm run lint
 npm run lab
 ```
 
-`npm run build` 生成根目录 `theme.css` 和 `dist/Tsukuyomi/`。`npm run lab` 只安装到项目内的 `lab/Tsukuyomi Lab/`。修改鱼或伙伴素材后，分别运行 `node scripts/generate-fish.mjs`、`node scripts/generate-mascots.mjs`，再运行检查；构建会拒绝过期的生成资产。开发依赖不进入安装产物。
+`npm run build` generates the root `theme.css` and `dist/Tsukuyomi/`. `npm run lab` installs only into this project's `lab/Tsukuyomi Lab/` vault. After changing fish or companion artwork, run `node scripts/generate-fish.mjs` or `node scripts/generate-mascots.mjs`, respectively, then run the checks. The build rejects outdated generated assets. Development dependencies are not included in the installed theme.
 
-`npm run lint` 使用 Obsidian 官方 Stylelint 配置及项目兼容调整，详见 [样式检查说明](docs/LINT.md)。本地检查不代表已通过社区目录审核。
+`npm run lint` uses Obsidian's official Stylelint configuration with documented project compatibility adjustments. See [lint notes](docs/LINT.md). Local checks do not constitute community-directory approval.
 
-## 访问与授权
+## License and artwork
 
-本主题通过公开 GitHub 仓库免费、非营利分发，不设广告、收费或捐赠入口。维护者有权许可的原创软件代码采用 [MIT License](LICENSE)；原作角色设计、商标及其他第三方权益不在该许可范围内。
+This individual fan project is distributed free of charge through a public GitHub repository on a noncommercial basis, without ads, paid downloads, or donation links. Original software code that the maintainer has rights to license is available under the [MIT License](LICENSE). Third-party character designs, trademarks, and other underlying rights are excluded from that software license.
 
-本项目与 Obsidian 及原作权利方无官方关联。角色矢量属于二次创作，官方图片、Logo、音乐和字体不进入主题安装包；素材权利说明见 [NOTICE](NOTICE.md)，参考来源见 [资料依据](docs/SOURCES.md)。`docs/` 中的参考 HTML 可能访问外部图片，仅供开发研究，主题运行时不使用这些页面。
+The project is not affiliated with Obsidian or the original work's rights holders. Companion artwork is fan art; official images, logos, music, and fonts are not bundled with the theme. See [NOTICE](NOTICE.md) for rights and distribution scope, and [sources](docs/SOURCES.md) for references. Research HTML files in `docs/` may load external reference images; they are not used by the installed theme.
 
-[更新日志](CHANGELOG.md) · [设计说明](docs/DESIGN.md) · [发布与社区目录流程](docs/PUBLISHING.md)
+[Changelog](CHANGELOG.md) · [Design notes](docs/DESIGN.md) · [Publishing and review status](docs/PUBLISHING.md)

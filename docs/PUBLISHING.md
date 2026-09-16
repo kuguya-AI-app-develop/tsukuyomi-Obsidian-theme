@@ -1,13 +1,17 @@
 # 公开发布与 Obsidian 社区目录审核
 
-更新日期：2026-09-16。用户已授权完成公开发布、提交审核并跟进至通过。当前提交准备版本为 **1.0.1**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
+更新日期：2026-09-16。用户已授权完成公开发布、提交审核并跟进至通过。当前提交版本为 **1.0.2**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
 
 ## 当前状态
 
 - 已完成：标准软件许可证、第三方素材范围说明、完整许可随 CSS 分发、README、版本映射、真实截图、构建及本地检查。
 - 已完成：公开发布前的仓库和历史检查；用户未提交的外观及笔记修改不进入发布。
 - 已完成：维护者登录 Obsidian Community，并连接 GitHub `ArisaTaki` 的公开资料只读权限。社区署名为 `ArisaTaki`，handle 为 `arisataki`，无捐赠入口。
-- 正在执行：公开 GitHub 仓库并发布 1.0.1，再提交主题审核。
+- 已完成：GitHub 仓库公开及 1.0.1 正式 Release；四个附件可匿名下载，内容与本地校验一致，GitHub 识别 MIT。
+- 已完成：按目录验证要求，将 ArisaTaki 在 `kuguya-AI-app-develop` 的成员身份设为公开；仍由个人维护者管理目录条目。
+- 已受理：2026-09-16 16:19（Asia/Shanghai），[官方管理条目](https://community.obsidian.md/account/themes/tsukuyomi) 已识别版本 `1.0.1`、提交 `fe6fc60`，初始审核状态为 **Pending**。
+- 首轮结果：1.0.1 / `fe6fc60` 的扫描已 **Completed**，未出现 Error，保留英文 README 提示与 16 条 CSS 提示。已补齐完整英文 README 并保留中文版，在 1.0.2 重新检查。
+- 正在执行：提交 1.0.2 复核及正式发布目录条目；当前条目仍为草稿。
 - 尚未宣称：目录审核通过或可在 Obsidian 内直接安装。实际结果会补充在此处。
 
 ## 提交资料
@@ -16,7 +20,7 @@
 | --- | --- |
 | GitHub repository URL | `https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme` |
 | 默认分支 | `main` |
-| 版本 / Release tag | `1.0.1`，不加 `v` |
+| 版本 / Release tag | `1.0.2`，不加 `v` |
 | 最低 Obsidian 版本 | `1.13.7` |
 | Owner | 个人维护者 `ArisaTaki`（GitHub 组织继续托管仓库） |
 | Screenshot path | `screenshot.jpg`，真实阅读截图，1365×768，接近 16:9 |
@@ -24,9 +28,9 @@
 | Payment | Free，主题无收费、广告或捐赠入口 |
 | 描述 | An unofficial moonlit theme inspired by Cosmic Princess Kaguya!, with dark and light modes, calm reading surfaces, and an animated empty view. |
 | 必需附件 | `manifest.json`、`theme.css` |
-| 便捷附件 | `Tsukuyomi-1.0.1.zip`、`SHA256SUMS.txt` |
+| 便捷附件 | `Tsukuyomi-1.0.2.zip`、`SHA256SUMS.txt` |
 
-[1.0.1 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.1) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
+[1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
 
 ## 许可和审核边界
 
