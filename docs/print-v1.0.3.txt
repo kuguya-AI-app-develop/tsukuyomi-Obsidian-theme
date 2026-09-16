@@ -1,0 +1,12 @@
+Native Obsidian print regression: 1.0.2 -> 1.0.3
+Date: 2026-09-16; platform: macOS; app: Obsidian 1.13.7; installed renderer: Chromium 128 (PDF metadata).
+Fixture: lab/Tsukuyomi Lab/09-打印与链接验收.md
+Export: Letter, portrait, default margins, 100%, no note-name heading.
+Both outputs: 6 pages. Extracted text identical on each corresponding page.
+All 75 numbered long-code lines and final marker present; all text bounds inside the page.
+Per-page character counts: [420, 662, 296, 1374, 1406, 25]
+Rendered and visually inspected all 6 candidate pages: white paper, dark text, legible links/highlight/callout/table/code; no scene decoration or clipped text.
+Dark native Reading, Live Preview and Source views inspected; text/links remain readable. Light-mode UI, other platforms and arbitrary user snippets were not retested.
+PDF files and rendered images retained under ignored tmp/print-1.0.3/.
+baseline-1.0.2.pdf SHA256 c77b76ebed1fd9370f0405fe7d3bada19c1c7335101d6a36aafda5bf966f9116
+candidate-1.0.3.pdf SHA256 fdf502f663aeceaf5b1e8b46361562c62b801da4956631f8f9a9b467ae0bcc6a

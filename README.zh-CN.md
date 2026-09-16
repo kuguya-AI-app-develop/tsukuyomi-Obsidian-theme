@@ -2,7 +2,7 @@
 
 [English](README.md) · 简体中文
 
-受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.2** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
+受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.3** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
 
 An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
 
@@ -23,9 +23,9 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 
 确认同步后，打开 Obsidian「**设置 → 外观 → 主题 → 管理**」，搜索 **Tsukuyomi**。同步窗口与跟进状态见[发布记录](docs/PUBLISHING.md)。
 
-目前可用的手动安装方式：
+手动安装步骤：
 
-1. 从 [1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 下载 `Tsukuyomi-1.0.2.zip`。
+1. 从 [1.0.3 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.3) 下载 `Tsukuyomi-1.0.3.zip`。
 2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
 3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
 
@@ -51,7 +51,7 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 
 ## 兼容范围
 
-真实应用检查环境为 **macOS 上的 Obsidian 1.13.7**。Windows、Linux 和移动端尚未实机验证；中文输入法组合输入、Style Settings 面板、打印/PDF 和长期性能等仍有未测项目。默认配色检查不涵盖任意用户配色或全部第三方插件。
+真实应用检查环境为 **macOS 上的 Obsidian 1.13.7**，包含 1.0.3 的六页 PDF 样例及修改前后分页、文本完整性对比。Windows、Linux 和移动端尚未实机验证；中文输入法组合输入、Style Settings 面板、其他打印场景和长期性能等仍有未测项目。默认配色检查不涵盖任意用户配色或全部第三方插件。
 
 实际检查项目、截图及限制见 [验收记录](docs/VALIDATION.md)。
 
@@ -76,4 +76,4 @@ npm run lab
 
 本项目与 Obsidian 及原作权利方无官方关联。角色矢量属于二次创作，官方图片、Logo、音乐和字体不进入主题安装包；素材权利说明见 [NOTICE](NOTICE.md)，参考来源见 [资料依据](docs/SOURCES.md)。`docs/` 中的参考 HTML 可能访问外部图片，仅供开发研究，主题运行时不使用这些页面。
 
-[更新日志](CHANGELOG.md) · [设计说明](docs/DESIGN.md) · [发布与社区目录流程](docs/PUBLISHING.md)
+[贡献指南](CONTRIBUTING.md) · [更新日志](CHANGELOG.md) · [设计说明](docs/DESIGN.md) · [发布与社区目录流程](docs/PUBLISHING.md)

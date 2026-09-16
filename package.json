@@ -1,6 +1,6 @@
 {
   "name": "tsukuyomi-obsidian-theme",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "A quiet, moonlit Obsidian theme for Chinese reading and writing.",
   "type": "module",
@@ -12,7 +12,7 @@
     "check": "node scripts/check.mjs",
     "test": "npm run build && node --test scripts/check.test.mjs && npm run check",
     "lab": "node scripts/install-lab.mjs",
-    "lint": "stylelint theme.css"
+    "lint": "stylelint theme.css --max-warnings 0"
   },
   "devDependencies": {
     "css-tree": "3.2.1",

@@ -2,7 +2,7 @@
 
 English · [简体中文](README.zh-CN.md)
 
-An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.2** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
+An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.3** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
 
 Maintained by [ArisaTaki](https://github.com/ArisaTaki) as an individual fan project.
 
@@ -23,9 +23,9 @@ Requires **Obsidian 1.13.7 or later**. The [official web listing](https://commun
 
 Once synchronization is confirmed, open **Settings → Appearance → Themes → Manage** and search for **Tsukuyomi**. See the [publishing record](docs/PUBLISHING.md) for the synchronization window and follow-up status.
 
-Manual installation is available now:
+Manual installation:
 
-1. Download `Tsukuyomi-1.0.2.zip` from the [1.0.2 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2).
+1. Download `Tsukuyomi-1.0.3.zip` from the [1.0.3 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.3).
 2. Extract the `Tsukuyomi` folder into your vault's `.obsidian/themes/` directory. It should contain `manifest.json` and `theme.css`.
 3. In Obsidian, open **Settings → Appearance** and select **Tsukuyomi**.
 
@@ -51,7 +51,7 @@ Saved Style Settings values survive upgrades. The old `tk-enable-motion` setting
 
 ## Compatibility
 
-Native application checks were performed with **Obsidian 1.13.7 on macOS**. Windows, Linux, and mobile devices have not been tested. Chinese IME composition, the Style Settings panel, printing/PDF, and long-term performance also have outstanding checks. Default-palette checks do not cover arbitrary custom colors or every third-party plugin.
+Native application checks were performed with **Obsidian 1.13.7 on macOS**, including a six-page PDF regression comparison for 1.0.3 with matching pagination and complete text. Windows, Linux, and mobile devices have not been tested. Chinese IME composition, the Style Settings panel, other printing scenarios, and long-term performance still have outstanding checks. Default-palette checks do not cover arbitrary custom colors or every third-party plugin.
 
 See the [validation record](docs/VALIDATION.md) for actual checks, screenshots, and limitations.
 
@@ -76,4 +76,4 @@ This individual fan project is distributed free of charge through a public GitHu
 
 The project is not affiliated with Obsidian or the original work's rights holders. Companion artwork is fan art; official images, logos, music, and fonts are not bundled with the theme. See [NOTICE](NOTICE.md) for rights and distribution scope, and [sources](docs/SOURCES.md) for references. Research HTML files in `docs/` may load external reference images; they are not used by the installed theme.
 
-[Changelog](CHANGELOG.md) · [Design notes](docs/DESIGN.md) · [Publishing and review status](docs/PUBLISHING.md)
+[Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md) · [Design notes](docs/DESIGN.md) · [Publishing and review status](docs/PUBLISHING.md)

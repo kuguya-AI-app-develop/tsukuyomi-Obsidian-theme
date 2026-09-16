@@ -34,7 +34,6 @@
 
 .markdown-rendered .internal-link,
 .cm-s-obsidian span.cm-hmd-internal-link {
-  text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
 }
 
@@ -42,9 +41,11 @@
 .is-unresolved {
   color: var(--link-unresolved-color);
   opacity: 1;
-  text-decoration-line: underline;
-  text-decoration-style: dashed;
   text-underline-offset: 0.15em;
+}
+
+.cm-s-obsidian span.is-unresolved {
+  border-bottom: 1px dashed currentcolor;
 }
 
 .markdown-rendered :is(ul, ol) > li::marker {

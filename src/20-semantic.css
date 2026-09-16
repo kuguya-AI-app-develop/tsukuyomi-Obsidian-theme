@@ -54,7 +54,9 @@ body {
 
   --link-color: var(--color-accent);
   --link-color-hover: var(--color-accent-2);
+  --link-decoration-thickness: 1px;
   --link-unresolved-color: var(--tk-rose);
+  --link-unresolved-decoration-style: dashed;
   --link-external-color: var(--tk-violet);
   --link-external-color-hover: var(--tk-rose);
   --tag-color: var(--tk-violet);

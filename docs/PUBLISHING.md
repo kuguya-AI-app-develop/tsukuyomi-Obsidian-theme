@@ -1,8 +1,14 @@
 # 公开发布与 Obsidian 社区目录审核
 
-更新日期：2026-09-16。用户已授权完成公开发布、提交审核并跟进至通过。当前提交版本为 **1.0.2**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
+更新日期：2026-09-16。用户已授权完成公开发布、提交审核并跟进至通过。当前补丁版本为 **1.0.3**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
 
-## 当前状态
+## 1.0.3 补丁复核
+
+针对 1.0.2 扫描提示完成样式调整与 CONTRIBUTING.md。`npm test` 23/23、严格零警告 Stylelint 和原生六页 PDF 对比均通过，见 [验收记录](VALIDATION.md)。两条打印分页的定点豁免有浏览器支持依据，等待官方预览确认；尚未将本地结果等同于官方通过。
+
+客户端目录的每小时检查已按用户后续要求暂停，本补丁复核不恢复该检查。
+
+## 1.0.2 发布记录
 
 - 已完成：标准软件许可证、第三方素材范围说明、完整许可随 CSS 分发、README、版本映射、真实截图、构建及本地检查。
 - 已完成：公开发布前的仓库和历史检查；用户未提交的外观及笔记修改不进入发布。
@@ -23,7 +29,7 @@
 - 官方[目录同步工作流](https://github.com/obsidianmd/obsidian-releases/blob/master/.github/workflows/mirror-community-json.yml)计划在每小时第 **17 分钟**将 `community.obsidian.md/assets/community-themes.json` 复制到旧客户端列表。2026-09-16 **08:35:45Z** 的[运行记录](https://github.com/obsidianmd/obsidian-releases/actions/runs/35074624792)成功，显示来源与镜像均为 758 项、无差异。现有证据指向客户端导出尚未收录该条目，不能仅据搜不到就认定 GitHub 镜像任务故障。
 - 官方[发布说明 FAQ](https://obsidian.md/blog/future-of-plugins/)说明，审核通过后 **24 小时内**可在应用中搜索和下载。按本次 **2026-09-16 16:27** 的通过记录计算，24 小时节点为 **2026-09-17 16:27（北京时间）**；目前仍在同步窗口内。这是官方说明的窗口，当前客户端可用性仍需实际确认。
 
-已安排每小时复核客户端目录，确认收录或超过 2026-09-17 16:27（北京时间）窗口时报告结果并暂停定时检查。列表更新后仍需确认缓存刷新后的真实搜索和安装；若超时未收录，保留审核状态、列表内容及同步运行记录作为后续反馈依据。当前可使用 [1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 手动安装。
+此前安排的每小时复核已按用户要求暂停，等待官方自行同步。列表更新后仍需确认缓存刷新后的真实搜索和安装；若超时未收录，保留审核状态、列表内容及同步运行记录作为后续反馈依据。当前可使用 [1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 手动安装。
 
 ## 提交资料
 
@@ -31,7 +37,7 @@
 | --- | --- |
 | GitHub repository URL | `https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme` |
 | 默认分支 | `main` |
-| 版本 / Release tag | `1.0.2`，不加 `v` |
+| 版本 / Release tag | `1.0.3`，不加 `v` |
 | 最低 Obsidian 版本 | `1.13.7` |
 | Owner | 个人维护者 `ArisaTaki`（GitHub 组织继续托管仓库） |
 | Screenshot path | `screenshot.jpg`，真实阅读截图，1365×768，接近 16:9 |
@@ -39,7 +45,7 @@
 | Payment | Free，主题无收费、广告或捐赠入口 |
 | 描述 | An unofficial moonlit theme inspired by Cosmic Princess Kaguya!, with dark and light modes, calm reading surfaces, and an animated empty view. |
 | 必需附件 | `manifest.json`、`theme.css` |
-| 便捷附件 | `Tsukuyomi-1.0.2.zip`、`SHA256SUMS.txt` |
+| 便捷附件 | `Tsukuyomi-1.0.3.zip`、`SHA256SUMS.txt` |
 
 [1.0.2 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.2) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
 

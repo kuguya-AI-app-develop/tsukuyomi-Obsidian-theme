@@ -1,0 +1,6 @@
+
+> tsukuyomi-obsidian-theme@1.0.3 lint
+> stylelint theme.css --max-warnings 0
+
+
+Exit code: 0

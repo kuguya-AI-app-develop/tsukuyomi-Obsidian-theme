@@ -110,76 +110,72 @@
     --text-faint: #586879;
     --code-normal: #1f2933;
     --code-comment: #465565;
-    --code-function: #1f2933;
-    --code-important: #1f2933;
-    --code-keyword: #1f2933;
-    --code-operator: #1f2933;
-    --code-property: #1f2933;
-    --code-punctuation: #1f2933;
-    --code-string: #1f2933;
-    --code-tag: #1f2933;
-    --code-value: #1f2933;
+    --link-color: #0f625e;
+    --link-external-color: #0f625e;
+    --link-unresolved-color: #0f625e;
   }
 
   body,
-  .markdown-preview-view,
-  .markdown-rendered {
-    color: #1f2933 !important;
-    background: #fff !important;
+  .print .markdown-preview-view,
+  .print .markdown-rendered {
+    color: var(--text-normal);
+    background: var(--tk-background);
   }
 
-  body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
-  body .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after,
-  body .view-header::after,
-  body .workspace-leaf-content[data-type="empty"]::before,
-  body .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body .workspace-leaf-content[data-type="empty"] .view-content::after,
-  body .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body .workspace-leaf-content[data-type="empty"] .empty-state::after,
-  body .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
-    display: none !important;
+  body:not(.tk-minimal) :is(
+    .workspace-leaf-content[data-type="file-explorer"] .nav-files-container,
+    .workspace-leaf-content[data-type="empty"],
+    .workspace-leaf-content[data-type="empty"] :is(.view-content, .empty-state)
+  )::before,
+  body:not(.tk-minimal) :is(
+    .workspace-leaf-content[data-type="file-explorer"] .nav-files-container,
+    .view-header,
+    .workspace-leaf-content[data-type="empty"] :is(.view-content, .empty-state, .empty-state-container)
+  )::after {
+    display: none;
   }
 
-  .markdown-rendered a,
-  .markdown-rendered .internal-link,
-  .markdown-rendered .external-link {
-    color: #0f625e !important;
+  .print .markdown-rendered a {
+    color: var(--link-color);
     text-decoration: underline;
   }
 
-  .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
-    color: #1f2933 !important;
+  .print .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--text-normal);
+    /* stylelint-disable-next-line plugin/no-unsupported-browser-features -- Chrome 108+ supports print breaks; doiuse labels them multicolumn. */
     break-after: avoid;
   }
 
-  .markdown-rendered :is(pre, code),
-  .callout,
-  .markdown-rendered blockquote,
-  .markdown-rendered :is(th, td) {
-    color: #1f2933 !important;
-    background: #fff !important;
-    border-color: #aeb7b1 !important;
-    box-shadow: none !important;
+  .print .markdown-rendered mark {
+    color: var(--text-normal);
   }
 
-  .callout-title,
-  .callout-content {
-    color: #273442 !important;
+  .print .markdown-rendered :is(pre, code, blockquote, th, td),
+  .print .callout {
+    color: var(--text-normal);
+    background: var(--tk-background);
+    border-color: var(--tk-border);
+    box-shadow: none;
   }
 
-  .markdown-rendered pre :is(
+  .print :is(.callout-title, .callout-content) {
+    color: var(--text-normal);
+  }
+
+  .print .markdown-rendered pre :is(
     .token,
     [class*="language-"],
     [class*="cm-"],
     span
   ) {
-    color: #1f2933 !important;
+    color: var(--code-normal);
   }
 
   .markdown-rendered pre,
   .callout,
   .markdown-rendered table,
   .markdown-rendered blockquote {
+    /* stylelint-disable-next-line plugin/no-unsupported-browser-features -- Chrome 108+ supports print breaks; doiuse labels them multicolumn. */
     break-inside: avoid;
   }
 }
