@@ -3,14 +3,14 @@ import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { parse } from 'css-tree';
 import { validateSvgDataUrl, validateMotion, validateAnimatedAssetUsage, validateReadingProtection, validateSignageContrast } from './check.mjs';
-import { LICENSE_SCOPE_NOTICE, renderLicenseHeader } from './build.mjs';
+import { LICENSE_SCOPE_NOTICE, renderLicenseHeader, renderSource } from './build.mjs';
 
 const svgUrl = (body, attributes = '') => `data:image/svg+xml,${encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"${attributes}>${body}</svg>`,
 )}`;
 const checkMotion = (css) => validateMotion(parse(css));
 const checkReading = (css) => validateReadingProtection(parse(css));
-const sceneMedia = 'screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px)';
+const sceneMedia = 'screen and (prefers-reduced-motion: no-preference) and (min-width: 320px) and (min-height: 480px)';
 const sceneScope = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"]';
 const mirrorFrames = '@keyframes tk-mirror-breathe { from { opacity: .4; } to { opacity: .8; } }';
 const mirrorAnimation = 'animation: tk-mirror-breathe 5s ease-in-out infinite';
@@ -24,7 +24,7 @@ const mascotImageDeclaration = 'background-image: var(--tk-mascot-living-art)';
 const fishAssetCss = (declaration = fishImageDeclaration, selector = `${sceneScope} .view-content::before`) => `
   :root { --tk-fish-swimming-art: url("${svgUrl(morph)}"); --tk-mascot-living-art: url("${svgUrl(morph)}"); }
   @media ${sceneMedia} {
-    @container tk-empty (min-width: 601px) and (min-height: 561px) {
+    @container tk-empty (min-width: 320px) and (min-height: 480px) {
       ${sceneScope}::before { ${mascotImageDeclaration}; }
       ${selector} { ${declaration}; }
     }
@@ -135,8 +135,8 @@ test('animated mascot and fish URIs activate only on their separate guarded empt
   for (const css of [
     fishAssetCss().replace('screen and ', ''),
     fishAssetCss().replace('(prefers-reduced-motion: no-preference) and ', ''),
-    fishAssetCss().replaceAll('(min-width: 601px)', '(min-width: 300px)'),
-    fishAssetCss().replace('tk-empty (min-width: 601px) and (min-height: 561px)', 'tk-empty (min-width: 601px)'),
+    fishAssetCss().replaceAll('(min-width: 320px)', '(min-width: 300px)'),
+    fishAssetCss().replace('tk-empty (min-width: 320px) and (min-height: 480px)', 'tk-empty (min-width: 320px)'),
     fishAssetCss().replace('no-preference', 'reduce'),
     fishAssetCss().replace(':not(.tk-disable-motion)', ''),
     fishAssetCss().replace(':not(.tk-minimal)', ''),
@@ -155,6 +155,13 @@ test('animated mascot and fish URIs activate only on their separate guarded empt
     `${fishAssetCss()} .view-content::before { background-image: var(--tk-fish-swimming-art); }`,
     fishAssetCss().replace(':root { --tk-fish-swimming-art:', '.markdown-rendered { --tk-fish-swimming-art:'),
   ]) assert.ok(checkFishUsage(css).length, css);
+});
+
+test('source decoration keeps the guarded scene threshold contract', async () => {
+  const css = await renderSource('60-decoration.css');
+  const ast = parse(css, { parseCustomProperty: true });
+  assert.deepEqual(validateMotion(ast), []);
+  assert.deepEqual(validateAnimatedAssetUsage(ast), []);
 });
 
 test('each animated scene asset requires one definition and exactly one guarded activation', () => {
@@ -211,8 +218,8 @@ test('motion rejects missing media and static-scene guards, reading targets and 
     '(prefers-reduced-motion: no-preference)',
     sceneMedia.replace('screen and ', ''),
     sceneMedia.replace('(prefers-reduced-motion: no-preference) and ', ''),
-    sceneMedia.replace(' and (min-width: 601px)', ''),
-    sceneMedia.replace(' and (min-height: 561px)', ''),
+    sceneMedia.replace(' and (min-width: 320px)', ''),
+    sceneMedia.replace(' and (min-height: 480px)', ''),
     `${sceneMedia}, screen`,
     sceneMedia.replace('no-preference', 'reduce'),
   ]) assert.ok(checkMotion(mirrorScene(undefined, media)).length, media);

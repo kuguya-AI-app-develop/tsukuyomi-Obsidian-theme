@@ -1,4 +1,4 @@
-/* Tsukuyomi 1.0.3
+/* Tsukuyomi 1.0.4
 MIT applies to original code only; third-party character designs are excluded. See NOTICE.md in source repository.
 
 MIT License
@@ -957,7 +957,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-fi
   --tk-stage-height: clamp(160px, 24vh, 240px);
 }
 
-/* Companions occupy upper whitespace, independently of the city below. */
+/* Companions sit above the city. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before {
   content: "";
   position: absolute;
@@ -978,8 +978,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
   background-color: var(--tk-background);
 }
 
-/* Equal tracks center the gate itself. The menu owns the following row;
-   its intrinsic height takes priority when a short pane needs to scroll. */
+/* The gate and menu stay in separate rows. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
   display: grid;
   grid-template-columns: min(100%, 480px);
@@ -1034,7 +1033,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
   position: absolute;
   z-index: 1;
 
-  /* SVG routes stay inside the image bounds; this box never translates. */
+  /* The fish moves inside this fixed box. */
   inset: auto 0 0;
   height: min(32%, 320px);
   background: var(--tk-fish-art) center bottom / contain no-repeat;
@@ -1055,7 +1054,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   pointer-events: none;
 }
 
-/* Visible motion belongs only to decorative empty-page elements. */
+/* Motion only decorates empty pages. */
 @keyframes tk-mirror-breathe {
   0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
   50% { opacity: var(--tk-decoration-opacity); }
@@ -1075,11 +1074,9 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   }
 }
 
-/* Keep playing in a visible pane even while the user focuses another app. */
-@media screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px) {
-  /* A static image is the default; no embedded timeline is selected in
-     reduced-motion, inactive, narrow or short panes. */
-  @container tk-empty (min-width: 601px) and (min-height: 561px) {
+/* Animate only when the pane can show the scene. */
+@media screen and (prefers-reduced-motion: no-preference) and (min-width: 320px) and (min-height: 480px) {
+  @container tk-empty (min-width: 320px) and (min-height: 480px) {
     body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before {
       background-image: var(--tk-fish-swimming-art);
     }
@@ -1119,6 +1116,18 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
 }
 
 /* Source: 90-mobile-print.css */
+body.is-phone .workspace-leaf-content[data-type="file-explorer"] .nav-header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+body.is-phone:is(.is-floating-nav, .auto-full-screen) .workspace-leaf-content[data-type="empty"] .view-content {
+  height: calc(100% - var(--view-top-spacing, 0px) - max(0px, var(--view-bottom-spacing, 0px)));
+}
+
 @media (max-width: 600px) {
   body {
     --tk-space-ui: 5px;
@@ -1138,9 +1147,29 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
     border-radius: var(--tk-radius-medium);
   }
 
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after {
     display: none;
+  }
+
+  body:not(.is-phone):not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+    display: none;
+  }
+
+  body.is-phone:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+    min-height: 80px;
+    margin: 4px 2px 10px 0;
+    padding: 10px 48px 10px 12px;
+    background-position: right -55px center;
+    background-size: 150px 94px;
+    font-size: 0.9em;
+    line-height: 1.55;
+  }
+
+  body.is-phone:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before {
+    inset: var(--view-top-spacing, var(--header-height)) 0 auto;
+    height: 260px;
+    margin: 0 auto;
+    background-position: center top;
   }
 
   .callout {
@@ -1155,29 +1184,23 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
 
 }
 
-/* Small windows retain native empty-page spacing and hide scene geometry. */
-@media (max-width: 600px), (max-height: 560px) {
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
-    display: flex;
-    row-gap: 0;
-  }
-
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container {
-    align-self: center;
-  }
-
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
+@media (max-width: 319px), (max-height: 479px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before {
     display: none;
   }
 }
 
-/* Pane width can be smaller than the window (split panes / side docks). */
-@container tk-empty (max-width: 600px) or (max-height: 560px) {
+@container tk-empty (min-width: 320px) and (max-width: 600px) and (min-height: 480px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
+    --tk-stage-height: clamp(130px, 18vh, 150px);
+
+    grid-template-columns: min(100%, 360px);
+    grid-template-rows: minmax(72px, 1fr) var(--tk-stage-height) minmax(max-content, 1fr);
+    row-gap: 6px;
+  }
+}
+
+@container tk-empty (max-width: 319px) or (max-height: 479px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
     display: flex;
     row-gap: 0;
@@ -1188,10 +1211,8 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   }
 
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] :is(.view-content, .empty-state)::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] :is(.view-content, .empty-state)::after,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
     display: none;
   }

@@ -2,7 +2,7 @@
 
 [English](README.md) · 简体中文
 
-受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.3** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
+受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.4** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
 
 An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
 
@@ -13,9 +13,10 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 - **深浅双模式**：「月读夜景」与「月白」，跟随 Obsidian 外观设置。
 - **适合中文阅读**：正文使用不透明纯色背景，默认宽度 `40rem`、行高 `1.75`，保留用户字体与字号；覆盖阅读、实时预览及源码视图。
 - **月读空白页**：静止的城市和鸟居、独立菜单、四位矢量伙伴与游动骨架鱼。装饰仅占用空白页和界面边缘，不铺在正文或文件名背后。
+- **紧凑手机布局**：保留舞台、操作菜单与缩小的侧栏铭牌，为原生顶部和底部控件留出空间，并移除空文件工具栏的装饰边框。
 - **离线使用**：安装产物只有 `theme.css` 与 `manifest.json`。SVG 资源已内嵌，不运行 JavaScript，无运行时依赖，也无需安装插件。
 
-空白页预览：[深色](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [浅色](docs/screenshots/54-fox-native-v0.7.1.jpg)。两图拍摄于 2026-09-16 的发布前版本，1.0 系列沿用其视觉设计。
+桌面空白页预览：[深色](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [浅色](docs/screenshots/54-fox-native-v0.7.1.jpg)。两图拍摄于 2026-09-16 的发布前版本，桌面视觉设计保持不变。
 
 ## 安装
 
@@ -25,7 +26,7 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 
 手动安装步骤：
 
-1. 从 [1.0.3 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.3) 下载 `Tsukuyomi-1.0.3.zip`。
+1. 从 [1.0.4 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4) 下载 `Tsukuyomi-1.0.4.zip`。
 2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
 3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
 
@@ -45,13 +46,15 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 | 场景透明度 | `0.70` | 调整空白页装饰，范围 `0–1` |
 | 静态场景 | 关闭 | 使用静态鱼与伙伴，停止装饰动效和界面过渡 |
 
-动效只在空间足够的活动空白页播放。系统开启减少动态效果、使用静态场景或切换到非活动窗格时，显示静态版本；简洁模式、窄小窗格和打印环境隐藏场景。建筑与笔记内容始终静止。
+动效只在窗口和窗格均至少为 `320 × 480` 的活动空白页播放，包含紧凑布局。系统开启减少动态效果、使用静态场景或切换到非活动窗格时，显示静态版本；简洁模式、打印或窗口/窗格低于该尺寸时隐藏场景，保留原生操作。建筑与笔记内容始终静止。
 
 从早期版本升级时，Style Settings 已保存的值会保留；旧 `tk-enable-motion` 已由 `tk-disable-motion` 取代，需要静态效果时请启用“静态场景”。
 
 ## 兼容范围
 
 真实应用检查环境为 **macOS 上的 Obsidian 1.13.7**，包含 1.0.3 的六页 PDF 样例及修改前后分页、文本完整性对比。Windows、Linux 和移动端尚未实机验证；中文输入法组合输入、Style Settings 面板、其他打印场景和长期性能等仍有未测项目。默认配色检查不涵盖任意用户配色或全部第三方插件。
+
+1.0.4 的手机布局修复依据用户的 iPhone 14 Pro 截图反馈。桌面浏览器在 `393 × 852`、`375 × 667`、`320 × 568`、`430 × 932` 四种视口下，使用本机 Obsidian 1.13.7 CSS 与模拟 DOM 的检查已通过。这不等同于原生 iOS 验收，仍需用户在真机复核；实际系统减少动态效果切换、移动编辑、键盘、触摸手势、耗电、iPad 和 Android 尚未测试。
 
 实际检查项目、截图及限制见 [验收记录](docs/VALIDATION.md)。
 

@@ -1,3 +1,15 @@
+body.is-phone .workspace-leaf-content[data-type="file-explorer"] .nav-header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+
+body.is-phone:is(.is-floating-nav, .auto-full-screen) .workspace-leaf-content[data-type="empty"] .view-content {
+  height: calc(100% - var(--view-top-spacing, 0px) - max(0px, var(--view-bottom-spacing, 0px)));
+}
+
 @media (max-width: 600px) {
   body {
     --tk-space-ui: 5px;
@@ -17,9 +29,29 @@
     border-radius: var(--tk-radius-medium);
   }
 
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::after {
     display: none;
+  }
+
+  body:not(.is-phone):not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+    display: none;
+  }
+
+  body.is-phone:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-files-container::before {
+    min-height: 80px;
+    margin: 4px 2px 10px 0;
+    padding: 10px 48px 10px 12px;
+    background-position: right -55px center;
+    background-size: 150px 94px;
+    font-size: 0.9em;
+    line-height: 1.55;
+  }
+
+  body.is-phone:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before {
+    inset: var(--view-top-spacing, var(--header-height)) 0 auto;
+    height: 260px;
+    margin: 0 auto;
+    background-position: center top;
   }
 
   .callout {
@@ -34,29 +66,23 @@
 
 }
 
-/* Small windows retain native empty-page spacing and hide scene geometry. */
-@media (max-width: 600px), (max-height: 560px) {
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
-    display: flex;
-    row-gap: 0;
-  }
-
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container {
-    align-self: center;
-  }
-
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
+@media (max-width: 319px), (max-height: 479px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before {
     display: none;
   }
 }
 
-/* Pane width can be smaller than the window (split panes / side docks). */
-@container tk-empty (max-width: 600px) or (max-height: 560px) {
+@container tk-empty (min-width: 320px) and (max-width: 600px) and (min-height: 480px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
+    --tk-stage-height: clamp(130px, 18vh, 150px);
+
+    grid-template-columns: min(100%, 360px);
+    grid-template-rows: minmax(72px, 1fr) var(--tk-stage-height) minmax(max-content, 1fr);
+    row-gap: 6px;
+  }
+}
+
+@container tk-empty (max-width: 319px) or (max-height: 479px) {
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
     display: flex;
     row-gap: 0;
@@ -67,10 +93,8 @@
   }
 
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] :is(.view-content, .empty-state)::before,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] :is(.view-content, .empty-state)::after,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
     display: none;
   }

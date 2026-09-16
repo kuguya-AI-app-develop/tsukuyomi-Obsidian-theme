@@ -1,0 +1,17 @@
+Tsukuyomi 1.0.4 mobile layout regression — 2026-09-16
+
+Environment: desktop in-app Chromium browser; local Obsidian 1.13.7 app.css; synthetic DOM with is-mobile/is-phone/is-ios/is-floating-nav classes; iframe CSS-pixel viewports; simulated safe-area values. Not an iOS device/WebView test. Native stylesheet and personal screenshots are not distributed.
+
+Baseline 1.0.3 at 393x852: all six scene layers display:none; file branding display:none; top navigation frame remains despite absolutely positioned child buttons.
+
+Patched cases: 393x852,375x667,320x568,430x932: visible scene, animated fish/companions selected, menu actions 48px and all center hits true, no horizontal overflow. 852x393: scene hidden under 480px height, all menu center hits true.
+393x852 light, static, minimal, inactive: expected art/animation selection; all action center hits true. Reading view: no scene backgrounds or generated scene content.
+File drawer: 80px branding, nav-header block height0 without frame; native nested 4 buttons remain44x44 and all hit true.
+1024x768 desktop: menu coordinates exactly match1.0.3. A280px pane within desktop: all six scene layers hidden; menu remains centered/hittable.
+
+Two same-page rendered frames: >12 RGB threshold changed pixels: companions647, left fish532, right fish474. This establishes visible rendering changes in the test browser, not iOS performance.
+
+Native1.13.7 app.js read-only review confirms navButtonsEl is created inside navHeaderEl; clearing decorative CSS preserves controls. Independent patch review: no evidenced P1/P2 findings.
+
+Evidence retained locally: tmp/mobile-1.0.4/matrix.json; phone-393-dark.png; phone-393-light.png; sidebar-393.png; motion-a.png; motion-b.png.
+Not tested: real iOS/Android/iPadOS, mobile editing and IME, keyboard, touch gestures, battery/long-term performance, OS Reduce Motion toggle (guard covered by automated tests); native PDF not repeated.

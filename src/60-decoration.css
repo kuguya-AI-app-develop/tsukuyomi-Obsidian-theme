@@ -57,7 +57,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-fi
   --tk-stage-height: clamp(160px, 24vh, 240px);
 }
 
-/* Companions occupy upper whitespace, independently of the city below. */
+/* Companions sit above the city. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"]::before {
   content: "";
   position: absolute;
@@ -78,8 +78,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
   background-color: var(--tk-background);
 }
 
-/* Equal tracks center the gate itself. The menu owns the following row;
-   its intrinsic height takes priority when a short pane needs to scroll. */
+/* The gate and menu stay in separate rows. */
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
   display: grid;
   grid-template-columns: min(100%, 480px);
@@ -134,7 +133,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::
   position: absolute;
   z-index: 1;
 
-  /* SVG routes stay inside the image bounds; this box never translates. */
+  /* The fish moves inside this fixed box. */
   inset: auto 0 0;
   height: min(32%, 320px);
   background: var(--tk-fish-art) center bottom / contain no-repeat;
@@ -155,7 +154,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   pointer-events: none;
 }
 
-/* Visible motion belongs only to decorative empty-page elements. */
+/* Motion only decorates empty pages. */
 @keyframes tk-mirror-breathe {
   0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
   50% { opacity: var(--tk-decoration-opacity); }
@@ -175,11 +174,9 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   }
 }
 
-/* Keep playing in a visible pane even while the user focuses another app. */
-@media screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px) {
-  /* A static image is the default; no embedded timeline is selected in
-     reduced-motion, inactive, narrow or short panes. */
-  @container tk-empty (min-width: 601px) and (min-height: 561px) {
+/* Animate only when the pane can show the scene. */
+@media screen and (prefers-reduced-motion: no-preference) and (min-width: 320px) and (min-height: 480px) {
+  @container tk-empty (min-width: 320px) and (min-height: 480px) {
     body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before {
       background-image: var(--tk-fish-swimming-art);
     }

@@ -354,7 +354,7 @@ export function validateMotion(ast) {
     ['tk-mirror-breathe', { value: 'tk-mirror-breathe 5s ease-in-out infinite', targets: ['.view-content .empty-state::after'] }],
     ['tk-water-ripple', { value: 'tk-water-ripple 4s ease-out infinite', targets: ['.view-content .empty-state-container::after'] }],
   ]);
-  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:601px)', '(min-height:561px)'];
+  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:320px)', '(min-height:480px)'];
   const transitionTargets = new Set(['.workspace-tab-header', '.nav-file-title', '.nav-folder-title',
     '.tree-item-self', '.clickable-icon', 'button', '.suggestion-item', '.menu-item', '.canvas-node-container']);
   const ancestors = [];
@@ -475,7 +475,7 @@ export function validateAnimatedAssetUsage(ast) {
     ['--tk-mascot-living-art', `${scene}::before`],
     ['--tk-fish-swimming-art', `${scene} .view-content::before`],
   ]);
-  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:601px)', '(min-height:561px)'];
+  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:320px)', '(min-height:480px)'];
   const ancestors = [];
   const counts = new Map(ANIMATED_ASSET_VARIABLES.map((variable) => [variable, { definitions: 0, uses: 0 }]));
   walk(ast, {
@@ -501,7 +501,7 @@ export function validateAnimatedAssetUsage(ast) {
       if (referenced.length !== 1 || node.property !== 'background-image'
         || value !== `var(${referenced[0]})` || selector !== targets.get(referenced[0])
         || !requiredMedia.every((term) => media.includes(term)) || media.some((term) => !requiredMedia.includes(term))
-        || !containers.includes('tk-empty(min-width:601px)and(min-height:561px)')) {
+        || !containers.includes('tk-empty(min-width:320px)and(min-height:480px)')) {
         errors.push('animated scene assets require their own active empty mascot/fish layer, both opt-outs, reduced-motion, viewport and pane-size guards; aliases and combined layers are not allowed');
       }
     },

@@ -2,7 +2,7 @@
 
 English · [简体中文](README.zh-CN.md)
 
-An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.3** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
+An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.4** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
 
 Maintained by [ArisaTaki](https://github.com/ArisaTaki) as an individual fan project.
 
@@ -13,9 +13,10 @@ Maintained by [ArisaTaki](https://github.com/ArisaTaki) as an individual fan pro
 - **Dark and light modes** follow Obsidian's appearance setting.
 - **Comfortable reading**, including Chinese and mixed-language notes: opaque backgrounds, a default `40rem` line width and `1.75` line height, and your own fonts and font sizes. Supports Reading view, Live Preview, and Source mode.
 - **A decorative empty view** with a stationary city and torii, a separate action menu, four vector companions, and swimming skeletal fish. Artwork stays in empty views and workspace edges, away from note text and file names.
+- **Compact phone layouts** retain the stage, action menu, and a smaller sidebar sign, leave space for native top and bottom controls, and remove the decorative frame from an empty file toolbar.
 - **Offline and self-contained**: installation requires only `theme.css` and `manifest.json`. SVG artwork is embedded, with no runtime JavaScript, network requests, dependencies, or required plugins.
 
-Empty-view previews: [dark](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [light](docs/screenshots/54-fox-native-v0.7.1.jpg). Captured on September 16, 2026 during development; the 1.0 series retains these visuals.
+Desktop empty-view previews: [dark](docs/screenshots/55-sidebar-stripe-v0.7.2.jpg) · [light](docs/screenshots/54-fox-native-v0.7.1.jpg). Captured on September 16, 2026 during development; the desktop visual design is retained.
 
 ## Installation
 
@@ -25,7 +26,7 @@ Once synchronization is confirmed, open **Settings → Appearance → Themes →
 
 Manual installation:
 
-1. Download `Tsukuyomi-1.0.3.zip` from the [1.0.3 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.3).
+1. Download `Tsukuyomi-1.0.4.zip` from the [1.0.4 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4).
 2. Extract the `Tsukuyomi` folder into your vault's `.obsidian/themes/` directory. It should contain `manifest.json` and `theme.css`.
 3. In Obsidian, open **Settings → Appearance** and select **Tsukuyomi**.
 
@@ -45,13 +46,15 @@ The defaults work without plugins. Install the **Style Settings** community plug
 | Scene opacity | `0.70` | Adjust empty-view decoration opacity from `0` to `1` |
 | Static scene | Off | Use static fish and companions; stop decorative motion and interface transitions |
 
-Animation plays only in a sufficiently large, active empty pane. System reduced-motion preferences, Static scene, and inactive panes use static artwork. Minimal mode, small panes, and printing hide the scene. Buildings and note content always remain still.
+Animation plays only in an active empty pane when both the viewport and pane are at least `320 × 480`, including the compact layout. System reduced-motion preferences, Static scene, and inactive panes use static artwork. Minimal mode, printing, or either area falling below that size hide the scene while retaining the native actions. Buildings and note content always remain still.
 
 Saved Style Settings values survive upgrades. The old `tk-enable-motion` setting has been replaced by `tk-disable-motion`; enable **Static scene** if you prefer no motion.
 
 ## Compatibility
 
 Native application checks were performed with **Obsidian 1.13.7 on macOS**, including a six-page PDF regression comparison for 1.0.3 with matching pagination and complete text. Windows, Linux, and mobile devices have not been tested. Chinese IME composition, the Style Settings panel, other printing scenarios, and long-term performance still have outstanding checks. Default-palette checks do not cover arbitrary custom colors or every third-party plugin.
+
+The 1.0.4 phone-layout fix follows an iPhone 14 Pro screenshot report. Desktop-browser checks at `393 × 852`, `375 × 667`, `320 × 568`, and `430 × 932` passed using the locally installed Obsidian 1.13.7 CSS and simulated DOM. These are not native iOS results; follow-up on the user's device is still required. Actual system reduced-motion switching, mobile editing, the keyboard, touch gestures, battery use, iPad, and Android remain untested.
 
 See the [validation record](docs/VALIDATION.md) for actual checks, screenshots, and limitations.
 
