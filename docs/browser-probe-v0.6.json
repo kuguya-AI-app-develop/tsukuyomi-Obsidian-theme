@@ -1,0 +1,383 @@
+{
+  "environment": "Isolated Chromium DOM fixture matching native empty-view classes and base geometry; not a mobile-app or full Obsidian test",
+  "oldUnfocused": {
+    "case": "v0.5 unfocused",
+    "state": "paused",
+    "transform": "matrix(1, 0, 0, 1, -10, 2)"
+  },
+  "oldFocused": {
+    "duration": "24s",
+    "state": "running",
+    "transform": "matrix(1, 0, 0, 1, -9.99998, 2)"
+  },
+  "newFrameA": {
+    "firstAction": {
+      "bottom": 514.390625,
+      "height": 24,
+      "left": 575.578125,
+      "right": 704.40625,
+      "top": 490.390625,
+      "width": 128.828125,
+      "x": 575.578125,
+      "y": 490.390625
+    },
+    "fish": {
+      "duration": "8s",
+      "name": "tk-fish-drift",
+      "state": "running",
+      "transform": "matrix(1, 0, 0, 1, -31.9995, 5.99989)"
+    },
+    "gap": "12px",
+    "menu": {
+      "bottom": 616.390625,
+      "height": 138,
+      "left": 575.578125,
+      "right": 704.40625,
+      "top": 478.390625,
+      "width": 128.828125,
+      "x": 575.578125,
+      "y": 478.390625
+    },
+    "mirror": {
+      "name": "tk-mirror-breathe",
+      "opacity": "0.280035"
+    },
+    "overflow": [
+      1280,
+      1280,
+      720,
+      720
+    ],
+    "rows": "261.594px 172.797px 261.609px",
+    "scene": {
+      "bottom": 720,
+      "height": 720,
+      "left": 0,
+      "right": 1280,
+      "top": 0,
+      "width": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "viewport": [
+      1280,
+      720
+    ],
+    "water": {
+      "name": "tk-water-ripple",
+      "transform": "matrix(0.554043, 0, 0, 0.554043, 0, 0)"
+    }
+  },
+  "newFrameB": {
+    "fish": {
+      "state": "running",
+      "transform": "matrix(1, 0, 0, 1, -1.39008, -0.695919)"
+    },
+    "mirror": {
+      "opacity": "0.281314"
+    },
+    "water": {
+      "transform": "matrix(0.573991, 0, 0, 0.573991, 0, 0)"
+    }
+  },
+  "finalLayout": {
+    "bodyClass": "theme-light ",
+    "firstAction": {
+      "bottom": 514.390625,
+      "height": 24,
+      "left": 575.578125,
+      "right": 704.40625,
+      "top": 490.390625,
+      "width": 128.828125,
+      "x": 575.578125,
+      "y": 490.390625
+    },
+    "fishState": "running",
+    "fishTransform": "matrix(1, 0, 0, 1, 9.6865, -3.11892)",
+    "overflow": [
+      1280,
+      1280,
+      720,
+      720
+    ],
+    "rowGap": "12px",
+    "rows": "261.594px 172.797px 261.609px",
+    "scene": {
+      "bottom": 720,
+      "height": 720,
+      "left": 0,
+      "right": 1280,
+      "top": 0,
+      "width": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "viewport": [
+      1280,
+      720
+    ],
+    "centerError": 0.007499999999993179,
+    "gapToAction": 43.99962499999998
+  },
+  "staticCases": [
+    {
+      "body": "theme-light tk-disable-motion",
+      "firstAction": {
+        "bottom": 514.390625,
+        "height": 24,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 490.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 490.390625
+      },
+      "fish": [
+        "block",
+        "\"\"",
+        "none",
+        "running"
+      ],
+      "gate": [
+        "block",
+        "\"\""
+      ],
+      "menu": {
+        "bottom": 616.390625,
+        "height": 138,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 478.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 478.390625
+      },
+      "mirror": [
+        "block",
+        "none"
+      ],
+      "page": "/new-static.html",
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "261.594px 172.797px 261.609px",
+      "scroll": [
+        720,
+        720,
+        1280,
+        1280
+      ],
+      "water": [
+        "block",
+        "none"
+      ]
+    },
+    {
+      "body": "theme-light tk-minimal",
+      "firstAction": {
+        "bottom": 336,
+        "height": 24,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 312,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 312
+      },
+      "fish": [
+        "inline",
+        "none",
+        "none",
+        "running"
+      ],
+      "gate": [
+        "block",
+        "none"
+      ],
+      "menu": {
+        "bottom": 420,
+        "height": 120,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 300,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 300
+      },
+      "mirror": [
+        "block",
+        "none"
+      ],
+      "page": "/new-minimal.html",
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "none",
+      "scroll": [
+        720,
+        720,
+        1280,
+        1280
+      ],
+      "water": [
+        "inline",
+        "none"
+      ]
+    },
+    {
+      "body": "theme-light ",
+      "firstAction": {
+        "bottom": 514.390625,
+        "height": 24,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 490.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 490.390625
+      },
+      "fish": [
+        "block",
+        "\"\"",
+        "none",
+        "running"
+      ],
+      "gate": [
+        "block",
+        "\"\""
+      ],
+      "menu": {
+        "bottom": 616.390625,
+        "height": 138,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 478.390625,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 478.390625
+      },
+      "mirror": [
+        "block",
+        "none"
+      ],
+      "page": "/new-inactive.html",
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      },
+      "rows": "261.594px 172.797px 261.609px",
+      "scroll": [
+        720,
+        720,
+        1280,
+        1280
+      ],
+      "water": [
+        "block",
+        "none"
+      ]
+    }
+  ],
+  "responsive": [
+    {
+      "hidden": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "menu": {
+        "bottom": 420,
+        "height": 120,
+        "left": 185.578125,
+        "right": 314.40625,
+        "top": 300,
+        "width": 128.828125,
+        "x": 185.578125,
+        "y": 300
+      },
+      "menuAlign": "center",
+      "overflow": [
+        500,
+        500,
+        720,
+        720
+      ],
+      "page": "/new-narrow.html",
+      "pane": {
+        "bottom": 720,
+        "height": 720,
+        "left": 0,
+        "right": 500,
+        "top": 0,
+        "width": 500,
+        "x": 0,
+        "y": 0
+      },
+      "sceneMode": "flex"
+    },
+    {
+      "hidden": [
+        "none",
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "menu": {
+        "bottom": 190,
+        "height": 120,
+        "left": 575.578125,
+        "right": 704.40625,
+        "top": 70,
+        "width": 128.828125,
+        "x": 575.578125,
+        "y": 70
+      },
+      "menuAlign": "center",
+      "overflow": [
+        1280,
+        1280,
+        260,
+        260
+      ],
+      "page": "/new-short.html",
+      "pane": {
+        "bottom": 260,
+        "height": 260,
+        "left": 0,
+        "right": 1280,
+        "top": 0,
+        "width": 1280,
+        "x": 0,
+        "y": 0
+      },
+      "sceneMode": "flex"
+    }
+  ],
+  "nativeScreenshotTimes": {
+    "nativePhaseATime": "2026-09-16T06:34:34.261Z",
+    "nativePhaseBTime": "2026-09-16T06:34:37.383Z"
+  }
+}

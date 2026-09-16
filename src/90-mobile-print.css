@@ -36,20 +36,40 @@
 
 /* Small windows retain native empty-page spacing and hide scene geometry. */
 @media (max-width: 600px), (max-height: 560px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
+    display: flex;
+    row-gap: 0;
+  }
+
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container {
+    align-self: center;
+  }
+
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
     display: none;
   }
 }
 
 /* Pane width can be smaller than the window (split panes / side docks). */
-@container tk-empty (max-width: 600px) {
+@container tk-empty (max-width: 600px) or (max-height: 560px) {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
+    display: flex;
+    row-gap: 0;
+  }
+
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container {
+    align-self: center;
+  }
+
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after,
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after,
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
     display: none;
   }
 }
@@ -64,6 +84,15 @@
 }
 
 @media print {
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
+    display: flex;
+    row-gap: 0;
+  }
+
+  body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container {
+    align-self: center;
+  }
+
   body.theme-dark,
   body.theme-light {
     --tk-background: #ffffff;
@@ -103,7 +132,8 @@
   body .workspace-leaf-content[data-type="empty"] .view-content::before,
   body .workspace-leaf-content[data-type="empty"] .view-content::after,
   body .workspace-leaf-content[data-type="empty"] .empty-state::before,
-  body .workspace-leaf-content[data-type="empty"] .empty-state::after {
+  body .workspace-leaf-content[data-type="empty"] .empty-state::after,
+  body .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
     display: none !important;
   }
 

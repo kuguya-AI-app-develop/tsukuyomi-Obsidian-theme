@@ -10,8 +10,8 @@ const checkMotion = (css) => validateMotion(parse(css));
 const checkReading = (css) => validateReadingProtection(parse(css));
 const sceneMedia = 'screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px)';
 const sceneScope = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"]';
-const fishFrames = '@keyframes tk-fish-drift { from { transform: translateX(-6px); } to { transform: translateX(6px); } }';
-const fishAnimation = 'animation: tk-fish-drift 24s ease-in-out infinite alternate';
+const fishFrames = '@keyframes tk-fish-drift { from { transform: translateX(-32px); } to { transform: translateX(32px); } }';
+const fishAnimation = 'animation: tk-fish-drift 8s ease-in-out infinite alternate';
 const fishScene = (selector = `${sceneScope} .view-content::before`, media = sceneMedia, declaration = fishAnimation) =>
   `${fishFrames} @media ${media} { ${selector} { ${declaration}; } }`;
 
@@ -64,9 +64,8 @@ test('motion accepts only the three guarded empty-view scene animations', () => 
     @keyframes tk-mirror-breathe { 0%, 100% { opacity: .6; } 50% { opacity: .8; transform: scale(1.02); } }
     @keyframes tk-water-ripple { from { transform: scale(.94); opacity: .1; } to { transform: scale(1.06); opacity: 0; } }
     @media ${sceneMedia} {
-      ${sceneScope} .view-content::after { animation: tk-mirror-breathe 10s ease-in-out infinite; }
-      ${sceneScope} .view-content .empty-state::before { animation: tk-water-ripple 12s ease-out infinite; }
-      ${sceneScope} .empty-state::before { animation: tk-water-ripple 12s ease-out infinite; }
+      ${sceneScope} .view-content .empty-state::after { animation: tk-mirror-breathe 5s ease-in-out infinite; }
+      ${sceneScope} .view-content .empty-state-container::after { animation: tk-water-ripple 4s ease-out infinite; }
     }
   `), []);
 });
@@ -98,7 +97,7 @@ test('motion rejects unsupported names, properties, timing and vendor bypasses',
     'animation: decorative 1200ms ease 2',
     'animation: var(--motion)',
     'animation: tk-fish-drift 1s ease-in-out infinite alternate',
-    'animation: tk-fish-drift 24s ease-in-out infinite alternate, decorative 1s infinite',
+    'animation: tk-fish-drift 8s ease-in-out infinite alternate, decorative 1s infinite',
     'animation-name: tk-fish-drift',
     'animation-duration: 140ms',
     'animation-timeline: scroll()',
@@ -114,6 +113,35 @@ test('motion rejects unsupported names, properties, timing and vendor bypasses',
   }
   assert.ok(checkMotion(fishScene().replace(fishFrames, '')).length, 'missing definition');
   assert.ok(checkMotion(fishScene().replace('.view-content::before', '.view-content::after')).length, 'wrong layer');
+});
+
+test('motion rejects former scene layers and timing while keeping the new layout contract', () => {
+  assert.ok(checkMotion(fishScene().replace('8s ease-in-out', '24s ease-in-out')).length);
+  for (const [name, timing, oldTarget] of [
+    ['tk-mirror-breathe', '5s ease-in-out infinite', '.view-content::after'],
+    ['tk-water-ripple', '4s ease-out infinite', '.view-content .empty-state::before'],
+    ['tk-water-ripple', '4s ease-out infinite', '.empty-state::before'],
+  ]) {
+    const css = `@keyframes ${name} { from { opacity: .4; } to { opacity: .8; } }
+      @media ${sceneMedia} { ${sceneScope} ${oldTarget} { animation: ${name} ${timing}; } }`;
+    assert.ok(checkMotion(css).length, oldTarget);
+  }
+});
+
+test('motion rejects focus-dependent empty-scene pauses but preserves explicit static resets', () => {
+  for (const declaration of ['animation-play-state: paused', 'animation: none']) {
+    for (const target of ['.view-content::before', '.view-content .empty-state::after', '.view-content .empty-state-container::after']) {
+      assert.ok(checkMotion(`body:not(.is-focused) .workspace-leaf-content[data-type="empty"] ${target} { ${declaration}; }`).length,
+        `${target} ${declaration}`);
+    }
+  }
+  assert.deepEqual(checkMotion(`
+    body.tk-disable-motion .workspace-leaf-content[data-type="empty"] .view-content::before { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) {
+      .workspace-leaf-content[data-type="empty"] .view-content::before { animation: none; }
+    }
+    body:not(.is-focused) .unrelated-spinner { animation-play-state: paused; }
+  `), []);
 });
 
 test('motion rejects unguarded, long or reading-targeted UI transitions', () => {

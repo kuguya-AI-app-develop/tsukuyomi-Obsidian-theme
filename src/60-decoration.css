@@ -49,7 +49,8 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="file-explorer"] .nav-fi
 }
 
 .workspace-leaf-content[data-type="empty"] {
-  container: tk-empty / inline-size;
+  container: tk-empty / size;
+  --tk-stage-height: clamp(160px, 24vh, 240px);
 }
 
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
@@ -59,101 +60,112 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content {
   background-color: var(--tk-background);
 }
 
-/* Native .empty-state fills the pane. Its actions remain above all scenery. */
+/* Equal tracks center the gate itself. The menu owns the following row;
+   its intrinsic height takes priority when a short pane needs to scroll. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
+  display: grid;
+  grid-template-columns: min(100%, 480px);
+  grid-template-rows: minmax(0, 1fr) var(--tk-stage-height) minmax(max-content, 1fr);
+  justify-content: center;
+  justify-items: center;
+  row-gap: 12px;
+}
+
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container {
   position: relative;
   z-index: 2;
+  grid-area: 3 / 1;
+  align-self: start;
+  max-height: none;
 }
 
-/* Building and gate share one static backing layer. */
+/* Gate and mirror share one normal-flow grid cell above the menu. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before,
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
   content: "";
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  background:
-    var(--tk-gate-art) center top / 50% 30% no-repeat,
-    var(--tk-city-art) center bottom / 100% min(32%, 320px) no-repeat;
+  grid-area: 2 / 1;
+  z-index: 1;
+  width: min(80%, 300px);
+  height: var(--tk-stage-height);
   opacity: var(--tk-decoration-opacity);
   pointer-events: none;
 }
 
-/* Fish preserve the city's viewBox, so only their silhouettes drift. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before {
+  background: var(--tk-gate-art) center / contain no-repeat;
+}
+
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::after {
+  background: var(--tk-mirror-art) center / contain no-repeat;
+}
+
+/* City stays fixed at the bottom; fish move in their own bounded layer. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: auto 0 0;
+  height: min(32%, 320px);
+  background: var(--tk-city-art) center bottom / contain no-repeat;
+  opacity: var(--tk-decoration-opacity);
+  pointer-events: none;
+}
+
 body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::before {
   content: "";
   position: absolute;
   z-index: 1;
-  /* Reserve the full travel distance inside the native scroll container. */
-  inset: auto 12px 3px;
+  /* Leave room for the full +/-32px, +6px travel inside the scroll area. */
+  inset: auto 36px 10px;
   height: min(32%, 320px);
   background: var(--tk-fish-art) center bottom / contain no-repeat;
   opacity: var(--tk-decoration-opacity);
   pointer-events: none;
 }
 
-body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .view-content::after {
+/* This small ripple follows the menu in flow and cannot cover its actions. */
+body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-container::after {
   content: "";
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 25%;
-  width: 50%;
-  height: 30%;
-  background: var(--tk-mirror-art) center / contain no-repeat;
-  opacity: var(--tk-decoration-opacity);
-  pointer-events: none;
-}
-
-body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  bottom: 3%;
-  left: 35%;
-  width: 30%;
-  height: 3%;
+  display: block;
+  width: min(60%, 220px);
+  height: 12px;
+  margin: 16px auto 0;
   border: 1px solid var(--tk-sea);
   border-radius: 50%;
-  opacity: calc(var(--tk-decoration-opacity) * 0.35);
+  opacity: calc(var(--tk-decoration-opacity) * 0.45);
   pointer-events: none;
 }
 
-/* Transform/opacity only; the scene runs only in a roomy, active empty pane. */
+/* Visible motion belongs only to decorative empty-page elements. */
 @keyframes tk-fish-drift {
-  from { transform: translate3d(-10px, 2px, 0); }
-  to { transform: translate3d(10px, -3px, 0); }
+  from { transform: translate3d(-32px, 6px, 0); }
+  to { transform: translate3d(32px, -8px, 0); }
 }
 
 @keyframes tk-mirror-breathe {
-  0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.65); }
+  0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
   50% { opacity: var(--tk-decoration-opacity); }
 }
 
 @keyframes tk-water-ripple {
-  0% { transform: scale(0.7); opacity: 0; }
-  35% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
+  0% { transform: scale(0.55); opacity: 0; }
+  35% { opacity: calc(var(--tk-decoration-opacity) * 0.65); }
   100% { transform: scale(1.12); opacity: 0; }
 }
 
+/* Keep playing in a visible pane even while the user focuses another app. */
 @media screen and (prefers-reduced-motion: no-preference) and (min-width: 601px) and (min-height: 561px) {
   body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before {
-    animation: tk-fish-drift 24s ease-in-out infinite alternate;
+    animation: tk-fish-drift 8s ease-in-out infinite alternate;
   }
 
-  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::after {
-    animation: tk-mirror-breathe 10s ease-in-out infinite;
+  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content .empty-state::after {
+    animation: tk-mirror-breathe 5s ease-in-out infinite;
   }
 
-  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content .empty-state::before {
-    animation: tk-water-ripple 12s ease-out infinite;
+  body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content .empty-state-container::after {
+    animation: tk-water-ripple 4s ease-out infinite;
   }
-}
-
-/* Obsidian removes is-focused when its window loses focus. */
-body:not(.is-focused):not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::before,
-body:not(.is-focused):not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content::after,
-body:not(.is-focused):not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] .view-content .empty-state::before {
-  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: no-preference) {

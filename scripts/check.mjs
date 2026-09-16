@@ -245,9 +245,9 @@ export function validateMotion(ast) {
   const errors = [];
   const scenePrefix = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] ';
   const contracts = new Map([
-    ['tk-fish-drift', { value: 'tk-fish-drift 24s ease-in-out infinite alternate', targets: ['.view-content::before'] }],
-    ['tk-mirror-breathe', { value: 'tk-mirror-breathe 10s ease-in-out infinite', targets: ['.view-content::after'] }],
-    ['tk-water-ripple', { value: 'tk-water-ripple 12s ease-out infinite', targets: ['.empty-state::before', '.view-content .empty-state::before'] }],
+    ['tk-fish-drift', { value: 'tk-fish-drift 8s ease-in-out infinite alternate', targets: ['.view-content::before'] }],
+    ['tk-mirror-breathe', { value: 'tk-mirror-breathe 5s ease-in-out infinite', targets: ['.view-content .empty-state::after'] }],
+    ['tk-water-ripple', { value: 'tk-water-ripple 4s ease-out infinite', targets: ['.view-content .empty-state-container::after'] }],
   ]);
   const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:601px)', '(min-height:561px)'];
   const transitionTargets = new Set(['.workspace-tab-header', '.nav-file-title', '.nav-folder-title',
@@ -314,7 +314,17 @@ export function validateMotion(ast) {
 
       if (!/^(?:-\w+-)?animation(?:-|$)/i.test(property)) return;
       if ((property === 'animation' && value === 'none')
-        || (property === 'animation-play-state' && value === 'paused')) return;
+        || (property === 'animation-play-state' && value === 'paused')) {
+        // An active, visible empty scene must keep moving when focus goes to
+        // another app. Preserve ordinary static-mode/reduced-motion resets.
+        this.rule?.prelude?.children?.forEach((selector) => {
+          const text = generate(selector);
+          if (/\.is-focused\b/.test(text) && /\[data-type=(?:"empty"|'empty'|empty)\]/.test(text)) {
+            errors.push('motion: visible empty scenes must not pause based on window focus');
+          }
+        });
+        return;
+      }
       if (property !== 'animation') {
         errors.push(`motion: unsupported animation property ${property}`);
         return;
