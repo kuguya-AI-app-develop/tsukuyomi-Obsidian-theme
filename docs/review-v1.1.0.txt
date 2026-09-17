@@ -1,0 +1,33 @@
+Observed 2026-09-17. Official management page:
+https://community.obsidian.md/account/themes/tsukuyomi
+
+- 'generic "Date: Sep 17, 2026 Version: 1.1.0 Commit: 1c12562 Completed"':
+  - generic: "Date: Sep 17, 2026"
+  - generic: "Version: 1.1.0"
+  - text: "Commit:"
+  - link "1c12562":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/commit/1c125625f06736b54a13597efd0b7452aadb84f2
+  - generic: Completed
+- heading "CSS lint" [level=4]
+- button "Copy as Markdown":
+- list:
+  - generic: Warning
+  - generic: Unexpected browser feature "multicolumn" is only partially supported by Obsidian 1.11.4
+  - link "theme.css:1426":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/blob/1c125625f06736b54a13597efd0b7452aadb84f2/theme.css#L1426
+  - link "theme.css:1459":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/blob/1c125625f06736b54a13597efd0b7452aadb84f2/theme.css#L1459
+  - button "Copy as Markdown":
+
+- heading "Current release" [level=3]:
+  - text: Current release
+- generic: Version
+- generic: 1.1.0
+- generic: Published
+- generic: Sep 17, 2026
+- generic: Total releases
+- generic: "7"
+- generic: Total downloads
+- generic: "0"
+
+Completed; no Error shown. Two existing print multicolumn warnings remain.

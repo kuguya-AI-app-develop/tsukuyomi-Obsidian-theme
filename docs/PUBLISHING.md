@@ -4,7 +4,7 @@
 
 ## 1.1.0 交互细节更新
 
-发布准备中：菜单语义颜色与键盘选中反馈、移动端紧凑密度、阅读表格横滚和可选表格行定位。现有视觉与动效素材保持不变，依据见 [交互参考](UX-REFERENCES.md)。本节将在验证和公开附件复验后更新。
+[1.1.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.1.0) 已于 2026-09-17 01:45:27Z 发布，tag 指向 `1c125625f06736b54a13597efd0b7452aadb84f2`。本版改善菜单语义颜色与键盘选中反馈、移动端紧凑密度、阅读表格横滚和可选表格行定位。现有视觉与动效素材保持不变，依据见 [交互参考](UX-REFERENCES.md)。24 项项目测试、36 项浏览器场景（324 个断言）、5 项真实鼠标悬停、原生读写与两页横向 PDF 检查通过；具体范围见 [验收记录](VALIDATION.md)。四个公开附件已匿名下载并逐字节匹配本地，[附件记录](release-assets-v1.1.0.json)。官方复核已为 **Completed**，没有 Error，仍保留原有两条打印分页的 multicolumn 提示；[复核记录](review-v1.1.0.txt)。客户端目录同步未重新检查，既有自动检查保持暂停。
 
 ## 1.0.5 Mermaid 适配
 
