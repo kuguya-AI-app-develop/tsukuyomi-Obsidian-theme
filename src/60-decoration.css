@@ -154,7 +154,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   pointer-events: none;
 }
 
-/* Motion only decorates empty pages. */
+/* Continuous motion only decorates empty pages. */
 @keyframes tk-mirror-breathe {
   0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
   50% { opacity: var(--tk-decoration-opacity); }

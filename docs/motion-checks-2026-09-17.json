@@ -1,0 +1,2080 @@
+{
+  "date": "2026-09-17",
+  "status": "unreleased",
+  "obsidianReferenceVersion": "1.13.7",
+  "css": {
+    "bytes": 90434,
+    "sha256": "5053d96625128e42b0dfff91f1f118cf7e9ed158c980cbe2e3e4d097b368ba5a"
+  },
+  "summary": {
+    "cases": 8,
+    "passed": 468,
+    "failed": 0
+  },
+  "environment": "Desktop Chromium with locally installed Obsidian CSS and simulated component DOM; not native iOS",
+  "cases": [
+    {
+      "config": {
+        "theme": "dark",
+        "mobile": false,
+        "static": false
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 79,
+        "failed": 0,
+        "total": 79
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File A selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File A selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File A selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File A selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "File B selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File B selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File B selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File B selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "motion is running before mid-flight static toggle",
+          "pass": true
+        },
+        {
+          "name": "static toggle cancels current motion without hiding content",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "config": {
+        "theme": "light",
+        "mobile": false,
+        "static": false
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 79,
+        "failed": 0,
+        "total": 79
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File A selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File A selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File A selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File A selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "File B selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File B selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File B selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File B selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "motion is running before mid-flight static toggle",
+          "pass": true
+        },
+        {
+          "name": "static toggle cancels current motion without hiding content",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "config": {
+        "theme": "dark",
+        "mobile": false,
+        "static": true
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 38,
+        "failed": 0,
+        "total": 38
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "config": {
+        "theme": "light",
+        "mobile": false,
+        "static": true
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 38,
+        "failed": 0,
+        "total": 38
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "config": {
+        "theme": "dark",
+        "mobile": true,
+        "static": false
+      },
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "documentWidth": 393
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 79,
+        "failed": 0,
+        "total": 79
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File A selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File A selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File A selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File A selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "File B selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File B selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File B selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File B selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "motion is running before mid-flight static toggle",
+          "pass": true
+        },
+        {
+          "name": "static toggle cancels current motion without hiding content",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "config": {
+        "theme": "light",
+        "mobile": true,
+        "static": false
+      },
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "documentWidth": 393
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 79,
+        "failed": 0,
+        "total": 79
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File A selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File A selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File A selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File A selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "File B selection: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "File B selection: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "File B selection: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "File B selection: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: inner content squashes or stretches",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: expected one-shot animations start",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: sampled during animation",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: finite duration with no retained fill",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: fades upward within eight pixels",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: every start has a matching end",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "motion is running before mid-flight static toggle",
+          "pass": true
+        },
+        {
+          "name": "static toggle cancels current motion without hiding content",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Static file selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "config": {
+        "theme": "dark",
+        "mobile": true,
+        "static": true
+      },
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "documentWidth": 393
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 38,
+        "failed": 0,
+        "total": 38
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "config": {
+        "theme": "light",
+        "mobile": true,
+        "static": true
+      },
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "documentWidth": 393
+      },
+      "media": {
+        "reducedMotion": false,
+        "print": false
+      },
+      "summary": {
+        "passed": 38,
+        "failed": 0,
+        "total": 38
+      },
+      "checks": [
+        {
+          "name": "fixture has visible, non-clipped body",
+          "pass": true
+        },
+        {
+          "name": "fixture has no horizontal page overflow",
+          "pass": true
+        },
+        {
+          "name": "File A selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File A selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File A selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File A selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "File B selection: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "File B selection: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "File B selection: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "File B selection: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module A activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Module B activation: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: clickable parent stays in place",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Folder expansion: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Reading view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "nested embedded reading view does not animate",
+          "pass": true
+        },
+        {
+          "name": "paragraph append, scroll and same-root file content change do not replay",
+          "pass": true
+        },
+        {
+          "name": "reading content really scrolls",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Editor view show: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "editor accepts focus and input immediately on entry",
+          "pass": true
+        },
+        {
+          "name": "editor focus and input DOM update do not replay",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: motion disabled",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: exactly one start per target",
+          "pass": true
+        },
+        {
+          "name": "Restore reading view: targets settle at native opacity and without transforms",
+          "pass": true
+        },
+        {
+          "name": "rapid view switches leave no latent transforms or opacity",
+          "pass": true
+        },
+        {
+          "name": "initial static preference is preserved",
+          "pass": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Same-tab file replacements reuse note containers and do not reliably restart a CSS animation.",
+    "No outgoing crossfade or animation on focus of an already-visible split/stacked pane.",
+    "Input probes update editable DOM and dispatch an input event; not native CodeMirror or IME acceptance.",
+    "System Reduce Motion and print media were checked by source policy tests, not by changing system settings or exporting PDF this round.",
+    "Phone fixture keeps its test module tabs visible; it does not prove native iOS exposes desktop tab controls."
+  ]
+}

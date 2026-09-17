@@ -1,4 +1,4 @@
-/* Tsukuyomi 1.1.0
+/* Tsukuyomi 1.2.0
 MIT applies to original code only; third-party character designs are excluded. See NOTICE.md in source repository.
 
 MIT License
@@ -63,7 +63,7 @@ settings:
     step: 0.05
   - id: tk-disable-motion
     title: 静态场景
-    description: 停止空白页游鱼、吉祥物、光镜、水波的动效和短暂界面过渡；系统减少动态效果设置始终优先。
+    description: 停止空白页动效、导航回弹、文章入场和界面过渡；系统减少动态效果设置始终优先。
     type: class-toggle
     default: false
 */
@@ -1190,7 +1190,7 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
   pointer-events: none;
 }
 
-/* Motion only decorates empty pages. */
+/* Continuous motion only decorates empty pages. */
 @keyframes tk-mirror-breathe {
   0%, 100% { opacity: calc(var(--tk-decoration-opacity) * 0.4); }
   50% { opacity: var(--tk-decoration-opacity); }
@@ -1248,6 +1248,56 @@ body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state-co
       background-color var(--tk-transition-duration) ease,
       border-color var(--tk-transition-duration) ease,
       box-shadow var(--tk-transition-duration) ease;
+  }
+}
+
+/* Source: 65-interaction-motion.css */
+/* Animate inner labels and icons; their clickable rows stay in place. */
+@keyframes tk-nav-jelly {
+  0%, 100% { transform: scale(1, 1); }
+  38% { transform: scale(1.06, 0.9); }
+  65% { transform: scale(0.97, 1.055); }
+  84% { transform: scale(1.015, 0.985); }
+}
+
+/* Small sidebar icons need a stronger bounce than long file labels. */
+@keyframes tk-sidebar-jelly {
+  0%, 100% { transform: scale(1, 1); }
+  38% { transform: scale(1.22, 0.78); }
+  65% { transform: scale(0.88, 1.14); }
+  84% { transform: scale(1.06, 0.94); }
+}
+
+@keyframes tk-note-enter {
+  from {
+    opacity: 0.3;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  body:not(.tk-disable-motion) .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+  body:not(.tk-disable-motion) .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+  body:not(.tk-disable-motion) .nav-file-title.is-active .nav-file-title-content,
+  body:not(.tk-disable-motion) .nav-folder:not(.is-collapsed) > .nav-folder-title .nav-folder-title-content {
+    animation: tk-nav-jelly 520ms ease-out;
+  }
+
+  body:not(.tk-disable-motion) .mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+  body:not(.tk-disable-motion) .mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+    animation: tk-sidebar-jelly 600ms ease-out;
+  }
+
+  /* Only view creation or display restoration enters. Same-tab file changes
+     may reuse these roots; never animate virtualized blocks or editor input. */
+  body:not(.tk-disable-motion) .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-reading-view,
+  body:not(.tk-disable-motion) .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6 {
+    animation: tk-note-enter 460ms ease-out;
   }
 }
 

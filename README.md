@@ -2,7 +2,7 @@
 
 English · [简体中文](README.zh-CN.md)
 
-An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.1.0** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
+An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.2.0** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
 
 Maintained by [ArisaTaki](https://github.com/ArisaTaki) as an individual fan project.
 
@@ -26,7 +26,7 @@ Once synchronization is confirmed, open **Settings → Appearance → Themes →
 
 Manual installation:
 
-1. Download `Tsukuyomi-1.1.0.zip` from the [1.1.0 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.1.0).
+1. Download `Tsukuyomi-1.2.0.zip` from the [1.2.0 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.2.0).
 2. Extract the `Tsukuyomi` folder into your vault's `.obsidian/themes/` directory. It should contain `manifest.json` and `theme.css`.
 3. In Obsidian, open **Settings → Appearance** and select **Tsukuyomi**.
 
@@ -44,9 +44,9 @@ The defaults work without plugins. Install the **Style Settings** community plug
 | Reading width | `40rem` | Adjust the maximum text width |
 | Interface density | Standard | Choose standard or compact spacing on desktop; mobile retains native touch spacing |
 | Scene opacity | `0.70` | Adjust empty-view decoration opacity from `0` to `1` |
-| Static scene | Off | Use static fish and companions; stop decorative motion and interface transitions |
+| Static scene | Off | Use static artwork and stop interface motion, navigation bounce, and note entrances |
 
-Animation plays only in an active empty pane when both the viewport and pane are at least `320 × 480`, including the compact layout. System reduced-motion preferences, Static scene, and inactive panes use static artwork. Minimal mode, printing, or either area falling below that size hide the scene while retaining the native actions. Buildings and note content always remain still.
+Continuous decorative animation plays only in an active empty pane when both the viewport and pane are at least `320 × 480`, including the compact layout. System reduced-motion preferences, Static scene, and inactive panes use static artwork. Minimal mode, printing, or either area falling below that size hide the scene while retaining the native actions. Buildings remain still; note content stays still after any brief entrance described below.
 
 Saved Style Settings values survive upgrades. The old `tk-enable-motion` setting has been replaced by `tk-disable-motion`; enable **Static scene** if you prefer no motion.
 
@@ -66,6 +66,10 @@ cssclasses:
 Merge this entry with any existing `cssclasses`. It is a per-note option, separate from the five Style Settings options. Check the [validation record](docs/VALIDATION.md) for tested cases and limitations.
 
 ## Interaction details
+
+**Version 1.2.0:** selected file and module-tab labels/icons gain a `520ms` jelly bounce; expanding a folder also animates its label. Selected module icons in both sidebars use a stronger `600ms` bounce, including Files, Search, Bookmarks, Outline, and Backlinks. Clickable rows keep their position. A newly created note view, an ordinary tab restored from hiding, or switching between Reading and editing views gains a `460ms` upward entrance from `14px` below, with opacity rising from `0.3` to `1`.
+
+Replacing a file inside an existing tab may reuse the same view, so entrance motion is not guaranteed there. Focusing an already visible split or stacked pane does not replay it. There is no outgoing crossfade: this CSS-only theme does not control view removal. Typing and scrolling do not trigger note entrances. **Static scene**, system reduced motion, and printing disable these new animations.
 
 Menus preserve warning colors and disabled states, while ordinary keyboard-selected menu and suggestion items gain a turquoise inset outline. Compact density applies only on desktop. In Reading view, wide tables scroll within their container; Live Preview keeps Obsidian's native table component.
 

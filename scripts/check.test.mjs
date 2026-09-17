@@ -17,6 +17,54 @@ const mirrorAnimation = 'animation: tk-mirror-breathe 5s ease-in-out infinite';
 const mirrorTarget = `${sceneScope} .view-content .empty-state::after`;
 const mirrorScene = (selector = mirrorTarget, media = sceneMedia, declaration = mirrorAnimation) =>
   `${mirrorFrames} @media ${media} { ${selector} { ${declaration}; } }`;
+const interactionMedia = 'screen and (prefers-reduced-motion: no-preference)';
+const interactionScope = 'body:not(.tk-disable-motion)';
+const jellyFrames = `@keyframes tk-nav-jelly {
+  0%, 100% { transform: scale(1, 1); }
+  38% { transform: scale(1.06, 0.9); }
+  65% { transform: scale(0.97, 1.055); }
+  84% { transform: scale(1.015, 0.985); }
+}`;
+const noteFrames = `@keyframes tk-note-enter {
+  from { opacity: .3; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}`;
+const sidebarFrames = `@keyframes tk-sidebar-jelly {
+  0%, 100% { transform: scale(1, 1); }
+  38% { transform: scale(1.22, 0.78); }
+  65% { transform: scale(0.88, 1.14); }
+  84% { transform: scale(1.06, 0.94); }
+}`;
+const interactionCases = [
+  {
+    frames: jellyFrames,
+    animation: 'tk-nav-jelly 520ms ease-out',
+    targets: [
+      '.workspace-tab-header.is-active .workspace-tab-header-inner-icon',
+      '.workspace-tab-header.is-active .workspace-tab-header-inner-title',
+      '.nav-file-title.is-active .nav-file-title-content',
+      '.nav-folder:not(.is-collapsed) > .nav-folder-title .nav-folder-title-content',
+    ],
+  },
+  {
+    frames: noteFrames,
+    animation: 'tk-note-enter 460ms ease-out',
+    targets: [
+      '.workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-reading-view',
+      '.workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6',
+    ],
+  },
+  {
+    frames: sidebarFrames,
+    animation: 'tk-sidebar-jelly 600ms ease-out',
+    targets: [
+      '.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon',
+      '.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon',
+    ],
+  },
+];
+const interactionCss = ({ frames, animation, targets }, media = interactionMedia, scope = interactionScope) =>
+  `${frames} @media ${media} { ${targets.map((target) => `${scope} ${target}`).join(', ')} { animation: ${animation}; } }`;
 const morph = '<path d="M0 0Q5 4 10 0L12 4Z"><animate attributeName="d" dur="1s" repeatCount="indefinite" calcMode="linear" keyTimes="0;1" values="M0 0Q5 4 10 0L12 4Z;M0 0Q5 -4 10 0L12 -4Z"/></path>';
 const checkAnimatedSvg = (body) => validateSvgDataUrl(svgUrl(body), { allowAnimation: true });
 const fishImageDeclaration = 'background-image: var(--tk-fish-swimming-art)';
@@ -289,6 +337,123 @@ test('motion rejects unguarded, long or reading-targeted UI transitions', () => 
     '@media (prefers-reduced-motion: no-preference) { body:not(.tk-disable-motion) :is(button) { transition: all 10s ease; } }',
     '@media (prefers-reduced-motion: no-preference) { body:not(.tk-disable-motion) { --tk-transition-duration: 2s; } }',
   ]) assert.ok(checkMotion(css).length, css);
+});
+
+test('motion accepts bounded one-shot navigation labels and Markdown view roots', () => {
+  for (const contract of interactionCases) {
+    assert.deepEqual(checkMotion(interactionCss(contract)), []);
+    assert.deepEqual(checkMotion(interactionCss(contract).replaceAll(' > ', '>')), []);
+  }
+  assert.deepEqual(checkMotion(interactionCases.map((contract) => interactionCss(contract)).join('\n')), []);
+});
+
+test('interaction motion requires screen, reduced-motion and static-mode guards', () => {
+  for (const contract of interactionCases) {
+    for (const media of [
+      'screen',
+      '(prefers-reduced-motion: no-preference)',
+      'screen and (prefers-reduced-motion: reduce)',
+      'print and (prefers-reduced-motion: no-preference)',
+      `${interactionMedia}, screen`,
+      'screen and (prefers-reduced-motion: no-preference), (prefers-reduced-motion: reduce)',
+    ]) assert.ok(checkMotion(interactionCss(contract, media)).length, media);
+    for (const scope of ['body', 'body.tk-disable-motion', 'body:not(.tk-minimal)']) {
+      assert.ok(checkMotion(interactionCss(contract, undefined, scope)).length, scope);
+    }
+    assert.ok(checkMotion(`${contract.frames} ${interactionScope} ${contract.targets[0]} { animation: ${contract.animation}; }`).length,
+      'unguarded stylesheet');
+  }
+});
+
+test('interaction motion rejects global, focus-triggered, editing and clickable-row targets', () => {
+  const unsafeTargets = [
+    '.markdown-reading-view',
+    '.markdown-preview-sizer',
+    '.markdown-rendered p',
+    '.cm-content',
+    '.cm-line',
+    '.workspace-tab-header.is-active',
+    '.nav-file-title.is-active',
+    '.workspace-tab-header:hover .workspace-tab-header-inner-title',
+    '.nav-file-title:focus .nav-file-title-content',
+    '.mod-left-split .workspace-tab-header.is-active',
+    '.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-title',
+    '.mod-left-split .workspace-tab-header:hover .workspace-tab-header-inner-icon',
+    '.mod-left-split .workspace-tab-header .workspace-tab-header-inner-icon',
+    '.mod-unknown-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon',
+    '.workspace-leaf.mod-active .workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-reading-view',
+    '.workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6:focus-within',
+    '.workspace-leaf-content[data-type="markdown"] > .view-content > .markdown-source-view.mod-cm6 .cm-content',
+  ];
+  for (const contract of interactionCases) {
+    for (const target of unsafeTargets) {
+      assert.ok(checkMotion(interactionCss({ ...contract, targets: [target] })).length, target);
+    }
+    assert.ok(checkMotion(interactionCss({ ...contract, targets: [...contract.targets, '.cm-line'] })).length,
+      'an allowed selector must not hide an unsafe selector in a list');
+  }
+  for (const [index, contract] of interactionCases.entries()) {
+    for (const [otherIndex, other] of interactionCases.entries()) {
+      if (index === otherIndex) continue;
+      assert.ok(checkMotion(interactionCss({ ...contract, targets: other.targets })).length,
+        'navigation, article and sidebar contracts cannot share targets');
+    }
+  }
+});
+
+test('interaction motion rejects repeat, delay, retained transforms and longhand bypasses', () => {
+  for (const contract of interactionCases) {
+    for (const animation of [
+      `${contract.animation} infinite`,
+      `${contract.animation} 2`,
+      `${contract.animation} 10s`,
+      `${contract.animation} forwards`,
+      `${contract.animation} both`,
+      `${contract.animation}, ${contract.animation}`,
+      contract.animation.replace(/\d+ms/, '2s'),
+      `${contract.animation} !important`,
+    ]) assert.ok(checkMotion(interactionCss({ ...contract, animation })).length, animation);
+    for (const declaration of [
+      'animation-duration: 10s',
+      'animation-delay: 30s',
+      'animation-iteration-count: infinite',
+      'animation-fill-mode: forwards',
+      'animation-timeline: scroll()',
+      'animation-composition: add',
+      '-webkit-animation: tk-note-enter 460ms ease-out',
+    ]) assert.ok(checkMotion(interactionCss(contract).replace(`animation: ${contract.animation};`,
+      `animation: ${contract.animation}; ${declaration};`)).length, declaration);
+  }
+});
+
+test('interaction keyframes enforce bounded movement and a fully visible settled endpoint', () => {
+  const [jelly, note, sidebar] = interactionCases;
+  for (const frames of [
+    jelly.frames.replace('1.06', '1.5'),
+    jelly.frames.replace('0.9', '0.2'),
+    jelly.frames.replace('scale(1, 1)', 'scale(1.06, 0.9)'),
+    jelly.frames.replace('transform: scale(0.97, 1.055);', 'left: 30px;'),
+    jelly.frames.replace('65%', '99%'),
+  ]) assert.ok(checkMotion(interactionCss({ ...jelly, frames })).length, frames);
+  for (const frames of [
+    note.frames.replace('14px', '140px'),
+    note.frames.replace('opacity: .3', 'opacity: 0'),
+    note.frames.replace('opacity: 1', 'opacity: .3'),
+    note.frames.replace('translateY(0)', 'translateY(14px)'),
+    note.frames.replace('transform: translateY(14px);', 'filter: blur(14px);'),
+    note.frames.replace('opacity: 1;', 'opacity: 1 !important;'),
+  ]) assert.ok(checkMotion(interactionCss({ ...note, frames })).length, frames);
+  for (const frames of [
+    sidebar.frames.replace('1.22', '2.2'),
+    sidebar.frames.replace('0.78', '0.1'),
+    sidebar.frames.replace('scale(1, 1)', 'scale(1.22, 0.78)'),
+    sidebar.frames.replace('transform: scale(1.06, 0.94);', 'width: 40px;'),
+    sidebar.frames.replace('84%', '99%'),
+  ]) assert.ok(checkMotion(interactionCss({ ...sidebar, frames })).length, frames);
+  for (const contract of interactionCases) {
+    assert.ok(checkMotion(interactionCss({ ...contract, frames: '' })).length, 'missing keyframes');
+    assert.ok(checkMotion(`${contract.frames}\n${interactionCss(contract)}`).length, 'duplicate keyframes');
+  }
 });
 
 test('reading protection allows solid content fills, markers, resets and empty-view artwork', () => {

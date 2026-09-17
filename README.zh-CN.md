@@ -2,7 +2,7 @@
 
 [English](README.md) · 简体中文
 
-受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.1.0** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
+受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.2.0** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
 
 An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
 
@@ -26,7 +26,7 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 
 手动安装步骤：
 
-1. 从 [1.1.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.1.0) 下载 `Tsukuyomi-1.1.0.zip`。
+1. 从 [1.2.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.2.0) 下载 `Tsukuyomi-1.2.0.zip`。
 2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
 3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
 
@@ -44,9 +44,9 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 | 正文宽度 | `40rem` | 调整正文最大宽度 |
 | 界面密度 | 标准 | 桌面端在标准与紧凑布局之间切换；移动端保留原生触控间距 |
 | 场景透明度 | `0.70` | 调整空白页装饰，范围 `0–1` |
-| 静态场景 | 关闭 | 使用静态鱼与伙伴，停止装饰动效和界面过渡 |
+| 静态场景 | 关闭 | 使用静态素材，停止界面过渡、导航回弹与文章入场 |
 
-动效只在窗口和窗格均至少为 `320 × 480` 的活动空白页播放，包含紧凑布局。系统开启减少动态效果、使用静态场景或切换到非活动窗格时，显示静态版本；简洁模式、打印或窗口/窗格低于该尺寸时隐藏场景，保留原生操作。建筑与笔记内容始终静止。
+持续装饰动效只在窗口和窗格均至少为 `320 × 480` 的活动空白页播放，包含紧凑布局。系统开启减少动态效果、使用静态场景或切换到非活动窗格时，显示静态版本；简洁模式、打印或窗口/窗格低于该尺寸时隐藏场景，保留原生操作。建筑保持静止，笔记内容在下述短暂入场结束后保持静止。
 
 从早期版本升级时，Style Settings 已保存的值会保留；旧 `tk-enable-motion` 已由 `tk-disable-motion` 取代，需要静态效果时请启用“静态场景”。
 
@@ -66,6 +66,10 @@ cssclasses:
 已有 `cssclasses` 时，将此项合并到原列表中。这是单篇笔记选项，不属于五项 Style Settings 设置。已测项目及限制见 [验收记录](docs/VALIDATION.md)。
 
 ## 交互细节
+
+**1.2.0 更新**：选中文件和模块标签时，内部文字或图标增加 `520ms` 果冻回弹，展开文件夹时也会轻弹其名称。左右侧栏选中的模块图标使用更明显的 `600ms` 回弹，涵盖文件、搜索、书签、大纲和反向链接等标签，点击区域保持原位。新建笔记视图、恢复被隐藏的普通标签页，以及切换阅读与编辑视图时，文章以 `460ms` 从下方 `14px` 上移，透明度由 `0.3` 恢复至 `1`。
+
+同一标签内换文件可能复用原视图，因此不保证触发入场；点击已经可见的分栏或堆叠窗格不会重播。主题仅使用 CSS，无法控制旧视图移除时机，因此没有离场交叉淡化。输入和滚动不会触发文章入场。“**静态场景**”、系统减少动态效果以及打印会关闭这些新动效。
 
 菜单保留危险操作的警示颜色与禁用状态，普通菜单项和建议项被键盘选中时增加海青内描边。紧凑密度仅作用于桌面端。阅读视图中的宽表格可在容器内横向滚动，实时预览保留 Obsidian 原生表格组件。
 

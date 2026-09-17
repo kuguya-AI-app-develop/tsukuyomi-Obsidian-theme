@@ -18,8 +18,8 @@ import {
 } from './build.mjs';
 
 const MIN_APP_VERSION = '1.13.7';
-// 1.0.4 used 81,856 bytes; reserve 8 KiB for the scoped Mermaid adapter.
-const MAX_CSS_BYTES = 88 * 1024;
+// 1.1.0 used 89,071 bytes; allow the bounded interaction-motion adapter.
+const MAX_CSS_BYTES = 92 * 1024;
 const ANIMATED_ASSET_VARIABLES = ['--tk-mascot-living-art', '--tk-fish-swimming-art'];
 const failures = [];
 
@@ -351,11 +351,39 @@ export function validateSvgDataUrl(value, { allowAnimation = false } = {}) {
 export function validateMotion(ast) {
   const errors = [];
   const scenePrefix = 'body:not(.tk-minimal):not(.tk-disable-motion) .workspace-leaf.mod-active .workspace-leaf-content[data-type="empty"] ';
+  const interactionPrefix = 'body:not(.tk-disable-motion) ';
+  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:320px)', '(min-height:480px)'];
+  const interactionMedia = ['screen', '(prefers-reduced-motion:no-preference)'];
   const contracts = new Map([
     ['tk-mirror-breathe', { value: 'tk-mirror-breathe 5s ease-in-out infinite', targets: ['.view-content .empty-state::after'] }],
     ['tk-water-ripple', { value: 'tk-water-ripple 4s ease-out infinite', targets: ['.view-content .empty-state-container::after'] }],
+    ['tk-nav-jelly', {
+      value: 'tk-nav-jelly 520ms ease-out',
+      targets: [
+        '.workspace-tab-header.is-active .workspace-tab-header-inner-icon',
+        '.workspace-tab-header.is-active .workspace-tab-header-inner-title',
+        '.nav-file-title.is-active .nav-file-title-content',
+        '.nav-folder:not(.is-collapsed)>.nav-folder-title .nav-folder-title-content',
+      ],
+      frames: '{0%,100%{transform:scale(1,1)}38%{transform:scale(1.06,.9)}65%{transform:scale(.97,1.055)}84%{transform:scale(1.015,.985)}}',
+    }],
+    ['tk-note-enter', {
+      value: 'tk-note-enter 460ms ease-out',
+      targets: [
+        '.workspace-leaf-content[data-type="markdown"]>.view-content>.markdown-reading-view',
+        '.workspace-leaf-content[data-type="markdown"]>.view-content>.markdown-source-view.mod-cm6',
+      ],
+      frames: '{from{opacity:.3;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}',
+    }],
+    ['tk-sidebar-jelly', {
+      value: 'tk-sidebar-jelly 600ms ease-out',
+      targets: [
+        '.mod-left-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon',
+        '.mod-right-split .workspace-tab-header.is-active .workspace-tab-header-inner-icon',
+      ],
+      frames: '{0%,100%{transform:scale(1,1)}38%{transform:scale(1.22,.78)}65%{transform:scale(.88,1.14)}84%{transform:scale(1.06,.94)}}',
+    }],
   ]);
-  const requiredMedia = ['screen', '(prefers-reduced-motion:no-preference)', '(min-width:320px)', '(min-height:480px)'];
   const transitionTargets = new Set(['.workspace-tab-header', '.nav-file-title', '.nav-folder-title',
     '.tree-item-self', '.clickable-icon', 'button', '.suggestion-item', '.menu-item', '.canvas-node-container']);
   const ancestors = [];
@@ -372,6 +400,12 @@ export function validateMotion(ast) {
           const name = node.prelude ? generate(node.prelude) : '';
           if (node.name !== 'keyframes' || !contracts.has(name)) {
             errors.push(`motion: unsupported keyframes ${node.name} ${name}`);
+          }
+          const frames = contracts.get(name)?.frames;
+          // Normalize optional leading zeroes without relaxing distances,
+          // endpoints, frame order, or the set of animated properties.
+          if (frames && (!node.block || generate(node.block).replace(/([(:,])0\./g, '$1.') !== frames)) {
+            errors.push(`motion: ${name} must use its bounded, settling keyframes`);
           }
           if (definitions.has(name)) errors.push(`motion: duplicate keyframes ${name}`);
           definitions.add(name);
@@ -438,24 +472,26 @@ export function validateMotion(ast) {
       const name = value.split(/\s+/)[0];
       const contract = contracts.get(name);
       if (!contract || value !== contract.value || node.important) {
-        errors.push(`motion: unsupported scene animation ${value}`);
+        errors.push(`motion: unsupported animation ${value}`);
         return;
       }
       references.add(name);
       const terms = mediaTerms();
-      if (!requiredMedia.every((term) => terms.includes(term))
-        || terms.some((term) => !requiredMedia.includes(term))) {
-        errors.push(`motion: ${name} requires screen, reduced-motion and minimum viewport guards`);
+      const permittedMedia = contract.frames ? interactionMedia : requiredMedia;
+      if (!permittedMedia.every((term) => terms.includes(term))
+        || terms.some((term) => !permittedMedia.includes(term))) {
+        errors.push(`motion: ${name} requires ${contract.frames ? 'screen and reduced-motion' : 'screen, reduced-motion and minimum viewport'} guards`);
       }
       const selectors = this.rule?.prelude;
       if (selectors?.type !== 'SelectorList') {
-        errors.push(`motion: ${name} requires a scoped empty-view selector`);
+        errors.push(`motion: ${name} requires an explicitly scoped selector`);
         return;
       }
       selectors.children.forEach((selector) => {
         const text = generate(selector);
-        if (!contract.targets.some((target) => text === scenePrefix + target)) {
-          errors.push(`motion: ${name} is outside its active empty-view pseudo-element: ${text}`);
+        const prefix = contract.frames ? interactionPrefix : scenePrefix;
+        if (!contract.targets.some((target) => text === prefix + target)) {
+          errors.push(`motion: ${name} is outside its guarded ${contract.frames ? 'interaction target' : 'active empty-view pseudo-element'}: ${text}`);
         }
       });
     },
@@ -1131,7 +1167,7 @@ async function main() {
   console.log(`✓ Style Settings: 1 YAML block, ${settingsCount} valid options`);
   for (const [mode, results] of contrastResults) console.log(`✓ ${mode} contrast: ${formatContrast(results)}`);
   console.log('✓ reading guard: explicit note selectors checked for image backgrounds, text shadows and generated decoration');
-  console.log('✓ policy: self-contained graphics; guarded scene SVG animations, two empty-scene CSS animations and short UI transitions; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
+  console.log('✓ policy: self-contained graphics; guarded scene SVG animations, two empty-scene CSS animations, bounded one-shot interactions and short UI transitions; no remote imports, backdrop filters, forced editor positioning, or user-font overrides');
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await main();
