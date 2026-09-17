@@ -33,9 +33,12 @@ button.mod-cta:hover {
 }
 
 .modal-title,
-.prompt-instruction-command,
-.menu-item-title {
+.prompt-instruction-command {
   color: var(--tk-text);
+}
+
+.menu-item-title {
+  color: inherit;
 }
 
 .suggestion-item,
@@ -43,11 +46,12 @@ button.mod-cta:hover {
   border-radius: var(--tk-radius-small);
 }
 
-.suggestion-item.is-selected,
-.menu-item.selected,
-.menu-item:hover {
-  color: var(--tk-text);
+:is(.suggestion-item.is-selected, .menu-item:is(.selected, :hover)):not(.is-disabled):not(.is-label) {
   background-color: rgb(var(--tk-sea-rgb), 0.12);
+}
+
+:is(.suggestion-item.is-selected, .menu-item.selected):not(.is-disabled):not(.is-label):not(.is-warning) {
+  box-shadow: inset 0 0 0 1px rgb(var(--tk-sea-rgb), 0.3);
 }
 
 .search-result-file-match {

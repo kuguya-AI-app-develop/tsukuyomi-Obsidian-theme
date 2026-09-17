@@ -2,7 +2,7 @@
 
 English · [简体中文](README.zh-CN.md)
 
-An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.5** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
+An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.1.0** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
 
 Maintained by [ArisaTaki](https://github.com/ArisaTaki) as an individual fan project.
 
@@ -26,7 +26,7 @@ Once synchronization is confirmed, open **Settings → Appearance → Themes →
 
 Manual installation:
 
-1. Download `Tsukuyomi-1.0.5.zip` from the [1.0.5 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5).
+1. Download `Tsukuyomi-1.1.0.zip` from the [1.1.0 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.1.0).
 2. Extract the `Tsukuyomi` folder into your vault's `.obsidian/themes/` directory. It should contain `manifest.json` and `theme.css`.
 3. In Obsidian, open **Settings → Appearance** and select **Tsukuyomi**.
 
@@ -42,7 +42,7 @@ The defaults work without plugins. Install the **Style Settings** community plug
 | --- | --- | --- |
 | Minimal mode | Off | Hide signs, decorative borders, and the empty-view scene |
 | Reading width | `40rem` | Adjust the maximum text width |
-| Interface density | Standard | Choose standard or compact spacing |
+| Interface density | Standard | Choose standard or compact spacing on desktop; mobile retains native touch spacing |
 | Scene opacity | `0.70` | Adjust empty-view decoration opacity from `0` to `1` |
 | Static scene | Off | Use static fish and companions; stop decorative motion and interface transitions |
 
@@ -64,6 +64,18 @@ cssclasses:
 ```
 
 Merge this entry with any existing `cssclasses`. It is a per-note option, separate from the five Style Settings options. Check the [validation record](docs/VALIDATION.md) for tested cases and limitations.
+
+## Interaction details
+
+Menus preserve warning colors and disabled states, while ordinary keyboard-selected menu and suggestion items gain a turquoise inset outline. Compact density applies only on desktop. In Reading view, wide tables scroll within their container; Live Preview keeps Obsidian's native table component.
+
+For an optional table reading guide, add this note property:
+
+```yaml
+cssclasses: [tk-table-guide]
+```
+
+Merge it with any existing `cssclasses`. This enables a subtle row highlight on desktop hover or when a control within the row receives focus, plus tabular-width digits. It is off by default and adds no Style Settings option. See the [UX references](docs/UX-REFERENCES.md) for the design rationale.
 
 ## Compatibility
 

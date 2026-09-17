@@ -1,0 +1,1792 @@
+{
+  "date": "2026-09-17",
+  "version": "1.1.0",
+  "cases": 36,
+  "passed": 36,
+  "failed": 0,
+  "assertions": 324,
+  "results": [
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 350,
+        "mode": "reading",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 350,
+        "mode": "reading",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 350,
+        "mode": "live",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 350,
+        "mode": "live",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "menu",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 350,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "warning title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "warning-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "label title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "label stays unhighlighted",
+          "pass": true
+        },
+        {
+          "name": "normal selection remains visible",
+          "pass": true
+        },
+        {
+          "name": "suggestion selection remains visible",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 393,
+        "mode": "reading",
+        "guide": 0,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 393,
+        "mode": "reading",
+        "guide": 1,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 393,
+        "mode": "live",
+        "guide": 0,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 393,
+        "mode": "live",
+        "guide": 1,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "menu",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 393,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "warning title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "warning-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "label title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "label stays unhighlighted",
+          "pass": true
+        },
+        {
+          "name": "normal selection remains visible",
+          "pass": true
+        },
+        {
+          "name": "suggestion selection remains visible",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 700,
+        "mode": "reading",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 700,
+        "mode": "reading",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 700,
+        "mode": "live",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 700,
+        "mode": "live",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "menu",
+        "variant": "candidate",
+        "theme": "dark",
+        "width": 700,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "warning title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "warning-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "label title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "label stays unhighlighted",
+          "pass": true
+        },
+        {
+          "name": "normal selection remains visible",
+          "pass": true
+        },
+        {
+          "name": "suggestion selection remains visible",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 350,
+        "mode": "reading",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 350,
+        "mode": "reading",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 350,
+        "mode": "live",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 350,
+        "mode": "live",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "menu",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 350,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "warning title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "warning-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "label title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "label stays unhighlighted",
+          "pass": true
+        },
+        {
+          "name": "normal selection remains visible",
+          "pass": true
+        },
+        {
+          "name": "suggestion selection remains visible",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 393,
+        "mode": "reading",
+        "guide": 0,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 393,
+        "mode": "reading",
+        "guide": 1,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 393,
+        "mode": "live",
+        "guide": 0,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 393,
+        "mode": "live",
+        "guide": 1,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "menu",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 393,
+        "device": "phone"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "warning title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "warning-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "label title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "label stays unhighlighted",
+          "pass": true
+        },
+        {
+          "name": "normal selection remains visible",
+          "pass": true
+        },
+        {
+          "name": "suggestion selection remains visible",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 700,
+        "mode": "reading",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 700,
+        "mode": "reading",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 700,
+        "mode": "live",
+        "guide": 0,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "table",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 700,
+        "mode": "live",
+        "guide": 1,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "table uses native table formatting",
+          "pass": true
+        },
+        {
+          "name": "wide table is really wider than view",
+          "pass": true
+        },
+        {
+          "name": "wide table wrapper scrolls horizontally",
+          "pass": true
+        },
+        {
+          "name": "inner table is not a second scroll container",
+          "pass": true
+        },
+        {
+          "name": "small table is content sized",
+          "pass": true
+        },
+        {
+          "name": "guide only changes note table digits when enabled",
+          "pass": true
+        },
+        {
+          "name": "outside table keeps normal numeral style",
+          "pass": true
+        },
+        {
+          "name": "focus within row highlights every column equally",
+          "pass": true
+        },
+        {
+          "name": "focus preserves unrelated outside table",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "menu",
+        "variant": "candidate",
+        "theme": "light",
+        "width": 700,
+        "device": "desktop"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "component is visible and pointer hit reaches it",
+          "pass": true
+        },
+        {
+          "name": "no page horizontal overflow",
+          "pass": true
+        },
+        {
+          "name": "warning title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "warning-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "label title inherits semantic color",
+          "pass": true
+        },
+        {
+          "name": "disabled keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "disabled-selected keeps native unselected background",
+          "pass": true
+        },
+        {
+          "name": "label stays unhighlighted",
+          "pass": true
+        },
+        {
+          "name": "normal selection remains visible",
+          "pass": true
+        },
+        {
+          "name": "suggestion selection remains visible",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "density",
+        "variant": "candidate",
+        "theme": "dark",
+        "device": "phone",
+        "width": 393,
+        "compact": "comparison"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "mobile compact preserves default font padding line height and row height",
+          "pass": true
+        },
+        {
+          "name": "both density modes are visible and hittable",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "density",
+        "variant": "candidate",
+        "theme": "dark",
+        "device": "tablet",
+        "width": 700,
+        "compact": "comparison"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "mobile compact preserves default font padding line height and row height",
+          "pass": true
+        },
+        {
+          "name": "both density modes are visible and hittable",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "density",
+        "variant": "candidate",
+        "theme": "dark",
+        "device": "desktop",
+        "width": 700,
+        "compact": "comparison"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "desktop compact remains smaller",
+          "pass": true
+        },
+        {
+          "name": "both density modes are visible and hittable",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "density",
+        "variant": "candidate",
+        "theme": "light",
+        "device": "phone",
+        "width": 393,
+        "compact": "comparison"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "mobile compact preserves default font padding line height and row height",
+          "pass": true
+        },
+        {
+          "name": "both density modes are visible and hittable",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "density",
+        "variant": "candidate",
+        "theme": "light",
+        "device": "tablet",
+        "width": 700,
+        "compact": "comparison"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "mobile compact preserves default font padding line height and row height",
+          "pass": true
+        },
+        {
+          "name": "both density modes are visible and hittable",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "test": {
+        "component": "density",
+        "variant": "candidate",
+        "theme": "light",
+        "device": "desktop",
+        "width": 700,
+        "compact": "comparison"
+      },
+      "pass": true,
+      "checks": [
+        {
+          "name": "desktop compact remains smaller",
+          "pass": true
+        },
+        {
+          "name": "both density modes are visible and hittable",
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

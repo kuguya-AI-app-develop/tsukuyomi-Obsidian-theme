@@ -1,10 +1,14 @@
 # 公开发布与 Obsidian 社区目录审核
 
-更新日期：2026-09-17。用户已授权完成公开发布、提交审核并跟进至通过。当前补丁版本为 **1.0.5**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
+更新日期：2026-09-17。用户已授权完成公开发布、提交审核并跟进至通过。当前版本为 **1.1.0**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
+
+## 1.1.0 交互细节更新
+
+发布准备中：菜单语义颜色与键盘选中反馈、移动端紧凑密度、阅读表格横滚和可选表格行定位。现有视觉与动效素材保持不变，依据见 [交互参考](UX-REFERENCES.md)。本节将在验证和公开附件复验后更新。
 
 ## 1.0.5 Mermaid 适配
 
-[1.0.5 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5) 已于 2026-09-17 01:27:12Z 发布，tag 指向 `05476ebcfade11c0ce577a46f65ed68c919ae3fd`。提供大图横向滚动和流程图、时序图、状态图的深浅配色适配，保留原生尺寸约束与按笔记退出配色的选项。24 项测试、170 项桌面浏览器场景及原生 Obsidian PDF 检查通过，范围见 [验收记录](VALIDATION.md)。四个附件均已匿名下载，与本地产物逐字节一致；[附件校验](release-assets-v1.0.5.json)。官方 Check for new releases 已识别 1.0.5，并确认扫描排队；[响应记录](review-v1.0.5.txt)。此时尚未把排队结果记为审核通过，客户端同步未重新检查。
+[1.0.5 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5) 已于 2026-09-17 01:27:12Z 发布，tag 指向 `05476ebcfade11c0ce577a46f65ed68c919ae3fd`。提供大图横向滚动和流程图、时序图、状态图的深浅配色适配，保留原生尺寸约束与按笔记退出配色的选项。24 项测试、170 项桌面浏览器场景及原生 Obsidian PDF 检查通过，范围见 [验收记录](VALIDATION.md)。四个附件均已匿名下载，与本地产物逐字节一致；[附件校验](release-assets-v1.0.5.json)。官方复核已为 **Completed**，当前版本为 **1.0.5**，没有 Error；仍保留原有两条打印分页的 multicolumn 提示。[复核记录](review-v1.0.5.txt)。客户端同步未重新检查，已暂停的定时检查不恢复。
 
 ## 1.0.4 手机适配补丁
 
@@ -49,7 +53,7 @@
 | --- | --- |
 | GitHub repository URL | `https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme` |
 | 默认分支 | `main` |
-| 版本 / Release tag | `1.0.5`，不加 `v` |
+| 版本 / Release tag | `1.1.0`，不加 `v` |
 | 最低 Obsidian 版本 | `1.13.7` |
 | Owner | 个人维护者 `ArisaTaki`（GitHub 组织继续托管仓库） |
 | Screenshot path | `screenshot.jpg`，真实阅读截图，1365×768，接近 16:9 |
@@ -57,9 +61,9 @@
 | Payment | Free，主题无收费、广告或捐赠入口 |
 | 描述 | An unofficial moonlit theme inspired by Cosmic Princess Kaguya!, with dark and light modes, calm reading surfaces, and an animated empty view. |
 | 必需附件 | `manifest.json`、`theme.css` |
-| 便捷附件 | `Tsukuyomi-1.0.5.zip`、`SHA256SUMS.txt` |
+| 便捷附件 | `Tsukuyomi-1.1.0.zip`、`SHA256SUMS.txt` |
 
-[1.0.5 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
+[1.1.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.1.0) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
 
 ## 许可和审核边界
 

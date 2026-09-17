@@ -58,12 +58,6 @@ body.is-phone:is(.is-floating-nav, .auto-full-screen) .workspace-leaf-content[da
     padding: 0.75rem;
   }
 
-  .markdown-rendered table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
 }
 
 @media (max-width: 319px), (max-height: 479px) {
@@ -110,6 +104,14 @@ body.is-phone:is(.is-floating-nav, .auto-full-screen) .workspace-leaf-content[da
 }
 
 @media print {
+  .markdown-preview-view .el-table {
+    overflow: visible;
+  }
+
+  .markdown-rendered table {
+    display: table;
+  }
+
   body:not(.tk-minimal) .workspace-leaf-content[data-type="empty"] .empty-state {
     display: flex;
     row-gap: 0;

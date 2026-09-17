@@ -1,29 +1,22 @@
-Observed 2026-09-17. Official check-release response:
+Observed 2026-09-17. Official management page:
+https://community.obsidian.md/account/themes/tsukuyomi
 
-- banner:
-  - link:
-    - /url: /account
-  - navigation:
-    - link "Profile":
-      - /url: /account/profile
-      - text: Profile
-    - link "Plugins":
-      - /url: /account/plugins
-      - text: Plugins
-    - link "Themes":
-      - /url: /account/themes
-      - text: Themes
-    - link "Organizations":
-      - /url: /account/organizations
-      - text: Organizations
-  - link "Community site":
-    - /url: /
-    - generic: Community site
-  - button "Log out":
-    - text: Log out
-- paragraph: Your manifest points at version 1.0.5. A scan has been queued.
-- link "Back to dashboard":
-  - /url: /account/themes/tsukuyomi
-- link "View releases on GitHub":
-  - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/releases
-- alert
+- 'generic "Date: Sep 17, 2026 Version: 1.0.5 Commit: 05476eb Completed"':
+  - generic: "Date: Sep 17, 2026"
+  - generic: "Version: 1.0.5"
+  - text: "Commit:"
+  - link "05476eb":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/commit/05476ebcfade11c0ce577a46f65ed68c919ae3fd
+  - generic: Completed
+- heading "CSS lint" [level=4]
+- button "Copy as Markdown":
+- list:
+  - generic: Warning
+  - generic: Unexpected browser feature "multicolumn" is only partially supported by Obsidian 1.11.4
+  - link "theme.css:1398":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/blob/05476ebcfade11c0ce577a46f65ed68c919ae3fd/theme.css#L1398
+  - link "theme.css:1431":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/blob/05476ebcfade11c0ce577a46f65ed68c919ae3fd/theme.css#L1431
+  - button "Copy as Markdown":
+
+Current release: 1.0.5. Completed; no Error shown. Two existing print multicolumn warnings remain.

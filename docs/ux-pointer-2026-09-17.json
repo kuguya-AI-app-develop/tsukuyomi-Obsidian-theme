@@ -1,0 +1,51 @@
+{
+  "version": "1.1.0",
+  "date": "2026-09-17",
+  "cases": [
+    {
+      "name": "pointer hover",
+      "target": "menu-disabled",
+      "pass": true,
+      "theme": "dark",
+      "device": "desktop"
+    },
+    {
+      "name": "pointer hover",
+      "target": "menu-warning",
+      "pass": true,
+      "theme": "dark",
+      "device": "desktop"
+    },
+    {
+      "name": "pointer hover",
+      "target": "menu-normal",
+      "pass": true,
+      "theme": "dark",
+      "device": "desktop"
+    },
+    {
+      "name": "pointer hover",
+      "target": "menu-label",
+      "pass": true,
+      "theme": "dark",
+      "device": "desktop"
+    },
+    {
+      "name": "pointer hover",
+      "target": "guide-row",
+      "pass": true,
+      "theme": "dark",
+      "device": "desktop",
+      "columns": [
+        "rgba(130, 202, 187, 0.08)",
+        "rgba(130, 202, 187, 0.08)",
+        "rgba(130, 202, 187, 0.08)",
+        "rgba(130, 202, 187, 0.08)",
+        "rgba(130, 202, 187, 0.08)",
+        "rgba(130, 202, 187, 0.08)",
+        "rgba(130, 202, 187, 0.08)",
+        "rgba(130, 202, 187, 0.08)"
+      ]
+    }
+  ]
+}

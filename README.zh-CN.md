@@ -2,7 +2,7 @@
 
 [English](README.md) · 简体中文
 
-受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.5** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
+受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.1.0** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
 
 An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
 
@@ -26,7 +26,7 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 
 手动安装步骤：
 
-1. 从 [1.0.5 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5) 下载 `Tsukuyomi-1.0.5.zip`。
+1. 从 [1.1.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.1.0) 下载 `Tsukuyomi-1.1.0.zip`。
 2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
 3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
 
@@ -42,7 +42,7 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 | --- | --- | --- |
 | 简洁模式 | 关闭 | 隐藏招牌、装饰边框与空白页场景 |
 | 正文宽度 | `40rem` | 调整正文最大宽度 |
-| 界面密度 | 标准 | 在标准与紧凑布局之间切换 |
+| 界面密度 | 标准 | 桌面端在标准与紧凑布局之间切换；移动端保留原生触控间距 |
 | 场景透明度 | `0.70` | 调整空白页装饰，范围 `0–1` |
 | 静态场景 | 关闭 | 使用静态鱼与伙伴，停止装饰动效和界面过渡 |
 
@@ -64,6 +64,18 @@ cssclasses:
 ```
 
 已有 `cssclasses` 时，将此项合并到原列表中。这是单篇笔记选项，不属于五项 Style Settings 设置。已测项目及限制见 [验收记录](docs/VALIDATION.md)。
+
+## 交互细节
+
+菜单保留危险操作的警示颜色与禁用状态，普通菜单项和建议项被键盘选中时增加海青内描边。紧凑密度仅作用于桌面端。阅读视图中的宽表格可在容器内横向滚动，实时预览保留 Obsidian 原生表格组件。
+
+需要表格行定位辅助时，可添加以下笔记属性：
+
+```yaml
+cssclasses: [tk-table-guide]
+```
+
+已有 `cssclasses` 时合并到原列表中。启用后，桌面鼠标悬停或行内控件获得焦点时会轻微突出所在行，同时使用等宽数字。默认不启用，也不新增 Style Settings 选项。设计依据见 [交互参考](docs/UX-REFERENCES.md)。
 
 ## 兼容范围
 

@@ -133,3 +133,25 @@ input[type="checkbox"]:checked {
 .markdown-rendered tr:nth-child(even) td {
   background-color: rgb(var(--tk-sea-rgb), 0.025);
 }
+
+/* Reading tables scroll in their wrapper; Live Preview owns its table widget. */
+.markdown-preview-view .el-table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.tk-table-guide table {
+  font-variant-numeric: tabular-nums;
+}
+
+@media screen {
+  .tk-table-guide table tr:focus-within > :is(th, td) {
+    background-color: rgb(var(--tk-sea-rgb), 0.08);
+  }
+}
+
+@media screen and (hover: hover) {
+  .tk-table-guide table tr:hover > :is(th, td) {
+    background-color: rgb(var(--tk-sea-rgb), 0.08);
+  }
+}
