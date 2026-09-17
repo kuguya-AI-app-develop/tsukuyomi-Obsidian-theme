@@ -1,0 +1,26 @@
+[
+  {
+    "file": "manifest.json",
+    "bytes": 149,
+    "sha256": "f1a6cb036bc1d9cc37695a3930c14b430caee33a2e02db2c6bb5532205c885e4",
+    "anonymousDownloadMatches": true
+  },
+  {
+    "file": "theme.css",
+    "bytes": 88336,
+    "sha256": "a883494d751090baa00da5da537b85f4c5720dd172d7e55b34346573a0d38724",
+    "anonymousDownloadMatches": true
+  },
+  {
+    "file": "Tsukuyomi-1.0.5.zip",
+    "bytes": 19101,
+    "sha256": "b2fde5cb30d0f8696a811127d01428f13de9d05d5fa16e6f96783a1efd5b9670",
+    "anonymousDownloadMatches": true
+  },
+  {
+    "file": "SHA256SUMS.txt",
+    "bytes": 242,
+    "sha256": "d0374fde8864f70f02c3c0dbc3f76741a04b8a5719c6df9213d7a1fdbdcacba8",
+    "anonymousDownloadMatches": true
+  }
+]

@@ -4,7 +4,7 @@
 
 ## 1.0.5 Mermaid 适配
 
-发布准备中：提供大图横向滚动和流程图、时序图、状态图的深浅配色适配，保留原生尺寸约束与按笔记退出配色的选项。24 项测试、170 项桌面浏览器场景及原生 Obsidian PDF 检查通过，范围见 [验收记录](VALIDATION.md)。本节将在发布附件核验和目录复核后更新；不把本地检查视为官方审核通过。
+[1.0.5 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5) 已于 2026-09-17 01:27:12Z 发布，tag 指向 `05476ebcfade11c0ce577a46f65ed68c919ae3fd`。提供大图横向滚动和流程图、时序图、状态图的深浅配色适配，保留原生尺寸约束与按笔记退出配色的选项。24 项测试、170 项桌面浏览器场景及原生 Obsidian PDF 检查通过，范围见 [验收记录](VALIDATION.md)。四个附件均已匿名下载，与本地产物逐字节一致；[附件校验](release-assets-v1.0.5.json)。官方 Check for new releases 已识别 1.0.5，并确认扫描排队；[响应记录](review-v1.0.5.txt)。此时尚未把排队结果记为审核通过，客户端同步未重新检查。
 
 ## 1.0.4 手机适配补丁
 
