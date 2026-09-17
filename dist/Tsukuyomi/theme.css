@@ -1,4 +1,4 @@
-/* Tsukuyomi 1.0.4
+/* Tsukuyomi 1.0.5
 MIT applies to original code only; third-party character designs are excluded. See NOTICE.md in source repository.
 
 MIT License
@@ -895,6 +895,116 @@ button.mod-cta:hover {
   background-color: var(--tk-raised);
   border: 1px solid var(--tk-border);
   border-radius: var(--tk-radius-small);
+}
+
+/* Source: 55-mermaid.css */
+/* Preserve Mermaid's measured geometry. Wide diagrams scroll inside the note;
+   explicit useMaxWidth settings keep their own inline size constraints. */
+.mermaid {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 12px;
+  border: 1px solid var(--tk-border);
+  border-radius: var(--tk-radius-medium);
+  background-color: var(--tk-background);
+}
+
+.mermaid > svg {
+  display: block;
+  max-width: none;
+  height: auto;
+  margin-inline: auto;
+}
+
+/* The unused ID in :is() matches Mermaid's generated #id stylesheet specificity
+   without priority overrides. Every rule stays inside .mermaid. Inline styles
+   and classDef declarations keep their priority; tk-mermaid-original opts out.
+   Only these renderers are recolored. Others retain Obsidian's native filter. */
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="sequence"], [aria-roledescription="stateDiagram"]) {
+  filter: none;
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"]) .node > :is(rect, circle, ellipse, polygon, path),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="sequence"] :is(rect.actor, [class~="labelBox"], .activation0, .activation1, .activation2) {
+  fill: var(--tk-raised);
+  stroke: var(--tk-sea);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"]) .cluster > rect,
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .statediagram-cluster :is(rect.outer, rect.inner) {
+  fill: var(--tk-sidebar);
+  stroke: var(--tk-muted);
+}
+
+/* Mermaid emits a shape before its label. Only recolor a default-filled
+   shape's label, so custom node fills retain their intended text contrast. */
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"]) .node:not([style*="fill:"]) > :is(rect, circle, ellipse, polygon, path):not([style*="fill:"]) ~ .label :is(text, span),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="flowchart-v2"] .cluster:not([style*="fill:"]) > rect:not([style*="fill:"]) ~ .cluster-label :is(text, span),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .statediagram-cluster > .cluster-label :is(text, span),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .statediagram-note > .label :is(text, span),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"]) [class~="edgeLabel"] :is(text, span),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="sequence"] :is(text.actor, text.actor > tspan, [class~="messageText"], [class~="labelText"], [class~="labelText"] > tspan, [class~="loopText"], [class~="loopText"] > tspan, [class~="noteText"], [class~="noteText"] > tspan),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"], [aria-roledescription="sequence"]) :is([class~="flowchartTitleText"], [class~="statediagramTitleText"], [class~="titleText"]) {
+  fill: var(--tk-text);
+  color: var(--tk-text);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"]) :is([class~="edgeLabel"], [class~="edgeLabel"] p, [class~="edgeLabel"] rect, [class~="labelBkg"]) {
+  fill: var(--tk-background);
+  background-color: var(--tk-background);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"]) :is(.flowchart-link, .transition, [class~="edgePath"] .path),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="sequence"] :is(.actor-line, .actor-man line, .actor-man circle, [class~="messageLine0"], [class~="messageLine1"], [class~="loopLine"]) {
+  stroke: var(--tk-muted);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid):is([aria-roledescription="flowchart-v2"], [aria-roledescription="stateDiagram"]) :is(.marker, [class~="arrowheadPath"]),
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="sequence"] :is(marker, #arrowhead) > path,
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] marker > path,
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .node .state-start {
+  fill: var(--tk-muted);
+  stroke: var(--tk-muted);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="sequence"] #crosshead > path {
+  fill: none;
+}
+
+/* Mermaid 11.13 emits fork/join bars as unclassed paths with these defaults. */
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .node.statediagram-state > g > path[fill="#333333"] {
+  fill: var(--tk-muted);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .node.statediagram-state > g > path[stroke="#333333"] {
+  stroke: var(--tk-muted);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .statediagram-note > .label-container > path[fill]:not([fill="none"]) {
+  fill: var(--tk-sidebar);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .statediagram-note > .label-container > path[stroke]:not([stroke="none"]) {
+  stroke: var(--tk-muted);
+}
+
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="sequence"] .note,
+.mermaid:not(:where(.tk-mermaid-original *)) > :is(svg, #tk-mermaid)[aria-roledescription="stateDiagram"] .statediagram-note > rect {
+  fill: var(--tk-sidebar);
+  stroke: var(--tk-muted);
+}
+
+@media print {
+  .mermaid {
+    overflow: visible;
+    padding: 0;
+    border: 0;
+  }
+
+  .mermaid > svg {
+    max-width: 100%;
+  }
 }
 
 /* Source: 60-decoration.css */

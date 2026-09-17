@@ -30,7 +30,7 @@
 
 ## 结构与阶段
 
-`src/` 按设置、色板、语义、工作区、编辑器、组件、装饰、移动及打印分层。Node 构建按固定顺序合并样式，并将 `assets/tsukuyomi-{city,gate,fish,fish-swimming,mirror,mascots,mascots-living}.svg` 与 `assets/stage-clouds.svg` 内嵌到 CSS，输出根目录 `theme.css` 及安装目录；运行时不请求网络。场景资产拆成静态建筑与独立动效层；云纹沿用本项目已有原创文件。开发检查依赖用于解析 CSS、设置 YAML 与官方 Stylelint 检查。`node scripts/generate-fish.mjs` 生成游鱼，`node scripts/generate-mascots.mjs` 生成角色动静两版，并调用 `scripts/render-mendako.mjs` 与 `scripts/render-fox.mjs` 的纯函数绘制粉色伙伴和狐狸头；这两个模块没有独立 CLI。构建通过纯渲染函数核对生成结果并拒绝旧资产，生成器不进入安装产物。CSS 预算为 `80KiB`，每个解码后的 SVG 预算为 `10KiB`。
+`src/` 按设置、色板、语义、工作区、编辑器、组件、装饰、移动及打印分层。Node 构建按固定顺序合并样式，并将 `assets/tsukuyomi-{city,gate,fish,fish-swimming,mirror,mascots,mascots-living}.svg` 与 `assets/stage-clouds.svg` 内嵌到 CSS，输出根目录 `theme.css` 及安装目录；运行时不请求网络。场景资产拆成静态建筑与独立动效层；云纹沿用本项目已有原创文件。开发检查依赖用于解析 CSS、设置 YAML 与官方 Stylelint 检查。`node scripts/generate-fish.mjs` 生成游鱼，`node scripts/generate-mascots.mjs` 生成角色动静两版，并调用 `scripts/render-mendako.mjs` 与 `scripts/render-fox.mjs` 的纯函数绘制粉色伙伴和狐狸头；这两个模块没有独立 CLI。构建通过纯渲染函数核对生成结果并拒绝旧资产，生成器不进入安装产物。CSS 预算为 `88KiB`，每个解码后的 SVG 预算为 `10KiB`。
 
 1. P0：核对原作制作资料、阅读参考与官方规范，锁定视觉和版本。
 2. P1：深色基础与阅读排版。

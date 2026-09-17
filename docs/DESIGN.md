@@ -48,7 +48,7 @@ Tsukuyomi v1.0.0 结合用户选择的月读城市与八千代舞台两种场景
 
 伙伴图层位于 `.workspace-leaf-content[data-type="empty"]::before`，鱼图层位于其 `.view-content::before`，静态版本分别作为 CSS 默认资源。两处动态资源选用规则使用相同条件：空白页为活动窗格、窗口和窗格均至少 `601px × 561px`、系统未请求减少动态效果，并且没有启用简洁或静态模式。非活动窗格、`tk-disable-motion` 或系统减少动态效果使用静态鱼和伙伴；窄小窗格、简洁模式与打印隐藏场景。该回退直接替换图像，不依靠 CSS 暂停 SVG 内部时间轴。主题不因用户切换到其他应用而主动暂停。`tk-disable-motion` 同时关闭默认 `140ms` 界面过渡。
 
-游鱼与角色分别由 `node scripts/generate-fish.mjs` 和 `node scripts/generate-mascots.mjs` 确定性生成；后者调用 `scripts/render-mendako.mjs` 与 `scripts/render-fox.mjs` 的纯渲染函数加入粉色伙伴和狐狸头，无需额外生成命令。模块名只是内部名称，不作为官方角色身份依据。生成器导出纯渲染函数供构建核对资产是否过期；JavaScript 只用于开发，不进入主题运行时。CSS 分发预算为 `80KiB`，每个解码后的 SVG 不超过 `10KiB`，同时保留鱼与伙伴的动静资源。不使用滤镜或全窗模糊。
+游鱼与角色分别由 `node scripts/generate-fish.mjs` 和 `node scripts/generate-mascots.mjs` 确定性生成；后者调用 `scripts/render-mendako.mjs` 与 `scripts/render-fox.mjs` 的纯渲染函数加入粉色伙伴和狐狸头，无需额外生成命令。模块名只是内部名称，不作为官方角色身份依据。生成器导出纯渲染函数供构建核对资产是否过期；JavaScript 只用于开发，不进入主题运行时。CSS 分发预算为 `88KiB`，每个解码后的 SVG 不超过 `10KiB`，同时保留鱼与伙伴的动静资源。不使用滤镜或全窗模糊。
 
 ## 兼容边界
 

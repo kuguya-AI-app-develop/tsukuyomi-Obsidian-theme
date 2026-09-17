@@ -1,0 +1,1880 @@
+{
+  "complete": true,
+  "startedAt": "2026-09-17T01:13:34.690Z",
+  "finishedAt": "2026-09-17T01:13:55.629Z",
+  "count": 170,
+  "failed": 0,
+  "cases": [
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "small",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "wide",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "class",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "er",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "svg-labels",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state-branches",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "fill-only",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-1",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-2",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-3",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-4",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-5",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-6",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "light",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "light",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "light",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "dark",
+        "mode": "live",
+        "width": 393,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "reference-7",
+        "theme": "dark",
+        "mode": "live",
+        "width": 700,
+        "variant": "candidate",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "flowchart",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "sequence",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "state",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "config",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "candidate",
+        "original": 1
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "light",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    },
+    {
+      "test": {
+        "sample": "explicit",
+        "theme": "dark",
+        "mode": "reading",
+        "width": 700,
+        "variant": "baseline",
+        "original": 0
+      },
+      "pass": true
+    }
+  ],
+  "failures": []
+}

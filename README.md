@@ -2,7 +2,7 @@
 
 English · [简体中文](README.zh-CN.md)
 
-An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.4** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
+An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*. **Version 1.0.5** brings ink-blue nights, turquoise lights, and Japanese city scenery to your workspace while keeping reading and writing surfaces calm.
 
 Maintained by [ArisaTaki](https://github.com/ArisaTaki) as an individual fan project.
 
@@ -26,7 +26,7 @@ Once synchronization is confirmed, open **Settings → Appearance → Themes →
 
 Manual installation:
 
-1. Download `Tsukuyomi-1.0.4.zip` from the [1.0.4 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4).
+1. Download `Tsukuyomi-1.0.5.zip` from the [1.0.5 release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5).
 2. Extract the `Tsukuyomi` folder into your vault's `.obsidian/themes/` directory. It should contain `manifest.json` and `theme.css`.
 3. In Obsidian, open **Settings → Appearance** and select **Tsukuyomi**.
 
@@ -49,6 +49,21 @@ The defaults work without plugins. Install the **Style Settings** community plug
 Animation plays only in an active empty pane when both the viewport and pane are at least `320 × 480`, including the compact layout. System reduced-motion preferences, Static scene, and inactive panes use static artwork. Minimal mode, printing, or either area falling below that size hide the scene while retaining the native actions. Buildings and note content always remain still.
 
 Saved Style Settings values survive upgrades. The old `tk-enable-motion` setting has been replaced by `tk-disable-motion`; enable **Static scene** if you prefer no motion.
+
+## Mermaid diagrams
+
+Version 1.0.5 adds a scrollable diagram container: oversized diagrams can scroll horizontally without forcing their text to fit the note width. Mermaid's own inline sizing constraints, such as `useMaxWidth`, still apply. Flowcharts, sequence diagrams, and state diagrams use the theme's light and dark colors; class, ER, and other diagram types retain their native colors. Node positions and connection routing remain controlled by Mermaid. No JavaScript or plugin is added.
+
+For notes with a custom Mermaid `theme` or `themeVariables`, add the following frontmatter to keep native diagram colors while retaining the scrollable container:
+
+```yaml
+---
+cssclasses:
+  - tk-mermaid-original
+---
+```
+
+Merge this entry with any existing `cssclasses`. It is a per-note option, separate from the five Style Settings options. Check the [validation record](docs/VALIDATION.md) for tested cases and limitations.
 
 ## Compatibility
 

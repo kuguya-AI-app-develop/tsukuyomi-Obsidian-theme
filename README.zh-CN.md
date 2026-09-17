@@ -2,7 +2,7 @@
 
 [English](README.md) · 简体中文
 
-受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.4** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
+受《超时空辉夜姬！》月读空间启发的非官方 Obsidian 主题。**1.0.5** 将墨蓝夜景、海青灯光与和风街景带入工作区，为中文长文保留安静的阅读空间。
 
 An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!*, with dark and light modes, calm reading surfaces, and an animated empty view.
 
@@ -26,7 +26,7 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 
 手动安装步骤：
 
-1. 从 [1.0.4 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4) 下载 `Tsukuyomi-1.0.4.zip`。
+1. 从 [1.0.5 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5) 下载 `Tsukuyomi-1.0.5.zip`。
 2. 将压缩包中的 `Tsukuyomi` 文件夹解压到目标笔记库的 `.obsidian/themes/`，确认其中包含 `manifest.json` 和 `theme.css`。
 3. 打开 Obsidian「设置 → 外观」，选择 **Tsukuyomi**。
 
@@ -49,6 +49,21 @@ An unofficial Obsidian theme inspired by Tsukuyomi from *Cosmic Princess Kaguya!
 动效只在窗口和窗格均至少为 `320 × 480` 的活动空白页播放，包含紧凑布局。系统开启减少动态效果、使用静态场景或切换到非活动窗格时，显示静态版本；简洁模式、打印或窗口/窗格低于该尺寸时隐藏场景，保留原生操作。建筑与笔记内容始终静止。
 
 从早期版本升级时，Style Settings 已保存的值会保留；旧 `tk-enable-motion` 已由 `tk-disable-motion` 取代，需要静态效果时请启用“静态场景”。
+
+## Mermaid 图表
+
+1.0.5 增加图表滚动容器：超宽图可以横向滚动，不强行压缩文字来适应正文宽度；Mermaid 自身的 `useMaxWidth` 等内联尺寸约束仍然有效。流程图、时序图和状态图使用主题的深浅配色；类图、ER 图等其他类型保留原生配色。节点位置和连线路径仍由 Mermaid 决定，不新增 JavaScript 或插件。
+
+使用 Mermaid `theme` 或 `themeVariables` 自定义整张图配色时，可在笔记顶部添加以下属性，保留原生图表配色，同时继续使用滚动容器：
+
+```yaml
+---
+cssclasses:
+  - tk-mermaid-original
+---
+```
+
+已有 `cssclasses` 时，将此项合并到原列表中。这是单篇笔记选项，不属于五项 Style Settings 设置。已测项目及限制见 [验收记录](docs/VALIDATION.md)。
 
 ## 兼容范围
 

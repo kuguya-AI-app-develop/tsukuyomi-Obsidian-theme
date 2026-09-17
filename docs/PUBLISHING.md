@@ -1,6 +1,10 @@
 # 公开发布与 Obsidian 社区目录审核
 
-更新日期：2026-09-16。用户已授权完成公开发布、提交审核并跟进至通过。当前补丁版本为 **1.0.4**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
+更新日期：2026-09-17。用户已授权完成公开发布、提交审核并跟进至通过。当前补丁版本为 **1.0.5**；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
+
+## 1.0.5 Mermaid 适配
+
+发布准备中：提供大图横向滚动和流程图、时序图、状态图的深浅配色适配，保留原生尺寸约束与按笔记退出配色的选项。24 项测试、170 项桌面浏览器场景及原生 Obsidian PDF 检查通过，范围见 [验收记录](VALIDATION.md)。本节将在发布附件核验和目录复核后更新；不把本地检查视为官方审核通过。
 
 ## 1.0.4 手机适配补丁
 
@@ -45,7 +49,7 @@
 | --- | --- |
 | GitHub repository URL | `https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme` |
 | 默认分支 | `main` |
-| 版本 / Release tag | `1.0.4`，不加 `v` |
+| 版本 / Release tag | `1.0.5`，不加 `v` |
 | 最低 Obsidian 版本 | `1.13.7` |
 | Owner | 个人维护者 `ArisaTaki`（GitHub 组织继续托管仓库） |
 | Screenshot path | `screenshot.jpg`，真实阅读截图，1365×768，接近 16:9 |
@@ -53,9 +57,9 @@
 | Payment | Free，主题无收费、广告或捐赠入口 |
 | 描述 | An unofficial moonlit theme inspired by Cosmic Princess Kaguya!, with dark and light modes, calm reading surfaces, and an animated empty view. |
 | 必需附件 | `manifest.json`、`theme.css` |
-| 便捷附件 | `Tsukuyomi-1.0.4.zip`、`SHA256SUMS.txt` |
+| 便捷附件 | `Tsukuyomi-1.0.5.zip`、`SHA256SUMS.txt` |
 
-[1.0.4 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.4) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
+[1.0.5 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.0.5) 中 ZIP 只含 `Tsukuyomi/manifest.json` 与 `Tsukuyomi/theme.css`。兼容版本映射见根目录 `versions.json`。官方推荐 512×288 缩略图；当前保留真实截图原始尺寸，不用生成画面替代运行截图。
 
 ## 许可和审核边界
 

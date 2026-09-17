@@ -18,7 +18,8 @@ import {
 } from './build.mjs';
 
 const MIN_APP_VERSION = '1.13.7';
-const MAX_CSS_BYTES = 80 * 1024;
+// 1.0.4 used 81,856 bytes; reserve 8 KiB for the scoped Mermaid adapter.
+const MAX_CSS_BYTES = 88 * 1024;
 const ANIMATED_ASSET_VARIABLES = ['--tk-mascot-living-art', '--tk-fish-swimming-art'];
 const failures = [];
 

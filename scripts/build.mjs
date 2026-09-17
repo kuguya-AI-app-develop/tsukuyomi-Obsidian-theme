@@ -13,6 +13,7 @@ export const sourceFiles = [
   '30-workspace.css',
   '40-editor.css',
   '50-components.css',
+  '55-mermaid.css',
   '60-decoration.css',
   '90-mobile-print.css',
 ];
