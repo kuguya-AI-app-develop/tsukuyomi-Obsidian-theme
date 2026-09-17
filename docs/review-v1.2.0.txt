@@ -1,0 +1,36 @@
+Obsidian Community official review
+Checked at: 2026-09-17T14:02:17.727Z
+URL: https://community.obsidian.md/account/themes/tsukuyomi
+
+- heading "Reviews" [level=3]:
+  - text: Reviews
+- link "Review branch":
+  - /url: /account/themes/tsukuyomi/review-branch
+- 'generic "Date: Sep 17, 2026 Version: 1.2.0 Commit: 897963c Completed"':
+  - generic: "Date: Sep 17, 2026"
+  - generic: "Version: 1.2.0"
+  - text: "Commit:"
+  - link "897963c":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/commit/897963cc5666abad436165521dfa453d6e05a28a
+  - generic: Completed
+- heading "CSS lint" [level=4]
+- button "Copy as Markdown":
+- list:
+  - generic: Warning
+  - generic: Unexpected browser feature "multicolumn" is only partially supported by Obsidian 1.11.4
+  - link "theme.css:1476":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/blob/897963cc5666abad436165521dfa453d6e05a28a/theme.css#L1476
+  - link "theme.css:1509":
+    - /url: https://github.com/kuguya-ai-app-develop/tsukuyomi-Obsidian-theme/blob/897963cc5666abad436165521dfa453d6e05a28a/theme.css#L1509
+  - button "Copy as Markdown":
+
+- heading "Current release" [level=3]:
+  - text: Current release
+- generic: Version
+- generic: 1.2.0
+- generic: Published
+- generic: Sep 17, 2026
+- generic: Total releases
+- generic: "8"
+- generic: Total downloads
+- generic: "0"

@@ -1,0 +1,37 @@
+{
+  "version": "1.2.0",
+  "releaseUrl": "https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.2.0",
+  "publishedAt": "2026-09-17T13:59:36Z",
+  "commit": "897963cc5666abad436165521dfa453d6e05a28a",
+  "anonymousDownload": true,
+  "assets": [
+    {
+      "name": "manifest.json",
+      "url": "https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/download/1.2.0/manifest.json",
+      "bytes": 149,
+      "sha256": "baa1eb9ec8ac0681b0eedb3993fedb827f244b06fed2889cd3675a0786cc7ae6",
+      "matchesLocal": true
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "url": "https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/download/1.2.0/SHA256SUMS.txt",
+      "bytes": 242,
+      "sha256": "568e12d3bbbfcc473f2860dcff95df33d18d1bd0ba5b5ec52995beb7dbcce23e",
+      "matchesLocal": true
+    },
+    {
+      "name": "theme.css",
+      "url": "https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/download/1.2.0/theme.css",
+      "bytes": 91020,
+      "sha256": "449b88169f40f628a0be771e1db6b422077abc00592b9ca98550d59ab90ae64a",
+      "matchesLocal": true
+    },
+    {
+      "name": "Tsukuyomi-1.2.0.zip",
+      "url": "https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/download/1.2.0/Tsukuyomi-1.2.0.zip",
+      "bytes": 19710,
+      "sha256": "cf10d89aa3f9a1d020dffbf23534afe43bd91d7ed2dfece03e60b250983b9d51",
+      "matchesLocal": true
+    }
+  ]
+}
