@@ -2,6 +2,33 @@
 
 更新日期：2026-09-17。用户已授权完成公开发布、提交审核并跟进至通过。当前版本为 **1.2.0**，GitHub 已公开发布，官方复核已完成；1.0.0 保留为首个正式版本。电影场景扩展研究继续暂停。
 
+## 主题发布与 irop.one 同步（2026-09-21）
+
+正式发布使用本机已有的 GitHub CLI 登录。发布脚本固定操作本主题仓库，并在 GitHub 发布成功后启动 `ArisaTaki/roku-homepage` 的 `deploy.yml`，传入 `theme_version`。无需新增 token；当前登录账号须有主题发布及网站工作流执行权限。网站构建时校验并同步正式版资源，然后部署，普通开发提交或 `git push` 不改变网站展示的正式主题版本。
+
+先更新版本、完成现有构建与检查、准备四个发布附件和 SHA256，并推送对应版本的 tag。下面的 `1.2.0` 只演示参数格式；**它已存在，不要重复发布**，实际发布时替换为新的、尚未发布的版本及其文件路径：
+
+```sh
+npm test
+npm run lint
+npm run release -- 1.2.0 \
+  tmp/release-1.2.0/manifest.json \
+  tmp/release-1.2.0/theme.css \
+  tmp/release-1.2.0/Tsukuyomi-1.2.0.zip \
+  tmp/release-1.2.0/SHA256SUMS.txt \
+  --title "Tsukuyomi 1.2.0" --notes-file docs/releases/1.2.0.md
+```
+
+此入口只接受无 `v` 前缀的稳定三段版本；不创建压缩包或修改版本，不允许更换仓库、发布草稿或预发布。它强制验证远端 tag 已存在，核对本地 `package.json` / `manifest.json` 版本、附件与本地构建逐字节一致及 SHA256；只上传明确列出的标准附件，不使用目录通配符。`--notes`、`--notes-file`、`--notes-from-tag` 或 `--generate-notes` 必须至少提供一项。
+
+如果主题发布成功而网站通知失败，主题版本已存在，**不要重新运行发布命令**。修复权限或工作流问题后，使用独立入口补发：
+
+```sh
+npm run sync:site -- 1.2.0
+```
+
+补发前会确认主题仓库公开、版本已正式发布、`manifest.json` / `theme.css` / `SHA256SUMS.txt` 附件齐全且非空。命令成功仅表示网站工作流已触发；部署结果须检查[网站 Actions](https://github.com/ArisaTaki/roku-homepage/actions/workflows/deploy.yml)和线上预览版本。网站端另有每 15 分钟检查正式 release 的补漏机制，覆盖 GitHub 网页直接发布或本机通知遗漏；GitHub 调度可能延迟，不能将 15 分钟视为上线保证。运行 `npm run test:release` 可离线验证发布和通知流程，测试使用注入的 `gh` 替身，不创建 release 或部署。
+
 ## 1.2.0 导航与文章动效
 
 [1.2.0 Release](https://github.com/kuguya-AI-app-develop/tsukuyomi-Obsidian-theme/releases/tag/1.2.0) 已于 2026-09-17T13:59:36Z 发布，tag 指向 `897963cc5666abad436165521dfa453d6e05a28a`。新增 520ms 导航回弹、600ms 左右侧栏图标回弹及 460ms 文章上移淡入；保留静态与减少动态效果开关。29 项测试、严格 Stylelint、ZIP 两文件检查通过，四个公开附件均已匿名下载且与本地产物逐字节一致；[附件记录](release-assets-v1.2.0.json)。发布 CSS 除版本头外与已通过 8 组、620 项浏览器断言的版本一致，具体范围见 [验收记录](VALIDATION.md)。官方对 1.2.0 / `897963c` 的复核已为 **Completed**，Current release 为 **1.2.0**，无 Error，仍保留原有两条打印分页的 multicolumn 提示（`theme.css:1476`、`:1509`）；[官方记录](review-v1.2.0.txt)。客户端搜索与更新安装未重新检查，原有定时检查保持暂停。

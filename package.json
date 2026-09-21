@@ -10,7 +10,10 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
-    "test": "npm run build && node --test scripts/check.test.mjs && npm run check",
+    "test": "npm run build && node --test scripts/check.test.mjs scripts/homepage-sync.test.mjs && npm run check",
+    "test:release": "node --test scripts/homepage-sync.test.mjs",
+    "release": "node scripts/publish-release.mjs",
+    "sync:site": "node scripts/sync-homepage.mjs",
     "lab": "node scripts/install-lab.mjs",
     "lint": "stylelint theme.css --max-warnings 0"
   },
